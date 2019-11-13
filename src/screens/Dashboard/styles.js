@@ -119,6 +119,7 @@ export const Content = styled.main`
   flex:1;
   height: 200%;
   max-height: calc(100vh - 90px);
+  overflow: auto;
 `;
 
 export const MenuItem = styled(Link)`
