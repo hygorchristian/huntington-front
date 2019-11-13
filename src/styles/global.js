@@ -18,33 +18,6 @@ export default createGlobalStyle`
     font-family: 'Hind', sans-serif;
   }
   
-  
-  .input{
-    height: 40px;
-    border: none;
-    background-color: #f8f8f8;
-    border-radius: 3px;
-    padding-left: 17px;
-    font-size: 14px;
-    font-weight: 200;
-  }
-  
-  .button{  
-    height: 40px;
-    border-radius: 3px;
-    border: none;
-    background-color: #018BD0;  
-    color: #ffffff;  
-    font-weight: 600;
-    font-size: 14px;
-    transition: all 150ms ease-in-out;
-    cursor: pointer;
-    
-    &:active{
-      opacity: 0.6;
-    }
-  }
-  
   input{
     height: 35px;
     background-color: #F6F6F6;

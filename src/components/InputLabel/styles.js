@@ -12,9 +12,9 @@ export const Container = styled.div`
   
   .input-container{
     display: flex;
+    border-radius: 5px;
     flex-direction: row;
     align-items: center;
-    padding-right: 20px;
     margin-bottom: 24px;
     height: 35px;
     background-color: #F6F6F6;
@@ -22,6 +22,7 @@ export const Container = styled.div`
     
     input{
       flex: 1;
+      width: 100%;
     }
   }
 `;

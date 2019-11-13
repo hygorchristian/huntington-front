@@ -7,10 +7,10 @@ function InputLabel({
  label, type, width = 200, ...props
 }) {
   return (
-    <Container width={width}>
+    <Container width={width} {...props}>
       <span>{label}</span>
       <div className="input-container">
-        <input {...props} type={type} />
+        <input type={type} />
         {type === 'date' && <FiCalendar />}
       </div>
     </Container>
