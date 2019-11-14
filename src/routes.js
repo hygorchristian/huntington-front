@@ -22,7 +22,7 @@ const routes = () => (
     <DashboardRoute path="/pre-cadastros/:id/nova-doadora" exact component={AdicionarDoadora} />
     <DashboardRoute path="/doadora/:id" exact component={Doadora} />
     {dashboardRoutes.map((route) => (
-      <DashboardRoute exact path={route.path} component={route.component} />
+      <DashboardRoute exact path={route.path} component={route.component} label={route.label} />
     ))}
   </Switch>
 );

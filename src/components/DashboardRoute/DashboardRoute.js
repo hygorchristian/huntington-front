@@ -2,13 +2,13 @@ import React from 'react';
 import Dashboard from '../../screens/Dashboard';
 import PrivateRoute from '../PrivateRoute';
 
-function DashboardRoute({ component: Component, ...rest }) {
+function DashboardRoute({ component: Component, label, ...rest }) {
   return (
     <PrivateRoute
       {...rest}
       component={(prop) => (
         <Dashboard>
-          <Component {...prop} />
+          <Component {...prop} label={label} />
         </Dashboard>
       )}
     />

@@ -1,3 +1,4 @@
+import React from 'react';
 import {
  FiPieChart, FiEdit3, FiDatabase, FiDroplet, FiTrendingUp
 } from 'react-icons/fi';
