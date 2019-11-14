@@ -62,11 +62,8 @@ export const Recepcao = styled.div`
   margin-top: 40px;
   
   fieldset{  
-    width: 100%;
-    padding: 20px 15px;
-    border-radius: 5px;
-    border: 1px solid #51996f;
-    position: relative;
+    position: relative;   
+    margin-bottom: 50px; 
     
     &:after{
       content: url("/icons/check-circle.svg");
@@ -145,8 +142,6 @@ export const Recepcao = styled.div`
           font-size: 13px;
         }
       }
-    }
-    
-   
+    }   
   }
 `;

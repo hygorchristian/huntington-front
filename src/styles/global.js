@@ -43,4 +43,17 @@ export default createGlobalStyle`
     color: #ffffff;
     cursor: pointer;
   }
+  
+  fieldset{  
+    width: 100%;
+    padding: 20px 15px;
+    border-radius: 5px;
+    border: 1px solid #51996f; 
+    
+    legend{
+      color: #3A6E50;
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+  }
 `;
