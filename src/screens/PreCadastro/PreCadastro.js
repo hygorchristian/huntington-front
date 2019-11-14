@@ -1,17 +1,14 @@
 import React from 'react';
-import { FiChevronLeft, FiMapPin, FiUsers } from 'react-icons/fi';
+import { FiMapPin, FiUsers } from 'react-icons/fi';
 
 import {
- Container, Header, Voltar, Content, Busca, Subheader
+ Container, Header, Content, Busca, Subheader
 } from './styles';
+import Voltar from '../../components/Voltar/Voltar';
 
 const items = [1, 2, 3, 4, 5];
 
 function PreCadastro({ history }) {
-  const navigate = () => {
-    history.push('/pre-cadastros');
-  };
-
   const novaDoadora = () => {
     history.push('/pre-cadastros/1/nova-doadora');
   };
@@ -22,10 +19,7 @@ function PreCadastro({ history }) {
 
   return (
     <Container>
-      <Voltar onClick={navigate}>
-        <FiChevronLeft />
-        <h3>Pré-Cadastros</h3>
-      </Voltar>
+      <Voltar label="Pré-Cadastros" route="/pre-cadastros" />
       <Header>
         <h1>Mutirão Dia da Saúde</h1>
         <div className="quantidade">

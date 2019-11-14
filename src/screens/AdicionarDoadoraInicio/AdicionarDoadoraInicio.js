@@ -1,30 +1,21 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
-import { FiChevronLeft } from 'react-icons/fi';
 
 import InputLabel from '../../components/InputLabel';
 import OptionsLabel from '../../components/OptionsLabel';
 
 import {
-  Container, Header, Voltar, Content
+  Container, Header, Content
 } from './styles';
+import Voltar from '../../components/Voltar/Voltar';
 
-function AdicionarDoadoraInicio({ history, onProximo }) {
+function AdicionarDoadoraInicio({ onProximo }) {
   const [estadoCivil, setEstadoCivil] = useState(null);
   const [etnia, setEtnia] = useState(null);
 
-  console.tron.log(onProximo);
-
-  const navigate = () => {
-    history.push('/pre-cadastros/1');
-  };
-
   return (
     <Container>
-      <Voltar onClick={navigate}>
-        <FiChevronLeft />
-        <h3>Mutirão dia da saúde</h3>
-      </Voltar>
+      <Voltar label="Mutirão dia da saúde" route="/pre-cadastros/1" />
       <Header>
         <h1>Pré-cadastro</h1>
         <span>(Recepção)</span>

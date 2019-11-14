@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { FiChevronLeft } from 'react-icons/fi';
 
 import {
- Container, Content, Header, Voltar, ConsultaContainer, ObservacaoContainer
+ Container, Content, Header, ConsultaContainer, ObservacaoContainer
 } from './styles';
 import InputLabel from '../InputLabel';
 import OptionsLabel from '../OptionsLabel';
 import CheckLabel from '../CheckLabel';
+import Voltar from '../Voltar/Voltar';
 
 function PrimeiraConsulta() {
   const [etnia, setEtnia] = useState(null);
@@ -108,7 +108,7 @@ function Desistencia() {
   );
 }
 
-function NovoHistorico({ history }) {
+function NovoHistorico() {
   const tabs = [
     {
       id: 1,
@@ -129,17 +129,9 @@ function NovoHistorico({ history }) {
 
   const [selected, setSelected] = useState(tabs[0]);
 
-
-  const navigate = () => {
-    history.push('/doadora/1');
-  };
-
   return (
     <Container>
-      <Voltar onClick={navigate}>
-        <FiChevronLeft />
-        <h3>Histórico | Maria Carolina do Rosário</h3>
-      </Voltar>
+      <Voltar label="Histórico | Maria Carolina do Rosário" route="/doadora/1" />
       <Header>
         <h1>Novo Histórico</h1>
       </Header>

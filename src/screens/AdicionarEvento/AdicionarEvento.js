@@ -2,20 +2,14 @@ import React from 'react';
 import { FiChevronLeft, FiCalendar, FiMapPin } from 'react-icons/fi';
 
 import {
-  Container, Header, Voltar, Content
+  Container, Header, Content
 } from './styles';
+import Voltar from '../../components/Voltar/Voltar';
 
 function AdicionarEvento({ history }) {
-  const navigate = () => {
-    history.push('/pre-cadastros');
-  };
-
   return (
     <Container>
-      <Voltar onClick={navigate}>
-        <FiChevronLeft />
-        <h3>Pré-Cadastros</h3>
-      </Voltar>
+      <Voltar label="Novo evento" route="/pre-cadastros" />
       <Header>
         <h1>Novo evento</h1>
       </Header>

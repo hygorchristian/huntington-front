@@ -1,26 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { FiChevronLeft } from 'react-icons/fi';
 
 import InputLabel from '../../components/InputLabel';
-import OptionsLabel from '../../components/OptionsLabel';
+import Voltar from '../../components/Voltar/Voltar';
 
 import {
-  Container, Header, Voltar, Content, Main, Resumo
+  Container, Header, Content, Main, Resumo
 } from './styles';
 
-function AdicionarDoadoraConcluir({ history, onVoltar }) {
-  const navigate = () => {
-    history.push('/pre-cadastros/1');
-  };
-
+function AdicionarDoadoraConcluir({ onVoltar }) {
   return (
     <Container>
       <Main>
-        <Voltar onClick={navigate}>
-          <FiChevronLeft />
-          <h3>Mutirão dia da saúde</h3>
-        </Voltar>
+        <Voltar label="Mutirão dia da saúde" route="/pre-cadastros/1" />
         <Header>
           <h1>Pré-cadastro</h1>
           <span>(Recepção)</span>

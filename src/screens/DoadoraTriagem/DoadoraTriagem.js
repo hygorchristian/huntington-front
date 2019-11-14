@@ -1,11 +1,11 @@
 /* eslint-disable object-curly-newline */
 
 import React from 'react';
-import { FiChevronLeft } from 'react-icons/fi';
 import InputTriagem from '../../components/InputTriagem';
+import Voltar from '../../components/Voltar/Voltar';
 
 import {
- Container, Content, Header, Voltar
+ Container, Content, Header
 } from './styles';
 
 const perguntas = [
@@ -26,17 +26,10 @@ const perguntas = [
   { id: 15, label: 'Há histórico de infertilidade na família?', selected: true, observacaoPlaceholder: 'Observação' },
 ];
 
-function DoadoraTriagem({ history }) {
-  const navigate = () => {
-    history.push('/doadora/1');
-  };
-
+function DoadoraTriagem() {
   return (
     <Container>
-      <Voltar onClick={navigate}>
-        <FiChevronLeft />
-        <h3>Maria Carolina do Rosário</h3>
-      </Voltar>
+      <Voltar label="Maria Carolina do Rosário" route="/doadora/1" />
       <Header>
         <h1>Triagem</h1>
       </Header>

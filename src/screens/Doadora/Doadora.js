@@ -1,14 +1,14 @@
 import React from 'react';
-import { FiChevronLeft } from 'react-icons/fi';
 
 import {
- Container, Header, Voltar, Content
+ Container, Header, Content
 } from './styles';
 import TabDashboard from '../../components/TabDashboard';
 import DoadoraInformacoes from '../DoadoraInformacoes';
 import DoadoraHistorico from '../DoadoraHistorico';
 import DoadoraExames from '../DoadoraExames';
 import DoadoraUltrassons from '../DoadoraUltrassons';
+import Voltar from '../../components/Voltar/Voltar';
 
 const tabs = [
   {
@@ -29,17 +29,10 @@ const tabs = [
   }
 ];
 
-function Doadora({ history }) {
-  const navigate = () => {
-    history.push('/pre-cadastros/1');
-  };
-
+function Doadora() {
   return (
     <Container>
-      <Voltar onClick={navigate}>
-        <FiChevronLeft />
-        <h3>Mutirão dia da Saúde</h3>
-      </Voltar>
+      <Voltar label="Mutirão dia da saúde" route="/pre-cadastros/1" />
       <Header>
         <h1>Maria Carolina do Rosário</h1>
       </Header>

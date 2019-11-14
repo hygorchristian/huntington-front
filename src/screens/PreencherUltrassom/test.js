@@ -5,9 +5,9 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import DoadoraUltrassons from './DoadoraUltrassons';
+import PreencherUltrassom from './PreencherUltrassom';
 
 
 it('renders correctly', () => {
-  renderer.create(<DoadoraUltrassons />);
+  renderer.create(<PreencherUltrassom />);
 });
