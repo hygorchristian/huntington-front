@@ -18,7 +18,7 @@ export default createGlobalStyle`
     font-family: 'Hind', sans-serif;
   }
   
-  input{
+  input, textarea{
     height: 35px;
     background-color: #F6F6F6;
     border: none;
@@ -31,5 +31,16 @@ export default createGlobalStyle`
     &::placeholder{
       color: rgba(112,112,112,0.5);
     }
+  }
+  
+  .btn{
+    height: 35px;
+    padding: 0 24px;
+    border-radius: 5px;
+    background-color:#3A6E50 ;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #ffffff;
+    cursor: pointer;
   }
 `;
