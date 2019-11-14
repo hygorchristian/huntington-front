@@ -41,5 +41,31 @@ export const Header = styled.div`
 
 export const Content = styled.div`
   flex: 1;
-  padding-top: 30px;  
+  padding-top: 30px; 
+  width: 420px;
+  
+  textarea{
+    width: 100%;
+    height: 120px;
+    margin-top: 32px;
+    margin-bottom: 40px;
+  } 
+  
+  .separator{
+    height: 1px;
+    width: 100%;
+    background-color: rgba(165,165,165,0.2);
+  }
+  
+  .controller{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 35px;
+    
+    button{
+      width: 120px;
+    }
+  }
 `;
