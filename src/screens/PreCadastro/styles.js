@@ -89,6 +89,7 @@ export const Content = styled.div`
     
     tr{
       height: 60px;
+      cursor: pointer;
     }
     
     td{

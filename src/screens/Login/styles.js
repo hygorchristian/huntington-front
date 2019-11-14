@@ -19,16 +19,17 @@ export const Form = styled.div`
   flex:1;
   
   & > img{
-    margin-top: 215px;
-    height: 75px;
-    width: 75px;
+    margin-top: 130px;
+    height: 104px;
+    width: 300px;
+    object-fit: contain;
   }
   
   h1{
-   font-weight: 400;
-   font-size: 28px;
-   margin-top: 110px;
-   margin-bottom: 50px;  
+   font-weight: 200;
+   font-size: 24px;
+   margin-top: 60px;
+   margin-bottom: 35px;  
   }
   
   input{
@@ -38,7 +39,14 @@ export const Form = styled.div`
   
   button{    
     width: 300px;
-    margin-top: 5px;    
+    margin-top: 5px;  
+    height: 35px;  
+    border: none;
+    background-color: #3A6E50;
+    color: #ffffff;
+    font-size: 13px;
+    text-transform: uppercase;
+    border-radius: 5px;
   }
 `;
 
@@ -48,70 +56,4 @@ export const Image = styled.img`
   flex:1;
   object-fit: cover;
   object-position: center center; 
-`;
-
-export const Help = styled.div`
-  position: absolute;
-  display: inline-flex;
-  height: 30px;
-  width: 30px;
-  justify-content: center;
-  align-items: center;
-  bottom : 0;
-  margin-left: 25px;
-  margin-bottom: 25px;
-  align-self: flex-start;
-  cursor: pointer;
-  
-  &:active{
-    opacity: 0.6;
-  }
-`;
-
-
-export const HelpContainer = styled.div`
-  position: fixed;
-  width: 835px;
-  padding-left: 45px;
-  padding-right: 45px;
-  bottom : ${({ showing }) => (showing ? 0 : '-500px')};
-  background-color: #008BD0;
-  transition: all 350ms ease-in-out;
-  
-  h2{
-    width: 500px;
-    color: #ffffff;
-    font-size: 18px;
-    font-weight: 600;
-    margin-top: 10px;
-  }
-  
-  p{
-    margin-top: 25px;
-    font-size: 14px;
-    width: 500px;
-    color: #ffffff;
-  }
-  
-  span{
-    display: block;
-    margin-top: 35px;
-    font-size: 18px;
-    color: #ffffff;
-    margin-bottom: 65px;
-  }
-`;
-
-export const Fechar = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 75px;
-  width: 100%;
-  cursor: pointer;
-  
-  &:active{
-    opacity: .6;
-  }
 `;

@@ -5,13 +5,12 @@ import { FiHelpCircle, FiChevronDown } from 'react-icons/fi';
 import { AuthActions } from '../../store/ducks/auth';
 
 import {
- Container, Image, Form, Help, HelpContainer, Fechar
+ Container, Image, Form
 } from './styles';
 
 function Login() {
   const dispatch = useDispatch();
 
-  const [showing, setShowing] = useState(false);
   const [etapa, setEtapa] = useState(1);
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
@@ -29,9 +28,9 @@ function Login() {
 
   return (
     <Container>
-      <Image src="/img/bg.png" />
+      <Image src="https://ak2.picdn.net/shutterstock/videos/13039982/thumb/4.jpg" />
       <Form>
-        <img src="/icons/logo.svg" alt="logo" />
+        <img src="https://ihera.com.br/site/assets/files/1100/logo_huntington.jpg" alt="logo" />
         {
           etapa === 1 ? (
             <>
@@ -48,18 +47,6 @@ function Login() {
             </>
           )
         }
-
-        <Help onClick={() => setShowing(true)}>
-          <FiHelpCircle size="20px" color="#8B8D8E" />
-        </Help>
-        <HelpContainer showing={showing}>
-          <Fechar onClick={() => setShowing(false)}>
-            <FiChevronDown color="#ffffff" />
-          </Fechar>
-          <h2>Essa é uma plataforma de relacionamento entre os empresários do segmento ótico e a Carl Zeiss</h2>
-          <p>Caso seja da equipe Carl Zeiss e não possua o acesso, entre em contato com nosso Suporte e solicite a criação do seu usuário.</p>
-          <span>0800 000 000</span>
-        </HelpContainer>
       </Form>
     </Container>
 );

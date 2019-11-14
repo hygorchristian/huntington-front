@@ -16,6 +16,10 @@ function PreCadastro({ history }) {
     history.push('/pre-cadastros/1/nova-doadora');
   };
 
+  const detalhesDoadora = (id) => {
+    history.push('/doadora/1');
+  };
+
   return (
     <Container>
       <Voltar onClick={navigate}>
@@ -33,7 +37,6 @@ function PreCadastro({ history }) {
           <span>Vila Mariana</span>
         </div>
       </Header>
-
       <Subheader>
         <Busca />
         <button onClick={novaDoadora}>Adicionar</button>
@@ -51,7 +54,7 @@ function PreCadastro({ history }) {
           <tbody>
             {
             items.map((item) => (
-              <tr className="linha">
+              <tr className="linha" onClick={() => detalhesDoadora(item)}>
                 <td style={{ width: 70 }}>123456</td>
                 <td>Carolina Marrocos</td>
                 <td>emaildoadora@email.com.br</td>
