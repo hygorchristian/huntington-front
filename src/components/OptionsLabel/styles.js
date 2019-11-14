@@ -5,6 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   color: #707070;  
   margin-bottom: 36px;
+  width: 100%;
   
   span{
     font-size: 13px;

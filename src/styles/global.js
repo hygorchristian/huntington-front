@@ -18,6 +18,10 @@ export default createGlobalStyle`
     font-family: 'Hind', sans-serif;
   }
   
+  textarea{
+    padding: 16px;
+  }
+  
   input, textarea{
     height: 35px;
     background-color: #F6F6F6;
@@ -27,6 +31,7 @@ export default createGlobalStyle`
     padding-right: 20px;
     font-size: 13px;   
     color: #707070;
+    resize: none;
     
     &::placeholder{
       color: rgba(112,112,112,0.5);

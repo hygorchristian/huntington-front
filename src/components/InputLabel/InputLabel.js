@@ -11,7 +11,7 @@ function InputLabel({
       <span>{label}</span>
       <div className="input-container">
         <input type={type} />
-        {type === 'date' && <FiCalendar />}
+        {type === 'date' && <FiCalendar style={{ marginRight: 12 }} />}
       </div>
     </Container>
 );

@@ -1,13 +1,18 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { FiCalendar, FiMapPin, FiUser } from 'react-icons/fi';
 
 import { Container } from './styles';
 
-function DoadoraHistorico() {
+function DoadoraHistorico({ history }) {
+  const adicionarHistorico = () => {
+    history.push('/doadora/1/novo-historico');
+  };
+
   return (
     <Container>
       <div className="adicionar-historico">
-        <button className="btn">Adicionar +</button>
+        <button className="btn" onClick={adicionarHistorico}>Adicionar +</button>
       </div>
       <fieldset>
         <legend>CADASTRO | MUTIRÃO</legend>
@@ -24,4 +29,4 @@ function DoadoraHistorico() {
 );
 }
 
-export default DoadoraHistorico;
+export default withRouter(DoadoraHistorico);

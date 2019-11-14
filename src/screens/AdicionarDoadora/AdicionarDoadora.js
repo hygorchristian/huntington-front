@@ -1,12 +1,4 @@
 import React, { useState } from 'react';
-import { FiChevronLeft } from 'react-icons/fi';
-
-import InputLabel from '../../components/InputLabel';
-import OptionsLabel from '../../components/OptionsLabel';
-
-import {
-  Container, Header, Voltar, Content
-} from './styles';
 import AdicionarDoadoraInicio from '../AdicionarDoadoraInicio';
 import AdicionarDoadoraConcluir from '../AdicionarDoadoraConcluir';
 

@@ -90,7 +90,6 @@ export const Content = styled.div`
         height: 90px;
         flex: 1;
         margin-top: 15px;
-        padding: 12px;
       }
       
       span{

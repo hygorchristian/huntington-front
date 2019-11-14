@@ -4,7 +4,7 @@ import { FiCalendar } from 'react-icons/fi';
 import { Container } from './styles';
 
 function OptionsLabel({
- label, data, value, onSelect, width = 200,
+ label, data, value, onSelect,
 }) {
   const select = (e, item) => {
     e.preventDefault();
@@ -12,7 +12,7 @@ function OptionsLabel({
   };
 
   return (
-    <Container width={width}>
+    <Container>
       <span>{label}</span>
       <div className="options-container">
         {data.map((item) => (

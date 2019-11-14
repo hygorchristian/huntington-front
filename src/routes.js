@@ -12,6 +12,7 @@ import AdicionarEvento from './screens/AdicionarEvento';
 import AdicionarDoadora from './screens/AdicionarDoadora';
 import Doadora from './screens/Doadora';
 import DoadoraTriagem from './screens/DoadoraTriagem';
+import NovoHistorico from './components/NovoHistorico';
 
 
 const routes = () => (
@@ -23,6 +24,7 @@ const routes = () => (
     <DashboardRoute path="/pre-cadastros/:id/nova-doadora" exact component={AdicionarDoadora} />
     <DashboardRoute path="/doadora/:id" exact component={Doadora} />
     <DashboardRoute path="/doadora/:id/triagem" exact component={DoadoraTriagem} />
+    <DashboardRoute path="/doadora/:id/novo-historico" exact component={NovoHistorico} />
     {dashboardRoutes.map((route) => (
       <DashboardRoute exact path={route.path} component={route.component} label={route.label} />
     ))}
