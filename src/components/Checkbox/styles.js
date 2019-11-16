@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: 36px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  cursor: pointer;
-  margin-top: 20px;
   
-  h3{
-    font-weight: 400;
+  input{
+    
+  }
+  
+  label{
+    margin-left: 11px;
     font-size: 13px;
-    margin-left: 15px;
-    color: #707070;
+    font-weight: 500;
   }
 `;

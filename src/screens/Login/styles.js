@@ -7,53 +7,54 @@ export const Container = styled.div`
   max-height: 100%;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;  
   
+  background: url("/img/login-bg.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 `;
 
-export const Form = styled.div`
-  position: relative;
+export const Form = styled.form`
+  width: 600px;
+  height: 800px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .3);
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  width: 835px;  
-  flex:1;
   
-  & > img{
-    margin-top: 130px;
-    height: 104px;
-    width: 300px;
-    object-fit: contain;
+  img{
+    margin-bottom: 60px;
   }
   
-  h1{
-   font-weight: 200;
-   font-size: 24px;
-   margin-top: 60px;
-   margin-bottom: 35px;  
+  h2{
+    font-size: 24px;
+    font-weight: 200;
+    color: #3A6E4F;
   }
   
-  input{
-    width: 300px;  
-    margin-bottom: 15px;
+  span{
+    font-size: 14px;
+    margin-top: 20px;
   }
   
-  button{    
-    width: 300px;
-    margin-top: 5px;  
-    height: 35px;  
-    border: none;
-    background-color: #3A6E50;
-    color: #ffffff;
-    font-size: 13px;
-    text-transform: uppercase;
+  button{
+    height: 40px;
+    width: 115px;
     border-radius: 5px;
+    background-color: #3E6F55;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 13px;
+    margin-top: 45px;
   }
-`;
-
-export const Image = styled.img`
-  height: 100%;
-  width: calc(100vw - 835px);
-  flex:1;
-  object-fit: cover;
-  object-position: center center; 
+  
+  a{
+    font-size: 14px;
+    margin-top: 30px;
+    text-decoration: none;
+  }
 `;

@@ -15,14 +15,14 @@ export const Container = styled.div`
     border-radius: 5px;
     flex-direction: row;
     align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: 4px;
     height: 35px;
     background-color: #F6F6F6;
     width: ${({ width }) => width}px;
     
     input{
       flex: 1;
-      width: 100%;
+      width: 100%;     
     }
   }
 `;

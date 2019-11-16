@@ -16,7 +16,14 @@ export default createGlobalStyle`
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
     font-family: 'Hind', sans-serif;
+    color: #646464;
   }
+  
+  a{
+    cursor: pointer;
+    text-decoration: underline;
+  }
+    
   
   textarea{
     padding: 16px;
@@ -35,6 +42,10 @@ export default createGlobalStyle`
     
     &::placeholder{
       color: rgba(112,112,112,0.5);
+    }
+    
+    &:focus{
+      border: 1px solid #A9D4B2;
     }
   }
   

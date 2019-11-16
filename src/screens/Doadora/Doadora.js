@@ -12,21 +12,21 @@ import Voltar from '../../components/Voltar/Voltar';
 
 const tabs = [
   {
+    label: 'Exames',
+    content: <DoadoraExames />
+  },
+  {
     label: 'Informações',
-    content: DoadoraInformacoes
+    content: <DoadoraInformacoes />
   },
   {
     label: 'Histórico',
-    content: DoadoraHistorico
-  },
-  {
-    label: 'Exames',
-    content: DoadoraExames
+    content: <DoadoraHistorico />
   },
   {
     label: 'Ultrassons',
-    content: DoadoraUltrassons
-  }
+    content: <DoadoraUltrassons />
+  },
 ];
 
 function Doadora() {

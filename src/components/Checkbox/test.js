@@ -5,9 +5,9 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import DoadoraExames from './DoadoraExames';
+import Checkbox from './Checkbox';
 
 
 it('renders correctly', () => {
-  renderer.create(<DoadoraExames />);
+  renderer.create(<Checkbox />);
 });
