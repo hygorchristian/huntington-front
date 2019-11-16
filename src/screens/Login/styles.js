@@ -50,6 +50,7 @@ export const Form = styled.form`
     text-transform: uppercase;
     font-size: 13px;
     margin-top: 45px;
+    border: none;
   }
   
   a{
