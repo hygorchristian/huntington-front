@@ -124,37 +124,65 @@ export const Content = styled.main`
   overflow: auto;
 `;
 
-export const MenuItem = styled(Link)`
+export const MenuItem = styled.div`
   display: flex;
-  flex-direction: row;
-  align-items: center;  
-  height: 48px;
-  margin-bottom: 5px;
-  cursor: pointer;
-  text-decoration: none;
-  user-select: none;
+  flex-direction: column;  
+  width: 100%;
+
+  .item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;  
+    height: 48px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    user-select: none;
     position: relative;
-  
-  div{
-    width: 5px;
-    height: 38px;
-    background-color: #B1C6B8;
-    border-bottom-right-radius: 5px;
-    border-top-right-radius: 5px;
-    position: absolute;
+    text-decoration: none;
+    
+    .indicator{
+      width: 5px;
+      height: 38px;
+      background-color: #B1C6B8;
+      border-bottom-right-radius: 5px;
+      border-top-right-radius: 5px;
+      position: absolute;
+    }
+    
+    &:active{
+      opacity: 0.5;
+    }
+    
+    span{
+      margin-left: 45px;
+      color: ${({ selected }) => (selected ? '#ffffff' : 'rgba(255,255,255,0.4)')};
+      font-weight: ${({ selected }) => (selected ? 600 : 400)};
+      align-self: center;
+      font-size: 14;
+   }
   }
   
-  &:active{
-    opacity: 0.5;
+  .subitem{
+    display: flex;
+    flex-direction: row;
+    position: static;
+    width: 100%;
+    
+    a{
+      width: 100%;
+      height: 34px;
+      line-height: 34px;
+      color: rgba(255,255,255,0.4);
+      padding-left: 75px;
+      margin-bottom: 5px;
+      font-size: 14px;
+      text-decoration: none;
+    }
   }
   
-  span{
-    margin-left: 45px;
-    color: ${({ selected }) => (selected ? '#ffffff' : 'rgba(255,255,255,0.4)')};
-    font-weight: ${({ selected }) => (selected ? 600 : 400)};
-    align-self: center;
-    font-size: 14;
-  }
+  
+  
+  
   
  
 `;
@@ -306,6 +334,6 @@ export const Notification = styled.div`
   }
 `;
 
-export const NotificationMenu = styled.div`
+export const SubItem = styled.div`
   
 `;

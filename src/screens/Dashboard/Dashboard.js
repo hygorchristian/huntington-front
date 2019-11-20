@@ -10,7 +10,19 @@ import {
 import routes from '..';
 
 import {
- Container, Content, Header, Main, Menu, MenuController, Open, MenuItem, Left, Right, ProfileMenu, Notification, NotificationMenu
+ Container,
+  Content,
+  Header,
+  Main,
+  Menu,
+  MenuController,
+  Open,
+  MenuItem,
+  Left,
+  Right,
+  ProfileMenu,
+  Notification,
+  SubItem,
 } from './styles';
 import { MenuActions } from '../../store/ducks/menu';
 
@@ -18,10 +30,21 @@ function Item({ route, aberto, selected }) {
   const isSelected = `/${selected}` === route.path;
 
   return (
-    <MenuItem to={route.path} selected={isSelected}>
-      {isSelected && aberto && <div />}
-      {aberto && <span>{route.label}</span>}
-    </MenuItem>
+    <>
+      <MenuItem selected={isSelected}>
+        <a className="item" href={route.path}>
+          {isSelected && aberto && <div className="indicator" />}
+          {aberto && <span>{route.label}</span>}
+        </a>
+        {
+          route.subitems && route.subitems.map((item) => (
+            <div className="subitem">
+              <a href={item.route}>{item.label}</a>
+            </div>
+          ))
+        }
+      </MenuItem>
+    </>
   );
 }
 

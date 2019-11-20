@@ -5,6 +5,7 @@ import {
 import Reclamacoes from './Reclamacoes';
 import DashboardScreen from './DashboardScreen';
 import PreCadastros from './PreCadastros';
+import Doadoras from './Doadoras';
 
 export default [
   {
@@ -23,7 +24,34 @@ export default [
     label: 'Doadoras',
     icon: FiDroplet,
     path: '/doadoras',
-    component: Reclamacoes,
+    component: Doadoras,
+    subitems: [
+      {
+        id: 1,
+        label: 'Programadas',
+        route: '/doadoras?filter=programadas'
+      },
+      {
+        id: 2,
+        label: 'Estimulação',
+        route: '/doadoras?filter=estimulacao'
+      },
+      {
+        id: 3,
+        label: 'Coletada',
+        route: '/doadoras?filter=coleta-realizada'
+      },
+      {
+        id: 4,
+        label: 'Stand',
+        route: '/doadoras?filter=stand'
+      },
+      {
+        id: 5,
+        label: 'CFA',
+        route: '/doadoras?filter=cfa'
+      },
+    ]
   },
   {
     label: 'Resumo do banco',
