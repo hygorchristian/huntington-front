@@ -27,16 +27,12 @@ const tabs = [
     label: 'Ultrassons',
     content: <DoadoraUltrassons />
   },
-  {
-    label: 'Coleta',
-    content: <DoadoraUltrassons />
-  },
 ];
 
-function Doadora() {
+function DoadoraPreCadastro() {
   return (
     <Container>
-      <Voltar label="Doadoras" route="/doadoras" />
+      <Voltar label="Mutirão dia da saúde" route="/pre-cadastros/1" />
       <Header>
         <h1>Maria Carolina do Rosário</h1>
       </Header>
@@ -47,4 +43,4 @@ function Doadora() {
 );
 }
 
-export default Doadora;
+export default DoadoraPreCadastro;

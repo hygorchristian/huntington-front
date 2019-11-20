@@ -8,14 +8,13 @@ import { Container, Header, Content } from './styles';
 
 const items = [1, 2, 3, 4, 5];
 
-
-function Doadoras() {
+function Doadoras({ history }) {
   const novaDoadora = () => {
 
   };
 
   const detalhesDoadora = () => {
-
+    history.push('/doadoras/1');
   };
 
   return (
@@ -54,7 +53,6 @@ function Doadoras() {
                 <td style={{ width: 70 }}>Sim</td>
                 <td style={{ width: 180 }}>Estimulação</td>
                 <td style={{ width: 130 }}>Ativa</td>
-
               </tr>
             ))
           }
