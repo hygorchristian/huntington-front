@@ -7,7 +7,7 @@ import Animate from 'animate.css-react';
 import {
  FiChevronDown, FiChevronLeft, FiMenu, FiBell, FiSearch,
 } from 'react-icons/fi';
-import routes from '..';
+import routes from '../../routes/MenuRoutes';
 
 import {
  Container,
@@ -22,27 +22,21 @@ import {
   Right,
   ProfileMenu,
   Notification,
-  SubItem,
 } from './styles';
 import { MenuActions } from '../../store/ducks/menu';
 
 function Item({ route, aberto, selected }) {
-  const isSelected = `/${selected}` === route.path;
+  const selectedItem = useSelector((state) => state.Menu.item);
+  const dispatch = useDispatch();
+  const isSelected = selectedItem === route.label;
 
   return (
     <>
       <MenuItem selected={isSelected}>
-        <a className="item" href={route.path}>
+        <a className="item" href={route.path} onClick={() => { dispatch(MenuActions.setItem(route.label)); }}>
           {isSelected && aberto && <div className="indicator" />}
           {aberto && <span>{route.label}</span>}
         </a>
-        {
-          route.subitems && route.subitems.map((item) => (
-            <div className="subitem">
-              <a href={item.route}>{item.label}</a>
-            </div>
-          ))
-        }
       </MenuItem>
     </>
   );
@@ -53,6 +47,9 @@ function Dashboard({ children, history, match: { path } }) {
   const [profileOpen, setProfileOpen] = useState(false);
   const { back, notifications } = useSelector((state) => state.Header);
   const aberto = useSelector((state) => state.Menu.opened);
+
+
+  const role = useSelector((state) => state.Auth.role);
 
   const selected = path.split('/')[1];
 
@@ -82,7 +79,7 @@ function Dashboard({ children, history, match: { path } }) {
             <FiMenu size={20} color="#ffffff" />
           </Open>
         )}
-        { routes.map((route) => <Item aberto={aberto} route={route} selected={selected} />) }
+        { routes[role].map((route) => <Item aberto={aberto} route={route} selected={selected} />) }
       </Menu>
       <Main aberto={aberto}>
         <Header>

@@ -10,16 +10,16 @@ const items = [1, 2, 3, 4, 5];
 
 function PreCadastro({ history }) {
   const novaDoadora = () => {
-    history.push('/pre-cadastros/1/nova-doadora');
+    history.push('/doadora/pre-cadastros/1/nova-doadora');
   };
 
   const detalhesDoadora = (id) => {
-    history.push('/doadora/1');
+    history.push('/doadora/detalhes/1');
   };
 
   return (
     <Container>
-      <Voltar label="Pré-Cadastros" route="/pre-cadastros" />
+      <Voltar label="Pré-Cadastros" route="/doadora/pre-cadastros" />
       <Header>
         <h1>Mutirão Dia da Saúde</h1>
         <div className="quantidade">

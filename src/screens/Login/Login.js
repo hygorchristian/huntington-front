@@ -13,7 +13,7 @@ function Login() {
   const isAuth = useSelector((state) => state.Auth.isAuth);
 
   const login = () => {
-    dispatch(AuthActions.authLoadSuccess('token'));
+    dispatch(AuthActions.authLoadSuccess('token', 'atendimento-doadora'));
   };
 
   if (isAuth) return <Redirect to="/" />;

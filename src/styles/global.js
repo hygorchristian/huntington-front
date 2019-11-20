@@ -72,4 +72,8 @@ export default createGlobalStyle`
       padding-right: 8px;
     }
   }
+  
+  button{
+    border: none;
+  }
 `;

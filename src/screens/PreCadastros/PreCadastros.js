@@ -46,11 +46,11 @@ function ListaItem({ onClick }) {
 
 function PreCadastros({ history }) {
   const navigate = (id) => {
-    history.push(`/pre-cadastros/${id}`);
+    history.push(`/doadora/pre-cadastros/${id}`);
   };
 
   const novoEvento = () => {
-    history.push('/novo-evento');
+    history.push('/doadora/novo-evento');
   };
 
   return (

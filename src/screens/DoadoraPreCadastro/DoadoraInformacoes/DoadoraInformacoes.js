@@ -67,7 +67,7 @@ function DoadoraInformacoes() {
           </div>
         </fieldset>
       </Recepcao>
-      <Link to="/doadora/1/triagem">Adicionar triagem</Link>
+      <Link to="/doadora/detalhes/1/triagem">Adicionar triagem</Link>
     </Container>
 );
 }

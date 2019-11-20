@@ -9,7 +9,7 @@ import Voltar from '../../components/Voltar/Voltar';
 function AdicionarEvento({ history }) {
   return (
     <Container>
-      <Voltar label="Novo evento" route="/pre-cadastros" />
+      <Voltar label="Novo evento" route="/doadora/pre-cadastros" />
       <Header>
         <h1>Novo evento</h1>
       </Header>

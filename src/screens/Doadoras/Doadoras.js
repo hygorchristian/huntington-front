@@ -14,7 +14,7 @@ function Doadoras({ history }) {
   };
 
   const detalhesDoadora = () => {
-    history.push('/doadoras/1');
+    history.push('/doadora/detalhes/1');
   };
 
   return (

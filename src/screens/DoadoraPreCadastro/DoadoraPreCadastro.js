@@ -32,7 +32,7 @@ const tabs = [
 function DoadoraPreCadastro() {
   return (
     <Container>
-      <Voltar label="Mutirão dia da saúde" route="/pre-cadastros/1" />
+      <Voltar label="Mutirão dia da saúde" route="/doadora/pre-cadastros/1" />
       <Header>
         <h1>Maria Carolina do Rosário</h1>
       </Header>

@@ -8,11 +8,11 @@ import { Container } from './styles';
 
 function DoadoraExames({ history }) {
   const adicionarColeta = () => {
-    history.push('/doadora/1/exames/nova-coleta');
+    history.push('/doadora/detalhes/1/exames/nova-coleta');
   };
 
   const inserirResultado = () => {
-    history.push('/doadora/1/exames/resultado');
+    history.push('/doadora/detalhes/1/exames/resultado');
   };
 
   return (

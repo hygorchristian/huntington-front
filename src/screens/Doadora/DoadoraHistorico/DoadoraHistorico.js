@@ -8,7 +8,7 @@ import { Container } from './styles';
 
 function DoadoraHistorico({ history }) {
   const adicionarHistorico = () => {
-    history.push('/doadora/1/novo-historico');
+    history.push('/doadora/detalhes/1/novo-registro');
   };
 
   return (

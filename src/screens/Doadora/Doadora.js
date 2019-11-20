@@ -36,7 +36,7 @@ const tabs = [
 function Doadora() {
   return (
     <Container>
-      <Voltar label="Doadoras" route="/doadoras" />
+      <Voltar label="Doadoras" route="/doadora/listagem" />
       <Header>
         <h1>Maria Carolina do Rosário</h1>
       </Header>

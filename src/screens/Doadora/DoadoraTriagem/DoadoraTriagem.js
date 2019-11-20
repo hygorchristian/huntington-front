@@ -29,7 +29,7 @@ const perguntas = [
 function DoadoraTriagem() {
   return (
     <Container>
-      <Voltar label="Maria Carolina do Rosário" route="/doadora/1" />
+      <Voltar label="Maria Carolina do Rosário" route="/doadora/detalhes/1" />
       <Header>
         <h1>Triagem</h1>
       </Header>

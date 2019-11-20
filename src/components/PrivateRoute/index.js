@@ -5,7 +5,6 @@ import { Redirect, Route } from 'react-router-dom';
 function PrivateRoute({ component: Component, ...rest }) {
   const isAuth = useSelector((state) => state.Auth.isAuth);
 
-
   return (
     <Route
       {...rest}

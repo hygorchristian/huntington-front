@@ -131,7 +131,7 @@ function NovoHistorico() {
 
   return (
     <Container>
-      <Voltar label="Histórico | Maria Carolina do Rosário" route="/doadora/1" />
+      <Voltar label="Histórico | Maria Carolina do Rosário" route="/doadora/detalhes/1" />
       <Header>
         <h1>Novo Histórico</h1>
       </Header>

@@ -9,7 +9,7 @@ function PreencherUltrassom() {
   return (
     <Container>
       <Voltar
-        route="/doadora/1"
+        route="/doadora/detalhes/1"
         label="Ultrassons | Maria Carolina do Rosário"
       />
       <Header>

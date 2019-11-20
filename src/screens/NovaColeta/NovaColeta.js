@@ -9,7 +9,7 @@ function NovaColeta() {
   return (
     <Container>
       <Voltar
-        route="/doadora/1"
+        route="/doadora/detalhes/1"
         label="Exames | Maria Carolina do Rosário"
       />
       <Header>

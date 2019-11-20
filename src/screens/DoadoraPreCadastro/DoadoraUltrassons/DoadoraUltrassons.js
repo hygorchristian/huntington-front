@@ -5,7 +5,7 @@ import { Container } from './styles';
 
 function DoadoraUltrassons({ history }) {
   const preencher = () => {
-    history.push('/doadora/1/ultrassons/preencher');
+    history.push('/doadora/detalhes/1/ultrassons/preencher');
   };
 
   return (

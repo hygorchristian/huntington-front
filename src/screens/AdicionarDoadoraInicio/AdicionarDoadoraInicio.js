@@ -15,7 +15,7 @@ function AdicionarDoadoraInicio({ onProximo }) {
 
   return (
     <Container>
-      <Voltar label="Mutirão dia da saúde" route="/pre-cadastros/1" />
+      <Voltar label="Mutirão dia da saúde" route="/doadora/pre-cadastros/1" />
       <Header>
         <h1>Pré-cadastro</h1>
         <span>(Recepção)</span>

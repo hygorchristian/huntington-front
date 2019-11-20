@@ -4,7 +4,7 @@ import { AuthActions } from '../ducks/auth';
 export function* loadAuth() {
   try {
     yield delay(2000);
-    yield put(AuthActions.authLoadSuccess('token: ksakskkas'));
+    yield put(AuthActions.authLoadSuccess('token: ksakskkas', 'atendimento-doadora'));
   } catch (e) {
     yield put(AuthActions.authLoadFailure('Erro ao buscar auths'));
   }
