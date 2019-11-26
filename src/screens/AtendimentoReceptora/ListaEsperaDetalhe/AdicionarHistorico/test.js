@@ -5,9 +5,9 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Informacoes from './Informacoes';
+import AdicionarHistorico from './AdicionarHistorico';
 
 
 it('renders correctly', () => {
-  renderer.create(<Informacoes />);
+  renderer.create(<AdicionarHistorico />);
 });
