@@ -34,7 +34,7 @@ function Informacoes() {
         <legend>Questionário</legend>
         <div className="fichas">
           <FichaInformacoes titulo="Receptora" />
-          <FichaInformacoes titulo="Cônjuge/Parceiro" />
+          <FichaInformacoes titulo="Cônjuge/Parceiro" type="man" />
         </div>
         <div className="consideracoes">
           <h2>Considerações</h2>

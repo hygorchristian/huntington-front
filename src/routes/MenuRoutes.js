@@ -7,6 +7,7 @@ import ARDashboard from '~/screens/AtendimentoReceptora/ARDashboard';
 import Contatos from '~/screens/AtendimentoReceptora/Contatos';
 import BancoOvulos from '~/screens/AtendimentoReceptora/BancoOvulos';
 import ListaEspera from '~/screens/AtendimentoReceptora/ListaEspera';
+import CiclosCasados from '~/screens/AtendimentoReceptora/CiclosCasados';
 
 export default {
   'atendimento-doadora': [
@@ -62,7 +63,7 @@ export default {
     {
       label: 'Ciclos Casados',
       path: '/receptora/ciclos-casados',
-      component: EmDesenvolvimento,
+      component: CiclosCasados,
     },
     {
       label: 'Indicadores',
