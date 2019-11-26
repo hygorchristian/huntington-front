@@ -1,12 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
-import PrivateRoute from '../components/PrivateRoute';
-import Dashboard from '../screens/Dashboard';
 import Login from '../screens/Login';
 import AtendimentoDoadora from './AtendimentoDoadora';
 import DashboardRoute from '../components/DashboardRoute';
-import PreCadastro from '../screens/PreCadastro';
 import DashboardContent from '../screens/DashboardContent';
 import AtendimentoReceptora from './AtendimentoReceptora';
 import AtendimentoFinanceiro from './AtendimentoFinanceiro';
@@ -28,6 +25,7 @@ function Routes() {
 
   return (
     <Switch>
+      {/* Todo: remover essa rota depois que o app estiver funcionando */}
       <DashboardRoute path="/" exact component={DashboardContent} />
       {/* <PrivateRoute path="/" exact component={Dashboard} /> */}
       <Route path="/login" exact component={Login} />

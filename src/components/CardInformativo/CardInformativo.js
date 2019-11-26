@@ -4,11 +4,11 @@ import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { Container } from './styles';
 
 function CardInformativo({
- children, alta, baixa, value 
+ children, alta, baixa, value
 }) {
   return (
     <Container>
-      <h1>{children}</h1>
+      <h3>{children}</h3>
       <div className="valor">
         {alta && <FiChevronUp color="#A9D4B2" />}
         {baixa && <FiChevronDown color="#E07676" />}

@@ -20,7 +20,7 @@ export const Header = styled.div`
   
   .info{
     height: 70px;
-    background-color: #ddf2e5;
+    background-color: rgba(169,212,178,0.15);;
     display: flex;
     flex-direction: row;
     border-radius: 5px;
@@ -33,7 +33,7 @@ export const Header = styled.div`
   
   .status{
     height: 70px;
-    background-color: #ddf2e5;
+    background-color: rgba(169,212,178,0.15);
     display: flex;
     flex-direction: row;
     border-radius: 5px;

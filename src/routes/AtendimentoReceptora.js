@@ -13,6 +13,9 @@ import ResultadoExame from '../screens/ResultadoExame';
 import Doadora from '../screens/Doadora';
 import NovoHistoricoDoadora from '../screens/Doadora/NovoHistoricoDoadora';
 import dashboardRoutes from './MenuRoutes';
+import Contato from '../screens/AtendimentoReceptora/Contato';
+import EmDesenvolvimento from '../screens/EmDesenvolvimento';
+import BancoOvuloDetalhe from '../screens/AtendimentoReceptora/BancoOvuloDetalhe';
 
 function AtendimentoReceptora() {
   const role = useSelector((state) => state.Auth.role);
@@ -20,6 +23,8 @@ function AtendimentoReceptora() {
   return (
     <>
       {/* <DashboardRoute path="/pre-cadastros/:id" exact component={PreCadastro} /> */}
+      <DashboardRoute path="/receptora/contatos/:id" exact component={Contato} />
+      <DashboardRoute path="/receptora/banco-ovulos/:id" exact component={BancoOvuloDetalhe} />
       {dashboardRoutes[role].map((route) => (
         <DashboardRoute exact path={route.path} component={route.component} label={route.label} />
       ))}

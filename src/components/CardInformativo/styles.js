@@ -17,7 +17,7 @@ export const Container = styled.div`
     border: 1px solid #A9D4B2;
   }
   
-  h1{
+  h3{
     font-size: 14px;
     font-weight: 400;
     color: #A5A5A5;

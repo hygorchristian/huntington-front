@@ -3,6 +3,9 @@ import DashboardScreen from '../screens/DashboardScreen';
 import PreCadastros from '../screens/PreCadastros';
 import Doadoras from '../screens/Doadoras';
 import EmDesenvolvimento from '../screens/EmDesenvolvimento';
+import ARDashboard from '../screens/AtendimentoReceptora/ARDashboard';
+import Contatos from '../screens/AtendimentoReceptora/Contatos';
+import BancoOvulos from '../screens/AtendimentoReceptora/BancoOvulos';
 
 export default {
   'atendimento-doadora': [
@@ -37,17 +40,17 @@ export default {
     {
       label: 'Dashboard',
       path: '/receptora/dashboard',
-      component: EmDesenvolvimento,
+      component: ARDashboard,
     },
     {
       label: 'Contatos',
       path: '/receptora/contatos',
-      component: EmDesenvolvimento,
+      component: Contatos,
     },
     {
       label: 'Banco de Óvulos',
       path: '/receptora/banco-ovulos',
-      component: EmDesenvolvimento,
+      component: BancoOvulos,
 
     },
     {
