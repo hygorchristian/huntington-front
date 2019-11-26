@@ -1,7 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { FiCalendar, FiMapPin } from 'react-icons/fi';
 
 import { Container, Header, Questionario } from './styles';
+import LabelValue from '~/components/LabelValue';
+import FichaInformacoes from '~/components/FichaInformacoes';
 
 function ContatoInformacoes() {
   return (
@@ -35,15 +37,29 @@ function ContatoInformacoes() {
       <Questionario>
         <fieldset>
           <legend>QUESTIONÁRIO</legend>
-          <div className="content">
-            <div className="item">
-              <label>Enviado em</label>
-              <span className="value">10/09/2019</span>
+          <div className="info">
+            <div className="icon-value">
+              <FiCalendar size={15} color="#BCBCBC" />
+              <span>19/04/2019</span>
             </div>
-            <div className="item">
-              <label>Por</label>
-              <span className="value">Carol Silva</span>
+            <div className="icon-value">
+              <FiMapPin size={15} color="#BCBCBC" />
+              <span>Vila Mariana</span>
             </div>
+            <LabelValue label="Tipo de Tratamento">Ovodação</LabelValue>
+            <LabelValue label="Médico">Eduardo Botelho</LabelValue>
+          </div>
+          <div className="fichas">
+            <FichaInformacoes titulo="Receptora" />
+            <FichaInformacoes titulo="Cônjuge/Parceiro" />
+          </div>
+          <div className="consideracoes">
+            <h2>Considerações</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+          </div>
+
+          <div className="controller">
+            <button className="btn">Validar questionário</button>
           </div>
         </fieldset>
       </Questionario>

@@ -4,6 +4,8 @@ import { Container } from './styles';
 import LabelValue from '~/components/LabelValue';
 
 function FichaInformacoes({ titulo }) {
+  const random = Math.ceil(Math.random() * 99);
+
   return (
     <Container>
       <h2 className="titulo">{titulo}</h2>
@@ -23,7 +25,7 @@ function FichaInformacoes({ titulo }) {
         </div>
         <div className="foto">
           <label>Foto</label>
-          <img src="https://randomuser.me/api/portraits/women/8.jpg" />
+          <img src={`https://randomuser.me/api/portraits/women/${random}.jpg`} />
         </div>
       </div>
     </Container>

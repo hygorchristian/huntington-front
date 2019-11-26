@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 100%;
+  width: 950px;
   display: flex;
   flex-direction: column;
 `;
@@ -10,7 +10,7 @@ export const Header = styled.div`
   margin-top: 35px;
   display: flex;
   flex-direction: column;
-  width: 850px;
+  width: 100%;
   
   .row{
     display: flex;
@@ -67,11 +67,10 @@ export const Header = styled.div`
 `;
 
 export const Questionario = styled.div`
-  width: 850px;
+  width: 100%;
   margin-top: 20px;
   
   fieldset{  
-    position: relative;   
     margin-bottom: 50px; 
     
     legend{
@@ -80,25 +79,54 @@ export const Questionario = styled.div`
       padding-right: 8px;
     }
     
-    .content{      
-      display: flex;
-      flex-direction: row;
+    .info{
+      display: grid;
+      grid-template-columns: 150px 160px 1fr 180px;
       
-      .item{
+      .icon-value{
         display: flex;
-        flex-direction: column;
-        margin-right: 60px;
-        
-        label{
-          font-size: 13px;
-          color: #ABABAB;
-        }
-        
-        .value{
-          font-size: 14px;
-          color: #646464;
+        align-items: center;
+        align-self: center;
+      
+        span{
+          margin-left: 12px;
         }
       }
+    }
+    
+    .fichas{
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20px;
+      margin-top: 35px;
+    }
+    
+    .consideracoes{
+      display: flex;
+      flex-direction: column;
+      margin-top: 24px;
+      width: 100%;
+    
+      h2{
+        font-size: 12px;
+        font-weight: 400;
+        color: #ABABAB;
+      }
+      
+      p{
+        font-size: 14px;      
+      }
+    }
+    
+    .controller{
+      margin-top: 50px;
+      margin-bottom: 20px;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
     }
   }
 `;
