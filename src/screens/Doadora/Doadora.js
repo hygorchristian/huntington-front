@@ -3,12 +3,12 @@ import React from 'react';
 import {
  Container, Header, Content
 } from './styles';
-import TabDashboard from '../../components/TabDashboard';
+import TabDashboard from '~/components/TabDashboard';
 import DoadoraInformacoes from './DoadoraInformacoes';
 import DoadoraHistorico from './DoadoraHistorico';
 import DoadoraExames from './DoadoraExames';
 import DoadoraUltrassons from './DoadoraUltrassons';
-import Voltar from '../../components/Voltar/Voltar';
+import Voltar from '~/components/Voltar/Voltar';
 
 const tabs = [
   {

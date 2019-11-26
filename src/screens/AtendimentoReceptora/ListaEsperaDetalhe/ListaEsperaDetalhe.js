@@ -1,7 +1,7 @@
 import React from 'react';
 
 import TabDashboard from '~/components/TabDashboard';
-import Voltar from '../../../components/Voltar/Voltar';
+import Voltar from '~/components/Voltar/Voltar';
 import tabs from './tabs';
 
 import {

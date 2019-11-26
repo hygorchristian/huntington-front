@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { Container, Content, Header } from './styles';
-import Voltar from '../../components/Voltar';
-import CheckLabel from '../../components/CheckLabel';
-import InputLabel from '../../components/InputLabel';
+import Voltar from '~/components/Voltar';
+import CheckLabel from '~/components/CheckLabel';
+import InputLabel from '~/components/InputLabel';
 
 function PreencherUltrassom() {
   return (

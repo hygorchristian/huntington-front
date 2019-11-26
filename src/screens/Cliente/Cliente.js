@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { FiPhone, FiChevronDown } from 'react-icons/fi';
 import { useDispatch } from 'react-redux';
-import Search from '../../components/Search';
+import Search from '~/components/Search';
 
 import {
   Container,
@@ -13,7 +13,7 @@ import {
   TabController,
   TabContainer
 } from './styles';
-import { HeaderActions } from '../../store/ducks/header';
+import { HeaderActions } from '~/store/ducks/header';
 
 const itens = [
   {

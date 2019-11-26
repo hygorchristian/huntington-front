@@ -7,7 +7,7 @@ import Animate from 'animate.css-react';
 import {
  FiChevronDown, FiChevronLeft, FiMenu, FiBell, FiSearch,
 } from 'react-icons/fi';
-import routes from '../../routes/MenuRoutes';
+import routes from '~/routes/MenuRoutes';
 
 import {
  Container,
@@ -23,7 +23,7 @@ import {
   ProfileMenu,
   Notification,
 } from './styles';
-import { MenuActions } from '../../store/ducks/menu';
+import { MenuActions } from '~/store/ducks/menu';
 
 function Item({ route, aberto, selected }) {
   const selectedItem = useSelector((state) => state.Menu.item);

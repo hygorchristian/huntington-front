@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import BuscaBase from '../../components/Busca';
+import BuscaBase from '~/components/Busca';
 
 export const Container = styled.div`
   flex: 1;

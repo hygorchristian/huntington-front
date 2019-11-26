@@ -4,7 +4,7 @@ import { FiUsers, FiMapPin } from 'react-icons/fi';
 import {
  Container, Header, Item, Lista
 } from './styles';
-import Busca from '../../components/Busca';
+import Busca from '~/components/Busca';
 
 const items = [
   {

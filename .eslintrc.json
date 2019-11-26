@@ -25,10 +25,5 @@
     "react/prop-types": "off",
     "jsx-a11y/no-static-element-interactions": "off",
     "import/no-unresolved": "off"
-  },
-  "settings": {
-    "import/resolver": {
-      "babel-plugin-root-import": { "rootPathSuffix": "src" }
-    }
   }
 }

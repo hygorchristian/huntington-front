@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { FiPhone, FiChevronDown } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import Search from '../../components/Search';
+import Search from '~/components/Search';
 
 import {
  Container, Header, Separator, Info, Content, Nome, ContatoContainer, StatusContainer
 } from './styles';
-import { HeaderActions } from '../../store/ducks/header';
+import { HeaderActions } from '~/store/ducks/header';
 
 const itens = [
   {

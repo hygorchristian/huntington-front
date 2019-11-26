@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import InputLabel from '../../components/InputLabel';
-import OptionsLabel from '../../components/OptionsLabel';
+import InputLabel from '~/components/InputLabel';
+import OptionsLabel from '~/components/OptionsLabel';
 
 import {
   Container, Header, Content
 } from './styles';
-import Voltar from '../../components/Voltar/Voltar';
+import Voltar from '~/components/Voltar/Voltar';
 
 function AdicionarDoadoraInicio({ onProximo }) {
   const [estadoCivil, setEstadoCivil] = useState(null);

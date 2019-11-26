@@ -1,15 +1,15 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
-import Login from '../screens/Login';
+import Login from '~/screens/Login';
 import AtendimentoDoadora from './AtendimentoDoadora';
-import DashboardRoute from '../components/DashboardRoute';
-import DashboardContent from '../screens/DashboardContent';
+import DashboardRoute from '~/components/DashboardRoute';
+import DashboardContent from '~/screens/DashboardContent';
 import AtendimentoReceptora from './AtendimentoReceptora';
 import AtendimentoFinanceiro from './AtendimentoFinanceiro';
 import Controladoria from './Controladoria';
 import Embriologia from './Embriologia';
-import Erro404 from '../screens/Erro404';
+import Erro404 from '~/screens/Erro404';
 
 const roles = {
   'atendimento-doadora': () => <AtendimentoDoadora />,

@@ -4,7 +4,7 @@ import { FiMapPin, FiUsers } from 'react-icons/fi';
 import {
  Container, Header, Content, Busca, Subheader
 } from './styles';
-import Voltar from '../../components/Voltar/Voltar';
+import Voltar from '~/components/Voltar/Voltar';
 
 const items = [1, 2, 3, 4, 5];
 

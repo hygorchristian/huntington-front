@@ -1,5 +1,5 @@
 import React from 'react';
-import Dashboard from '../../screens/Dashboard';
+import Dashboard from '~/screens/Dashboard';
 import PrivateRoute from '../PrivateRoute';
 
 function DashboardRoute({ component: Component, label, ...rest }) {

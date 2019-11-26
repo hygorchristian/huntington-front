@@ -1,13 +1,13 @@
 import React from 'react';
 
 import {
- Container, Main, Side, Grid 
+ Container, Main, Side, Grid
 } from './styles';
-import TabDashboard from '../../components/TabDashboard';
+import TabDashboard from '~/components/TabDashboard';
 import DashboardConsulta from '../DashboardConsulta';
 import DashboardDPM from '../DashboardDPM';
 import DashboardResultados from '../DashboardResultados';
-import CardInformativo from '../../components/CardInformativo';
+import CardInformativo from '~/components/CardInformativo';
 
 const tabs = [
   {

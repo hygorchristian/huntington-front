@@ -3,7 +3,7 @@ import React from 'react';
 import {
   Container, Content, Header
 } from './styles';
-import Voltar from '../../../components/Voltar';
+import Voltar from '~/components/Voltar';
 
 function NovoHistoricoDoadora() {
   return (

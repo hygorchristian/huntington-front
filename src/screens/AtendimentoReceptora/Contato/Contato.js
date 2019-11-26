@@ -3,9 +3,9 @@ import React from 'react';
 import {
   Container, Header, Content
 } from './styles';
-import TabDashboard from '../../../components/TabDashboard';
+import TabDashboard from '~/components/TabDashboard';
 import ContatoInformacoes from './ContatoInformacoes';
-import Voltar from '../../../components/Voltar/Voltar';
+import Voltar from '~/components/Voltar/Voltar';
 
 const tabs = [
   {

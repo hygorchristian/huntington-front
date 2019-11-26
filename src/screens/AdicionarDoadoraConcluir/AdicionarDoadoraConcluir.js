@@ -1,8 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-import InputLabel from '../../components/InputLabel';
-import Voltar from '../../components/Voltar/Voltar';
+import InputLabel from '~/components/InputLabel';
+import Voltar from '~/components/Voltar/Voltar';
 
 import {
   Container, Header, Content, Main, Resumo

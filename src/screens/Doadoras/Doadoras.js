@@ -1,7 +1,7 @@
 import React from 'react';
 
-import TabLinks from '../../components/TabLinks/TabLinks';
-import Busca from '../../components/Busca';
+import TabLinks from '~/components/TabLinks/TabLinks';
+import Busca from '~/components/Busca';
 import { tabs } from './tabs';
 
 import { Container, Header, Content } from './styles';

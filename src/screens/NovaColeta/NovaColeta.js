@@ -1,9 +1,9 @@
 import React from 'react';
-import InputLabel from '../../components/InputLabel';
+import InputLabel from '~/components/InputLabel';
 
 import { Container, Content, Header } from './styles';
-import Voltar from '../../components/Voltar';
-import Checkbox from '../../components/Checkbox';
+import Voltar from '~/components/Voltar';
+import Checkbox from '~/components/Checkbox';
 
 function NovaColeta() {
   return (

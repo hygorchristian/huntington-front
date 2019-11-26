@@ -1,9 +1,9 @@
 import React from 'react';
 import { FiCalendar, FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
 
-import Voltar from '../../components/Voltar';
+import Voltar from '~/components/Voltar';
 import { Container, Content, Header } from './styles';
-import ItemResultado from '../../components/ItemResultado';
+import ItemResultado from '~/components/ItemResultado';
 
 function ResultadoExame() {
   return (

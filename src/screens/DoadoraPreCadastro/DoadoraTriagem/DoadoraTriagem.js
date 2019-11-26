@@ -1,8 +1,8 @@
 /* eslint-disable object-curly-newline */
 
 import React from 'react';
-import InputTriagem from '../../../components/InputTriagem';
-import Voltar from '../../../components/Voltar/Voltar';
+import InputTriagem from '~/components/InputTriagem';
+import Voltar from '~/components/Voltar/Voltar';
 
 import {
  Container, Content, Header

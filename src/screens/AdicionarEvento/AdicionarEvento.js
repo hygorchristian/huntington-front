@@ -4,7 +4,7 @@ import { FiChevronLeft, FiCalendar, FiMapPin } from 'react-icons/fi';
 import {
   Container, Header, Content
 } from './styles';
-import Voltar from '../../components/Voltar/Voltar';
+import Voltar from '~/components/Voltar/Voltar';
 
 function AdicionarEvento({ history }) {
   return (

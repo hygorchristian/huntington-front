@@ -1,12 +1,12 @@
-import Reclamacoes from '../screens/Reclamacoes';
-import DashboardScreen from '../screens/DashboardScreen';
-import PreCadastros from '../screens/PreCadastros';
-import Doadoras from '../screens/Doadoras';
-import EmDesenvolvimento from '../screens/EmDesenvolvimento';
-import ARDashboard from '../screens/AtendimentoReceptora/ARDashboard';
-import Contatos from '../screens/AtendimentoReceptora/Contatos';
-import BancoOvulos from '../screens/AtendimentoReceptora/BancoOvulos';
-import ListaEspera from '../screens/AtendimentoReceptora/ListaEspera';
+import Reclamacoes from '~/screens/Reclamacoes';
+import DashboardScreen from '~/screens/DashboardScreen';
+import PreCadastros from '~/screens/PreCadastros';
+import Doadoras from '~/screens/Doadoras';
+import EmDesenvolvimento from '~/screens/EmDesenvolvimento';
+import ARDashboard from '~/screens/AtendimentoReceptora/ARDashboard';
+import Contatos from '~/screens/AtendimentoReceptora/Contatos';
+import BancoOvulos from '~/screens/AtendimentoReceptora/BancoOvulos';
+import ListaEspera from '~/screens/AtendimentoReceptora/ListaEspera';
 
 export default {
   'atendimento-doadora': [

@@ -3,10 +3,8 @@ import React from 'react';
 import {
   Container, Main, Side, Grid
 } from './styles';
-import TabDashboard from '../../../components/TabDashboard';
-import DashboardConsulta from '../../DashboardConsulta';
-import DashboardDPM from '../../DashboardDPM';
-import CardInformativo from '../../../components/CardInformativo';
+import TabDashboard from '~/components/TabDashboard';
+import CardInformativo from '~/components/CardInformativo';
 import DashboardRespondidos from '../DashboardRespondidos';
 import DashboardSemResposta from '../DashboardSemResposta';
 

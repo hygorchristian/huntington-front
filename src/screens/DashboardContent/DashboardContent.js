@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useDispatch } from 'react-redux';
 import { Container } from './styles';
-import { AuthActions } from '../../store/ducks/auth';
+import { AuthActions } from '~/store/ducks/auth';
 
 function DashboardContent() {
   const dispatch = useDispatch();

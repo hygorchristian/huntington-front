@@ -1,12 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { AuthActions } from '../../store/ducks/auth';
+import { AuthActions } from '~/store/ducks/auth';
 
 import {
  Container, Form
 } from './styles';
-import InputLabel from '../../components/InputLabel';
+import InputLabel from '~/components/InputLabel';
 
 function Login() {
   const dispatch = useDispatch();
