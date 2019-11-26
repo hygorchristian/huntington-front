@@ -4,13 +4,13 @@ import {
   Container, Header, Content
 } from './styles';
 import TabDashboard from '../../../components/TabDashboard';
-import DoadoraInformacoes from './ContatoInformacoes';
+import ContatoInformacoes from './ContatoInformacoes';
 import Voltar from '../../../components/Voltar/Voltar';
 
 const tabs = [
   {
     label: 'Informações',
-    content: <DoadoraInformacoes />
+    content: <ContatoInformacoes />
   },
 ];
 

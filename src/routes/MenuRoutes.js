@@ -6,6 +6,7 @@ import EmDesenvolvimento from '../screens/EmDesenvolvimento';
 import ARDashboard from '../screens/AtendimentoReceptora/ARDashboard';
 import Contatos from '../screens/AtendimentoReceptora/Contatos';
 import BancoOvulos from '../screens/AtendimentoReceptora/BancoOvulos';
+import ListaEspera from '../screens/AtendimentoReceptora/ListaEspera';
 
 export default {
   'atendimento-doadora': [
@@ -56,7 +57,7 @@ export default {
     {
       label: 'Lista de Espera',
       path: '/receptora/lista-espera',
-      component: EmDesenvolvimento,
+      component: ListaEspera,
     },
     {
       label: 'Ciclos Casados',

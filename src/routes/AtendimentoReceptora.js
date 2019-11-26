@@ -16,6 +16,7 @@ import dashboardRoutes from './MenuRoutes';
 import Contato from '../screens/AtendimentoReceptora/Contato';
 import EmDesenvolvimento from '../screens/EmDesenvolvimento';
 import BancoOvuloDetalhe from '../screens/AtendimentoReceptora/BancoOvuloDetalhe';
+import ListaEsperaDetalhe from '../screens/AtendimentoReceptora/ListaEsperaDetalhe';
 
 function AtendimentoReceptora() {
   const role = useSelector((state) => state.Auth.role);
@@ -25,6 +26,7 @@ function AtendimentoReceptora() {
       {/* <DashboardRoute path="/pre-cadastros/:id" exact component={PreCadastro} /> */}
       <DashboardRoute path="/receptora/contatos/:id" exact component={Contato} />
       <DashboardRoute path="/receptora/banco-ovulos/:id" exact component={BancoOvuloDetalhe} />
+      <DashboardRoute path="/receptora/lista-espera/:id" exact component={ListaEsperaDetalhe} />
       {dashboardRoutes[role].map((route) => (
         <DashboardRoute exact path={route.path} component={route.component} label={route.label} />
       ))}
