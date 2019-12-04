@@ -44,8 +44,8 @@ function _inherits(subClass, superClass) {
 const config = {
   months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
   month_subs: ['Jan', 'Fev', 'Abr', 'Mar', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-  weeks: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-  week_subs: ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SÁB'],
+  weeks: ['Domingo', 'Segunda-Feira', 'Terça-Feira', 'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sábado'],
+  week_subs: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
   today: function today() {
     return new Date();
   }
@@ -230,7 +230,7 @@ const Calendar = (function (_Component) {
       // get the month days
       const days = this.renderDays(copy);
 
-      const tMonth = config.months[this.state.selected.getMonth()];
+      const tWeek = config.weeks[this.state.selected.getDay()];
       const tDate = this.state.selected.getDate();
       const month = config.months[this.state.current.getMonth()];
       const year = this.state.current.getFullYear();
@@ -241,12 +241,12 @@ const Calendar = (function (_Component) {
         upperDate = _react2.default.createElement(
           'div',
           {
-            className: 'flex-2 header center',
+            className: 'flex-1 header center',
           },
           _react2.default.createElement(
             'p',
             { className: 'header-month' },
-            tMonth.toUpperCase()
+            tWeek
           ),
           _react2.default.createElement(
             'p',
@@ -257,17 +257,18 @@ const Calendar = (function (_Component) {
       }
       return _react2.default.createElement(
         'div',
-        { className: this.props.orientation },
-        upperDate,
+        { className: `${this.props.orientation} container` },
+        null,
         _react2.default.createElement(
           'div',
           { className: 'padding' },
           _react2.default.createElement(
             'div',
             { className: 'month' },
+            upperDate,
             _react2.default.createElement('img', {
- className: 'month-arrow-left', src: _ic_back2.default, alt: 'back', onClick: this.prev.bind(this)
-}),
+              className: 'month-arrow-left', src: _ic_back2.default, alt: 'back', onClick: this.prev.bind(this)
+            }),
             _react2.default.createElement(
               'p',
               { className: 'month-title' },
@@ -296,7 +297,6 @@ const Calendar = (function (_Component) {
 
   return Calendar;
 }(_react.Component));
-
 
 Calendar.propTypes = {
   accentColor: _propTypes2.default.string,

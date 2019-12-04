@@ -14,7 +14,6 @@ function DashboardEmbriologia() {
     <Container>
       <Side>
         <h1>Bem-vinda ao seu dashboard, Raquel</h1>
-
         <Calendar
           orientation="flex-col"
         />
