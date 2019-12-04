@@ -119,7 +119,6 @@ export const Header = styled.header`
 
 export const Content = styled.main`
   flex:1;
-  height: 200%;
   max-height: calc(100vh - 90px);
   overflow: auto; 
 `;

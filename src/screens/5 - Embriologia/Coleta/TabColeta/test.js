@@ -5,9 +5,9 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Coletas from './Coletas';
+import TabColeta from './TabColeta';
 
 
 it('renders correctly', () => {
-  renderer.create(<Coletas />);
+  renderer.create(<TabColeta />);
 });
