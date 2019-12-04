@@ -14,6 +14,8 @@ function FichaInformacoes({ titulo, type = 'woman' }) {
       case 'man': return man;
       case 'woman': return woman;
     }
+
+    return '';
   };
 
   return (

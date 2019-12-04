@@ -13,11 +13,11 @@ import ResultadoExame from '~/screens/ResultadoExame';
 import Doadora from '~/screens/Doadora';
 import NovoHistoricoDoadora from '~/screens/Doadora/NovoHistoricoDoadora';
 import dashboardRoutes from './MenuRoutes';
-import Contato from '~/screens/AtendimentoReceptora/Contato';
+import Contato from '~/screens/2 - AtendimentoReceptora/Contato';
 import EmDesenvolvimento from '~/screens/EmDesenvolvimento';
-import BancoOvuloDetalhe from '~/screens/AtendimentoReceptora/BancoOvuloDetalhe';
-import ListaEsperaDetalhe from '~/screens/AtendimentoReceptora/ListaEsperaDetalhe';
-import AdicionarHistorico from '~/screens/AtendimentoReceptora/ListaEsperaDetalhe/AdicionarHistorico';
+import BancoOvuloDetalhe from '~/screens/2 - AtendimentoReceptora/BancoOvuloDetalhe';
+import ListaEsperaDetalhe from '~/screens/2 - AtendimentoReceptora/ListaEsperaDetalhe';
+import AdicionarHistorico from '~/screens/2 - AtendimentoReceptora/ListaEsperaDetalhe/AdicionarHistorico';
 
 function AtendimentoReceptora() {
   const role = useSelector((state) => state.Auth.role);

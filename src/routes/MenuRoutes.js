@@ -3,11 +3,13 @@ import DashboardScreen from '~/screens/DashboardScreen';
 import PreCadastros from '~/screens/PreCadastros';
 import Doadoras from '~/screens/Doadoras';
 import EmDesenvolvimento from '~/screens/EmDesenvolvimento';
-import ARDashboard from '~/screens/AtendimentoReceptora/ARDashboard';
-import Contatos from '~/screens/AtendimentoReceptora/Contatos';
-import BancoOvulos from '~/screens/AtendimentoReceptora/BancoOvulos';
-import ListaEspera from '~/screens/AtendimentoReceptora/ListaEspera';
-import CiclosCasados from '~/screens/AtendimentoReceptora/CiclosCasados';
+import ARDashboard from '~/screens/2 - AtendimentoReceptora/ARDashboard';
+import Contatos from '~/screens/2 - AtendimentoReceptora/Contatos';
+import BancoOvulos from '~/screens/2 - AtendimentoReceptora/BancoOvulos';
+import BancoOvulos2 from '~/screens/5 - Embriologia/BancoOvulos';
+import ListaEspera from '~/screens/2 - AtendimentoReceptora/ListaEspera';
+import CiclosCasados from '~/screens/2 - AtendimentoReceptora/CiclosCasados';
+import DashboardEmbriologia from '~/screens/5 - Embriologia/DashboardEmbriologia';
 
 export default {
   'atendimento-doadora': [
@@ -115,12 +117,12 @@ export default {
     {
       label: 'Dashboard',
       path: '/embriologia/dashboard',
-      component: EmDesenvolvimento,
+      component: DashboardEmbriologia,
     },
     {
       label: 'Banco de Óvulos',
-      path: '/embriologia/resumo-do-banco',
-      component: EmDesenvolvimento,
+      path: '/embriologia/banco-ovulos',
+      component: BancoOvulos2,
     },
     {
       label: 'Indicadores',
