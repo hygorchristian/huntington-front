@@ -60,6 +60,7 @@ export const Header = styled.div`
 export const Content = styled.div`
   width: 100%;
   padding-top: 30px;
+  padding-bottom: 100px;
   
   table{
     min-width: 900px;
@@ -101,8 +102,7 @@ export const Content = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    background-colorz: #F3F9F4;
-    background-color: #f90500;
+    background-color: #F3F9F4;
     border-radius: 5px;
   }
   
@@ -123,12 +123,11 @@ export const Content = styled.div`
     }
     
     .separator{
-      display: block;
-      height: 100%;
-      width: px;
+      background-color: rgba(112,112,112,0.1);
+      height: 80px;
+      width: 1px;
       display: flex;
       margin: 0 12px;
-      border-left: 1px solid red;
     }
     
     .content{

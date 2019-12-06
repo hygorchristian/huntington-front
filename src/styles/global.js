@@ -59,6 +59,12 @@ export default createGlobalStyle`
     text-transform: uppercase;
     color: #ffffff;
     cursor: pointer;
+    
+    &.light{
+      background-color:#ffffff;
+      color: #3A6E50;
+      border: 1px solid #3A6E50;
+    }
   }
   
   fieldset{  

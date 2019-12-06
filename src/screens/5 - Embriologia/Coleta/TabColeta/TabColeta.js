@@ -9,11 +9,7 @@ import IconLabel from '~/components/IconLabel';
 
 function TabColeta({ history }) {
   const adicionarColeta = () => {
-    history.push('/doadora/detalhes/1/exames/nova-coleta');
-  };
-
-  const inserirResultado = () => {
-    history.push('/doadora/detalhes/1/exames/resultado');
+    history.push('/embriologia/dashboard/coletas/1/nova-coleta');
   };
 
   return (
@@ -33,7 +29,7 @@ function TabColeta({ history }) {
         <div className="data">
           <IconLabel name="map-pin">Vila Mariana</IconLabel>
           <div className="adicionar-coleta">
-            <button className="btn">Coleta +</button>
+            <button className="btn" onClick={adicionarColeta}>Coleta +</button>
           </div>
         </div>
       </fieldset>

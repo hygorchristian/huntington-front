@@ -2,9 +2,8 @@ import React from 'react';
 import { MdMoreVert } from 'react-icons/md';
 
 import {
-  Container, Header, Content
+  Container, Content
 } from './styles';
-// import ContatoInformacoes from './ContatoInformacoes';
 import Voltar from '~/components/Voltar/Voltar';
 import LabelValue from '~/components/LabelValue';
 
@@ -77,7 +76,9 @@ function BancoOvulosDetalhe() {
           <h1>L1</h1>
           <div className="separator" />
           <div className="content">
-            <div />
+            <LabelValue label="Status">
+              <span>Disponível</span>
+            </LabelValue>
             <div />
             <div />
             <div className="extra-info">
@@ -92,7 +93,38 @@ function BancoOvulosDetalhe() {
           </div>
         </div>
         <div className="status-box">
-          <h1>L1</h1>
+          <h1>L2</h1>
+          <div className="separator" />
+          <div className="content">
+            <LabelValue label="Status">
+              <span>Reservado</span>
+            </LabelValue>
+            <LabelValue label="Status">
+              <span>Reservado</span>
+            </LabelValue>
+            <LabelValue label="Status">
+              <span>Reservado</span>
+            </LabelValue>
+            <div className="extra-info">
+              <LabelValue label="#óvulos">
+                <span style={{ width: '100%', textAlign: 'center' }}>21</span>
+              </LabelValue>
+              <LabelValue label="#óvulos restantes">
+                <span style={{ width: '100%', textAlign: 'center' }}>7</span>
+              </LabelValue>
+            </div>
+            <div />
+
+            <LabelValue label="Status">
+              <span>Reservado</span>
+            </LabelValue>
+            <LabelValue label="Status">
+              <span>Reservado</span>
+            </LabelValue>
+          </div>
+        </div>
+        <div className="status-box">
+          <h1>L3</h1>
           <div className="separator" />
           <div className="content">
             <LabelValue label="Status">

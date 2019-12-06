@@ -17,12 +17,14 @@ export const Container = styled.div`
     align-items: center;
     margin-bottom: 4px;
     height: 35px;
-    background-color: #F6F6F6;
+    background-color: ${({ light }) => (light ? '#ffffff' : '#F6F6F6')};
     width: ${({ width }) => width}px;
     
     input{
       flex: 1;
-      width: 100%;     
+      width: 100%;    
+      background-color: ${({ light }) => (light ? '#ffffff' : '#F6F6F6')};
+    
     }
   }
 `;

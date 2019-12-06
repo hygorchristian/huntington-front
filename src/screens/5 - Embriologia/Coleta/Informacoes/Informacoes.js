@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import { Container, Header, Recepcao } from './styles';
 
@@ -67,7 +66,6 @@ function Informacoes() {
           </div>
         </fieldset>
       </Recepcao>
-      <Link to="/doadora/detalhes/1/triagem">Adicionar triagem</Link>
     </Container>
   );
 }
