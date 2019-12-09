@@ -10,7 +10,7 @@ const items = [1, 2, 3, 4, 5];
 
 function Coletas({ history }) {
   const detalhes = (id) => {
-    history.push('/controladoria/estoque/1');
+    // history.push('');
   };
 
   return (
