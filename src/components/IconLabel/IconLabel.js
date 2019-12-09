@@ -3,6 +3,9 @@ import {
   FiCalendar,
   FiMapPin,
 } from 'react-icons/fi';
+import {
+  FaUserMd,
+} from 'react-icons/fa';
 
 import { Container } from './styles';
 
@@ -12,6 +15,8 @@ function getIconByName(name) {
       return FiCalendar;
     case 'map-pin':
       return FiMapPin;
+    case 'doctor':
+      return FaUserMd;
     default:
       return null;
   }
@@ -24,7 +29,7 @@ function IconLabel({ name, children, ...props }) {
     <Container {...props}>
       { Icon && (
         <Icon
-          size={12}
+          size={15}
           color="#BCBCBC"
           style={{ marginRight: 14 }}
         />

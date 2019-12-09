@@ -119,7 +119,7 @@ export const Header = styled.header`
 
 export const Content = styled.main`
   flex:1;
-  max-height: calc(100vh - 90px);
+  height: calc(100vh - 90px);
   overflow: auto; 
 `;
 
@@ -328,7 +328,6 @@ export const Notification = styled.div`
       font-size: 10px;
       color: #ffffff;
       font-weight: 600;
-      margin-top: 1px;
     }
   }
 `;

@@ -20,6 +20,10 @@ export default createGlobalStyle`
     color: #646464;
   }
   
+  table{
+    border-collapse: collapse; 
+  }
+  
   a{
     cursor: pointer;
     text-decoration: underline;

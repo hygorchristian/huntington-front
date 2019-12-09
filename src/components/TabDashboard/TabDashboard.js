@@ -6,7 +6,7 @@ import {
 
 function TabItem({ children, click, selected }) {
   return (
-    <Tab onClick={click}>
+    <Tab onClick={click} selected={selected}>
       <span>{children}</span>
       {selected && <div />}
     </Tab>

@@ -10,6 +10,12 @@ import BancoOvulos2 from '~/screens/5 - Embriologia/BancoOvulos';
 import ListaEspera from '~/screens/2 - AtendimentoReceptora/ListaEspera';
 import CiclosCasados from '~/screens/2 - AtendimentoReceptora/CiclosCasados';
 import DashboardEmbriologia from '~/screens/5 - Embriologia/DashboardEmbriologia';
+import ControladoriaDashboard from '~/screens/4 - Controladoria/Dashboard';
+import Estoques from '~/screens/4 - Controladoria/Estoques';
+import CiclosCasadosControladoria from '~/screens/4 - Controladoria/CiclosCasados';
+import DoadorasControladoria from '~/screens/4 - Controladoria/Doadoras';
+import Coletas from '~/screens/4 - Controladoria/Coletas';
+import Custos from '~/screens/4 - Controladoria/Custos';
 
 export default {
   'atendimento-doadora': [
@@ -84,33 +90,33 @@ export default {
     {
       label: 'Dashboard',
       path: '/controladoria/dashboard',
-      component: EmDesenvolvimento,
+      component: ControladoriaDashboard,
     },
     {
       label: 'Estoque',
       path: '/controladoria/estoque',
-      component: EmDesenvolvimento,
+      component: Estoques,
     },
     {
       label: 'Ciclos Casados',
       path: '/controladoria/ciclos-casados',
-      component: EmDesenvolvimento,
+      component: CiclosCasadosControladoria,
 
     },
     {
       label: 'Doadoras',
       path: '/controladoria/doadoras',
-      component: Reclamacoes,
+      component: DoadorasControladoria,
     },
     {
       label: 'Coletas',
       path: '/controladoria/coletas',
-      component: EmDesenvolvimento,
+      component: Coletas,
     },
     {
       label: 'Custos',
       path: '/controladoria/custos',
-      component: EmDesenvolvimento,
+      component: Custos,
     },
   ],
   embriologia: [

@@ -31,7 +31,7 @@ export const Tab = styled.div`
   span{
     font-size: 16px;
     font-weight: 500;
-    color: #707070;
+    color: ${({ selected }) => (selected ? '#707070' : 'rgba(112,112,112,0.5)')};
     margin-bottom: 10px;
   }
 
@@ -39,9 +39,9 @@ export const Tab = styled.div`
     position: absolute;
     bottom: 0;
     width: 50px;
-    height: 3.25px;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
+    height: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
     background-color: #A9D4B2;
   }
 `;
