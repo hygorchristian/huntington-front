@@ -106,7 +106,6 @@ export const Content = styled.div`
     }
     
     td{
-      border-bottom: 1px solid rgba(165,165,165,0.2);
       font-size: 14px;
       font-weight: 400;
       color: #707070;

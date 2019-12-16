@@ -1,11 +1,15 @@
+import Resumo from './Resumo';
+import Anestesia from './Anestesia';
+
 export default [
   {
     label: 'Resumo',
-    content: null,
+    content: Resumo
+    ,
   },
   {
     label: 'Anestesia',
-    content: null,
+    content: Anestesia,
   },
   {
     label: 'Exames',

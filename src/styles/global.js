@@ -43,8 +43,11 @@ export default createGlobalStyle`
           color: #3A6E50 !important;
         }
         
-        td{        
-          border-bottom: 1px solid rgba(112,112,112,0.25);
+        &:not(:last-child){
+          border-bottom: 1px solid rgba(112,112,112,0.1);
+        }
+        
+        td{           
           padding-left: 25px;
           padding-right: 25px;
           font-size: 14px;
@@ -57,6 +60,7 @@ export default createGlobalStyle`
           &.right{
             text-align: right;          
           }
+          
         }
       }
     }
