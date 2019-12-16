@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MdMoreVert } from 'react-icons/md';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 import {
   Container, Content
@@ -8,6 +10,15 @@ import Voltar from '~/components/Voltar/Voltar';
 import LabelValue from '~/components/LabelValue';
 
 function Estoque() {
+  const [anchor, setAnchor] = useState(null);
+
+  const openMenu = (e) => {
+    setAnchor(e.currentTarget);
+  };
+  const fecharMenu = () => {
+    setAnchor(null);
+  };
+
   return (
     <Container>
       <Voltar label="Estoque" route="/controladoria/estoque" />
@@ -33,7 +44,7 @@ function Estoque() {
               <td style={{ width: 100 }}>3</td>
               <td style={{ width: 150 }}>1</td>
               <td style={{ width: 100 }}>
-                <a>
+                <a onClick={openMenu}>
                   <MdMoreVert />
                 </a>
               </td>
@@ -155,6 +166,14 @@ function Estoque() {
           </div>
         </div>
       </Content>
+      <Menu
+        anchorEl={anchor}
+        keepMounted
+        open={Boolean(anchor)}
+        onClose={fecharMenu}
+      >
+        <MenuItem onClick={fecharMenu}>Visualizar ficha</MenuItem>
+      </Menu>
     </Container>
   );
 }

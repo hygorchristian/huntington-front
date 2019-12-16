@@ -1,5 +1,4 @@
 import React from 'react';
-import { FiChevronDown } from 'react-icons/fi';
 
 import {
   Container, Header, Content, Busca, Subheader
