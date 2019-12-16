@@ -18,10 +18,48 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased !important;
     font-family: 'Hind', sans-serif;
     color: #646464;
-  }
+  }  
   
   table{
     border-collapse: collapse; 
+  
+    thead{
+    
+      th{
+        font-size: 12px;
+        font-weight: 600;
+        color: #ABABAB;
+        height: 30px;
+      }
+    }
+    
+    tbody{
+    
+      tr{
+        height: 40px;
+        cursor: pointer;
+        
+        &:hover *{
+          color: #3A6E50 !important;
+        }
+        
+        td{        
+          border-bottom: 1px solid rgba(112,112,112,0.25);
+          padding-left: 25px;
+          padding-right: 25px;
+          font-size: 14px;
+          text-align: center;
+          
+          &.left{
+            text-align: left;          
+          }
+          
+          &.right{
+            text-align: right;          
+          }
+        }
+      }
+    }
   }
   
   a{

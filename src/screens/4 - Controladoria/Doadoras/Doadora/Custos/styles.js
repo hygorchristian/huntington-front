@@ -10,7 +10,7 @@ export const Header = styled.div`
   margin-top: 35px;
   display: flex;
   flex-direction: row;
-  width: 580px;
+  width: 600px;
   
   .info{
     height: 70px;
@@ -25,91 +25,38 @@ export const Header = styled.div`
   }
 `;
 
-export const Recepcao = styled.div`
-  width: 580px;
-  margin-top: 40px;
+export const Content = styled.div`
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
   
-  fieldset{  
-    position: relative;   
-    margin-bottom: 50px; 
-    
-    &:after{
-      content: url("/icons/check-circle.svg");
-      position: absolute;
-      top: 0;
-      margin-top: 2px;
-      right: 10px;
-      background-color: #ffffff;
-      padding: 0 5px;
-      color: #51996f;
-    }
-    
-    .content{      
-      display: flex;
-      flex-direction: row;
-    }
-    
-    .contatos{
-      display: flex;
-      flex-direction: row;
-      
-      .info{
-        margin-right: 30px;
-      }
-    }
-    
-    legend{
-      color: #3A6E50;
-      padding-left: 8px;
-      padding-right: 8px;
-    }
-    
-    .info{
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 24px;
-      
-      label{
-        font-size: 13px;
-        color: #ABABAB;
-      }
-      
-      span{
-        display: block;
-        color: #646464;
-      }
-    }
-    
-    .col{
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      
-      .label{
-        display: block;
-        font-size: 14px;
-        color: #646464;
-        margin-bottom: 5px;
-      }
-      
-      .infos{
-        display: flex;
-        flex-direction: row;
+  table{
+    width: 100%;
+    margin-top: 45px;
+  }
+  
+  .total{
+    margin-top: 20px;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    background: linear-gradient(to right, rgba(0,0,0,0) 0%,#ffffff 100%);
         
-        span{
-          display: block;
-          height: 35px;
-          border-radius: 3px;
-          border: 1px solid #51996f;
-          line-height: 34px;
-          width: 75px;
-          text-align: center;
-          margin-right: 10px;
-          margin-top: 10px;
-          color: #3A6E50;
-          font-size: 13px;
-        }
-      }
-    }   
+    label{
+      font-size: 13px;
+      color: #A4A4A4;
+    }
+    
+    span{
+      font-size: 14px;
+      color: #646464;
+      margin-left: 24px;
+      margin-right: 30px;
+    }
   }
 `;
