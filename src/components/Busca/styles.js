@@ -14,10 +14,14 @@ export const Container = styled.div`
   input{
     margin-left: 22px;
     font-size: 13px;
-    height: 17px;
+    height: 100%;
     background-color: transparent;
     border: none;
     flex: 1;
+    
+    &:focus{
+      border: none;
+    }
     
     &::placeholder{
       color: rgba(112,112,112,0.5);

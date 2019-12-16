@@ -5,12 +5,12 @@ import Custos from './Custos';
 
 export default [
   {
-    label: 'Custos',
-    content: <Custos />
-  },
-  {
     label: 'Informações',
     content: <Informacoes />
+  },
+  {
+    label: 'Custos',
+    content: <Custos />
   },
   {
     label: 'Coletas',
