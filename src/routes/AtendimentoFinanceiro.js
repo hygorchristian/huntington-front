@@ -13,6 +13,7 @@ import ResultadoExame from '~/screens/ResultadoExame';
 import Doadora from '~/screens/Doadora';
 import NovoHistoricoDoadora from '~/screens/Doadora/NovoHistoricoDoadora';
 import dashboardRoutes from './MenuRoutes';
+import CicloCasado from '~/screens/3 - AtendimentoFinanceiro/CiclosCasados/CicloCasado';
 
 function AtendimentoFinanceiro() {
   const role = useSelector((state) => state.Auth.role);
@@ -20,6 +21,7 @@ function AtendimentoFinanceiro() {
   return (
     <>
       {/* <DashboardRoute path="/doadora/pre-cadastros/:id" exact component={PreCadastro} /> */}
+      <DashboardRoute path="/financeiro/ciclos-casados/:id" exact component={CicloCasado} />
       {dashboardRoutes[role].map((route) => (
         <DashboardRoute exact path={route.path} component={route.component} label={route.label} />
       ))}

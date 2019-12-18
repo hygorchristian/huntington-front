@@ -16,6 +16,7 @@ import CiclosCasadosControladoria from '~/screens/4 - Controladoria/CiclosCasado
 import DoadorasControladoria from '~/screens/4 - Controladoria/Doadoras';
 import Coletas from '~/screens/4 - Controladoria/Coletas';
 import Custos from '~/screens/4 - Controladoria/Custos';
+import CiclosCasadosFinanceiro from '~/screens/3 - AtendimentoFinanceiro/CiclosCasados';
 
 export default {
   'atendimento-doadora': [
@@ -82,8 +83,8 @@ export default {
   'atendimento-financeiro': [
     {
       label: 'Ciclos Casados',
-      path: '/financeiro/dashboard',
-      component: EmDesenvolvimento,
+      path: '/financeiro/ciclos-casados',
+      component: CiclosCasadosFinanceiro,
     },
   ],
   controladoria: [
