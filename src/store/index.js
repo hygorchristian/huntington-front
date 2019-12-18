@@ -14,7 +14,7 @@ import { __DEV__ } from '../utils';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['Auth', 'Menu'] // only navigation will be persisted
+  whitelist: ['Auth'] // only navigation will be persisted
 };
 
 const middlewares = [];

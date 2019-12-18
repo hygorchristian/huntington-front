@@ -5,7 +5,7 @@ import Immutable from 'seamless-immutable';
 
 const { Types, Creators } = createActions({
   authLoadRequest: null,
-  authLoadSuccess: ['token', 'role'],
+  authLoadSuccess: ['user'],
   authLoadFailure: ['error'],
   setRole: ['role'],
 });

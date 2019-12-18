@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { Form as Formik, Field as FormikField } from 'formik';
+import { TextField } from 'formik-material-ui';
 
 export const Container = styled.div`
   width: 100%;
@@ -16,7 +18,7 @@ export const Container = styled.div`
   background-size: cover;
 `;
 
-export const Form = styled.form`
+export const Content = styled.div`
   width: 600px;
   height: 800px;
   background-color: #ffffff;
@@ -58,4 +60,23 @@ export const Form = styled.form`
     margin-top: 30px;
     text-decoration: none;
   }
+`;
+
+export const Form = styled(Formik).attrs({
+  noValidate: true,
+  autoComplete: 'off'
+})`
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+`;
+
+export const Field = styled(FormikField).attrs({
+  margin: 'normal',
+  fullWidth: true,
+  component: () => TextField,
+  variant: 'outlined',
+  error: true
+})`
+  margin-bottom: 50px;
 `;

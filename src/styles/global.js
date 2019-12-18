@@ -76,7 +76,7 @@ export default createGlobalStyle`
     padding: 16px;
   }
   
-  input, textarea{
+  .input, .textarea{
     height: 35px;
     background-color: #F6F6F6;
     border: none;
