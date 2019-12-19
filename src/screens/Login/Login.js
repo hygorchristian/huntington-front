@@ -2,28 +2,22 @@ import React from 'react';
 import { Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { AuthActions } from '~/store/ducks/auth';
+import { LoginSchema } from './validators';
 
 import {
- Container, Content, Form, Field
+ Container, Content, Form
 } from './styles';
+import MuiField from '~/components/MuiField';
 
 function Login() {
   const dispatch = useDispatch();
   const isAuth = useSelector((state) => state.Auth.isAuth);
 
-  const login = () => {
-    dispatch(AuthActions.authLoadSuccess('token', 'atendimento-doadora'));
-  };
-
-  if (isAuth) return <Redirect to="/" />;
-
-  const validator = () => {
-
-  };
   const onSubmit = () => {
 
   };
+
+  if (isAuth) return <Redirect to="/" />;
 
   return (
     <Container>
@@ -34,39 +28,28 @@ function Login() {
 
         <Formik
           initialValues={{ email: '', password: '' }}
-          validate={validator}
+          validationSchema={LoginSchema}
           onSubmit={onSubmit}
         >
-          {({
-              values,
-              errors,
-              touched,
-              handleChange,
-              handleBlur,
-              handleSubmit,
-              isSubmitting,
-              /* and other goodies */
-            }) => (
-              <Form
-                onSubmit={handleSubmit}
-              >
-                <Field
-                  name="email"
-                  label="Email"
-                  type="email"
-                />
-                <Field
-                  name="password"
-                  label="Senha"
-                  type="password"
-                />
-              </Form>
+          {({ handleSubmit }) => (
+            <Form
+              onSubmit={handleSubmit}
+            >
+              <MuiField
+                name="email"
+                label="Email"
+                type="email"
+              />
+              <MuiField
+                name="password"
+                label="Senha"
+                type="password"
+              />
+              <button type="submit">Entrar</button>
+            </Form>
           )}
         </Formik>
-
-        <button onClick={login}>Entrar</button>
-
-        <a>Não possuo cadastro</a>
+        {/* <a>Não possuo cadastro</a> */}
       </Content>
     </Container>
 );

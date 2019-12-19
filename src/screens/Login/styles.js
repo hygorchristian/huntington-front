@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { Form as Formik, Field as FormikField } from 'formik';
-import { TextField } from 'formik-material-ui';
+import { Form as FormFormik } from 'formik';
 
 export const Container = styled.div`
   width: 100%;
@@ -62,21 +61,16 @@ export const Content = styled.div`
   }
 `;
 
-export const Form = styled(Formik).attrs({
+export const Form = styled(FormFormik).attrs({
   noValidate: true,
   autoComplete: 'off'
 })`
   display: flex;
   flex-direction: column;
   width: 350px;
-`;
-
-export const Field = styled(FormikField).attrs({
-  margin: 'normal',
-  fullWidth: true,
-  component: () => TextField,
-  variant: 'outlined',
-  error: true
-})`
-  margin-bottom: 50px;
+  margin-top: 30px;
+  
+  button{
+    align-self: center;
+  }
 `;
