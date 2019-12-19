@@ -1,24 +1,27 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
-import Login from '~/screens/Login';
+
 import AtendimentoDoadora from './AtendimentoDoadora';
-import DashboardRoute from '~/components/DashboardRoute';
 import AtendimentoReceptora from './AtendimentoReceptora';
 import AtendimentoFinanceiro from './AtendimentoFinanceiro';
 import Controladoria from './Controladoria';
 import Embriologia from './Embriologia';
-import Erro404 from '~/screens/Erro404';
+
 import PrivateRoute from '~/components/PrivateRoute';
+import DashboardRoute from '~/components/DashboardRoute';
+
 import Dashboard from '~/screens/Dashboard/Dashboard';
+import Login from '~/screens/Login';
+import Erro404 from '~/screens/Erro404';
 
 export const RolesRoutes = {
-  'atendimento-doadora': AtendimentoDoadora,
-  master: AtendimentoDoadora,
-  'atendimento-receptora': AtendimentoReceptora,
-  'atendimento-financeiro': AtendimentoFinanceiro,
+  atendimento_doadora: AtendimentoDoadora,
+  atendimento_receptora: AtendimentoReceptora,
+  financeiro: AtendimentoFinanceiro,
   controladoria: Controladoria,
   embriologia: Embriologia,
+  master: [...AtendimentoDoadora, ...AtendimentoReceptora],
 };
 
 function Routes() {
