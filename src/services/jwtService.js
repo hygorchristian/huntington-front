@@ -6,7 +6,6 @@ class jwtService extends EventEmitter {
   init() {
     this.setInterceptors();
     this.handleAuthentication();
-    console.tron.log('JWT SERVICE iniciado');
   }
 
   setInterceptors = () => {
@@ -50,12 +49,10 @@ class jwtService extends EventEmitter {
   });
 
   login = (email, password) => new Promise((resolve, reject) => {
-    console.tron.log('jwt login', { email, password });
     api.post('/auth/local', {
       identifier: email,
       password
     }).then((response) => {
-      console.tron.log('jwt response', response);
       if (response.data.user) {
         this.setSession(response.data.jwt);
         resolve(response.data.user);

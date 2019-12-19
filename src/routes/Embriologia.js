@@ -1,28 +1,36 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import DashboardRoute from '~/components/DashboardRoute';
-import dashboardRoutes from './MenuRoutes';
 import BancoOvulosDetalhe from '~/screens/5 - Embriologia/BancoOvulosDetalhe';
 import Coleta from '~/screens/5 - Embriologia/Coleta';
 import NovaColeta from '~/screens/5 - Embriologia/NovaColeta';
+import DashboardEmbriologia from '~/screens/5 - Embriologia/DashboardEmbriologia';
+import BancoOvulos2 from '~/screens/5 - Embriologia/BancoOvulos';
+import EmDesenvolvimento from '~/screens/EmDesenvolvimento';
 
-function Embriologia() {
-  const user = useSelector((state) => state.Auth.user);
-  const role = user ? user.role.name : '';
-  const routes = dashboardRoutes[role] || [];
-  console.tron.log({ routes });
-
-  return (
-    <>
-      {/* <DashboardRoute path="/pre-cadastros/:id" exact component={PreCadastro} /> */}
-      <DashboardRoute path="/embriologia/banco-ovulos/:id" exact component={BancoOvulosDetalhe} />
-      <DashboardRoute path="/embriologia/dashboard/coletas/:id" exact component={Coleta} />
-      <DashboardRoute path="/embriologia/dashboard/coletas/:id/nova-coleta" exact component={NovaColeta} />
-      {routes.map((route) => (
-        <DashboardRoute exact path={route.path} component={route.component} label={route.label} />
-      ))}
-    </>
-  );
-}
-
-export default Embriologia;
+export default [
+  {
+    label: 'Dashboard',
+    path: '/embriologia/dashboard',
+    component: DashboardEmbriologia,
+  },
+  {
+    label: 'Banco de Óvulos',
+    path: '/embriologia/banco-ovulos',
+    component: BancoOvulos2,
+  },
+  {
+    label: 'Indicadores',
+    path: '/embriologia/indicadores',
+    component: EmDesenvolvimento,
+  },
+  {
+    path: '/embriologia/banco-ovulos/:id',
+    component: BancoOvulosDetalhe
+  },
+  {
+    path: '/embriologia/dashboard/coletas/:id',
+    component: Coleta
+  },
+  {
+    path: '/embriologia/dashboard/coletas/:id/nova-coleta',
+    component: NovaColeta
+  },
+];

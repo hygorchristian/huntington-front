@@ -9,8 +9,6 @@ import {
 } from 'react-icons/fi';
 import jwtService from '~/services/jwtService';
 
-import MenuRoutes from '~/routes/MenuRoutes';
-
 import {
  Container,
   Content,
@@ -27,6 +25,7 @@ import {
 } from './styles';
 import { MenuActions } from '~/store/ducks/menu';
 import { AuthActions } from '~/store/ducks/auth';
+import { RolesRoutes } from '~/routes';
 
 function Item({ route, aberto, selected }) {
   const selectedItem = useSelector((state) => state.Menu.item);
@@ -54,7 +53,11 @@ function Dashboard({ children, history, match: { path } }) {
 
   const user = useSelector((state) => state.Auth.user);
   const role = user ? user.role.name : '';
-  const routes = MenuRoutes[role] || [];
+  let routes = RolesRoutes[role] || [];
+
+  if (routes.length > 0) {
+    routes = routes.filter((route) => !!route.label);
+  }
 
   const selected = path.split('/')[1];
 

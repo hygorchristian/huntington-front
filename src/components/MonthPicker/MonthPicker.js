@@ -36,7 +36,6 @@ function MonthPicker() {
   };
 
   const data = formatarMesAno(month, year);
-  console.tron.log(month);
 
   return (
     <Container>

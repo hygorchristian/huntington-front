@@ -1,31 +1,60 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import DashboardRoute from '~/components/DashboardRoute';
-import dashboardRoutes from './MenuRoutes';
 import Estoque from '~/screens/4 - Controladoria/Estoque';
 import CicloCasado from '~/screens/4 - Controladoria/CicloCasado';
 import Doadora from '~/screens/4 - Controladoria/Doadoras/Doadora';
 import Coleta from '~/screens/4 - Controladoria/Doadoras/Doadora/Coletas/Coleta';
+import ControladoriaDashboard from '~/screens/4 - Controladoria/Dashboard';
+import Estoques from '~/screens/4 - Controladoria/Estoques';
+import CiclosCasadosControladoria from '~/screens/4 - Controladoria/CiclosCasados';
+import DoadorasControladoria from '~/screens/4 - Controladoria/Doadoras';
+import Coletas from '~/screens/4 - Controladoria/Coletas';
+import Custos from '~/screens/4 - Controladoria/Custos';
 
-function Controladoria() {
-  const user = useSelector((state) => state.Auth.user);
-  const role = user ? user.role.name : '';
+export default [
+  {
+    label: 'Dashboard',
+    path: '/controladoria/dashboard',
+    component: ControladoriaDashboard,
+  },
+  {
+    label: 'Estoque',
+    path: '/controladoria/estoque',
+    component: Estoques,
+  },
+  {
+    label: 'Ciclos Casados',
+    path: '/controladoria/ciclos-casados',
+    component: CiclosCasadosControladoria,
 
-  const routes = dashboardRoutes[role] || [];
-  console.tron.log({ routes });
-
-  return (
-    <>
-      {/* <DashboardRoute path="/pre-cadastros/:id" exact component={PreCadastro} /> */}
-      <DashboardRoute path="/controladoria/estoque/:id" exact component={Estoque} />
-      <DashboardRoute path="/controladoria/ciclos-casados/:id" exact component={CicloCasado} />
-      <DashboardRoute path="/controladoria/doadoras/:id" exact component={Doadora} />
-      <DashboardRoute path="/controladoria/doadoras/:id/coleta/:coleta_id" exact component={Coleta} />
-      {routes.map((route) => (
-        <DashboardRoute exact path={route.path} component={route.component} label={route.label} />
-      ))}
-    </>
-  );
-}
-
-export default Controladoria;
+  },
+  {
+    label: 'Doadoras',
+    path: '/controladoria/doadoras',
+    component: DoadorasControladoria,
+  },
+  {
+    label: 'Coletas',
+    path: '/controladoria/coletas',
+    component: Coletas,
+  },
+  {
+    label: 'Custos',
+    path: '/controladoria/custos',
+    component: Custos,
+  },
+  {
+    path: '/controladoria/estoque/:id',
+    component: Estoque
+  },
+  {
+    path: '/controladoria/ciclos-casados/:id',
+    component: CicloCasado
+  },
+  {
+    path: '/controladoria/doadoras/:id',
+    component: Doadora
+  },
+  {
+    path: '/controladoria/doadoras/:id/coleta/:coleta_id',
+    component: Coleta
+  },
+];

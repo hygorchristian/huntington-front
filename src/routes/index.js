@@ -4,33 +4,35 @@ import { Switch, Route } from 'react-router-dom';
 import Login from '~/screens/Login';
 import AtendimentoDoadora from './AtendimentoDoadora';
 import DashboardRoute from '~/components/DashboardRoute';
-import DashboardContent from '~/screens/DashboardContent';
 import AtendimentoReceptora from './AtendimentoReceptora';
 import AtendimentoFinanceiro from './AtendimentoFinanceiro';
 import Controladoria from './Controladoria';
 import Embriologia from './Embriologia';
 import Erro404 from '~/screens/Erro404';
+import PrivateRoute from '~/components/PrivateRoute';
+import Dashboard from '~/screens/Dashboard/Dashboard';
 
-const roles = {
-  'atendimento-doadora': () => <AtendimentoDoadora />,
-  'atendimento-receptora': () => <AtendimentoReceptora />,
-  'atendimento-financeiro': () => <AtendimentoFinanceiro />,
-  controladoria: () => <Controladoria />,
-  embriologia: () => <Embriologia />,
+export const RolesRoutes = {
+  'atendimento-doadora': AtendimentoDoadora,
+  master: AtendimentoDoadora,
+  'atendimento-receptora': AtendimentoReceptora,
+  'atendimento-financeiro': AtendimentoFinanceiro,
+  controladoria: Controladoria,
+  embriologia: Embriologia,
 };
 
 function Routes() {
   const user = useSelector((state) => state.Auth.user);
   const role = user ? user.role.name : '';
-  const AuthorizedRoutes = roles[role];
+  const routes = RolesRoutes[role] || [];
 
   return (
     <Switch>
-      {/* Todo: remover essa rota depois que o app estiver funcionando */}
-      <DashboardRoute path="/" exact component={DashboardContent} />
-      {/* <PrivateRoute path="/" exact component={Dashboard} /> */}
+      <PrivateRoute path="/" exact component={Dashboard} />
       <Route path="/login" exact component={Login} />
-      <AuthorizedRoutes />
+      {routes.map((route) => (
+        <DashboardRoute exact path={route.path} component={route.component} label={route.label} />
+      ))}
       <DashboardRoute component={Erro404} />
     </Switch>
   );

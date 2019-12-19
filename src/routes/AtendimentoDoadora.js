@@ -1,6 +1,3 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import DashboardRoute from '~/components/DashboardRoute';
 import PreCadastro from '~/screens/PreCadastro';
 import AdicionarEvento from '~/screens/AdicionarEvento';
 import AdicionarDoadora from '~/screens/AdicionarDoadora';
@@ -12,36 +9,95 @@ import NovaColeta from '~/screens/NovaColeta';
 import ResultadoExame from '~/screens/ResultadoExame';
 import Doadora from '~/screens/Doadora';
 import NovoHistoricoDoadora from '~/screens/Doadora/NovoHistoricoDoadora';
-import dashboardRoutes from './MenuRoutes';
+import DashboardScreen from '~/screens/DashboardScreen';
+import PreCadastros from '~/screens/PreCadastros';
+import Doadoras from '~/screens/Doadoras';
+import Reclamacoes from '~/screens/Reclamacoes';
 
-function AtendimentoDoadora() {
-  const user = useSelector((state) => state.Auth.user);
-  const role = user ? user.role.name : '';
-  const routes = dashboardRoutes[role] || [];
-  console.tron.log({ routes });
-
-  return (
-    <>
-      <DashboardRoute path="/doadora/pre-cadastros/:id" exact component={PreCadastro} />
-      <DashboardRoute path="/doadora/novo-evento" exact component={AdicionarEvento} />
-      <DashboardRoute path="/doadora/pre-cadastros/:id/nova-doadora" exact component={AdicionarDoadora} />
-      <DashboardRoute path="/doadora/detalhes/:id" exact component={DoadoraPreCadastro} />
-      <DashboardRoute path="/doadora/detalhes/:id/triagem" exact component={DoadoraTriagem} />
-      <DashboardRoute path="/doadora/detalhes/:id/novo-historico" exact component={NovoHistorico} />
-      <DashboardRoute path="/doadora/detalhes/:id/ultrassons/preencher" exact component={PreencherUltrassom} />
-      <DashboardRoute path="/doadora/detalhes/:id/exames/nova-coleta" exact component={NovaColeta} />
-      <DashboardRoute path="/doadora/detalhes/:id/exames/resultado" exact component={ResultadoExame} />
-      <DashboardRoute path="/doadora/listagem/:id" exact component={Doadora} />
-      <DashboardRoute path="/doadora/listagem/:id/triagem" exact component={DoadoraTriagem} />
-      <DashboardRoute path="/doadora/listagem/:id/novo-registro" exact component={NovoHistoricoDoadora} />
-      <DashboardRoute path="/doadora/listagem/:id/ultrassons/preencher" exact component={PreencherUltrassom} />
-      <DashboardRoute path="/doadora/listagem/:id/exames/nova-coleta" exact component={NovaColeta} />
-      <DashboardRoute path="/doadora/listagem/:id/exames/resultado" exact component={ResultadoExame} />
-      {routes.map((route) => (
-        <DashboardRoute exact path={route.path} component={route.component} label={route.label} />
-      ))}
-    </>
-  );
-}
-
-export default AtendimentoDoadora;
+export default [
+  {
+    label: 'Dashboard',
+    path: '/doadora/dashboard',
+    component: DashboardScreen,
+  },
+  {
+    label: 'Pré-Cadastros',
+    path: '/doadora/pre-cadastros',
+    component: PreCadastros,
+  },
+  {
+    label: 'Doadoras',
+    path: '/doadora/listagem',
+    component: Doadoras,
+  },
+  {
+    label: 'Resumo do banco',
+    path: '/doadora/resumo-do-banco',
+    component: Reclamacoes,
+  },
+  {
+    label: 'Indicadores',
+    path: '/doadora/indicadores',
+    component: Reclamacoes,
+  },
+  {
+    path: '/doadora/pre-cadastros/:id',
+    component: PreCadastro
+  },
+  {
+    path: '/doadora/novo-evento',
+    component: AdicionarEvento
+  },
+  {
+    path: '/doadora/pre-cadastros/:id/nova-doadora',
+    component: AdicionarDoadora
+  },
+  {
+    path: '/doadora/detalhes/:id',
+    component: DoadoraPreCadastro
+  },
+  {
+    path: '/doadora/detalhes/:id/triagem',
+    component: DoadoraTriagem
+  },
+  {
+    path: '/doadora/detalhes/:id/novo-historico',
+    component: NovoHistorico
+  },
+  {
+    path: '/doadora/detalhes/:id/ultrassons/preencher',
+    component: PreencherUltrassom
+  },
+  {
+    path: '/doadora/detalhes/:id/exames/nova-coleta',
+    component: NovaColeta
+  },
+  {
+    path: '/doadora/detalhes/:id/exames/resultado',
+    component: ResultadoExame
+  },
+  {
+    path: '/doadora/listagem/:id',
+    component: Doadora
+  },
+  {
+    path: '/doadora/listagem/:id/triagem',
+    component: DoadoraTriagem
+  },
+  {
+    path: '/doadora/listagem/:id/novo-registro',
+    component: NovoHistoricoDoadora
+  },
+  {
+    path: '/doadora/listagem/:id/ultrassons/preencher',
+    component: PreencherUltrassom
+  },
+  {
+    path: '/doadora/listagem/:id/exames/nova-coleta',
+    component: NovaColeta
+  },
+  {
+    path: '/doadora/listagem/:id/exames/resultado',
+    component: ResultadoExame
+  },
+];
