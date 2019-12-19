@@ -4,11 +4,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import 'animate.css/animate.css';
 import Animate from 'animate.css-react';
-
 import {
  FiChevronDown, FiChevronLeft, FiMenu, FiBell, FiSearch,
 } from 'react-icons/fi';
-import routes from '~/routes/MenuRoutes';
+import jwtService from '~/services/jwtService';
+
+import MenuRoutes from '~/routes/MenuRoutes';
 
 import {
  Container,
@@ -25,6 +26,7 @@ import {
   Notification,
 } from './styles';
 import { MenuActions } from '~/store/ducks/menu';
+import { AuthActions } from '~/store/ducks/auth';
 
 function Item({ route, aberto, selected }) {
   const selectedItem = useSelector((state) => state.Menu.item);
@@ -50,15 +52,23 @@ function Dashboard({ children, history, match: { path } }) {
   const aberto = useSelector((state) => state.Menu.opened);
 
 
-  const role = useSelector((state) => state.Auth.role);
+  const user = useSelector((state) => state.Auth.user);
+  const role = user ? user.role.name : '';
+  const routes = MenuRoutes[role] || [];
 
   const selected = path.split('/')[1];
 
   const fechar = () => {
     dispatch(MenuActions.menuSetOpen(false));
   };
+
   const abrir = () => {
     dispatch(MenuActions.menuSetOpen(true));
+  };
+
+  const logout = () => {
+    jwtService.logout();
+    dispatch(AuthActions.logout());
   };
 
   return (
@@ -80,7 +90,7 @@ function Dashboard({ children, history, match: { path } }) {
             <FiMenu size={20} color="#ffffff" />
           </Open>
         )}
-        { routes[role].map((route) => <Item aberto={aberto} route={route} selected={selected} />) }
+        { routes.map((route) => <Item aberto={aberto} route={route} selected={selected} />) }
       </Menu>
       <Main aberto={aberto}>
         <Header>
@@ -113,7 +123,7 @@ function Dashboard({ children, history, match: { path } }) {
                 <div className="item-menu">
                   <span>Minha Conta</span>
                 </div>
-                <div className="logout">
+                <div className="logout" onClick={logout}>
                   <span>Logout</span>
                 </div>
               </ProfileMenu>

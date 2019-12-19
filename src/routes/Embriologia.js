@@ -7,7 +7,10 @@ import Coleta from '~/screens/5 - Embriologia/Coleta';
 import NovaColeta from '~/screens/5 - Embriologia/NovaColeta';
 
 function Embriologia() {
-  const role = useSelector((state) => state.Auth.role);
+  const user = useSelector((state) => state.Auth.user);
+  const role = user ? user.role.name : '';
+  const routes = dashboardRoutes[role] || [];
+  console.tron.log({ routes });
 
   return (
     <>
@@ -15,7 +18,7 @@ function Embriologia() {
       <DashboardRoute path="/embriologia/banco-ovulos/:id" exact component={BancoOvulosDetalhe} />
       <DashboardRoute path="/embriologia/dashboard/coletas/:id" exact component={Coleta} />
       <DashboardRoute path="/embriologia/dashboard/coletas/:id/nova-coleta" exact component={NovaColeta} />
-      {dashboardRoutes[role].map((route) => (
+      {routes.map((route) => (
         <DashboardRoute exact path={route.path} component={route.component} label={route.label} />
       ))}
     </>

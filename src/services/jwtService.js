@@ -1,6 +1,6 @@
-import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import EventEmitter from '~/utils/EventEmitter';
+import api from '~/services/api';
 
 class jwtService extends EventEmitter {
   init() {
@@ -10,7 +10,7 @@ class jwtService extends EventEmitter {
   }
 
   setInterceptors = () => {
-    axios.interceptors.response.use((response) => response, (err) => new Promise((resolve, reject) => {
+    api.interceptors.response.use((response) => response, (err) => new Promise((resolve, reject) => {
       if (err.response.status === 401 && err.config && !err.config.__isRetryRequest) {
         // se receber uma mensagem de Não Autorizado deve deslogar o usuário
 
@@ -38,7 +38,7 @@ class jwtService extends EventEmitter {
   };
 
   createUser = (data) => new Promise((resolve, reject) => {
-    axios.post('/api/auth/register', data)
+    api.post('/api/auth/register', data)
       .then((response) => {
         if (response.data.user) {
           this.setSession(response.data.access_token);
@@ -49,24 +49,26 @@ class jwtService extends EventEmitter {
       });
   });
 
-  loginWithEmailAndPassword = (email, password) => new Promise((resolve, reject) => {
-    axios.post('/auth/local', {
-      data: {
-        identifier: email,
-        password
-      }
+  login = (email, password) => new Promise((resolve, reject) => {
+    console.tron.log('jwt login', { email, password });
+    api.post('/auth/local', {
+      identifier: email,
+      password
     }).then((response) => {
+      console.tron.log('jwt response', response);
       if (response.data.user) {
         this.setSession(response.data.jwt);
         resolve(response.data.user);
       } else {
         reject(response.data.error);
       }
+    }).catch((e) => {
+      reject('Erro ao logar');
     });
   });
 
   signInWithToken = () => new Promise((resolve, reject) => {
-    axios.get('/auth/access-token', {
+    api.get('/auth/access-token', {
       data: {
         access_token: this.getAccessToken()
       }
@@ -80,17 +82,17 @@ class jwtService extends EventEmitter {
       });
   });
 
-  updateUserData = (user) => axios.post('/api/auth/user/update', {
+  updateUserData = (user) => api.post('/api/auth/user/update', {
     user
   });
 
   setSession = (access_token) => {
     if (access_token) {
       localStorage.setItem('jwt_access_token', access_token);
-      axios.defaults.headers.common.Authorization = `Bearer ${access_token}`;
+      api.defaults.headers.common.Authorization = `Bearer ${access_token}`;
     } else {
       localStorage.removeItem('jwt_access_token');
-      delete axios.defaults.headers.common.Authorization;
+      delete api.defaults.headers.common.Authorization;
     }
   };
 

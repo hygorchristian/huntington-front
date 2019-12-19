@@ -8,7 +8,11 @@ import Doadora from '~/screens/4 - Controladoria/Doadoras/Doadora';
 import Coleta from '~/screens/4 - Controladoria/Doadoras/Doadora/Coletas/Coleta';
 
 function Controladoria() {
-  const role = useSelector((state) => state.Auth.role);
+  const user = useSelector((state) => state.Auth.user);
+  const role = user ? user.role.name : '';
+
+  const routes = dashboardRoutes[role] || [];
+  console.tron.log({ routes });
 
   return (
     <>
@@ -17,7 +21,7 @@ function Controladoria() {
       <DashboardRoute path="/controladoria/ciclos-casados/:id" exact component={CicloCasado} />
       <DashboardRoute path="/controladoria/doadoras/:id" exact component={Doadora} />
       <DashboardRoute path="/controladoria/doadoras/:id/coleta/:coleta_id" exact component={Coleta} />
-      {dashboardRoutes[role].map((route) => (
+      {routes.map((route) => (
         <DashboardRoute exact path={route.path} component={route.component} label={route.label} />
       ))}
     </>

@@ -20,7 +20,8 @@ const roles = {
 };
 
 function Routes() {
-  const role = useSelector((state) => state.Auth.role);
+  const user = useSelector((state) => state.Auth.user);
+  const role = user ? user.role.name : '';
   const AuthorizedRoutes = roles[role];
 
   return (

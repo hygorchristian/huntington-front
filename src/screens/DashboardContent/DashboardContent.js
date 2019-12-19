@@ -11,6 +11,8 @@ function DashboardContent() {
     dispatch(AuthActions.setRole(role));
   };
 
+  return null;
+
   return (
     <Container>
       <p>Estes botões são para navegar entres os tipos de paineis, apenas para testes. A versão final não irá conter essa tela.</p>

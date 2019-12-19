@@ -29,7 +29,7 @@ function AuthProvider({ children }) {
   };
 
   useEffect(() => {
-    jwtCheck();
+    // jwtCheck();
   }, []);
 
   return children;

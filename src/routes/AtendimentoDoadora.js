@@ -15,7 +15,10 @@ import NovoHistoricoDoadora from '~/screens/Doadora/NovoHistoricoDoadora';
 import dashboardRoutes from './MenuRoutes';
 
 function AtendimentoDoadora() {
-  const role = useSelector((state) => state.Auth.role);
+  const user = useSelector((state) => state.Auth.user);
+  const role = user ? user.role.name : '';
+  const routes = dashboardRoutes[role] || [];
+  console.tron.log({ routes });
 
   return (
     <>
@@ -34,7 +37,7 @@ function AtendimentoDoadora() {
       <DashboardRoute path="/doadora/listagem/:id/ultrassons/preencher" exact component={PreencherUltrassom} />
       <DashboardRoute path="/doadora/listagem/:id/exames/nova-coleta" exact component={NovaColeta} />
       <DashboardRoute path="/doadora/listagem/:id/exames/resultado" exact component={ResultadoExame} />
-      {dashboardRoutes[role].map((route) => (
+      {routes.map((route) => (
         <DashboardRoute exact path={route.path} component={route.component} label={route.label} />
       ))}
     </>

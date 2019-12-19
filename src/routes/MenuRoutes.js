@@ -137,4 +137,11 @@ export default {
       component: EmDesenvolvimento,
     },
   ],
+  master: [
+    {
+      label: 'Ciclos Casados',
+      path: '/financeiro/ciclos-casados',
+      component: CiclosCasadosFinanceiro,
+    },
+  ]
 };

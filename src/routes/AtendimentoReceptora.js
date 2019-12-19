@@ -20,7 +20,10 @@ import ListaEsperaDetalhe from '~/screens/2 - AtendimentoReceptora/ListaEsperaDe
 import AdicionarHistorico from '~/screens/2 - AtendimentoReceptora/ListaEsperaDetalhe/AdicionarHistorico';
 
 function AtendimentoReceptora() {
-  const role = useSelector((state) => state.Auth.role);
+  const user = useSelector((state) => state.Auth.user);
+  const role = user ? user.role.name : '';
+  const routes = dashboardRoutes[role] || [];
+  console.tron.log({ routes });
 
   return (
     <>
@@ -29,7 +32,7 @@ function AtendimentoReceptora() {
       <DashboardRoute path="/receptora/banco-ovulos/:id" exact component={BancoOvuloDetalhe} />
       <DashboardRoute path="/receptora/lista-espera/:id" exact component={ListaEsperaDetalhe} />
       <DashboardRoute path="/receptora/lista-espera/:id/adicionar-historico" exact component={AdicionarHistorico} />
-      {dashboardRoutes[role].map((route) => (
+      {routes.map((route) => (
         <DashboardRoute exact path={route.path} component={route.component} label={route.label} />
       ))}
     </>

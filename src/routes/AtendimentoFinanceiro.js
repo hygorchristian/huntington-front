@@ -16,13 +16,16 @@ import dashboardRoutes from './MenuRoutes';
 import CicloCasado from '~/screens/3 - AtendimentoFinanceiro/CiclosCasados/CicloCasado';
 
 function AtendimentoFinanceiro() {
-  const role = useSelector((state) => state.Auth.role);
+  const user = useSelector((state) => state.Auth.user);
+  const role = user ? user.role.name : '';
+  const routes = dashboardRoutes[role] || [];
+  console.tron.log({ routes });
 
   return (
     <>
       {/* <DashboardRoute path="/doadora/pre-cadastros/:id" exact component={PreCadastro} /> */}
       <DashboardRoute path="/financeiro/ciclos-casados/:id" exact component={CicloCasado} />
-      {dashboardRoutes[role].map((route) => (
+      {routes.map((route) => (
         <DashboardRoute exact path={route.path} component={route.component} label={route.label} />
       ))}
     </>

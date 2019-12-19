@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Form as FormFormik } from 'formik';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 export const Container = styled.div`
   width: 100%;
@@ -69,8 +70,15 @@ export const Form = styled(FormFormik).attrs({
   flex-direction: column;
   width: 350px;
   margin-top: 30px;
+  align-items: center;
   
-  button{
-    align-self: center;
+  span{
+    color:#f44336;
   }
+`;
+
+export const Loading = styled(CircularProgress).attrs({
+  size: 20,
+})`
+  margin-top: 10px;
 `;
