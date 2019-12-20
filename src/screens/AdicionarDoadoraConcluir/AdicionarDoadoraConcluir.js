@@ -1,14 +1,39 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import PrevIcon from '@material-ui/icons/ArrowBack';
+import OkIcon from '@material-ui/icons/Check';
 
-import InputLabel from '~/components/InputLabel';
+import { useFormik } from 'formik';
 import Voltar from '~/components/Voltar/Voltar';
 
 import {
   Container, Header, Content, Main, Resumo
 } from './styles';
+import { AdicionarDoadoraSchema } from '~/screens/AdicionarDoadoraInicio/validators';
+import MuiInput from '~/components/MuiInput';
+import Botao from '~/components/Botao';
 
 function AdicionarDoadoraConcluir({ onVoltar }) {
+  const onSubmit = (values) => {
+
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      rg: '',
+      orgao: '',
+      endereco: '',
+      complemento: '',
+      numero: '',
+      cep: '',
+      celular: '',
+      telefone: '',
+      email: '',
+    },
+    onSubmit,
+    validationSchema: AdicionarDoadoraSchema
+  });
+
   return (
     <Container>
       <Main>
@@ -18,73 +43,84 @@ function AdicionarDoadoraConcluir({ onVoltar }) {
           <span>(Recepção)</span>
         </Header>
         <Content>
-          <form>
-            <div className="row">
-              <InputLabel
+          <form onSubmit={formik.handleSubmit}>
+            <div className="grid">
+              <MuiInput
+                name="rg"
                 label="RG nº"
                 type="text"
-                width={160}
-                style={{ marginRight: 20 }}
+                value={formik.values.rg}
+                onChange={formik.handleChange}
               />
-              <InputLabel
+              <MuiInput
+                name="orgao"
                 label="Orgão expeditor"
                 type="text"
-                width={160}
+                value={formik.values.orgao}
+                onChange={formik.handleChange}
               />
             </div>
-            <div className="row">
-              <InputLabel
+            <div className="line">
+              <MuiInput
+                name="endereco"
                 label="Endereço"
                 type="text"
-                width={330}
-                style={{ marginRight: 20 }}
+                value={formik.values.endereco}
+                onChange={formik.handleChange}
               />
-              <InputLabel
-                label="Número"
-                type="text"
-                width={110}
-              />
-            </div>
-            <div className="row">
-              <InputLabel
+              <MuiInput
+                name="complemento"
                 label="Complemento"
                 type="text"
-                width={450}
+                value={formik.values.complemento}
+                onChange={formik.handleChange}
               />
             </div>
-            <div className="row">
-              <InputLabel
+
+            <div className="grid">
+              <MuiInput
+                name="numero"
+                label="Número"
+                type="text"
+                value={formik.values.numero}
+                onChange={formik.handleChange}
+              />
+              <MuiInput
+                name="cep"
                 label="CEP"
                 type="text"
-                width={130}
+                value={formik.values.cep}
+                onChange={formik.handleChange}
+                mask="99.999-999"
               />
-            </div>
-            <div className="row">
-              <InputLabel
+              <MuiInput
+                name="celular"
                 label="Celular"
                 type="text"
-                width={200}
-                style={{ marginRight: 20 }}
+                value={formik.values.celular}
+                onChange={formik.handleChange}
+                mask="(99) 9 9999-9999"
               />
-              <InputLabel
+              <MuiInput
+                name="telefone"
                 label="Telefone"
                 type="text"
-                width={200}
-                style={{ marginRight: 20 }}
+                value={formik.values.telefone}
+                onChange={formik.handleChange}
+                mask="(99) 9999-9999"
               />
-
-            </div>
-            <div className="row">
-              <InputLabel
+              <MuiInput
+                name="email"
                 label="E-mail"
                 type="text"
-                width={200}
+                value={formik.values.email}
+                onChange={formik.handleChange}
               />
             </div>
           </form>
           <div className="buttons">
-            <button className="light" onClick={onVoltar}>Voltar</button>
-            <button>Concluir</button>
+            <Botao startIcon={<PrevIcon />} color="" onClick={onVoltar}>Voltar</Botao>
+            <Botao endIcon={<OkIcon />}>Concluir</Botao>
           </div>
         </Content>
       </Main>

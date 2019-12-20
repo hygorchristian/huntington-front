@@ -1,39 +1,23 @@
 import styled from 'styled-components';
+import InputBase from '@material-ui/core/InputBase';
 
 export const Container = styled.div`
-  width: 325px;
-  height: 35px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding-left: 12px;
-  padding-right: 18px;  
-  background-color: rgba(165,165,165,0.1);
-  border-radius: 5px;
+  position: relative;
+  margin-left: 0;
+  width: 100%;
   
-  input{
-    margin-left: 22px;
-    font-size: 13px;
+  
+  .searchIcon{
+    width: 100px;
     height: 100%;
-    background-color: transparent;
-    border: none;
-    flex: 1;
-    
-    &:focus{
-      border: none;
-    }
-    
-    &::placeholder{
-      color: rgba(112,112,112,0.5);
-    }
+    position: absolute;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  
-  button{
-    color: #3A6E4F;
-    font-size: 13px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-weight: 500;
-  }
+`;
+
+export const Input = styled(InputBase)`
+  tran
 `;

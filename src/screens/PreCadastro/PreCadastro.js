@@ -1,10 +1,12 @@
 import React from 'react';
 import { FiMapPin, FiUsers } from 'react-icons/fi';
+import AddIcon from '@material-ui/icons/Add';
 
 import {
  Container, Header, Content, Busca, Subheader
 } from './styles';
 import Voltar from '~/components/Voltar/Voltar';
+import Botao from '~/components/Botao';
 
 const items = [1, 2, 3, 4, 5];
 
@@ -33,7 +35,7 @@ function PreCadastro({ history }) {
       </Header>
       <Subheader>
         <Busca />
-        <button onClick={novaDoadora}>Adicionar</button>
+        <Botao onClick={novaDoadora} startIcon={<AddIcon />}>Adicionar</Botao>
       </Subheader>
       <Content>
         <table cellSpacing={0}>
@@ -49,12 +51,12 @@ function PreCadastro({ history }) {
             {
             items.map((item) => (
               <tr className="linha" onClick={() => detalhesDoadora(item)}>
-                <td style={{ width: 70 }}>123456</td>
+                <td>123456</td>
                 <td>Carolina Marrocos</td>
                 <td>emaildoadora@email.com.br</td>
-                <td style={{ width: 120 }}>yes</td>
-                <td style={{ width: 100 }}>Em análise</td>
-                <td style={{ width: 150 }}>Pré-Cadastrada</td>
+                <td>yes</td>
+                <td>Em análise</td>
+                <td>Pré-Cadastrada</td>
               </tr>
             ))
           }

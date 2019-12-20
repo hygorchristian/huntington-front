@@ -97,10 +97,10 @@ function Dashboard({ children, history, match: { path } }) {
       </Menu>
       <Main aberto={aberto}>
         <Header>
-          <Left>
-            <FiSearch size={20} color="#A9D4B2" />
-            <input placeholder="Pesquisar por doadora, PIN..." />
-          </Left>
+          {/* <Left> */}
+          {/*  <FiSearch size={20} color="#A9D4B2" /> */}
+          {/*  <input placeholder="Pesquisar por doadora, PIN..." /> */}
+          {/* </Left> */}
           <Right>
             <Notification>
               <FiBell size={20} />

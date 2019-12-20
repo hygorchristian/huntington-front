@@ -1,10 +1,28 @@
 import React from 'react';
 import { FiUsers, FiMapPin } from 'react-icons/fi';
+import AddIcon from '@material-ui/icons/Add';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 
 import {
  Container, Header, Item, Lista
 } from './styles';
+
 import Busca from '~/components/Busca';
+import Botao from '~/components/Botao';
+
+const useStyles = makeStyles((theme) => ({
+  title: {
+    display: 'none',
+    width: 250,
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
+    },
+  },
+  button: {
+    marginLeft: 20
+  }
+}));
 
 const items = [
   {
@@ -45,6 +63,8 @@ function ListaItem({ onClick }) {
 }
 
 function PreCadastros({ history }) {
+  const classes = useStyles();
+
   const navigate = (id) => {
     history.push(`/doadora/pre-cadastros/${id}`);
   };
@@ -56,9 +76,13 @@ function PreCadastros({ history }) {
   return (
     <Container>
       <Header>
-        <h1>Pré-Cadastros</h1>
+        <Typography className={classes.title} variant="h6" noWrap>
+            Pré-Cadastros
+        </Typography>
         <Busca />
-        <button onClick={novoEvento}>Adicionar</button>
+        <Botao className={classes.button} color="primary" startIcon={<AddIcon />} onClick={novoEvento}>Adicionar</Botao>
+
+
       </Header>
       <Lista>
         {

@@ -134,26 +134,22 @@ export const Content = styled.div`
   
   form{
     margin-top: 40px;
-    width: 500px;
-    padding-bottom: 80px;
-    border-bottom: 1px solid rgba(112,112,112,0.2);
-    
-    & > input{
-      width: 100%;
-    }
-    
-    .row {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      width: 100%;
-      
-      & > input{
-        flex: 1;
-        margin-left: 10px;
-        margin-right: 20px;
-      }
-    }
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(112,112,112,0.2);    
+  }
+  
+  .grid{
+    width: 600px;
+    display: grid;
+    grid-column-gap: 20px;
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .line{
+    width: 600px;
+    display: grid;
+    grid-column-gap: 20px;
+    grid-template-columns: 1fr;
   }
   
   .buttons{
@@ -162,30 +158,6 @@ export const Content = styled.div`
     align-items: center;
     justify-content: space-between;
     padding-top: 32px;
-    width: 500px;
-  
-    button{
-      height: 35px;
-      width: 100px;
-      border-radius: 5px;
-      background-color: #3E6F55;
-      font-size: 13px;
-      text-transform: uppercase;
-      color: #ffffff;
-      margin-left: 18px;
-      cursor: pointer;
-      transition: all 250ms ease-in-out;
-      
-      &.light{
-        background-color: #ffffff;
-        color: #3E6F55;
-        border: 1px solid #3E6F55;
-      }
-      
-      &:active{
-        opacity: .5;
-        border: 1px solid #8adab3;
-      }
-    }
+    width: 600px;
   }
 `;

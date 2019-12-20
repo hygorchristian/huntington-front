@@ -3,12 +3,14 @@ import { KeyboardDatePicker } from '@material-ui/pickers';
 
 export const Container = styled(KeyboardDatePicker).attrs({
   margin: 'normal',
-  format: 'dd/MM/yyyy',
+  format: 'DD/MM/YYYY',
   fullWidth: true,
   variant: 'outlined',
+  okLabel: 'ok',
+  cancelLabel: 'cancelar',
   KeyboardButtonProps: {
     'aria-label': 'change date'
-  }
+  },
 })`
   
 `;

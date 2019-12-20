@@ -1,27 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
+import NextIcon from '@material-ui/icons/ArrowForward';
 
-import { Formik, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import MenuItem from '@material-ui/core/MenuItem';
-import InputLabel from '~/components/InputLabel';
-import OptionsLabel from '~/components/OptionsLabel';
 
 import {
   Container, Header, Content
 } from './styles';
 import Voltar from '~/components/Voltar/Voltar';
-import { LoginSchema } from '~/screens/Login/validators';
-import { Form, Loading } from '~/screens/Login/styles';
-import MuiField from '~/components/MuiField';
 import MuiDatePicker from '~/components/MuiDatePicker';
 import MuiSelect from '~/components/MuiSelect';
 import { AdicionarDoadoraSchema } from '~/screens/AdicionarDoadoraInicio/validators';
 import MuiInput from '~/components/MuiInput';
+import Loading from '~/components/Loading';
+import Botao from '~/components/Botao';
 
 function AdicionarDoadoraInicio({ onProximo }) {
-  const [estadoCivil, setEstadoCivil] = useState(null);
-  const [etnia, setEtnia] = useState(null);
-
   const onSubmit = (values) => {
 
   };
@@ -29,13 +24,14 @@ function AdicionarDoadoraInicio({ onProximo }) {
   const formik = useFormik({
     initialValues: {
       nome: '',
-      nascimento: '',
+      nascimento: new Date(),
       estadocivil: 'dddd',
       etnia: ''
     },
     onSubmit,
     validationSchema: AdicionarDoadoraSchema
   });
+
   return (
     <Container>
       <Voltar label="Mutirão dia da saúde" route="/doadora/pre-cadastros/1" />
@@ -89,46 +85,15 @@ function AdicionarDoadoraInicio({ onProximo }) {
             <MenuItem value="outra">Outra</MenuItem>
           </MuiSelect>
           {formik.isSubmitting && <Loading size={20} />}
-          {/* <span>{error}</span> */}
         </form>
-        {/* <form> */}
-        {/*  <InputLabel */}
-        {/*    label="Nome" */}
-        {/*    type="text" */}
-        {/*    width={400} */}
-        {/*  /> */}
-        {/*  <InputLabel */}
-        {/*    label="Data de Nascimento" */}
-        {/*    type="date" */}
-        {/*    width={300} */}
-        {/*  /> */}
-        {/*  <OptionsLabel */}
-        {/*    label="Estado Civil" */}
-        {/*    data={[ */}
-        {/*      'Casada', */}
-        {/*      'Solteira', */}
-        {/*      'Divorciada', */}
-        {/*      'Viúva' */}
-        {/*    ]} */}
-        {/*    value={estadoCivil} */}
-        {/*    onSelect={(value) => setEstadoCivil(value)} */}
-        {/*  /> */}
-        {/*  <OptionsLabel */}
-        {/*    label="Etnia" */}
-        {/*    data={[ */}
-        {/*      'Branca', */}
-        {/*      'Loira', */}
-        {/*      'Parda', */}
-        {/*      'Negra', */}
-        {/*      'Oriental', */}
-        {/*      'Outra', */}
-        {/*    ]} */}
-        {/*    value={etnia} */}
-        {/*    onSelect={(value) => setEtnia(value)} */}
-        {/*  /> */}
-        {/* </form> */}
         <div className="buttons">
-          <button onClick={onProximo} className="light">Próximo</button>
+          <Botao
+            color=""
+            endIcon={<NextIcon />}
+            onClick={onProximo}
+          >
+            Próximo
+          </Botao>
         </div>
       </Content>
     </Container>
