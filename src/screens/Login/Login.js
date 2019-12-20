@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { withSnackbar } from 'notistack';
 import { LoginSchema } from './validators';
 import jwtService from '~/services/jwtService';
 
@@ -11,20 +12,19 @@ import {
 import MuiField from '~/components/MuiField';
 import { AuthActions } from '~/store/ducks/auth';
 
-function Login() {
+function Login(props) {
   const dispatch = useDispatch();
   const isAuth = useSelector((state) => state.Auth.isAuth);
-  const [error, setError] = useState(null);
 
   const onSubmit = async (values) => {
-    setError(null);
     try {
       const response = await jwtService.login(values.identifier, values.password);
       dispatch(AuthActions.authLoadSuccess(response));
     } catch (e) {
-      setError(e);
+      props.enqueueSnackbar('Email ou senha inválidos', { variant: 'error' });
     }
   };
+
 
   if (isAuth) return <Redirect to="/" />;
 
@@ -56,7 +56,6 @@ function Login() {
               />
               {isSubmitting && <Loading size={20} />}
               <button type="submit">Entrar</button>
-              <span>{error}</span>
             </Form>
           )}
         </Formik>
@@ -66,4 +65,4 @@ function Login() {
 );
 }
 
-export default Login;
+export default withSnackbar(Login);
