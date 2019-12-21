@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
 export default function MuiTable({ schema, data = [] }) {
   const classes = useStyles();
   const history = useHistory();
+  const routeParams = useParams();
   const params = new URLSearchParams(window.location.search);
 
   let q = params.get('q');
@@ -93,7 +94,7 @@ export default function MuiTable({ schema, data = [] }) {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <Toolbar onSearch={handleOnSearch} />
+        <Toolbar onSearch={handleOnSearch} onAdd={() => schema.onAdd(history, routeParams)} />
         <TableContainer>
           <Table
             className={classes.table}

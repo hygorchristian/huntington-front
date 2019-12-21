@@ -1,4 +1,9 @@
+function onAdd(history, params) {
+  history.push(`/doadora/pre-cadastros/${params.id}/nova-doadora`);
+}
+
 export default {
+  onAdd,
   fields: [
     {
       label: 'ID',
@@ -31,6 +36,5 @@ export default {
       name: 'status',
       type: 'string',
     },
-  ]
-
+  ],
 };
