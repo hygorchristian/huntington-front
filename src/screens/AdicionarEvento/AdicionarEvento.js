@@ -1,9 +1,7 @@
 import React from 'react';
-import { FiChevronLeft, FiCalendar, FiMapPin } from 'react-icons/fi';
+import OkIcon from '@material-ui/icons/Check';
 
 import { useFormik } from 'formik';
-import MenuItem from '@material-ui/core/MenuItem';
-import Divider from '@material-ui/core/Divider';
 import {
   Container, Header, Content
 } from './styles';
@@ -11,7 +9,6 @@ import Voltar from '~/components/Voltar/Voltar';
 import { AdicionarDoadoraSchema } from '~/screens/AdicionarDoadoraInicio/validators';
 import MuiInput from '~/components/MuiInput';
 import MuiDatePicker from '~/components/MuiDatePicker';
-import MuiSelect from '~/components/MuiSelect';
 import Loading from '~/components/Loading';
 import Botao from '~/components/Botao';
 
@@ -67,8 +64,8 @@ function AdicionarEvento({ history }) {
           {formik.isSubmitting && <Loading size={20} />}
         </form>
         <div className="buttons">
-          <Botao onClick={cancelar}>Cancelar</Botao>
-          <Botao color="primary" onClick={formik.submitForm}>Salvar</Botao>
+          <Botao color="" onClick={cancelar}>Cancelar</Botao>
+          <Botao onClick={formik.submitForm} endIcon={<OkIcon />}>Salvar</Botao>
         </div>
       </Content>
     </Container>

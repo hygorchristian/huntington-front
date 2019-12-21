@@ -7,8 +7,9 @@ import {
 } from './styles';
 import Voltar from '~/components/Voltar/Voltar';
 import Botao from '~/components/Botao';
-
-const items = [1, 2, 3, 4, 5];
+import MuiTable from '~/components/MuiTable';
+import schema from './schema';
+import data from './mock';
 
 function PreCadastro({ history }) {
   const novaDoadora = () => {
@@ -33,35 +34,32 @@ function PreCadastro({ history }) {
           <span>Vila Mariana</span>
         </div>
       </Header>
-      <Subheader>
-        <Busca />
-        <Botao onClick={novaDoadora} startIcon={<AddIcon />}>Adicionar</Botao>
-      </Subheader>
       <Content>
-        <table cellSpacing={0}>
-          <thead>
-            <th>ID</th>
-            <th />
-            <th />
-            <th>Interesse em doar</th>
-            <th>Apta a doar</th>
-            <th>Status de Atendimento</th>
-          </thead>
-          <tbody>
-            {
-            items.map((item) => (
-              <tr className="linha" onClick={() => detalhesDoadora(item)}>
-                <td>123456</td>
-                <td>Carolina Marrocos</td>
-                <td>emaildoadora@email.com.br</td>
-                <td>yes</td>
-                <td>Em análise</td>
-                <td>Pré-Cadastrada</td>
-              </tr>
-            ))
-          }
-          </tbody>
-        </table>
+        <MuiTable schema={schema} data={data} />
+        {/* <table cellSpacing={0}> */}
+        {/*  <thead> */}
+        {/*    <th>ID</th> */}
+        {/*    <th /> */}
+        {/*    <th /> */}
+        {/*    <th>Interesse em doar</th> */}
+        {/*    <th>Apta a doar</th> */}
+        {/*    <th>Status de Atendimento</th> */}
+        {/*  </thead> */}
+        {/*  <tbody> */}
+        {/*    { */}
+        {/*    items.map((item) => ( */}
+        {/*      <tr className="linha" onClick={() => detalhesDoadora(item)}> */}
+        {/*        <td>123456</td> */}
+        {/*        <td>Carolina Marrocos</td> */}
+        {/*        <td>emaildoadora@email.com.br</td> */}
+        {/*        <td>yes</td> */}
+        {/*        <td>Em análise</td> */}
+        {/*        <td>Pré-Cadastrada</td> */}
+        {/*      </tr> */}
+        {/*    )) */}
+        {/*  } */}
+        {/*  </tbody> */}
+        {/* </table> */}
       </Content>
     </Container>
 );

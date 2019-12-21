@@ -1,69 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
-import { fade, makeStyles } from '@material-ui/core/styles';
-import { grey } from '@material-ui/core/colors';
+import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
-  },
-  search: {
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(grey[400], 0.15),
-    '&:hover': {
-      backgroundColor: fade(grey[400], 0.25),
-    },
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(1),
-      width: 'auto',
-    },
-  },
-  searchIcon: {
-    width: theme.spacing(7),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
+    padding: '2px 4px',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
+    width: 400,
   },
-  inputRoot: {
-    color: 'inherit',
+  input: {
+    marginLeft: theme.spacing(3),
+    flex: 1,
   },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 7),
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: 200,
-      '&:focus': {
-        width: 300,
-      },
-    },
+  iconButton: {
+    padding: 10,
+  },
+  divider: {
+    height: 28,
+    margin: 4,
   },
 }));
 
-function Busca(props) {
+function Busca({ onSearch, ...props }) {
   const classes = useStyles();
+  const params = new URLSearchParams(window.location.search);
+  const q = params.get('q');
+  const [value, setValue] = useState(q);
+
+  const onClick = (e) => {
+    e.preventDefault();
+    onSearch(value);
+  };
 
   return (
-    <div className={classes.search}>
-      <div className={classes.searchIcon}>
-        <SearchIcon />
-      </div>
+    <Paper component="form" className={classes.root}>
       <InputBase
-        placeholder="Pesquisar por nome, data …"
-        classes={{
-          root: classes.inputRoot,
-          input: classes.inputInput,
-        }}
-        inputProps={{ 'aria-label': 'search' }}
+        className={classes.input}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        {...props}
       />
-    </div>
+      <IconButton onClick={onClick} className={classes.iconButton}>
+        <SearchIcon />
+      </IconButton>
+    </Paper>
 );
 }
 

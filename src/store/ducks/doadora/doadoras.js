@@ -32,8 +32,6 @@ const doadorasLoadFailure = (state, { error }) => ({
 
 // Reducer
 
-console.tron.log('type', Types.DOADORAS_LOAD_REQUEST);
-
 export const DoadorasReducer = createReducer(INITIAL_STATE, {
   [Types.DOADORAS_LOAD_REQUEST]: doadorasLoadRequest,
   [Types.DOADORAS_LOAD_SUCCESS]: doadorasLoadSuccess,

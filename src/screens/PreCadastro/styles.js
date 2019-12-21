@@ -58,7 +58,6 @@ export const Subheader = styled.div`
   justify-content: space-between;
 `;
 
-
 export const Busca = styled(BuscaBase)`
   width: 450px;
 `;
@@ -66,29 +65,6 @@ export const Busca = styled(BuscaBase)`
 
 export const Content = styled.div`
   width: 100%;
-  
-  table{
-    width: 100%;
-    padding-right: 45px;
-    
-    th{
-      font-size: 13px;
-      color: #A5A5A5;
-      font-weight: 400;
-    }
-    
-    tr{
-      height: 60px;
-      cursor: pointer;
-    }
-    
-    td{
-      border-bottom: 1px solid rgba(165,165,165,0.2);
-      font-size: 14px;
-      font-weight: 400;
-      color: #707070;
-      text-align: center;
-    }
-  }
-
+  padding-right: 40px;
+  padding-top: 30px;
 `;
