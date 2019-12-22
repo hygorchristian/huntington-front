@@ -1,28 +1,22 @@
 import React from 'react';
 import { FiMapPin, FiUsers } from 'react-icons/fi';
-import AddIcon from '@material-ui/icons/Add';
 
 import {
- Container, Header, Content, Busca, Subheader
+ Container, Header, Content
 } from './styles';
 import Voltar from '~/components/Voltar/Voltar';
-import Botao from '~/components/Botao';
 import MuiTable from '~/components/MuiTable';
 import schema from './schema';
 import data from './mock';
 
 function PreCadastro({ history }) {
-  const novaDoadora = () => {
-    history.push('/doadora/pre-cadastros/1/nova-doadora');
-  };
-
   const detalhesDoadora = (id) => {
     history.push('/doadora/detalhes/1');
   };
 
   return (
     <Container>
-      <Voltar label="Pré-Cadastros" route="/doadora/pre-cadastros" />
+      <Voltar label="Pré-Cadastros" />
       <Header>
         <h1>Mutirão Dia da Saúde</h1>
         <div className="quantidade">

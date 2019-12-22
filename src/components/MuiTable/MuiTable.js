@@ -42,11 +42,14 @@ export default function MuiTable({ schema, data = [] }) {
   const routeParams = useParams();
   const params = new URLSearchParams(window.location.search);
 
+  const deps = { history, params: routeParams, };
+
   let q = params.get('q');
   let order = params.get('order') || 'ASC';
   let sort = params.get('sort') || 'id';
   let page = params.get('page') || '1';
   let perPage = params.get('perPage') || '10';
+  let filter = params.get('filter');
 
   const updateSearch = () => {
     const { pathname } = history.location;
@@ -56,6 +59,7 @@ export default function MuiTable({ schema, data = [] }) {
       order,
       page,
       perPage,
+      filter
     });
     history.push({
       pathname,
@@ -91,10 +95,28 @@ export default function MuiTable({ schema, data = [] }) {
     updateSearch();
   };
 
+  const handleSelectFilter = (val) => {
+    filter = val;
+    updateSearch();
+  };
+
+  const handleOnAdd = () => schema.onAdd(deps);
+
+  const handleOnClick = (id) => {
+    if (schema.onClick) {
+      schema.onClick(deps, id);
+    }
+  };
+
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <Toolbar onSearch={handleOnSearch} onAdd={() => schema.onAdd(history, routeParams)} />
+        <Toolbar
+          onSearch={handleOnSearch}
+          onAdd={schema.onAdd && handleOnAdd}
+          onSelectFilter={handleSelectFilter}
+          filters={schema.filters}
+        />
         <TableContainer>
           <Table
             className={classes.table}
@@ -111,7 +133,7 @@ export default function MuiTable({ schema, data = [] }) {
               {data.map((row) => (
                 <TableRow
                   hover
-                  onClick={(event) => handleClick(event, row.name)}
+                  onClick={() => handleOnClick(row.id)}
                   role="checkbox"
                   tabIndex={-1}
                   key={row.name}
@@ -129,11 +151,14 @@ export default function MuiTable({ schema, data = [] }) {
           component="div"
           count={data.length}
           rowsPerPage={perPage}
-          page={page}
+          page={page - 1}
           onChangePage={handleChangePage}
           onChangeRowsPerPage={handleChangeRowsPerPage}
           labelRowsPerPage="Registros por página"
-          labelDisplayedRows={({ from, to, count }) => `${from}-${to === -1 ? count : to} de ${count}`}
+          labelDisplayedRows={({ from, to, count }) => {
+            console.tron.log({ from, to, count });
+            return `${from}-${to === -1 ? count : to} de ${count}`;
+          }}
         />
       </Paper>
     </div>

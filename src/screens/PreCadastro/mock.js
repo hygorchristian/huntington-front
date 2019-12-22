@@ -13,6 +13,8 @@ const rows = [
   createData('123453', 'Maria Carolina do Rosário', 'emaildoadora@email.com.br', true, 'apta', 'Em andamento'),
   createData('123455', 'Maria Carolina do Rosário', 'emaildoadora@email.com.br', true, 'apta', 'Em andamento'),
   createData('123450', 'Maria Carolina do Rosário', 'emaildoadora@email.com.br', true, 'apta', 'Em andamento'),
+  createData('123450', 'Maria Carolina do Rosário', 'emaildoadora@email.com.br', true, 'apta', 'Em andamento'),
+  createData('123450', 'Maria Carolina do Rosário', 'emaildoadora@email.com.br', true, 'apta', 'Em andamento'),
 ];
 
 export default rows;

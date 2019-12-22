@@ -1,15 +1,15 @@
 import React from 'react';
 import { FiUsers, FiMapPin } from 'react-icons/fi';
-import AddIcon from '@material-ui/icons/Add';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import MuiTable from '~/components/MuiTable';
+import schema from './schema';
+import mock from './mock';
 
 import {
- Container, Header, Item, Lista
+ Container, Header, Content
 } from './styles';
 
-import Busca from '~/components/Busca';
-import Botao from '~/components/Botao';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -23,44 +23,6 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 20
   }
 }));
-
-const items = [
-  {
-    id: 1,
-  },
-  {
-    id: 2,
-  },
-  {
-    id: 3,
-  },
-  {
-    id: 4,
-  },
-];
-
-function ListaItem({ onClick }) {
-  return (
-    <Item onClick={onClick}>
-      <div className="dados-usuario">
-        <div className="linha">
-          <h2 className="nome">Mutirão Dia da Saúde</h2>
-        </div>
-        <div className="linha">
-          <span className="consulta">16 de agosto de 2019</span>
-        </div>
-      </div>
-      <div className="quantidade">
-        <FiUsers color="#A9D4B2" size={14} />
-        <span>52</span>
-      </div>
-      <div className="endereco">
-        <FiMapPin color="#A9D4B2" size={14} />
-        <span>Vila Mariana</span>
-      </div>
-    </Item>
-  );
-}
 
 function PreCadastros({ history }) {
   const classes = useStyles();
@@ -79,18 +41,10 @@ function PreCadastros({ history }) {
         <Typography className={classes.title} variant="h6" noWrap>
             Pré-Cadastros
         </Typography>
-        <Busca />
-        <Botao className={classes.button} color="primary" startIcon={<AddIcon />} onClick={novoEvento}>Adicionar</Botao>
-
-
       </Header>
-      <Lista>
-        {
-          items.map((item) => (
-            <ListaItem key={item.id} onClick={() => navigate(item.id)} item={item} />
-          ))
-        }
-      </Lista>
+      <Content>
+        <MuiTable schema={schema} data={mock} />
+      </Content>
     </Container>
 );
 }

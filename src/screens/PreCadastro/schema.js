@@ -1,8 +1,14 @@
-function onAdd(history, params) {
+function onClick({ history }, id) {
+  history.push(`/doadora/detalhes/${id}`);
+}
+
+function onAdd({ history, params }) {
+  console.tron.log(params);
   history.push(`/doadora/pre-cadastros/${params.id}/nova-doadora`);
 }
 
 export default {
+  onClick,
   onAdd,
   fields: [
     {
@@ -37,4 +43,30 @@ export default {
       type: 'string',
     },
   ],
+  filters: [
+    {
+      label: 'Todas',
+      name: 'todas',
+    },
+    {
+      label: 'Programadas',
+      name: 'programadas',
+    },
+    {
+      label: 'Estimulação',
+      name: 'estimulacao',
+    },
+    {
+      label: 'Coleta Realizada',
+      name: 'coletaRealizada',
+    },
+    {
+      label: 'Stand',
+      name: 'stand',
+    },
+    {
+      label: 'CFA',
+      name: 'cfa',
+    },
+  ]
 };

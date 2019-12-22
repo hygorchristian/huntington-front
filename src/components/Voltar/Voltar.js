@@ -4,9 +4,9 @@ import { FiChevronLeft } from 'react-icons/fi';
 
 import { Container } from './styles';
 
-function Voltar({ history, route, label }) {
+function Voltar({ history, label }) {
   const navigate = () => {
-    history.push(route);
+    history.goBack();
   };
 
   return (

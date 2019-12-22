@@ -3,11 +3,11 @@ import { makeStyles } from '@material-ui/core';
 import MuiToolbar from '@material-ui/core/Toolbar';
 import AddIcon from '@material-ui/icons/Add';
 
-// import Tooltip from '@material-ui/core/Tooltip';
-// import IconButton from '@material-ui/core/IconButton';
-// import Menu from '@material-ui/core/Menu';
-// import MenuItem from '@material-ui/core/MenuItem';
-// import FilterListIcon from '@material-ui/icons/FilterList';
+import Tooltip from '@material-ui/core/Tooltip';
+import IconButton from '@material-ui/core/IconButton';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import FilterListIcon from '@material-ui/icons/FilterList';
 
 import Botao from '~/components/Botao';
 import Busca from '~/components/Busca';
@@ -22,46 +22,61 @@ const useToolbarStyles = makeStyles((theme) => ({
   },
 }));
 
-const Toolbar = ({ onSearch, onAdd }) => {
+const Toolbar = ({
+ onSearch, onAdd, filters, onSelectFilter
+}) => {
   const classes = useToolbarStyles();
 
-  // const [anchorEl, setAnchorEl] = useState(null);
-  //
-  // const handleClick = (event) => {
-  //   setAnchorEl(event.currentTarget);
-  // };
-  //
-  // const handleClose = () => {
-  //   setAnchorEl(null);
-  // };
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  console.tron.log({ filters });
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <MuiToolbar className={classes.root}>
       <Busca placeholder="Pesquisar..." onSearch={onSearch} />
       <div style={{ flex: 1 }} />
-      <Botao
-        style={{ marginRight: 10 }}
-        startIcon={<AddIcon />}
-        onClick={onAdd}
+      {
+        onAdd && (
+          <Botao
+            style={{ marginRight: 10 }}
+            startIcon={<AddIcon />}
+            onClick={onAdd}
+          >
+            Adicionar
+          </Botao>
+        )
+      }
+
+      {
+        filters && (
+          <Tooltip title="Filter list">
+            <IconButton onClick={handleClick}>
+              <FilterListIcon />
+            </IconButton>
+          </Tooltip>
+        )
+      }
+
+      <Menu
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
       >
-        Adicionar
-      </Botao>
-      {/* <Tooltip title="Filter list"> */}
-      {/*  <IconButton onClick={handleClick}> */}
-      {/*    <FilterListIcon /> */}
-      {/*  </IconButton> */}
-      {/* </Tooltip> */}
-      {/* <Menu */}
-      {/*  id="simple-menu" */}
-      {/*  anchorEl={anchorEl} */}
-      {/*  keepMounted */}
-      {/*  open={Boolean(anchorEl)} */}
-      {/*  onClose={handleClose} */}
-      {/* > */}
-      {/*  <MenuItem onClick={handleClose}>Profile</MenuItem> */}
-      {/*  <MenuItem onClick={handleClose}>My account</MenuItem> */}
-      {/*  <MenuItem onClick={handleClose}>Logout</MenuItem> */}
-      {/* </Menu> */}
+        {
+          filters && filters.map((filter) => (
+            <MenuItem onClick={() => onSelectFilter(filter.name)}>{filter.label}</MenuItem>
+          ))
+        }
+      </Menu>
     </MuiToolbar>
   );
 };
