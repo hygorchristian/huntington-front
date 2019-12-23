@@ -3,13 +3,14 @@ import { useHistory, useParams } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Toolbar from './Toolbar';
 import Head from './Head';
+import Cell from './Cell';
+
 import { urlParams } from '~/utils/url';
 
 const useStyles = makeStyles((theme) => ({
@@ -36,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MuiTable({ schema, data = [] }) {
+export default function MuiTable({ loading, schema, data = [] }) {
   const classes = useStyles();
   const history = useHistory();
   const routeParams = useParams();
@@ -112,6 +113,7 @@ export default function MuiTable({ schema, data = [] }) {
     <div className={classes.root}>
       <Paper className={classes.paper}>
         <Toolbar
+          loading={loading}
           onSearch={handleOnSearch}
           onAdd={schema.onAdd && handleOnAdd}
           onSelectFilter={handleSelectFilter}
@@ -130,17 +132,15 @@ export default function MuiTable({ schema, data = [] }) {
               headCells={schema.fields}
             />
             <TableBody>
-              {data.map((row) => (
+              {data && data.map((row) => (
                 <TableRow
                   hover
                   onClick={() => handleOnClick(row.id)}
                   role="checkbox"
                   tabIndex={-1}
-                  key={row.name}
+                  key={row.id}
                 >
-                  {schema.fields.map((field) => (
-                    <TableCell align={field.type === 'number' ? 'right' : 'left'}>{row[field.name]}</TableCell>
-                  ))}
+                  {schema.fields.map((field) => (<Cell field={field} row={row} />))}
                 </TableRow>
               ))}
             </TableBody>
@@ -155,10 +155,7 @@ export default function MuiTable({ schema, data = [] }) {
           onChangePage={handleChangePage}
           onChangeRowsPerPage={handleChangeRowsPerPage}
           labelRowsPerPage="Registros por página"
-          labelDisplayedRows={({ from, to, count }) => {
-            console.tron.log({ from, to, count });
-            return `${from}-${to === -1 ? count : to} de ${count}`;
-          }}
+          labelDisplayedRows={({ from, to, count }) => `${from}-${to === -1 ? count : to} de ${count}`}
         />
       </Paper>
     </div>

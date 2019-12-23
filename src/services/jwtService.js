@@ -1,6 +1,6 @@
 import jwtDecode from 'jwt-decode';
 import EventEmitter from '~/utils/EventEmitter';
-import api from '~/services/api';
+import Api from '~/services/api';
 
 class jwtService extends EventEmitter {
   init() {
@@ -9,15 +9,15 @@ class jwtService extends EventEmitter {
   }
 
   setInterceptors = () => {
-    api.interceptors.response.use((response) => response, (err) => new Promise((resolve, reject) => {
-      if (err.response.status === 401 && err.config && !err.config.__isRetryRequest) {
-        // se receber uma mensagem de Não Autorizado deve deslogar o usuário
-
-        this.emit('onAutoLogout', 'Token de acesso inválido');
-        this.setSession(null);
-      }
-      throw err;
-      }));
+    // api.interceptors.response.use((response) => response, (err) => new Promise((resolve, reject) => {
+    //   if (err.response.status === 401 && err.config && !err.config.__isRetryRequest) {
+    //     // se receber uma mensagem de Não Autorizado deve deslogar o usuário
+    //
+    //     this.emit('onAutoLogout', 'Token de acesso inválido');
+    //     this.setSession(null);
+    //   }
+    //   throw err;
+    //   }));
   };
 
   handleAuthentication = () => {
@@ -36,20 +36,20 @@ class jwtService extends EventEmitter {
     }
   };
 
-  createUser = (data) => new Promise((resolve, reject) => {
-    api.post('/api/auth/register', data)
-      .then((response) => {
-        if (response.data.user) {
-          this.setSession(response.data.access_token);
-          resolve(response.data.user);
-        } else {
-          reject(response.data.error);
-        }
-      });
-  });
+  // createUser = (data) => new Promise((resolve, reject) => {
+  //   Api.register(data)
+  //     .then((response) => {
+  //       if (response.data.user) {
+  //         this.setSession(response.data.access_token);
+  //         resolve(response.data.user);
+  //       } else {
+  //         reject(response.data.error);
+  //       }
+  //     });
+  // });
 
   login = (email, password) => new Promise((resolve, reject) => {
-    api.post('/auth/local', {
+    Api.login({
       identifier: email,
       password
     }).then((response) => {
@@ -60,17 +60,16 @@ class jwtService extends EventEmitter {
         reject(response.data.error);
       }
     }).catch((e) => {
-      reject('Erro ao logar');
+      reject(e);
     });
   });
 
   signInWithToken = () => new Promise((resolve, reject) => {
-    api.get('/auth/access-token', {
+    Api.signInWithToken({
       data: {
         access_token: this.getAccessToken()
       }
-    })
-      .then((response) => {
+    }).then((response) => {
         if (response.data.user) {
           resolve(response.data.user);
         } else {
@@ -79,17 +78,13 @@ class jwtService extends EventEmitter {
       });
   });
 
-  updateUserData = (user) => api.post('/api/auth/user/update', {
-    user
-  });
-
   setSession = (access_token) => {
     if (access_token) {
       localStorage.setItem('jwt_access_token', access_token);
-      api.defaults.headers.common.Authorization = `Bearer ${access_token}`;
+      Api.setToken(access_token);
     } else {
       localStorage.removeItem('jwt_access_token');
-      delete api.defaults.headers.common.Authorization;
+      Api.removeToken();
     }
   };
 
@@ -108,6 +103,15 @@ class jwtService extends EventEmitter {
       return false;
     }
       return true;
+  };
+
+  setAuth = () => {
+    const token = this.getAccessToken();
+    if (this.isAuthTokenValid(token)) {
+      Api.setToken(token);
+    } else {
+      console.tron.log('invalid token');
+    }
   };
 
   getAccessToken = () => window.localStorage.getItem('jwt_access_token');

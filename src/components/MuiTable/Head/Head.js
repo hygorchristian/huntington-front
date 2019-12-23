@@ -13,9 +13,6 @@ function Head(props) {
   const order = params.get('order') || '';
   const sort = params.get('sort') || '';
 
-
-  console.tron.log({ order, sort });
-
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
   };
@@ -23,30 +20,26 @@ function Head(props) {
   return (
     <TableHead>
       <TableRow>
-        {headCells.map((headCell) => {
-          console.tron.log({ order: sort === headCell.name ? order.toLowerCase() : false });
-
-          return (
-            <TableCell
-              key={headCell.name}
-              align={headCell.type === 'number' ? 'right' : 'left'}
-              sortDirection={sort === headCell.name ? order.toLowerCase() : false}
+        {headCells.map((headCell) => (
+          <TableCell
+            key={headCell.name}
+            align={headCell.type === 'number' ? 'right' : headCell.type === 'boolean' ? 'center' : 'left'}
+            sortDirection={sort === headCell.name ? order.toLowerCase() : false}
+          >
+            <TableSortLabel
+              active={sort === headCell.name}
+              direction={order.toLowerCase()}
+              onClick={createSortHandler(headCell.name)}
             >
-              <TableSortLabel
-                active={sort === headCell.name}
-                direction={order.toLowerCase()}
-                onClick={createSortHandler(headCell.name)}
-              >
-                {headCell.label}
-                {sort === headCell.name ? (
-                  <span className={classes.visuallyHidden}>
-                    {order === 'DESC' ? 'sorted descending' : 'sorted ascending'}
-                  </span>
+              {headCell.label}
+              {sort === headCell.name ? (
+                <span className={classes.visuallyHidden}>
+                  {order === 'DESC' ? 'sorted descending' : 'sorted ascending'}
+                </span>
                 ) : null}
-              </TableSortLabel>
-            </TableCell>
-          );
-        })}
+            </TableSortLabel>
+          </TableCell>
+          ))}
       </TableRow>
     </TableHead>
   );

@@ -1,18 +1,25 @@
 import React from 'react';
 import { FiMapPin, FiUsers } from 'react-icons/fi';
 
+import { useDispatch, useSelector } from 'react-redux';
 import {
  Container, Header, Content
 } from './styles';
 import Voltar from '~/components/Voltar/Voltar';
 import MuiTable from '~/components/MuiTable';
 import schema from './schema';
-import data from './mock';
+import { getParams, strapiParams } from '~/utils/url';
+import { PreCadastroActions } from '~/store/ducks/doadora/preCadastro';
 
-function PreCadastro({ history }) {
-  const detalhesDoadora = (id) => {
-    history.push('/doadora/detalhes/1');
-  };
+function PreCadastro() {
+  const data = useSelector((state) => state.doadora.preCadastro);
+  const dispatch = useDispatch();
+  const payload = getParams(['q', 'order:ASC', 'sort:id', 'page:1', 'perPage:10', 'filter']);
+
+
+  React.useEffect(() => {
+    dispatch(PreCadastroActions.preCadastroLoadRequest(strapiParams(payload)));
+  }, []);
 
   return (
     <Container>
@@ -29,31 +36,7 @@ function PreCadastro({ history }) {
         </div>
       </Header>
       <Content>
-        <MuiTable schema={schema} data={data} />
-        {/* <table cellSpacing={0}> */}
-        {/*  <thead> */}
-        {/*    <th>ID</th> */}
-        {/*    <th /> */}
-        {/*    <th /> */}
-        {/*    <th>Interesse em doar</th> */}
-        {/*    <th>Apta a doar</th> */}
-        {/*    <th>Status de Atendimento</th> */}
-        {/*  </thead> */}
-        {/*  <tbody> */}
-        {/*    { */}
-        {/*    items.map((item) => ( */}
-        {/*      <tr className="linha" onClick={() => detalhesDoadora(item)}> */}
-        {/*        <td>123456</td> */}
-        {/*        <td>Carolina Marrocos</td> */}
-        {/*        <td>emaildoadora@email.com.br</td> */}
-        {/*        <td>yes</td> */}
-        {/*        <td>Em análise</td> */}
-        {/*        <td>Pré-Cadastrada</td> */}
-        {/*      </tr> */}
-        {/*    )) */}
-        {/*  } */}
-        {/*  </tbody> */}
-        {/* </table> */}
+        <MuiTable schema={schema} data={data && data.lista} loading={data && data.loading} />
       </Content>
     </Container>
 );

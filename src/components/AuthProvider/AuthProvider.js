@@ -7,30 +7,30 @@ function AuthProvider({ children }) {
   const dispatch = useDispatch();
 
   const jwtCheck = () => {
-    jwtService.on('onAutoLogin', () => {
-      jwtService.signInWithToken()
-        .then((user) => {
-          dispatch(AuthActions.authLoadSuccess(user));
-        })
-        .catch((error) => {
-          dispatch(AuthActions.authLoadFailure(error));
-          dispatch(AuthActions.logout());
-        });
-    });
+    // jwtService.on('onAutoLogin', () => {
+    //   jwtService.signInWithToken()
+    //     .then((user) => {
+    //       dispatch(AuthActions.authLoadSuccess(user));
+    //     })
+    //     .catch((error) => {
+    //       dispatch(AuthActions.authLoadFailure(error));
+    //       dispatch(AuthActions.logout());
+    //     });
+    // });
 
-    jwtService.on('onAutoLogout', (message) => {
-      if (message) {
-        dispatch(AuthActions.authLoadFailure(message));
-      }
-      dispatch(AuthActions.logout());
-    });
+    // jwtService.on('onAutoLogout', (message) => {
+    //   if (message) {
+    //     dispatch(AuthActions.authLoadFailure(message));
+    //   }
+    //   dispatch(AuthActions.logout());
+    // });
+
+    jwtService.setAuth();
 
     jwtService.init();
   };
 
-  useEffect(() => {
-    // jwtCheck();
-  }, []);
+  jwtCheck();
 
   return children;
 }

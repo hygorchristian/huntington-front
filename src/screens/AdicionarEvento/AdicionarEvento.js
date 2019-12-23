@@ -1,35 +1,56 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import OkIcon from '@material-ui/icons/Check';
 
 import { useFormik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
+import { withSnackbar } from 'notistack';
 import {
   Container, Header, Content
 } from './styles';
 import Voltar from '~/components/Voltar/Voltar';
-import { AdicionarDoadoraSchema } from '~/screens/AdicionarDoadoraInicio/validators';
+import { novoEventoSchema } from './validators';
 import MuiInput from '~/components/MuiInput';
 import MuiDatePicker from '~/components/MuiDatePicker';
 import Loading from '~/components/Loading';
 import Botao from '~/components/Botao';
+import { NovoEventoActions } from '~/store/ducks/doadora/novoEvento';
 
-function AdicionarEvento({ history }) {
+function AdicionarEvento({ history, enqueueSnackbar }) {
+  const dispatch = useDispatch();
+  const { loading, message, error } = useSelector((state) => state.doadora.novoEvento);
+
   const cancelar = () => {
     history.push('/doadora/pre-cadastros');
   };
 
   const onSubmit = (values) => {
-
+    dispatch(NovoEventoActions.novoEventoSaveRequest(values));
   };
 
   const formik = useFormik({
     initialValues: {
-      nome: '',
-      data: new Date(),
-      local: '',
+      name: '',
+      date: new Date(),
+      address: {
+        address: ''
+      },
     },
     onSubmit,
-    validationSchema: AdicionarDoadoraSchema
+    validationSchema: novoEventoSchema
   });
+
+  useEffect(() => {
+    if (message) {
+      enqueueSnackbar(message, { variant: 'success' });
+      formik.resetForm(formik.initialValues);
+    }
+  }, [message]);
+
+  useEffect(() => {
+    if (error) {
+      enqueueSnackbar(error, { variant: 'error' });
+    }
+  }, [error]);
 
   return (
     <Container>
@@ -40,28 +61,32 @@ function AdicionarEvento({ history }) {
       <Content>
         <form onSubmit={formik.handleSubmit}>
           <MuiInput
-            name="nome"
+            name="name"
             label="Nome"
             type="text"
-            value={formik.values.nome}
+            value={formik.values.name}
             onChange={formik.handleChange}
+            error={formik.errors.name}
+            helperText={formik.errors.name}
           />
           <MuiDatePicker
-            name="data"
+            name="date"
             label="Data"
-            value={formik.values.data}
+            value={formik.values.date}
             onChange={(e) => {
-              formik.setFieldValue('data', e);
+              formik.setFieldValue('date', e);
             }}
           />
           <MuiInput
-            name="local"
+            name="address.address"
             label="Local"
             type="text"
-            value={formik.values.local}
+            value={formik.values.address.address}
             onChange={formik.handleChange}
+            error={formik.errors.address && formik.errors.address.address}
+            helperText={formik.errors.address && formik.errors.address.address}
           />
-          {formik.isSubmitting && <Loading size={20} />}
+          {loading && <Loading />}
         </form>
         <div className="buttons">
           <Botao color="" onClick={cancelar}>Cancelar</Botao>
@@ -72,4 +97,4 @@ function AdicionarEvento({ history }) {
   );
 }
 
-export default AdicionarEvento;
+export default withSnackbar(AdicionarEvento);

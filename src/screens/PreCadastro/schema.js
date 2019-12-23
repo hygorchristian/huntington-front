@@ -3,7 +3,6 @@ function onClick({ history }, id) {
 }
 
 function onAdd({ history, params }) {
-  console.tron.log(params);
   history.push(`/doadora/pre-cadastros/${params.id}/nova-doadora`);
 }
 

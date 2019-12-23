@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { SnackbarProvider } from 'notistack';
 import { PersistGate } from 'redux-persist/integration/react';
 import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
-import { green, cyan } from '@material-ui/core/colors';
+import { green, cyan, red, } from '@material-ui/core/colors';
 
 import { store, persistor } from './store';
 import Routes from './routes';
@@ -22,6 +22,7 @@ const theme = createMuiTheme({
   palette: {
     primary: green,
     secondary: cyan,
+    error: red,
   },
 });
 
