@@ -1,8 +1,10 @@
 import React from 'react';
+import lodash from 'lodash';
 
 import TableCell from '@material-ui/core/TableCell';
 import Check from '@material-ui/icons/CheckCircle';
 import Close from '@material-ui/icons/Cancel';
+import { isEmpty } from '~/utils/string';
 
 function Number({ children }) {
   return (
@@ -25,7 +27,14 @@ function Bool({ children }) {
 }
 
 function Cell({ field, row, ...props }) {
-  const content = row[field.name];
+  // const content = row[field.name];
+  const content = lodash.get(row, field.name.split('.')); // deep fields
+
+  if (isEmpty(content)) {
+    return (
+      <TableCell align="left"> - </TableCell>
+    );
+  }
 
   if (field.type === 'number') {
     return <Number>{content}</Number>;

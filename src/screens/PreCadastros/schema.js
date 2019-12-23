@@ -12,7 +12,7 @@ export default {
   fields: [
     {
       label: 'Evento',
-      name: 'event',
+      name: 'name',
       type: 'string',
     },
     {
@@ -27,7 +27,7 @@ export default {
     },
     {
       label: 'Local',
-      name: 'local',
+      name: 'address.address',
       type: 'string',
     },
   ],

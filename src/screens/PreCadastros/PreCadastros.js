@@ -1,42 +1,23 @@
-import React from 'react';
-import { FiUsers, FiMapPin } from 'react-icons/fi';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import MuiTable from '~/components/MuiTable';
 import schema from './schema';
-import mock from './mock';
-import { getParams, strapiParams } from '~/utils/url';
-import { PreCadastrosActions } from '~/store/ducks/doadora/preCadastros';
+import { getParams } from '~/utils/url';
 
 import {
  Container, Header, Content
 } from './styles';
-
-const useStyles = makeStyles((theme) => ({
-  title: {
-    display: 'none',
-    width: 250,
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
-  },
-  button: {
-    marginLeft: 20
-  }
-}));
+import { EventosActions } from '~/store/ducks/doadora/eventos';
 
 function PreCadastros({ history }) {
-  const data = useSelector((state) => state.doadora.preCadastros);
+  const { list, error, loading } = useSelector((state) => state.doadora.eventos);
   const dispatch = useDispatch();
   const payload = getParams(['q', 'order:ASC', 'sort:id', 'page:1', 'perPage:10', 'filter']);
 
 
-  React.useEffect(() => {
-    dispatch(PreCadastrosActions.preCadastrosLoadRequest(strapiParams(payload)));
+  useEffect(() => {
+    dispatch(EventosActions.eventosLoadRequest());
   }, []);
-
-  const classes = useStyles();
 
   const navigate = (id) => {
     history.push(`/doadora/pre-cadastros/${id}`);
@@ -52,7 +33,7 @@ function PreCadastros({ history }) {
         <h1>Pré-Cadastros</h1>
       </Header>
       <Content>
-        <MuiTable schema={schema} data={mock} loading={data.loading} />
+        <MuiTable schema={schema} data={list} loading={loading} />
       </Content>
     </Container>
 );
