@@ -85,7 +85,7 @@ export default function MuiTable({ schema, data = [] }) {
   };
 
   const handleChangePage = (event, newPage) => {
-    page = newPage;
+    page = newPage + 1;
     updateSearch();
   };
 
@@ -149,7 +149,7 @@ export default function MuiTable({ schema, data = [] }) {
         <TablePagination
           rowsPerPageOptions={[10, 25, 50, 100]}
           component="div"
-          count={data.length}
+          count={500}
           rowsPerPage={perPage}
           page={page - 1}
           onChangePage={handleChangePage}
