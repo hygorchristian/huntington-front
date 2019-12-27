@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -10,8 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import Toolbar from './Toolbar';
 import Head from './Head';
 import Cell from './Cell';
-
-import { urlParams } from '~/utils/url';
+import { strapiParams } from '~/utils/url';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,68 +36,48 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MuiTable({ loading, schema, data = [] }) {
+export default function MuiTable({
+ loading, schema, data = [], onRequest
+}) {
   const classes = useStyles();
   const history = useHistory();
   const routeParams = useParams();
-  const params = new URLSearchParams(window.location.search);
+
+  const [q, setQ] = useState(null);
+  const [order, setOrder] = useState('ASC');
+  const [sort, setSort] = useState('id');
+  const [page, setPage] = useState(1);
+  const [perPage, setPerPage] = useState('10');
+  const [filter, setFilter] = useState(null);
 
   const deps = { history, params: routeParams, };
 
-  let q = params.get('q');
-  let order = params.get('order') || 'ASC';
-  let sort = params.get('sort') || 'id';
-  let page = params.get('page') || '1';
-  let perPage = params.get('perPage') || '10';
-  let filter = params.get('filter');
-
-  const updateSearch = () => {
-    const { pathname } = history.location;
-    const search = urlParams({
-      q,
-      sort,
-      order,
-      page,
-      perPage,
-      filter
-    });
-    history.push({
-      pathname,
-      search
-    });
-  };
-
   const handleOnSearch = (query) => {
-    q = query;
-    updateSearch();
+    setQ(query);
   };
 
   const handleRequestSort = (event, property) => {
     const isDesc = sort === property && order === 'DESC';
-    order = isDesc ? 'ASC' : 'DESC';
-    sort = property;
+    if (isDesc) {
+      setOrder('ASC');
+    } else {
+      setOrder('DESC');
+    }
 
-    updateSearch();
-  };
-
-  const handleClick = (event, name) => {
-    console.tron.log(name);
+    setSort(property);
   };
 
   const handleChangePage = (event, newPage) => {
-    page = newPage + 1;
-    updateSearch();
+    setPage(parseInt(newPage, 10) + 1);
   };
 
   const handleChangeRowsPerPage = (event) => {
-    perPage = parseInt(event.target.value, 10);
-    page = 0;
-    updateSearch();
+    setPerPage(parseInt(event.target.value, 10));
+    setPage(1);
   };
 
   const handleSelectFilter = (val) => {
-    filter = val;
-    updateSearch();
+    setFilter(val);
   };
 
   const handleOnAdd = () => schema.onAdd(deps);
@@ -108,6 +87,14 @@ export default function MuiTable({ loading, schema, data = [] }) {
       schema.onClick(deps, id);
     }
   };
+
+  useEffect(() => {
+    const search = strapiParams({
+      q, filter, sort, order, perPage, page
+    });
+    console.tron.log('MuiTable', { search });
+    onRequest(search);
+  }, [q, filter, sort, order, perPage, page]);
 
   return (
     <div className={classes.root}>
@@ -130,6 +117,8 @@ export default function MuiTable({ loading, schema, data = [] }) {
               classes={classes}
               onRequestSort={handleRequestSort}
               headCells={schema.fields}
+              order={order}
+              sort={sort}
             />
             <TableBody>
               {data && data.map((row) => (
@@ -149,7 +138,7 @@ export default function MuiTable({ loading, schema, data = [] }) {
         <TablePagination
           rowsPerPageOptions={[10, 25, 50, 100]}
           component="div"
-          count={500}
+          count={data.length}
           rowsPerPage={perPage}
           page={page - 1}
           onChangePage={handleChangePage}

@@ -6,12 +6,8 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 
 function Head(props) {
   const {
-    classes, onRequestSort, headCells
+    classes, onRequestSort, headCells, order, sort
   } = props;
-
-  const params = new URLSearchParams(window.location.search);
-  const order = params.get('order') || '';
-  const sort = params.get('sort') || '';
 
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);

@@ -1,5 +1,6 @@
 import React from 'react';
 import lodash from 'lodash';
+import { format } from 'date-fns';
 
 import TableCell from '@material-ui/core/TableCell';
 import Check from '@material-ui/icons/CheckCircle';
@@ -38,6 +39,16 @@ function Cell({ field, row, ...props }) {
 
   if (field.type === 'number') {
     return <Number>{content}</Number>;
+  }
+
+  if (field.type === 'date') {
+    const date = new Date(content);
+    const formated = format(date, 'dd/MM/yyyy');
+    return (
+      <TableCell align="left">
+        {formated}
+      </TableCell>
+    );
   }
 
   if (field.type === 'boolean') {

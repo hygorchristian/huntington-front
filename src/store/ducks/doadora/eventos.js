@@ -4,7 +4,7 @@ import Immutable from 'seamless-immutable';
 // Action Types & Creators
 
 const { Types, Creators } = createActions({
-  eventosLoadRequest: null,
+  eventosLoadRequest: ['search'],
   eventosLoadSuccess: ['list'],
   eventosLoadFailure: ['error'],
 });

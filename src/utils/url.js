@@ -26,17 +26,15 @@ export const getParams = (arr) => {
 };
 
 export const strapiParams = (payload) => {
-  let search = '?';
+  const search = {};
 
   if (payload.perPage) {
-    search += `_limit=${payload.perPage}`;
-    search += '&';
+    search._limit = payload.perPage;
   }
 
   if (payload.page && payload.perPage) {
     // todo: verificar se essa conta da paginação está correta
-    search += `_start=${payload.perPage * (payload.page - 1) + 1}`;
-    search += '&';
+    search._start = payload.perPage * (payload.page - 1);
   }
 
   // if (payload.filter) {
@@ -45,13 +43,11 @@ export const strapiParams = (payload) => {
   // }
 
   if (payload.sort && payload.order) {
-    search += `_sort=${payload.sort}:${payload.order}`;
-    search += '&';
+    search._sort = `${payload.sort}:${payload.order}`;
   }
 
   if (payload.q) {
-    search += `query=${payload.q}`;
-    search += '&';
+    search._query = payload.q;
   }
 
   return search;

@@ -23,7 +23,9 @@ class ApiService {
 
   getPreCadastro = (id, search) => this.api.get('events');
 
-  getEventos = (id, search) => this.api.get('events');
+  getEventos = (params) => this.api.get('events', { params });
+
+  getEvento = (id, params) => this.api.get(`events/${id}`, { params });
 
   createEvent = (data) => this.api.post('events', data);
 }
