@@ -21,13 +21,15 @@ class ApiService {
 
   signInWithToken = (data) => this.api.post('/auth/access-token', data)
 
-  getPreCadastro = (id, search) => this.api.get('events');
-
   getEventos = (params) => this.api.get('events', { params });
 
   getEvento = (id, params) => this.api.get(`events/${id}`, { params });
 
   createEvent = (data) => this.api.post('events', data);
+
+  // Doadora
+
+  createDoadora = (data) => this.api.post('donor', data);
 }
 
 export default new ApiService();

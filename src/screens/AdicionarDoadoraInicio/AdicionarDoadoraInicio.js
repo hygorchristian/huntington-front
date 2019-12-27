@@ -5,32 +5,42 @@ import NextIcon from '@material-ui/icons/ArrowForward';
 import { useFormik } from 'formik';
 import MenuItem from '@material-ui/core/MenuItem';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { differenceInYears } from 'date-fns';
 import {
   Container, Header, Content
 } from './styles';
 import Voltar from '~/components/Voltar/Voltar';
 import MuiDatePicker from '~/components/MuiDatePicker';
 import MuiSelect from '~/components/MuiSelect';
-import { AdicionarDoadoraSchema } from '~/screens/AdicionarDoadoraInicio/validators';
+import validationSchema from './validators';
 import MuiInput from '~/components/MuiInput';
 import Loading from '~/components/Loading';
 import Botao from '~/components/Botao';
+import { NovaDoadoraActions } from '~/store/ducks/doadora/novaDoadora';
+import { formatIdade } from '~/utils/data';
 
 function AdicionarDoadoraInicio({ onProximo }) {
-  const onSubmit = (values) => {
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.doadora.novaDoadora.data);
 
+  const onSubmit = (values, formik) => {
+    dispatch(NovaDoadoraActions.novaDoadoraSetData(values));
+    onProximo();
   };
 
   const formik = useFormik({
     initialValues: {
-      nome: '',
-      nascimento: new Date(),
-      estadocivil: 'dddd',
-      etnia: ''
+      nome: data ? data.nome : '',
+      nascimento: data ? data.nascimento : '',
+      estadocivil: data ? data.estadocivil : '',
+      etnia: data ? data.etnia : ''
     },
     onSubmit,
-    validationSchema: AdicionarDoadoraSchema
+    validationSchema
   });
+
+  console.tron.log(formatIdade(new Date(1995, 9, 6)));
 
   return (
     <Container>
@@ -47,6 +57,8 @@ function AdicionarDoadoraInicio({ onProximo }) {
             type="text"
             value={formik.values.nome}
             onChange={formik.handleChange}
+            error={formik.errors.nome}
+            helperText={formik.errors.nome}
           />
           <MuiDatePicker
             name="nascimento"
@@ -55,6 +67,8 @@ function AdicionarDoadoraInicio({ onProximo }) {
             onChange={(e) => {
               formik.setFieldValue('nascimento', e);
             }}
+            error={formik.errors.nascimento}
+            helperText={formik.errors.nascimento}
           />
           <MuiSelect
             name="estadocivil"
@@ -63,6 +77,7 @@ function AdicionarDoadoraInicio({ onProximo }) {
             handleChange={(e) => {
               formik.setFieldValue('estadocivil', e.target.value);
             }}
+            error={formik.errors.estadocivil}
           >
             <MenuItem value="casada">Casada</MenuItem>
             <MenuItem value="solteira">Solteira</MenuItem>
@@ -76,6 +91,7 @@ function AdicionarDoadoraInicio({ onProximo }) {
             handleChange={(e) => {
               formik.setFieldValue('etnia', e.target.value);
             }}
+            error={formik.errors.etnia}
           >
             <MenuItem value="branca">Branca</MenuItem>
             <MenuItem value="loira">Loira</MenuItem>
@@ -90,7 +106,7 @@ function AdicionarDoadoraInicio({ onProximo }) {
           <Botao
             color=""
             endIcon={<NextIcon />}
-            onClick={onProximo}
+            onClick={formik.submitForm}
           >
             Próximo
           </Botao>

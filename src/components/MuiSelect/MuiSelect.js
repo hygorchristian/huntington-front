@@ -9,7 +9,7 @@ import Select from '@material-ui/core/Select';
 import { Container } from './styles';
 
 function MuiSelect({
- children, value, handleChange, label, ...props
+ children, value, handleChange, label, error, ...props
 }) {
   const inputLabel = useRef(null);
   const [labelWidth, setLabelWidth] = useState(0);
@@ -19,7 +19,12 @@ function MuiSelect({
   }, []);
 
   return (
-    <FormControl variant="outlined" fullWidth margin="normal">
+    <FormControl
+      variant="outlined"
+      fullWidth
+      margin="normal"
+      error={error}
+    >
       <InputLabel ref={inputLabel}>
         {label}
       </InputLabel>
@@ -33,6 +38,7 @@ function MuiSelect({
         </MenuItem>
         { children }
       </Select>
+      <FormHelperText>{error}</FormHelperText>
     </FormControl>
 );
 }

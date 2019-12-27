@@ -4,16 +4,20 @@ import PrevIcon from '@material-ui/icons/ArrowBack';
 import OkIcon from '@material-ui/icons/Check';
 
 import { useFormik } from 'formik';
+import { useSelector } from 'react-redux';
 import Voltar from '~/components/Voltar/Voltar';
 
 import {
   Container, Header, Content, Main, Resumo
 } from './styles';
-import { AdicionarDoadoraSchema } from '~/screens/AdicionarDoadoraInicio/validators';
+import validationSchema from './validators';
 import MuiInput from '~/components/MuiInput';
 import Botao from '~/components/Botao';
+import { formatIdade } from '~/utils/data';
 
 function AdicionarDoadoraConcluir({ onVoltar }) {
+  const data = useSelector((state) => state.doadora.novaDoadora.data);
+
   const onSubmit = (values) => {
 
   };
@@ -31,7 +35,7 @@ function AdicionarDoadoraConcluir({ onVoltar }) {
       email: '',
     },
     onSubmit,
-    validationSchema: AdicionarDoadoraSchema
+    validationSchema
   });
 
   return (
@@ -128,11 +132,11 @@ function AdicionarDoadoraConcluir({ onVoltar }) {
         <h2>Resumo</h2>
         <fieldset>
           <legend>Recepção</legend>
-          <span>Maria Carolina do Rosário</span>
-          <span>28 anos, 05 de maio de 1992</span>
+          <span>{data.nome}</span>
+          <span>{formatIdade(data.nascimento)}</span>
           <div className="info">
-            <span>Solteira</span>
-            <span>Parda</span>
+            <span>{data.estadocivil}</span>
+            <span>{data.etnia}</span>
           </div>
         </fieldset>
       </Resumo>

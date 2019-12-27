@@ -1,3 +1,9 @@
+import {
+ format, differenceInYears,
+} from 'date-fns';
+import { ptBR } from 'date-fns/locale';
+
+
 const getMes = (m) => {
   switch (m) {
     case 0: return 'Janeiro';
@@ -16,3 +22,11 @@ const getMes = (m) => {
 };
 
 export const formatarMesAno = (m, y) => `${getMes(m)} / ${y}`;
+
+export const formatIdade = (val) => {
+  const date = new Date(val);
+  const age = differenceInYears(new Date(), date);
+  const formatted = format(date, "dd 'de' MMMM 'de' yyyy", { locale: ptBR });
+
+  return `${age} anos, ${formatted}`;
+};

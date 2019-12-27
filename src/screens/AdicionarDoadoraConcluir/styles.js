@@ -48,7 +48,7 @@ export const Resumo = styled.div`
       
       span{
         height: 35px;
-        width: 75px;
+        padding: 0 20px;
         line-height: 35px;
         text-align: center;
         margin-right: 10px;
