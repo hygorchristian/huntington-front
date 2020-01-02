@@ -2,8 +2,9 @@ import React from 'react';
 
 import { Container, Content, Header } from './styles';
 import Voltar from '~/components/Voltar';
-import CheckLabel from '~/components/CheckLabel';
-import InputLabel from '~/components/InputLabel';
+import MuiInput from '~/components/MuiInput';
+import MuiBooleanValue from '~/components/MuiBooleanValue';
+import MuiTextarea from '~/components/MuiTextarea';
 
 function PreencherUltrassom() {
   return (
@@ -16,14 +17,18 @@ function PreencherUltrassom() {
         <h1>Ultrassom</h1>
       </Header>
       <Content>
-        <InputLabel
+        <MuiInput
           label="Contagem de folículos"
         />
-        <CheckLabel
+        <MuiBooleanValue
+          mt={20}
           label="Apta para doação?"
-          placeholder="Obervação"
+          placeholder="Observação"
         />
-        <textarea placeholder="Observação" />
+        <MuiTextarea
+          label="Observação"
+          placeholder="Escreva a observação"
+        />
         <div className="separator" />
         <div className="controller">
           <button className="btn">Concluir</button>

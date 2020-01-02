@@ -44,16 +44,10 @@ export const Content = styled.div`
   padding-top: 30px; 
   width: 420px;
   
-  textarea{
-    width: 100%;
-    height: 120px;
-    margin-top: 32px;
-    margin-bottom: 40px;
-  } 
-  
   .separator{
     height: 1px;
     width: 100%;
+    margin-top: 30px;
     background-color: rgba(165,165,165,0.2);
   }
   

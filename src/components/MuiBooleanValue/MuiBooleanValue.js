@@ -23,12 +23,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function MuiBooleanValue({
- label, placeholder, value, ...props 
+ label, placeholder, value, mt = 0, ...props
 }) {
   const classes = useStyles();
 
   return (
-    <Grid direction="column" container spacing={1} className={classes.margin}>
+    <Grid direction="column" container spacing={1} className={classes.margin} style={{ marginTop: mt }}>
       <Grid container direction="row" alignItems="center">
         <Grid item>
           <InputLabel>{label}</InputLabel>

@@ -44,12 +44,9 @@ export const Content = styled.div`
   padding-top: 30px; 
   width: 420px;
   
-  textarea{
-    width: 100%;
-    height: 120px;
-    margin-top: 32px;
-    margin-bottom: 40px;
-  } 
+  .checkcontrol{
+    margin: 30px 0;
+  }
   
   .separator{
     height: 1px;

@@ -1,9 +1,11 @@
 import React from 'react';
-import InputLabel from '~/components/InputLabel';
+import FormGroup from '@material-ui/core/FormGroup';
 
 import { Container, Content, Header } from './styles';
 import Voltar from '~/components/Voltar';
 import Checkbox from '~/components/Checkbox';
+import MuiDatePicker from '~/components/MuiDatePicker';
+import MuiCheckbox from '~/components/MuiCheckbox';
 
 function NovaColeta() {
   return (
@@ -17,38 +19,34 @@ function NovaColeta() {
       </Header>
       <Content>
         <form>
-          <InputLabel
+          <MuiDatePicker
+            name="nascimento"
             label="Data da Coleta"
-            type="date"
           />
-          <Checkbox
-            style={{ marginBottom: 30 }}
-            label="ABO/RH"
-          />
-          <Checkbox
-            style={{ marginBottom: 30 }}
-            label="Sorologias"
-          />
-          <Checkbox
-            style={{ marginBottom: 30 }}
-            label="Cariótipo"
-          />
-          <Checkbox
-            style={{ marginBottom: 30 }}
-            label="Chlamidia/Neisseria"
-          />
-          <Checkbox
-            style={{ marginBottom: 30 }}
-            label="Citologia Oncótica"
-          />
-          <Checkbox
-            style={{ marginBottom: 30 }}
-            label="CGT"
-          />
-          <Checkbox
-            style={{ marginBottom: 30 }}
-            label="Cartão DNA"
-          />
+          <div className="checkcontrol">
+            <MuiCheckbox
+              label="ABO/RH"
+            />
+            <MuiCheckbox
+              label="Sorologias"
+            />
+            <MuiCheckbox
+              label="Cariótipo"
+            />
+            <MuiCheckbox
+              label="Chlamidia/Neisseria"
+            />
+            <MuiCheckbox
+              label="Citologia Oncótica"
+            />
+            <MuiCheckbox
+              label="CGT"
+            />
+            <MuiCheckbox
+              label="Cartão DNA"
+            />
+          </div>
+
         </form>
         <div className="separator" />
         <div className="controller">
