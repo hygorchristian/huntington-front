@@ -14,6 +14,7 @@ import MuiDatePicker from '~/components/MuiDatePicker';
 import Loading from '~/components/Loading';
 import Botao from '~/components/Botao';
 import { NovoEventoActions } from '~/store/ducks/doadora/novoEvento';
+import MuiTextarea from '~/components/MuiTextarea';
 
 function AdicionarEvento({ history, enqueueSnackbar }) {
   const dispatch = useDispatch();
@@ -60,6 +61,7 @@ function AdicionarEvento({ history, enqueueSnackbar }) {
       </Header>
       <Content>
         <form onSubmit={formik.handleSubmit}>
+          <MuiTextarea placeholder="Anotação de Enfermagem" />
           <MuiInput
             name="name"
             label="Nome"

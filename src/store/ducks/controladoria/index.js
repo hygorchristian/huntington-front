@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux';
-import { DashboardReducer as dashboard } from './dashboard';
+import { CriarControleReducer as criarControle } from './criarControle';
+import { ControlesReducer as controles } from './controles';
+// import
 
 export default combineReducers({
-  dashboard
+  criarControle,
+  controles,
+// reducer
 });

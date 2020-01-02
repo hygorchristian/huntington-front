@@ -84,18 +84,17 @@ export const ConsultaContainer = styled.div`
     display: flex;
     flex-direction: row;
     width: 100%;
+    
+    &.date{
+      width: 400px;
+      margin-top: 10px;
+    }
   }
   
   .separator{
     height: 1px;
     width: 100%;
     background-color: rgba(165,165,165,0.2);
-  }
-  
-  textarea{
-    height: 160px;
-    width: 580px;
-    margin: 40px 0;
   }
   
   .controllers{
