@@ -41,19 +41,7 @@ export const Content = styled.div`
   span{
     font-size: 14px;
     margin-top: 20px;
-  }
-  
-  button{
-    height: 40px;
-    width: 115px;
-    border-radius: 5px;
-    background-color: #3E6F55;
-    color: #ffffff;
-    text-transform: uppercase;
-    font-size: 13px;
-    margin-top: 45px;
-    border: none;
-  }
+  } 
   
   a{
     font-size: 14px;

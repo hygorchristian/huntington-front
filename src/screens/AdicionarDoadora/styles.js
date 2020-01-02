@@ -62,16 +62,6 @@ export const Subheader = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  
-  & > button{
-    height: 35px;
-    width: 115px;
-    background-color: #3E6F55;
-    border-radius: 5px;
-    color: white;
-    text-transform: uppercase;
-    cursor: pointer;
-  }
 `;
 
 
@@ -115,29 +105,5 @@ export const Content = styled.div`
     justify-content: flex-end;
     padding-top: 32px;
     width: 500px;
-  
-    button{
-      height: 35px;
-      width: 100px;
-      border-radius: 5px;
-      background-color: #3E6F55;
-      font-size: 13px;
-      text-transform: uppercase;
-      color: #ffffff;
-      margin-left: 18px;
-      cursor: pointer;
-      transition: all 250ms ease-in-out;
-      
-      &.light{
-        background-color: #ffffff;
-        color: #3E6F55;
-        border: 1px solid #3E6F55;
-      }
-      
-      &:active{
-        opacity: .5;
-        border: 1px solid #8adab3;
-      }
-    }
   }
 `;

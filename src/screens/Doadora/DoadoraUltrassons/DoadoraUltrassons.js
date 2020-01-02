@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { Container } from './styles';
+import AdicionarRow from '~/components/AdicionarRow';
 
 function DoadoraUltrassons({ history }) {
   const preencher = () => {
@@ -10,9 +11,7 @@ function DoadoraUltrassons({ history }) {
 
   return (
     <Container>
-      <div className="preencher">
-        <button className="btn" onClick={preencher}>Preencher +</button>
-      </div>
+      <AdicionarRow onClick={preencher} label="Preencher" />
     </Container>
 );
 }

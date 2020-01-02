@@ -21,10 +21,6 @@ export const Header = styled.div`
     font-weight: 500;
     margin-right: 90px;
   }
-  
-  button{
-    margin-left: 15px;
-  }
 `;
 
 export const Content = styled.div`

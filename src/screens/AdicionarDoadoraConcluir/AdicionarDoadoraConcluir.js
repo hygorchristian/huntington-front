@@ -1,7 +1,5 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import PrevIcon from '@material-ui/icons/ArrowBack';
-import OkIcon from '@material-ui/icons/Check';
 
 import { useFormik } from 'formik';
 import { useSelector } from 'react-redux';
@@ -123,8 +121,8 @@ function AdicionarDoadoraConcluir({ onVoltar }) {
             </div>
           </form>
           <div className="buttons">
-            <Botao startIcon={<PrevIcon />} color="" onClick={onVoltar}>Voltar</Botao>
-            <Botao endIcon={<OkIcon />}>Concluir</Botao>
+            <Botao startIcon="arrow-left" color="" onClick={onVoltar}>Voltar</Botao>
+            <Botao endIcon="check">Concluir</Botao>
           </div>
         </Content>
       </Main>

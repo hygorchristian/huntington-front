@@ -4,6 +4,7 @@ import { FiCalendar, FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
 import Voltar from '~/components/Voltar';
 import { Container, Content, Header } from './styles';
 import ItemResultado from '~/components/ItemResultado';
+import Botao from '~/components/Botao';
 
 function ResultadoExame() {
   return (
@@ -58,7 +59,8 @@ function ResultadoExame() {
         </div>
         <div className="separator" />
         <div className="controller">
-          <button className="btn">Salvar</button>
+
+          <Botao endIcon="check">Salvar</Botao>
         </div>
       </Content>
     </Container>

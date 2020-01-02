@@ -15,17 +15,6 @@ export const Container = styled.div`
     margin-right: 25px;
   }
   
-  button{
-    height: 35px;
-    border-radius: 5px;
-    border: none;
-    width: 65px;
-    background-color: #88b6a0;
-    font-size: 14px;
-    color: #ffffff;
-    margin-right: 8px;
-  }
-  
   input{
     margin-left: 16px;
     width: 300px;

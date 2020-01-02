@@ -7,6 +7,7 @@ import Voltar from '~/components/Voltar/Voltar';
 import {
  Container, Content, Header
 } from './styles';
+import Botao from '~/components/Botao';
 
 const perguntas = [
   { id: 1, label: 'Já teve ou tem algum problema de saúde?', selected: true, observacaoPlaceholder: 'Observações' },
@@ -61,7 +62,7 @@ function DoadoraTriagem() {
           </div>
         </div>
         <div className="controller">
-          <button className="btn">Concluir</button>
+          <Botao endIcon="check">Concluir</Botao>
         </div>
       </Content>
     </Container>

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import OkIcon from '@material-ui/icons/Check';
 
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
@@ -91,8 +90,8 @@ function AdicionarEvento({ history, enqueueSnackbar }) {
           {loading && <Loading />}
         </form>
         <div className="buttons">
-          <Botao color="" onClick={cancelar}>Cancelar</Botao>
-          <Botao onClick={formik.submitForm} endIcon={<OkIcon />}>Salvar</Botao>
+          <Botao endIcon="close" color="" onClick={cancelar}>Cancelar</Botao>
+          <Botao onClick={formik.submitForm} endIcon="check">Salvar</Botao>
         </div>
       </Content>
     </Container>

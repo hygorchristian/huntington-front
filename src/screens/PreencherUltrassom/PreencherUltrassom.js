@@ -5,6 +5,7 @@ import Voltar from '~/components/Voltar';
 import MuiInput from '~/components/MuiInput';
 import MuiBooleanValue from '~/components/MuiBooleanValue';
 import MuiTextarea from '~/components/MuiTextarea';
+import Botao from '~/components/Botao';
 
 function PreencherUltrassom() {
   return (
@@ -31,7 +32,7 @@ function PreencherUltrassom() {
         />
         <div className="separator" />
         <div className="controller">
-          <button className="btn">Concluir</button>
+          <Botao endIcon="check">Concluir</Botao>
         </div>
       </Content>
     </Container>

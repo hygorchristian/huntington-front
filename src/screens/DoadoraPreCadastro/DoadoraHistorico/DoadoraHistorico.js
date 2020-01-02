@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { FiCalendar, FiMapPin, FiUser } from 'react-icons/fi';
 
 import { Container } from './styles';
+import Botao from '~/components/Botao';
 
 function DoadoraHistorico({ history }) {
   const adicionarHistorico = () => {
@@ -12,7 +13,7 @@ function DoadoraHistorico({ history }) {
   return (
     <Container>
       <div className="adicionar-historico">
-        <button className="btn" onClick={adicionarHistorico}>Adicionar +</button>
+        <Botao startIcon="add" onClick={adicionarHistorico}>Adicionar</Botao>
       </div>
       <fieldset>
         <legend>CADASTRO | MUTIRÃO</legend>

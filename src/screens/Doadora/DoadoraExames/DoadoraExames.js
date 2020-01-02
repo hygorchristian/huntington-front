@@ -5,6 +5,7 @@ import {
 import { withRouter } from 'react-router-dom';
 
 import { Container } from './styles';
+import AdicionarRow from '~/components/AdicionarRow';
 
 function DoadoraExames({ history }) {
   const adicionarColeta = () => {
@@ -70,9 +71,7 @@ function DoadoraExames({ history }) {
           <span>Colher</span>
         </div>
       </div>
-      <div className="adicionar-coleta">
-        <button className="btn" onClick={adicionarColeta}>Adicionar coleta +</button>
-      </div>
+      <AdicionarRow onClick={adicionarColeta} label="Adicionar coleta" />
       <fieldset onClick={inserirResultado}>
         <legend>
           <FiCalendar />

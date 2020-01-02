@@ -1,11 +1,12 @@
 import React from 'react';
 
 import { Container } from './styles';
+import Botao from '~/components/Botao';
 
-function AdicionarRow({ onClick }) {
+function AdicionarRow({ onClick, label }) {
   return (
     <Container>
-      <button className="btn" onClick={onClick}>Adicionar +</button>
+      <Botao startIcon="add" onClick={onClick}>{label}</Botao>
     </Container>
 );
 }

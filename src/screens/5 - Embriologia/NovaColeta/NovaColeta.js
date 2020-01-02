@@ -6,6 +6,7 @@ import {
  Container, Content, Header, Status, Dados
 } from './styles';
 import StatusInput from '~/components/StatusInput';
+import Botao from '~/components/Botao';
 
 function NovaColeta() {
   const [tela, setTela] = useState(1);
@@ -89,7 +90,7 @@ function NovaColeta() {
             <div className="separator" />
             <div className="controller">
               <button className="btn light" onClick={() => setTela(1)}>Anterior</button>
-              <button className="btn">Concluir</button>
+              <Botao endIcon="check">Concluir</Botao>
             </div>
           </Status>
         )}

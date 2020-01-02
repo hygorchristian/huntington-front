@@ -56,16 +56,6 @@ export const Subheader = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  
-  & > button{
-    height: 35px;
-    width: 115px;
-    background-color: #3E6F55;
-    border-radius: 5px;
-    color: white;
-    text-transform: uppercase;
-    cursor: pointer;
-  }
 `;
 
 
@@ -109,9 +99,5 @@ export const Content = styled.div`
     justify-content: flex-end;
     padding-top: 32px;
     width: 500px;
-  
-    button{
-      margin-left: 18px;
-    }
   }
 `;

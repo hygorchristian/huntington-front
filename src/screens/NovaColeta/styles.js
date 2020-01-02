@@ -60,9 +60,5 @@ export const Content = styled.div`
     align-items: center;
     justify-content: flex-end;
     margin-top: 35px;
-    
-    button{
-      width: 120px;
-    }
   }
 `;

@@ -6,6 +6,7 @@ import Voltar from '~/components/Voltar';
 import Checkbox from '~/components/Checkbox';
 import MuiDatePicker from '~/components/MuiDatePicker';
 import MuiCheckbox from '~/components/MuiCheckbox';
+import Botao from '~/components/Botao';
 
 function NovaColeta() {
   return (
@@ -50,7 +51,7 @@ function NovaColeta() {
         </form>
         <div className="separator" />
         <div className="controller">
-          <button className="btn">Salvar</button>
+          <Botao endIcon="check">Salvar</Botao>
         </div>
       </Content>
     </Container>

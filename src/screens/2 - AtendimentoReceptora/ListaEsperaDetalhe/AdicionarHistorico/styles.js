@@ -46,29 +46,6 @@ export const Content = styled.div`
   .buttons-top{
     display: flex;
     flex-direction: row;
-    
-    button{
-      width: 110px;
-      height: 35px;
-      border-radius: 5px;
-      background-color: #ffffff;
-      color: #3A6E50;
-      font-size: 14px;
-      border: 1px solid #e3e3e3;
-      margin-right: 10px;
-      transition: all 150ms ease-in-out;
-      cursor: pointer;
-      user-select: none;
-      
-      &.active{
-        background-color: #3A6E50;
-        color: #ffffff;
-      }
-      
-      &:hover{
-        box-shadow: 0 2px 10px rgba(0, 0, 0, .1);
-      }
-    }
   }
   
   .main{
@@ -105,24 +82,6 @@ export const ConsultaContainer = styled.div`
     justify-content: flex-end;
     padding-top: 35px;
     margin-bottom: 90px;
-    
-    button{
-      height: 35px;
-      width: 100px;
-      background-color: #3A6E50;
-      border-radius: 5px;
-      margin-left: 20px;
-      font-size: 13px;
-      color: #ffffff;
-      text-transform: uppercase;
-      cursor: pointer;
-      
-      &.light{
-        background-color:#ffffff;
-        color: #3A6E50;
-        border: 1px solid #3A6E50;
-      }
-    }
   }
 `;
 
@@ -149,24 +108,6 @@ export const ObservacaoContainer = styled.div`
     align-items: center;
     justify-content: flex-end;
     padding-top: 35px;
-    
-    button{
-      height: 35px;
-      width: 100px;
-      background-color: #3A6E50;
-      border-radius: 5px;
-      margin-left: 20px;
-      font-size: 13px;
-      color: #ffffff;
-      text-transform: uppercase;
-      cursor: pointer;
-      
-      &.light{
-        background-color:#ffffff;
-        color: #3A6E50;
-        border: 1px solid #3A6E50;
-      }
-    }
   }
   
 `;

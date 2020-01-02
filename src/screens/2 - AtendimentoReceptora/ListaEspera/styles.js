@@ -20,18 +20,6 @@ export const Header = styled.div`
     font-weight: 500;
     margin-right: 90px;
   }
-  
-  & > button{
-    height: 35px;
-    width: 115px;
-    background-color: #3E6F55;
-    color: #ffffff;
-    border-radius: 5px;
-    font-size: 13px;
-    text-transform: uppercase;
-    line-height: 35px;
-    margin-left: 15px;
-  }
 `;
 
 export const Content = styled.div`

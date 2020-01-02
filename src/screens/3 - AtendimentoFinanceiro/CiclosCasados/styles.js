@@ -70,16 +70,6 @@ export const Subheader = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  
-  & > button{
-    height: 35px;
-    width: 115px;
-    background-color: #3E6F55;
-    border-radius: 5px;
-    color: white;
-    text-transform: uppercase;
-    cursor: pointer;
-  }
 `;
 
 

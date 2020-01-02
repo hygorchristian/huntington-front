@@ -55,7 +55,7 @@ export const Content = styled.div`
   padding-top: 30px;
   
   .perguntas{  
-    width: 800px;
+    width: 850px;
     padding-bottom: 35px;
     border-bottom: 1px solid rgba(165,165,165,0.3);
   }
@@ -72,32 +72,6 @@ export const Content = styled.div`
       flex-direction: row;
       align-items: center;
       margin-bottom: 10px;
-      
-      label{
-        width: 180px;
-        font-size: 13px;
-        color: #707070;
-      }
-      
-      input{
-        flex: 1;
-        width: 10px;
-        
-        
-      }
-      
-      textarea{
-        height: 90px;
-        flex: 1;
-        margin-top: 15px;
-      }
-      
-      span{
-        color: #B9B9B9;
-        margin-left: 10px;
-        margin-right: 10px;
-        font-size: 13px;
-      }
     }
   }
   

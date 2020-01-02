@@ -13,6 +13,7 @@ import MuiSelect from '~/components/MuiSelect';
 import MuiDatePicker from '~/components/MuiDatePicker';
 import MuiTextarea from '~/components/MuiTextarea';
 import MuiInput from '~/components/MuiInput';
+import Botao from '~/components/Botao';
 
 function PrimeiraConsulta() {
   const [etnia, setEtnia] = useState(null);
@@ -75,8 +76,8 @@ function PrimeiraConsulta() {
       <div className="separator" style={{ marginTop: 40 }} />
 
       <div className="controllers">
-        <button className="light">Cancelar</button>
-        <button>Salvar</button>
+        <Botao endIcon="close" color="">Cancelar</Botao>
+        <Botao endIcon="check">Salvar</Botao>
       </div>
 
 
@@ -90,8 +91,8 @@ function Observacao() {
       <MuiTextarea label="Descrição" placeholder="Descreva aqui" />
       <div className="separator" />
       <div className="controllers">
-        <button className="light">Cancelar</button>
-        <button>Concluir</button>
+        <Botao endIcon="close" color="">Cancelar</Botao>
+        <Botao endIcon="check">Concluir</Botao>
       </div>
     </ObservacaoContainer>
   );
@@ -103,8 +104,8 @@ function Desistencia() {
       <MuiTextarea label="Descrição" placeholder="Descreva o motivo da desistência" />
       <div className="separator" />
       <div className="controllers">
-        <button className="light">Cancelar</button>
-        <button>Concluir</button>
+        <Botao endIcon="close" color="">Cancelar</Botao>
+        <Botao endIcon="check">Concluir</Botao>
       </div>
     </ObservacaoContainer>
   );

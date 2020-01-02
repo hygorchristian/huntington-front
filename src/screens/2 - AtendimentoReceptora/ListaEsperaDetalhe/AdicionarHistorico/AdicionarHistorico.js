@@ -4,6 +4,7 @@ import Voltar from '~/components/Voltar/Voltar';
 import {
   Container, Content, Header, ObservacaoContainer
 } from './styles';
+import Botao from '~/components/Botao';
 
 function Observacao() {
   return (
@@ -11,8 +12,8 @@ function Observacao() {
       <textarea placeholder="Descreva aqui" />
       <div className="separator" />
       <div className="controllers">
-        <button className="light">Cancelar</button>
-        <button>Concluir</button>
+        <Botao endIcon="close" color="">Cancelar</Botao>
+        <Botao endIcon="check">Concluir</Botao>
       </div>
     </ObservacaoContainer>
   );
@@ -24,8 +25,8 @@ function Cancelamento() {
       <textarea placeholder="Descreva o motivo da desistência" />
       <div className="separator" />
       <div className="controllers">
-        <button className="light">Cancelar</button>
-        <button>Concluir</button>
+        <Botao endIcon="close" color="">Cancelar</Botao>
+        <Botao endIcon="check">Concluir</Botao>
       </div>
     </ObservacaoContainer>
   );

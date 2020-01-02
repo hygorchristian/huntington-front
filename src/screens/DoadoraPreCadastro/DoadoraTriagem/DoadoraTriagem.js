@@ -1,12 +1,15 @@
 /* eslint-disable object-curly-newline */
 
 import React from 'react';
-import InputTriagem from '~/components/InputTriagem';
 import Voltar from '~/components/Voltar/Voltar';
 
 import {
  Container, Content, Header
 } from './styles';
+import MuiTriagemInput from '~/components/MuiTriagemInput';
+import MuiInput from '~/components/MuiInput';
+import MuiTextarea from '~/components/MuiTextarea';
+import Botao from '~/components/Botao';
 
 const perguntas = [
   { id: 1, label: 'Já teve ou tem algum problema de saúde?', selected: true, observacaoPlaceholder: 'Observações' },
@@ -37,31 +40,18 @@ function DoadoraTriagem() {
         <div className="perguntas">
           {
             perguntas.map((pergunta) => (
-              <InputTriagem key={pergunta.id} data={pergunta} />
+              <MuiTriagemInput key={pergunta.id} label={pergunta.label} placeholder={pergunta.observacaoPlaceholder} data={pergunta} />
             ))
           }
         </div>
         <div className="infos">
-          <div className="info">
-            <label>Peso</label>
-            <input placeholder="kg" />
-          </div>
-          <div className="info">
-            <label>Altura</label>
-            <input placeholder="cm" />
-          </div>
-          <div className="info">
-            <label>Pressão Arterial</label>
-            <input />
-            <span>x</span>
-            <input />
-          </div>
-          <div className="info">
-            <textarea placeholder="Observações" />
-          </div>
+          <MuiInput label="Peso" placeholder="Kg" />
+          <MuiInput label="Altura" placeholder="cm" />
+          <MuiInput label="Pressão Arterial" />
+          <MuiTextarea label="Observações" placeholder="Escreva as observações" />
         </div>
         <div className="controller">
-          <button className="btn">Concluir</button>
+          <Botao endIcon="check">Salvar</Botao>
         </div>
       </Content>
     </Container>

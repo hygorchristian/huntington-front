@@ -1,12 +1,10 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import NextIcon from '@material-ui/icons/ArrowForward';
 
 import { useFormik } from 'formik';
 import MenuItem from '@material-ui/core/MenuItem';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { differenceInYears } from 'date-fns';
 import {
   Container, Header, Content
 } from './styles';
@@ -105,7 +103,7 @@ function AdicionarDoadoraInicio({ onProximo }) {
         <div className="buttons">
           <Botao
             color=""
-            endIcon={<NextIcon />}
+            endIcon="arrow-right"
             onClick={formik.submitForm}
           >
             Próximo

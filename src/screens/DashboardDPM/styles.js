@@ -21,10 +21,6 @@ export const Data = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-
-  button{
-    background-color: transparent;
-  }
   
   span{
     color: #A5A5A5;
