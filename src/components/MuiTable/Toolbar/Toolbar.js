@@ -47,7 +47,6 @@ const Toolbar = ({
         {
           onAdd && (
             <Botao
-              style={{ marginRight: 10 }}
               startIcon="add"
               onClick={onAdd}
             >

@@ -1,8 +1,8 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { useFormik } from 'formik';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { withSnackbar } from 'notistack';
 import Voltar from '~/components/Voltar/Voltar';
 
 import {
@@ -12,25 +12,46 @@ import validationSchema from './validators';
 import MuiInput from '~/components/MuiInput';
 import Botao from '~/components/Botao';
 import { formatIdade } from '~/utils/data';
+import { NovaDoadoraActions } from '~/store/ducks/doadora/novaDoadora';
+import Loading from '~/components/Loading';
 
-function AdicionarDoadoraConcluir({ onVoltar }) {
-  const data = useSelector((state) => state.doadora.novaDoadora.data);
+function AdicionarDoadoraConcluir({ onVoltar, enqueueSnackbar }) {
+  const {
+ data, loading, message, error
+} = useSelector((state) => state.doadora.novaDoadora);
+  const dispatch = useDispatch();
+  const { id } = useParams();
+
+  useEffect(() => {
+    if (message) {
+      enqueueSnackbar(message, { variant: 'success' });
+    }
+    if (error) {
+      enqueueSnackbar(message, { variant: 'error' });
+    }
+  }, [message, error]);
 
   const onSubmit = (values) => {
-
+    dispatch(NovaDoadoraActions.novaDoadoraSaveRequest(id, {
+      ...values,
+      ...data,
+      etnia: data.etnia._id
+    }));
   };
 
   const formik = useFormik({
     initialValues: {
-      rg: '',
-      orgao: '',
-      endereco: '',
-      complemento: '',
-      numero: '',
-      cep: '',
-      celular: '',
-      telefone: '',
-      email: '',
+      rg: '3.153.052',
+      rg_expeditor: 'SSPDF',
+      address: {
+        address: 'Quadra 104',
+        address_number: '1203',
+        address_comp: 'Residencial Colina',
+        cep: '71909-180'
+      },
+      celphone: '6199854665',
+      phone: '6130536539',
+      email: 'hygor.christian@gmail.com',
     },
     onSubmit,
     validationSchema
@@ -53,63 +74,79 @@ function AdicionarDoadoraConcluir({ onVoltar }) {
                 type="text"
                 value={formik.values.rg}
                 onChange={formik.handleChange}
+                error={formik.errors.rg}
+                helperText={formik.errors.rg}
               />
               <MuiInput
-                name="orgao"
+                name="rg_expeditor"
                 label="Orgão expeditor"
                 type="text"
-                value={formik.values.orgao}
+                value={formik.values.rg_expeditor}
                 onChange={formik.handleChange}
+                error={formik.errors.rg_expeditor}
+                helperText={formik.errors.rg_expeditor}
               />
             </div>
             <div className="line">
               <MuiInput
-                name="endereco"
+                name="address.address"
                 label="Endereço"
                 type="text"
-                value={formik.values.endereco}
+                value={formik.values.address.address}
                 onChange={formik.handleChange}
+                error={formik.errors.address && formik.errors.address.address}
+                helperText={formik.errors.address && formik.errors.address.address}
               />
               <MuiInput
-                name="complemento"
+                name="address.address_comp"
                 label="Complemento"
                 type="text"
-                value={formik.values.complemento}
+                value={formik.values.address.address_comp}
                 onChange={formik.handleChange}
+                error={formik.errors.address && formik.errors.address.address_comp}
+                helperText={formik.errors.address && formik.errors.address.address_comp}
               />
             </div>
 
             <div className="grid">
               <MuiInput
-                name="numero"
+                name="address.address_number"
                 label="Número"
                 type="text"
-                value={formik.values.numero}
+                value={formik.values.address.address_number}
                 onChange={formik.handleChange}
+                error={formik.errors.address && formik.errors.address.address_number}
+                helperText={formik.errors.address && formik.errors.address.address_number}
               />
               <MuiInput
-                name="cep"
+                name="address.cep"
                 label="CEP"
                 type="text"
-                value={formik.values.cep}
+                value={formik.values.address.cep}
                 onChange={formik.handleChange}
                 mask="99.999-999"
+                error={formik.errors.address && formik.errors.address.cep}
+                helperText={formik.errors.address && formik.errors.address.cep}
               />
               <MuiInput
-                name="celular"
+                name="celphone"
                 label="Celular"
                 type="text"
-                value={formik.values.celular}
+                value={formik.values.celphone}
                 onChange={formik.handleChange}
                 mask="(99) 9 9999-9999"
+                error={formik.errors.celphone}
+                helperText={formik.errors.celphone}
               />
               <MuiInput
-                name="telefone"
+                name="phone"
                 label="Telefone"
                 type="text"
-                value={formik.values.telefone}
+                value={formik.values.phone}
                 onChange={formik.handleChange}
                 mask="(99) 9999-9999"
+                error={formik.errors.phone}
+                helperText={formik.errors.phone}
               />
               <MuiInput
                 name="email"
@@ -117,12 +154,15 @@ function AdicionarDoadoraConcluir({ onVoltar }) {
                 type="text"
                 value={formik.values.email}
                 onChange={formik.handleChange}
+                error={formik.errors.email}
+                helperText={formik.errors.email}
               />
             </div>
+            {loading && <Loading />}
           </form>
           <div className="buttons">
             <Botao startIcon="arrow-left" color="" onClick={onVoltar}>Voltar</Botao>
-            <Botao endIcon="check">Concluir</Botao>
+            <Botao endIcon="check" onClick={formik.submitForm}>Concluir</Botao>
           </div>
         </Content>
       </Main>
@@ -130,17 +170,16 @@ function AdicionarDoadoraConcluir({ onVoltar }) {
         <h2>Resumo</h2>
         <fieldset>
           <legend>Recepção</legend>
-          <span>{data.nome}</span>
-          <span>{formatIdade(data.nascimento)}</span>
+          <span>{data.name}</span>
+          <span>{formatIdade(data.birth)}</span>
           <div className="info">
-            <span>{data.estadocivil}</span>
-            <span>{data.etnia}</span>
+            <span>{data.marital_status}</span>
+            <span>{data.etnia.name}</span>
           </div>
         </fieldset>
       </Resumo>
-
     </Container>
   );
 }
 
-export default withRouter(AdicionarDoadoraConcluir);
+export default withSnackbar(AdicionarDoadoraConcluir);

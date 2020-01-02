@@ -37,7 +37,7 @@ function PreCadastro() {
       <Content>
         <MuiTable
           schema={schema}
-          data={[]}
+          data={data && data.doadoras}
           loading={loading}
           onRequest={handleRequest}
         />

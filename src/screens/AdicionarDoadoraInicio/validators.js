@@ -1,13 +1,13 @@
 import * as Yup from 'yup';
 
 export default Yup.object().shape({
-  nome: Yup.string()
+  name: Yup.string()
     .required('Campo obrigatório'),
-  nascimento: Yup.date()
+  birth: Yup.date()
     .max(new Date(), 'Data inválida')
     .required('Campo obrigatório'),
-  etnia: Yup.string()
+  marital_status: Yup.string()
     .required('Campo obrigatório'),
-  estadocivil: Yup.string()
+  etnia: Yup.string()
     .required('Campo obrigatório'),
 });

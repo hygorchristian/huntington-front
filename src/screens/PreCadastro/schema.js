@@ -18,7 +18,7 @@ export default {
     },
     {
       label: 'Nome',
-      name: 'nome',
+      name: 'name',
       type: 'string',
     },
     {
@@ -38,34 +38,34 @@ export default {
     },
     {
       label: 'Status de Atendimento',
-      name: 'status',
+      name: 'statusName',
       type: 'string',
     },
   ],
-  filters: [
-    {
-      label: 'Todas',
-      name: 'todas',
-    },
-    {
-      label: 'Programadas',
-      name: 'programadas',
-    },
-    {
-      label: 'Estimulação',
-      name: 'estimulacao',
-    },
-    {
-      label: 'Coleta Realizada',
-      name: 'coletaRealizada',
-    },
-    {
-      label: 'Stand',
-      name: 'stand',
-    },
-    {
-      label: 'CFA',
-      name: 'cfa',
-    },
-  ]
+  // filters: [
+  //   {
+  //     label: 'Todas',
+  //     name: 'todas',
+  //   },
+  //   {
+  //     label: 'Programadas',
+  //     name: 'programadas',
+  //   },
+  //   {
+  //     label: 'Estimulação',
+  //     name: 'estimulacao',
+  //   },
+  //   {
+  //     label: 'Coleta Realizada',
+  //     name: 'coletaRealizada',
+  //   },
+  //   {
+  //     label: 'Stand',
+  //     name: 'stand',
+  //   },
+  //   {
+  //     label: 'CFA',
+  //     name: 'cfa',
+  //   },
+  // ]
 };

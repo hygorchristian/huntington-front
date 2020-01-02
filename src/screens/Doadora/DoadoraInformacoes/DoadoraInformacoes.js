@@ -1,9 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { Container, Header, Recepcao } from './styles';
+import AdicionarRow from '~/components/AdicionarRow';
 
 function DoadoraInformacoes() {
+  const history = useHistory();
+
+  const adicionarTriagem = () => {
+    history.push('/doadora/detalhes/1/triagem');
+  };
+
   return (
     <Container>
       <Header>
@@ -87,7 +94,9 @@ function DoadoraInformacoes() {
           </div>
         </fieldset>
       </Recepcao>
-      <Link to="/doadora/detalhes/1/triagem">Adicionar triagem</Link>
+      <div className="row">
+        <AdicionarRow label="Adicionar" context="Triagem" onClick={adicionarTriagem} />
+      </div>
     </Container>
 );
 }

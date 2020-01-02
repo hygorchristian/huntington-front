@@ -47,7 +47,7 @@ export default function MuiTable({
   const [order, setOrder] = useState('ASC');
   const [sort, setSort] = useState('id');
   const [page, setPage] = useState(1);
-  const [perPage, setPerPage] = useState('10');
+  const [perPage, setPerPage] = useState(10);
   const [filter, setFilter] = useState(null);
 
   const deps = { history, params: routeParams, };
@@ -92,7 +92,6 @@ export default function MuiTable({
     const search = strapiParams({
       q, filter, sort, order, perPage, page
     });
-    console.tron.log('MuiTable', { search });
     onRequest(search);
   }, [q, filter, sort, order, perPage, page]);
 

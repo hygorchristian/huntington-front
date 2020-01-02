@@ -10,7 +10,4 @@ export default combineReducers({
   Header,
   Menu,
   doadora,
-  // receptora,
-  // embriologia,
-  // financeiro,
 });

@@ -20,6 +20,7 @@ function PreencherUltrassom() {
       <Content>
         <MuiInput
           label="Contagem de folículos"
+          type="number"
         />
         <MuiBooleanValue
           mt={20}

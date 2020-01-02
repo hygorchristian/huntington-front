@@ -110,7 +110,7 @@ class jwtService extends EventEmitter {
     if (this.isAuthTokenValid(token)) {
       Api.setToken(token);
     } else {
-      console.tron.log('invalid token');
+      console.tron.error('invalid token');
     }
   };
 

@@ -56,9 +56,11 @@ class ApiService {
 
   countEvent = (params) => this.api.get('events/count', { params });
 
+  eventAddDonor = (id, donor_id) => this.api.put(`events/add/${id}`, { id: donor_id });
+
   getEvents = (params) => this.api.get('events', { params });
 
-  getEvent = (params, id) => this.api.get(`events/${id}`, { params });
+  getEvent = (id, params) => this.api.get(`events/${id}`, { params });
 
   createEvent = (data) => this.api.post('events', data);
 
@@ -106,11 +108,11 @@ class ApiService {
 
   getStates = (params) => this.api.get('statuses', { params });
 
-  getState = (params, id) => this.api.get(`statuses/${id}`, { params });
+  getState = (id, params) => this.api.get(`statuses/${id}`, { params });
 
   createState = (data) => this.api.post('statuses', data);
 
-  updateState = (data, id) => this.api.put(`statuses/${id}`, data);
+  updateState = (id, data) => this.api.put(`statuses/${id}`, data);
 
   deleteState = (id) => this.api.delete(`statuses/${id}`);
 

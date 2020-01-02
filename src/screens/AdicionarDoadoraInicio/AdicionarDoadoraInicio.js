@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { useFormik } from 'formik';
 import MenuItem from '@material-ui/core/MenuItem';
 
 import { useDispatch, useSelector } from 'react-redux';
+import Api from '~/services/api';
 import {
   Container, Header, Content
 } from './styles';
@@ -16,9 +17,22 @@ import MuiInput from '~/components/MuiInput';
 import Loading from '~/components/Loading';
 import Botao from '~/components/Botao';
 import { NovaDoadoraActions } from '~/store/ducks/doadora/novaDoadora';
-import { formatIdade } from '~/utils/data';
 
 function AdicionarDoadoraInicio({ onProximo }) {
+  const [etnias, setEtnias] = useState([]);
+
+  useEffect(() => {
+    async function getEtnias() {
+      const { data } = await Api.getEtnias({});
+      if (data) {
+        setEtnias(data);
+      } else {
+        console.tron.error('Não há etnias');
+      }
+    }
+    getEtnias();
+  }, []);
+
   const dispatch = useDispatch();
   const data = useSelector((state) => state.doadora.novaDoadora.data);
 
@@ -29,16 +43,14 @@ function AdicionarDoadoraInicio({ onProximo }) {
 
   const formik = useFormik({
     initialValues: {
-      nome: data ? data.nome : '',
-      nascimento: data ? data.nascimento : '',
-      estadocivil: data ? data.estadocivil : '',
-      etnia: data ? data.etnia : ''
+      name: data ? data.name : 'Doadora 1',
+      birth: data ? data.birth : new Date(1995, 8, 6),
+      marital_status: data ? data.marital_status : 'casada',
+      etnia: data ? data.etnia : 'parda'
     },
     onSubmit,
     validationSchema
   });
-
-  console.tron.log(formatIdade(new Date(1995, 9, 6)));
 
   return (
     <Container>
@@ -50,32 +62,32 @@ function AdicionarDoadoraInicio({ onProximo }) {
       <Content>
         <form onSubmit={formik.handleSubmit}>
           <MuiInput
-            name="nome"
+            name="name"
             label="Nome"
             type="text"
-            value={formik.values.nome}
+            value={formik.values.name}
             onChange={formik.handleChange}
-            error={formik.errors.nome}
-            helperText={formik.errors.nome}
+            error={formik.errors.name}
+            helperText={formik.errors.name}
           />
           <MuiDatePicker
-            name="nascimento"
+            name="birth"
             label="Data de Nascimento"
-            value={formik.values.nascimento}
+            value={formik.values.birth}
             onChange={(e) => {
-              formik.setFieldValue('nascimento', e);
+              formik.setFieldValue('birth', e);
             }}
-            error={formik.errors.nascimento}
-            helperText={formik.errors.nascimento}
+            error={formik.errors.birth}
+            helperText={formik.errors.birth}
           />
           <MuiSelect
-            name="estadocivil"
+            name="marital_status"
             label="Estado Civil"
-            value={formik.values.estadocivil}
+            value={formik.values.marital_status}
             handleChange={(e) => {
-              formik.setFieldValue('estadocivil', e.target.value);
+              formik.setFieldValue('marital_status', e.target.value);
             }}
-            error={formik.errors.estadocivil}
+            error={formik.errors.marital_status}
           >
             <MenuItem value="casada">Casada</MenuItem>
             <MenuItem value="solteira">Solteira</MenuItem>
@@ -91,12 +103,11 @@ function AdicionarDoadoraInicio({ onProximo }) {
             }}
             error={formik.errors.etnia}
           >
-            <MenuItem value="branca">Branca</MenuItem>
-            <MenuItem value="loira">Loira</MenuItem>
-            <MenuItem value="parda">Parda</MenuItem>
-            <MenuItem value="negra">Negra</MenuItem>
-            <MenuItem value="oriental">Oriental</MenuItem>
-            <MenuItem value="outra">Outra</MenuItem>
+            {
+              etnias.map((etnia) => (
+                <MenuItem value={etnia}>{etnia.name}</MenuItem>
+              ))
+            }
           </MuiSelect>
           {formik.isSubmitting && <Loading size={20} />}
         </form>

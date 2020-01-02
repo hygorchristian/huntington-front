@@ -3,19 +3,22 @@ import * as Yup from 'yup';
 export default Yup.object().shape({
   rg: Yup.string()
     .required('Campo obrigatório'),
-  orgao: Yup.string()
+  rg_expeditor: Yup.string()
     .required('Campo obrigatório'),
-  endereco: Yup.string()
+  address: Yup.object().shape({
+    address: Yup.string()
+      .required('Campo obrigatório'),
+    address_comp: Yup.string()
+      .required('Campo obrigatório'),
+    address_number: Yup.number()
+      .typeError('Número inválido')
+      .required('Campo obrigatório'),
+    cep: Yup.string()
+      .required('Campo obrigatório'),
+  }),
+  celphone: Yup.string()
     .required('Campo obrigatório'),
-  complemento: Yup.string()
-    .required('Campo obrigatório'),
-  numero: Yup.string()
-    .required('Campo obrigatório'),
-  cep: Yup.string()
-    .required('Campo obrigatório'),
-  celular: Yup.string()
-    .required('Campo obrigatório'),
-  telefone: Yup.string()
+  phone: Yup.string()
     .required('Campo obrigatório'),
   email: Yup.string()
     .email('E-mail inválido')

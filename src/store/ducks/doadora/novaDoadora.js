@@ -5,7 +5,7 @@ import Immutable from 'seamless-immutable';
 
 const { Types, Creators } = createActions({
   novaDoadoraSetData: ['data'],
-  novaDoadoraSaveRequest: null,
+  novaDoadoraSaveRequest: ['eventID', 'data'],
   novaDoadoraSaveSuccess: ['message'],
   novaDoadoraSaveFailure: ['error'],
 });
@@ -29,7 +29,7 @@ const novaDoadoraSaveRequest = (state) => ({
 });
 
 const novaDoadoraSaveSuccess = (state, { message }) => ({
-  ...state, message, loading: false, error: null, data: null,
+  ...state, message, loading: false, error: null,
 });
 
 const novaDoadoraSaveFailure = (state, { error }) => ({
