@@ -41,17 +41,17 @@ function AdicionarDoadoraConcluir({ onVoltar, enqueueSnackbar }) {
 
   const formik = useFormik({
     initialValues: {
-      rg: '3.153.052',
-      rg_expeditor: 'SSPDF',
+      rg: '',
+      rg_expeditor: '',
       address: {
-        address: 'Quadra 104',
-        address_number: '1203',
-        address_comp: 'Residencial Colina',
-        cep: '71909-180'
+        address: '',
+        address_number: '',
+        address_comp: '',
+        cep: ''
       },
-      celphone: '6199854665',
-      phone: '6130536539',
-      email: 'hygor.christian@gmail.com',
+      celphone: '',
+      phone: '',
+      email: '',
     },
     onSubmit,
     validationSchema

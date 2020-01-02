@@ -43,10 +43,10 @@ function AdicionarDoadoraInicio({ onProximo }) {
 
   const formik = useFormik({
     initialValues: {
-      name: data ? data.name : 'Doadora 1',
-      birth: data ? data.birth : new Date(1995, 8, 6),
-      marital_status: data ? data.marital_status : 'casada',
-      etnia: data ? data.etnia : 'parda'
+      name: data ? data.name : '',
+      birth: data ? data.birth : new Date(),
+      marital_status: data ? data.marital_status : '',
+      etnia: data ? data.etnia : ''
     },
     onSubmit,
     validationSchema
