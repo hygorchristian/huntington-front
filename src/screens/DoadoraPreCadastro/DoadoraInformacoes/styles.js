@@ -4,6 +4,10 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  
+  .row{
+    width: 600px;
+  }
 `;
 
 export const Header = styled.div`
@@ -58,7 +62,7 @@ export const Header = styled.div`
 `;
 
 export const Recepcao = styled.div`
-  width: 580px;
+  width: 600px;
   margin-top: 40px;
   
   fieldset{  
