@@ -21,7 +21,7 @@ const snackbarProviderOptions = {
 const theme = createMuiTheme({
   palette: {
     primary: green,
-    secondary: cyan,
+    secondary: red,
     error: red,
   },
 });

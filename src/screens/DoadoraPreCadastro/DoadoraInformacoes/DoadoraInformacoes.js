@@ -1,22 +1,34 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 
+import { useSelector } from 'react-redux';
 import { Container, Header, Recepcao } from './styles';
 import AdicionarRow from '~/components/AdicionarRow';
+import Loading from '~/components/Loading';
+import { formatIdade } from '~/utils/data';
+import { formatAddress } from '~/utils/string';
+import Triagem from '~/components/Triagem';
 
 function DoadoraInformacoes() {
   const history = useHistory();
+  const { id, doadora } = useParams();
+  const { data, loading, error } = useSelector((state) => state.doadora.preCadastro.item);
 
   const adicionarTriagem = () => {
-    history.push('/doadora/detalhes/1/triagem');
+    history.push(`/doadora/pre-cadastros/${id}/${doadora}/triagem`);
   };
+
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <Container>
       <Header>
         <div className="info">
           <div className="col mr-40">
             <label>ID</label>
-            <span>12345678</span>
+            <span>{data.id}</span>
           </div>
           <div className="col mr-40">
             <label>PIN</label>
@@ -30,7 +42,7 @@ function DoadoraInformacoes() {
         <div className="status">
           <div className="col">
             <label>Status de Atendimento</label>
-            <span>Pré-Cadastrada</span>
+            <span>{data.status.name}</span>
           </div>
         </div>
       </Header>
@@ -39,43 +51,54 @@ function DoadoraInformacoes() {
           <legend>RECEPÇÃO</legend>
           <div className="content">
             <div className="col">
-              <span className="label">Maria Carolina do Rosário</span>
-              <span className="label">28 anos, 05 de maio de 1991</span>
+              <span className="label">{data.name}</span>
+              <span className="label">{formatIdade(data.birth)}</span>
               <div className="infos">
-                <span>Solteira</span>
-                <span>Parda</span>
+                <span>{data.marital_status}</span>
+                <span>{data.etnia.name}</span>
               </div>
             </div>
             <div className="col">
               <div className="info">
                 <label>RG nº</label>
-                <span>332548 SPTC/SP</span>
+                <span>
+                  {data.rg}
+                  {' '}
+                  {data.rg_expeditor}
+                </span>
               </div>
               <div className="info">
                 <label>Endereço</label>
-                <span>Rua Itaboraí, 456, Bela Vista, São Paulo/SP, Apto 506, 25.654-98</span>
+                <span>{formatAddress(data.address)}</span>
               </div>
             </div>
           </div>
           <div className="contatos">
             <div className="info">
               <label>Celular</label>
-              <span>(11) 99966-9898</span>
+              <span>{data.celphone}</span>
             </div>
             <div className="info">
               <label>Telefone</label>
-              <span>(11) 3333-9898 </span>
+              <span>{data.phone}</span>
             </div>
             <div className="info">
               <label>E-mail</label>
-              <span>emaildoadora@email.com.br </span>
+              <span>{data.email}</span>
             </div>
           </div>
         </fieldset>
       </Recepcao>
-      <div className="row">
-        <AdicionarRow label="Adicionar" context="Triagem" onClick={adicionarTriagem} />
-      </div>
+      {
+        data.triagem ? (
+          <Triagem data={data.triagem} />
+        ) : (
+          <div className="row">
+            <AdicionarRow label="Adicionar" context="Triagem" onClick={adicionarTriagem} />
+          </div>
+        )
+      }
+
     </Container>
 );
 }

@@ -54,17 +54,17 @@ class ApiService {
   // 01. Eventos
   // ===========================================================================
 
-  countEvent = (params) => this.api.get('events/count', { params });
+  countEvent = (params = {}) => this.api.get('events/count', { params });
 
   eventAddDonor = (id, donor_id) => this.api.put(`events/add/${id}`, { id: donor_id });
 
-  getEvents = (params) => this.api.get('events', { params });
+  getEvents = (params = {}) => this.api.get('events', { params });
 
-  getEvent = (id, params) => this.api.get(`events/${id}`, { params });
+  getEvent = (id, params = {}) => this.api.get(`events/${id}`, { params });
 
   createEvent = (data) => this.api.post('events', data);
 
-  updateEvent = (data, id) => this.api.put(`events/${id}`, data);
+  updateEvent = (id, data) => this.api.put(`events/${id}`, data);
 
   deleteEvent = (id) => this.api.delete(`events/${id}`);
 
@@ -72,15 +72,15 @@ class ApiService {
   // 02. Doadora
   // ===========================================================================
 
-  countDoadora = (params) => this.api.get('donor/count', { params });
+  countDoadora = (params = {}) => this.api.get('donor/count', { params });
 
-  getDoadoras = (params) => this.api.get('donor', { params });
+  getDoadoras = (params = {}) => this.api.get('donor', { params });
 
-  getDoadora = (params, id) => this.api.get(`donor/${id}`, { params });
+  getDoadora = (id, params = {}) => this.api.get(`donor/${id}`, { params });
 
   createDoadora = (data) => this.api.post('donor', data);
 
-  updateDoadora = (data, id) => this.api.put(`donor/${id}`, data);
+  updateDoadora = (id, data) => this.api.put(`donor/${id}`, data);
 
   deleteDoadora = (id) => this.api.delete(`donor/${id}`);
 
@@ -88,15 +88,15 @@ class ApiService {
   // 03. Perfil (Estado) para Doadoras
   // ===========================================================================
 
-  countProfile = (params) => this.api.get('profiles/count', { params });
+  countProfile = (params = {}) => this.api.get('profiles/count', { params });
 
-  getProfiles = (params) => this.api.get('profiles', { params });
+  getProfiles = (params = {}) => this.api.get('profiles', { params });
 
-  getProfile = (params, id) => this.api.get(`profiles/${id}`, { params });
+  getProfile = (id, params = {}) => this.api.get(`profiles/${id}`, { params });
 
   createProfile = (data) => this.api.post('profiles', data);
 
-  updateProfile = (data, id) => this.api.put(`profiles/${id}`, data);
+  updateProfile = (id, data) => this.api.put(`profiles/${id}`, data);
 
   deleteProfile = (id) => this.api.delete(`profiles/${id}`);
 
@@ -104,11 +104,11 @@ class ApiService {
   // 04. Estado (Entrada) de Doadoras
   // ===========================================================================
 
-  countState = (params) => this.api.get('statuses/count', { params });
+  countState = (params = {}) => this.api.get('statuses/count', { params });
 
-  getStates = (params) => this.api.get('statuses', { params });
+  getStates = (params = {}) => this.api.get('statuses', { params });
 
-  getState = (id, params) => this.api.get(`statuses/${id}`, { params });
+  getState = (id, params = {}) => this.api.get(`statuses/${id}`, { params });
 
   createState = (data) => this.api.post('statuses', data);
 
@@ -120,15 +120,15 @@ class ApiService {
   // 05. Estágio (Etapa) de Doadoras
   // ===========================================================================
 
-  countStage = (params) => this.api.get('stagings/count', { params });
+  countStage = (params = {}) => this.api.get('stagings/count', { params });
 
-  getStatges = (params) => this.api.get('stagings', { params });
+  getStatges = (params = {}) => this.api.get('stagings', { params });
 
-  getStage = (params, id) => this.api.get(`stagings/${id}`, { params });
+  getStage = (id, params = {}) => this.api.get(`stagings/${id}`, { params });
 
   createStage = (data) => this.api.post('stagings', data);
 
-  updateStage = (data, id) => this.api.put(`stagings/${id}`, data);
+  updateStage = (id, data) => this.api.put(`stagings/${id}`, data);
 
   deleteStage = (id) => this.api.delete(`stagings/${id}`);
 
@@ -136,15 +136,15 @@ class ApiService {
   // 06. Ciclos Casados
   // ===========================================================================
 
-  countBondCicle = (params) => this.api.get('bondcicles/count', { params });
+  countBondCicle = (params = {}) => this.api.get('bondcicles/count', { params });
 
-  getBondCicles = (params) => this.api.get('bondcicles', { params });
+  getBondCicles = (params = {}) => this.api.get('bondcicles', { params });
 
-  getBondCicle = (params, id) => this.api.get(`bondcicles/${id}`, { params });
+  getBondCicle = (id, params = {}) => this.api.get(`bondcicles/${id}`, { params });
 
   createBondCicle = (data) => this.api.post('bondcicles', data);
 
-  updateBondCicle = (data, id) => this.api.put(`bondcicles/${id}`, data);
+  updateBondCicle = (id, data) => this.api.put(`bondcicles/${id}`, data);
 
   deleteBondCicle = (id) => this.api.delete(`bondcicles/${id}`);
 
@@ -152,15 +152,15 @@ class ApiService {
   // 07. Banco de Óvulos
   // ===========================================================================
 
-  countOvulebank = (params) => this.api.get('ovulebanks/count', { params });
+  countOvulebank = (params = {}) => this.api.get('ovulebanks/count', { params });
 
-  getOvulebanks = (params) => this.api.get('ovulebanks', { params });
+  getOvulebanks = (params = {}) => this.api.get('ovulebanks', { params });
 
-  getOvulebank = (params, id) => this.api.get(`ovulebanks/${id}`, { params });
+  getOvulebank = (id, params = {}) => this.api.get(`ovulebanks/${id}`, { params });
 
   createOvulebank = (data) => this.api.post('ovulebanks', data);
 
-  updateOvulebank = (data, id) => this.api.put(`ovulebanks/${id}`, data);
+  updateOvulebank = (id, data) => this.api.put(`ovulebanks/${id}`, data);
 
   deleteOvulebank = (id) => this.api.delete(`ovulebanks/${id}`);
 
@@ -168,15 +168,15 @@ class ApiService {
   // 08. Registro de Ultrasom
   // ===========================================================================
 
-  countUltrasound = (params) => this.api.get('ultrasound/count', { params });
+  countUltrasound = (params = {}) => this.api.get('ultrasound/count', { params });
 
-  getUltrasounds = (params) => this.api.get('ultrasound', { params });
+  getUltrasounds = (params = {}) => this.api.get('ultrasound', { params });
 
-  getUltrasound = (params, id) => this.api.get(`ultrasound/${id}`, { params });
+  getUltrasound = (id, params = {}) => this.api.get(`ultrasound/${id}`, { params });
 
   createUltrasound = (data) => this.api.post('ultrasound', data);
 
-  updateUltrasound = (data, id) => this.api.put(`ultrasound/${id}`, data);
+  updateUltrasound = (id, data) => this.api.put(`ultrasound/${id}`, data);
 
   deleteUltrasound = (id) => this.api.delete(`ultrasound/${id}`);
 
@@ -184,15 +184,15 @@ class ApiService {
   // 09. Receptoras
   // ===========================================================================
 
-  countReceiver = (params) => this.api.get('receivers/count', { params });
+  countReceiver = (params = {}) => this.api.get('receivers/count', { params });
 
-  getReceivers = (params) => this.api.get('receivers', { params });
+  getReceivers = (params = {}) => this.api.get('receivers', { params });
 
-  getReceiver = (params, id) => this.api.get(`receivers/${id}`, { params });
+  getReceiver = (id, params = {}) => this.api.get(`receivers/${id}`, { params });
 
   createReceiver = (data) => this.api.post('receivers', data);
 
-  updateReceiver = (data, id) => this.api.put(`receivers/${id}`, data);
+  updateReceiver = (id, data) => this.api.put(`receivers/${id}`, data);
 
   deleteReceiver = (id) => this.api.delete(`receivers/${id}`);
 
@@ -200,15 +200,15 @@ class ApiService {
   // 10. Unidades de Atendimento
   // ===========================================================================
 
-  countUnit = (params) => this.api.get('units/count', { params });
+  countUnit = (params = {}) => this.api.get('units/count', { params });
 
-  getUnits = (params) => this.api.get('units', { params });
+  getUnits = (params = {}) => this.api.get('units', { params });
 
-  getUnit = (params, id) => this.api.get(`units/${id}`, { params });
+  getUnit = (id, params = {}) => this.api.get(`units/${id}`, { params });
 
   createUnit = (data) => this.api.post('units', data);
 
-  updateUnit = (data, id) => this.api.put(`units/${id}`, data);
+  updateUnit = (id, data) => this.api.put(`units/${id}`, data);
 
   deleteUnit = (id) => this.api.delete(`units/${id}`);
 
@@ -216,15 +216,15 @@ class ApiService {
   // 11. Preço
   // ===========================================================================
 
-  countPricing = (params) => this.api.get('pricings/count', { params });
+  countPricing = (params = {}) => this.api.get('pricings/count', { params });
 
-  getPricings = (params) => this.api.get('pricings', { params });
+  getPricings = (params = {}) => this.api.get('pricings', { params });
 
-  getPricing = (params, id) => this.api.get(`pricings/${id}`, { params });
+  getPricing = (id, params = {}) => this.api.get(`pricings/${id}`, { params });
 
   createPricing = (data) => this.api.post('pricings', data);
 
-  updatePricing = (data, id) => this.api.put(`pricings/${id}`, data);
+  updatePricing = (id, data) => this.api.put(`pricings/${id}`, data);
 
   deletePricing = (id) => this.api.delete(`pricings/${id}`);
 
@@ -232,15 +232,15 @@ class ApiService {
   // 12. Consultas
   // ===========================================================================
 
-  countConsultation = (params) => this.api.get('consultation/count', { params });
+  countConsultation = (params = {}) => this.api.get('consultation/count', { params });
 
-  getConsultations = (params) => this.api.get('consultation', { params });
+  getConsultations = (params = {}) => this.api.get('consultation', { params });
 
-  getConsultation = (params, id) => this.api.get(`consultation/${id}`, { params });
+  getConsultation = (id, params = {}) => this.api.get(`consultation/${id}`, { params });
 
   createConsultation = (data) => this.api.post('consultation', data);
 
-  updateConsultation = (data, id) => this.api.put(`consultation/${id}`, data);
+  updateConsultation = (id, data) => this.api.put(`consultation/${id}`, data);
 
   deleteConsultation = (id) => this.api.delete(`consultation/${id}`);
 
@@ -248,25 +248,25 @@ class ApiService {
   // 13. Histórico
   // ===========================================================================
 
-  countHistory = (params) => this.api.get('history/count', { params });
+  countHistory = (params = {}) => this.api.get('history/count', { params });
 
-  getHistories = (params) => this.api.get('history', { params });
+  getHistories = (params = {}) => this.api.get('history', { params });
 
-  getHistory = (params, id) => this.api.get(`history/${id}`, { params });
+  getHistory = (id, params = {}) => this.api.get(`history/${id}`, { params });
 
   // ===========================================================================
   // 14. Etnias
   // ===========================================================================
 
-  countEtnia = (params) => this.api.get('etnias/count', { params });
+  countEtnia = (params = {}) => this.api.get('etnias/count', { params });
 
-  getEtnias = (params) => this.api.get('etnias', { params });
+  getEtnias = (params = {}) => this.api.get('etnias', { params });
 
-  getEtnia = (params, id) => this.api.get(`etnias/${id}`, { params });
+  getEtnia = (id, params = {}) => this.api.get(`etnias/${id}`, { params });
 
   createEtnia = (data) => this.api.post('etnias', data);
 
-  updateEtnia = (data, id) => this.api.put(`etnias/${id}`, data);
+  updateEtnia = (id, data) => this.api.put(`etnias/${id}`, data);
 
   deleteEtnia = (id) => this.api.delete(`etnias/${id}`);
 
@@ -274,15 +274,15 @@ class ApiService {
   // 15. Coletas
   // ===========================================================================
 
-  countCollecting = (params) => this.api.get('collecting/count', { params });
+  countCollecting = (params = {}) => this.api.get('collecting/count', { params });
 
-  getCollectings = (params) => this.api.get('collecting', { params });
+  getCollectings = (params = {}) => this.api.get('collecting', { params });
 
-  getCollecting = (params, id) => this.api.get(`collecting/${id}`, { params });
+  getCollecting = (id, params = {}) => this.api.get(`collecting/${id}`, { params });
 
   createCollecting = (data) => this.api.post('collecting', data);
 
-  updateCollecting = (data, id) => this.api.put(`collecting/${id}`, data);
+  updateCollecting = (id, data) => this.api.put(`collecting/${id}`, data);
 
   deleteCollecting = (id) => this.api.delete(`collecting/${id}`);
 
@@ -290,15 +290,15 @@ class ApiService {
   // 16. Despache
   // ===========================================================================
 
-  countDispatch = (params) => this.api.get('dispatches/count', { params });
+  countDispatch = (params = {}) => this.api.get('dispatches/count', { params });
 
-  getDispatches = (params) => this.api.get('dispatches', { params });
+  getDispatches = (params = {}) => this.api.get('dispatches', { params });
 
-  getDispatch = (params, id) => this.api.get(`dispatches/${id}`, { params });
+  getDispatch = (id, params = {}) => this.api.get(`dispatches/${id}`, { params });
 
   createDispatch = (data) => this.api.post('dispatches', data);
 
-  updateDispatch = (data, id) => this.api.put(`dispatches/${id}`, data);
+  updateDispatch = (id, data) => this.api.put(`dispatches/${id}`, data);
 
   deleteDispatch = (id) => this.api.delete(`dispatches/${id}`);
 
@@ -306,15 +306,15 @@ class ApiService {
   // 17. Gastos
   // ===========================================================================
 
-  countExpense = (params) => this.api.get('expenses/count', { params });
+  countExpense = (params = {}) => this.api.get('expenses/count', { params });
 
-  getExpenses = (params) => this.api.get('expenses', { params });
+  getExpenses = (params = {}) => this.api.get('expenses', { params });
 
-  getExpense = (params, id) => this.api.get(`expenses/${id}`, { params });
+  getExpense = (id, params = {}) => this.api.get(`expenses/${id}`, { params });
 
   createExpense = (data) => this.api.post('expenses', data);
 
-  updateExpense = (data, id) => this.api.put(`expenses/${id}`, data);
+  updateExpense = (id, data) => this.api.put(`expenses/${id}`, data);
 
   deleteExpense = (id) => this.api.delete(`expenses/${id}`);
 
@@ -322,15 +322,15 @@ class ApiService {
   // 18. Exames
   // ===========================================================================
 
-  countExam = (params) => this.api.get('expenses/count', { params });
+  countExam = (params = {}) => this.api.get('expenses/count', { params });
 
-  getExams = (params) => this.api.get('expenses', { params });
+  getExams = (params = {}) => this.api.get('expenses', { params });
 
-  getExam = (params, id) => this.api.get(`expenses/${id}`, { params });
+  getExam = (id, params = {}) => this.api.get(`expenses/${id}`, { params });
 
   createExam = (data) => this.api.post('expenses', data);
 
-  updateExam = (data, id) => this.api.put(`expenses/${id}`, data);
+  updateExam = (id, data) => this.api.put(`expenses/${id}`, data);
 
   deleteExam = (id) => this.api.delete(`expenses/${id}`);
 }

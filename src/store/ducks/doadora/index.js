@@ -4,6 +4,7 @@ import { NovoEventoReducer as novoEvento } from './novoEvento';
 import { EventosReducer as eventos } from './eventos';
 import { EventoReducer as evento } from './evento';
 import { NovaDoadoraReducer as novaDoadora } from './novaDoadora';
+import { PreCadastroReducer as preCadastro } from './preCadastro';
 // import
 
 export default combineReducers({
@@ -12,5 +13,6 @@ export default combineReducers({
   eventos,
   evento,
   novaDoadora,
+  preCadastro,
 // reducer
 });

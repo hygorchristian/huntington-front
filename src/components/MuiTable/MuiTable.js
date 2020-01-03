@@ -137,7 +137,7 @@ export default function MuiTable({
         <TablePagination
           rowsPerPageOptions={[10, 25, 50, 100]}
           component="div"
-          count={data.length}
+          count={(data && data.length) || 0}
           rowsPerPage={perPage}
           page={page - 1}
           onChangePage={handleChangePage}

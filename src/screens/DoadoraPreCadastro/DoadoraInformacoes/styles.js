@@ -4,9 +4,10 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  padding-bottom: 100px;
   
   .row{
-    width: 600px;
+    width: 750px;
   }
 `;
 
@@ -14,7 +15,7 @@ export const Header = styled.div`
   margin-top: 35px;
   display: flex;
   flex-direction: row;
-  width: 580px;
+  width: 750px;
   
   .info{
     height: 70px;
@@ -62,7 +63,7 @@ export const Header = styled.div`
 `;
 
 export const Recepcao = styled.div`
-  width: 600px;
+  width: 750px;
   margin-top: 40px;
   
   fieldset{  

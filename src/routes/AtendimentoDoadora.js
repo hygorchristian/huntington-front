@@ -53,11 +53,11 @@ export default [
     component: AdicionarDoadora
   },
   {
-    path: '/doadora/detalhes/:id',
+    path: '/doadora/pre-cadastros/:id/:doadora',
     component: DoadoraPreCadastro
   },
   {
-    path: '/doadora/detalhes/:id/triagem',
+    path: '/doadora/pre-cadastros/:id/:doadora/triagem',
     component: DoadoraTriagem
   },
   {

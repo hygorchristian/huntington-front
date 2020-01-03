@@ -1,5 +1,5 @@
-function onClick({ history }, id) {
-  history.push(`/doadora/detalhes/${id}`);
+function onClick({ history, params }, id) {
+  history.push(`/doadora/pre-cadastros/${params.id}/${id}`);
 }
 
 function onAdd({ history, params }) {

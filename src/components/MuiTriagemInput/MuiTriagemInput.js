@@ -2,11 +2,9 @@ import React from 'react';
 
 import Grid from '@material-ui/core/Grid';
 import InputLabel from '@material-ui/core/InputLabel';
-import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core';
-import MuiInput from '~/components/MuiInput';
-import { Container } from './styles';
+import { Button } from './styles';
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -28,23 +26,64 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function MuiTriagemInput({
-  label, placeholder, value, mt = 0, ...props
+  label, placeholder, name, formik, ...props
 }) {
   const classes = useStyles();
+  const value = formik.values[name];
+  const details = formik.values[`${name}_details`];
+
+  const getColor = (bool) => {
+    if (value === bool) {
+      return 'primary';
+    }
+
+    return '';
+  };
+
+  const getVariant = (bool) => {
+    if (value === bool) {
+      return 'contained';
+    }
+
+    return 'outlined';
+  };
 
   return (
-    <Grid direction="row" alignItems="center" container spacing={1} className={classes.margin} style={{ marginTop: mt }}>
+    <Grid direction="row" alignItems="center" container spacing={1} className={classes.margin}>
       <Grid item className={classes.label}>
         <InputLabel>{label}</InputLabel>
       </Grid>
       <Grid className={classes.form}>
-        <Button variant="outlined" color="primary">Sim</Button>
+        <Button
+          variant={getVariant(true)}
+          color={getColor(true)}
+          error={formik.touched[name] && formik.errors[name]}
+          onClick={() => formik.setFieldValue(name, true)}
+        >
+          Sim
+        </Button>
       </Grid>
       <Grid className={classes.form}>
-        <Button variant="outlined" color="primary">Não</Button>
+        <Button
+          color={getColor(false)}
+          variant={getVariant(false)}
+          error={formik.touched[name] && formik.errors[name]}
+          onClick={() => formik.setFieldValue(name, false)}
+        >
+          Não
+        </Button>
       </Grid>
       <Grid className={classes.flex}>
-        <TextField fullWidth variant="outlined" label={placeholder} {...props} />
+        <TextField
+          fullWidth
+          variant="outlined"
+          label={placeholder}
+          value={details}
+          onChange={(e) => formik.setFieldValue(`${name}_details`, e.target.value)}
+          error={formik.touched[name] && formik.errors[`${name}_details`]}
+          helperText={formik.touched[name] && formik.errors[`${name}_details`]}
+          {...props}
+        />
       </Grid>
     </Grid>
   );
