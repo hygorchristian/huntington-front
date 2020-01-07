@@ -12,13 +12,14 @@ import validationSchema from './validationSchema';
 import initialValues from './initialValues';
 import MuiBoolean from '~/components/MuiBoolean';
 import { PreCadastroActions } from '~/store/ducks/doadora/preCadastro';
+import { UltrassomActions } from '~/store/ducks/doadora/ultrassom';
 
 function PreencherUltrassom() {
   const { doadora } = useParams();
   const dispatch = useDispatch();
 
   const onSubmit = (values) => {
-    dispatch(PreCadastroActions.preCadastroUpdateRequest(doadora, { ultrassom: values }));
+    dispatch(UltrassomActions.ultrassomCreateRequest({ donor: doadora, ...values }));
   };
 
   const formik = useFormik({

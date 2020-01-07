@@ -1,4 +1,5 @@
 import { put } from 'redux-saga/effects';
+import Api from '~/services/api';
 
 
 export function* itemUltrassom() {
@@ -12,9 +13,9 @@ export function* itemUltrassom() {
   }
 }
 
-export function* createUltrassom({ id, data }) {
+export function* createUltrassom({ data }) {
   try {
-    console.tron.log({ id, data });
+    console.tron.log({ data });
     // const response = yield call(Api.route, param );
     // yield put(UltrassomActions.ultrassomCreateSuccess(response.data, 'Ultrassom criado com sucesso!'));
   } catch (e) {

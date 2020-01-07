@@ -14,15 +14,13 @@ export function* itemPreCadastro({ id }) {
   }
 }
 
-
 export function* updatePreCadastro({ id, data }) {
   try {
-    console.tron.log({ id, data });
     const response = yield call(Api.updateDoadora, id, data);
-    console.tron.log({ response });
-    // yield put(PreCadastroActions.preCadastroUpdateSuccess(response.data, 'PreCadastro atualizado com sucesso!'));
+
+    yield put(PreCadastroActions.preCadastroUpdateSuccess(response.data, 'PreCadastro atualizado com sucesso!'));
   } catch (e) {
     yield put();
-    // PreCadastroActions.preCadastroUpdateFailure('Mensagem de erro')
+    PreCadastroActions.preCadastroUpdateFailure('Mensagem de erro');
   }
 }

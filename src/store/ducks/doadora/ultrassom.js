@@ -9,9 +9,11 @@ const { Creators, Types } = createActions({
   ultrassomItemRequest: ['id'],
   ultrassomItemSuccess: ['data'],
   ultrassomItemFailure: ['error'],
-  ultrassomCreateRequest: ['id','data'],
+
+  ultrassomCreateRequest: ['data'],
   ultrassomCreateSuccess: ['data', 'message'],
   ultrassomCreateFailure: ['error'],
+
   ultrassomUpdateRequest: ['id', 'data'],
   ultrassomUpdateSuccess: ['data', 'message'],
   ultrassomUpdateFailure: ['error'],
