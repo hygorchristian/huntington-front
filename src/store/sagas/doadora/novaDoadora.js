@@ -9,7 +9,7 @@ export function* saveNovaDoadora({ eventID, data }) {
     if (status.length > 0) {
       status = status[0]._id;
       const responseDonor = yield call(Api.createDoadora, { ...data, status });
-      const responseEvent = yield call(Api.eventAddDonor, eventID, responseDonor.data._id);
+      yield call(Api.eventAddDonor, eventID, responseDonor.data._id);
       yield put(NovaDoadoraActions.novaDoadoraSaveSuccess('Doadora criada com sucesso!'));
     } else {
       yield put(NovaDoadoraActions.novaDoadoraSaveFailure('Não foi possível definir o status'));

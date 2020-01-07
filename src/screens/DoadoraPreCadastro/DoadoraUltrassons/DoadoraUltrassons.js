@@ -1,12 +1,15 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 import { Container } from './styles';
 import AdicionarRow from '~/components/AdicionarRow';
 
-function DoadoraUltrassons({ history }) {
+function DoadoraUltrassons() {
+  const history = useHistory();
+  const { id, doadora } = useParams();
+
   const preencher = () => {
-    history.push('/doadora/detalhes/1/ultrassons/preencher');
+    history.push(`/doadora/pre-cadastros/${id}/${doadora}/adicionar-ultrassom`);
   };
 
   return (
@@ -16,4 +19,4 @@ function DoadoraUltrassons({ history }) {
 );
 }
 
-export default withRouter(DoadoraUltrassons);
+export default DoadoraUltrassons;

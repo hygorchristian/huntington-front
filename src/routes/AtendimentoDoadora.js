@@ -61,11 +61,11 @@ export default [
     component: DoadoraTriagem
   },
   {
-    path: '/doadora/detalhes/:id/novo-historico',
+    path: '/doadora/pre-cadastros/:id/:doadora/adicionar-historico',
     component: NovoHistorico
   },
   {
-    path: '/doadora/detalhes/:id/ultrassons/preencher',
+    path: '/doadora/pre-cadastros/:id/:doadora/adicionar-ultrassom',
     component: PreencherUltrassom
   },
   {

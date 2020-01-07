@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
-import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 
 import { Button } from './styles';
@@ -20,9 +19,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function MuiBooleanValue({
- label, placeholder, name, formik, ...props
-}) {
+function MuiBoolean({ label, name, formik }) {
   const classes = useStyles();
   const value = formik.values[name];
 
@@ -70,12 +67,9 @@ function MuiBooleanValue({
             Não
           </Button>
         </Grid>
-        <Grid item>
-          <TextField variant="outlined" label={placeholder} {...props} />
-        </Grid>
       </Grid>
     </Grid>
-);
+  );
 }
 
-export default MuiBooleanValue;
+export default MuiBoolean;
