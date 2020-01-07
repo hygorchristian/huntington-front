@@ -1,5 +1,6 @@
-import { put } from 'redux-saga/effects';
+import { put, call } from 'redux-saga/effects';
 import Api from '~/services/api';
+import { UltrassomActions } from '~/store/ducks/doadora/ultrassom';
 
 
 export function* itemUltrassom() {
@@ -15,12 +16,13 @@ export function* itemUltrassom() {
 
 export function* createUltrassom({ data }) {
   try {
-    console.tron.log({ data });
-    // const response = yield call(Api.route, param );
-    // yield put(UltrassomActions.ultrassomCreateSuccess(response.data, 'Ultrassom criado com sucesso!'));
+    const response = yield call(Api.createUltrasound, data);
+    yield put(UltrassomActions.ultrassomCreateSuccess(response.data, 'Ultrassom criado com sucesso!'));
   } catch (e) {
-    yield put();
-    // UltrassomActions.ultrassomCreateFailure('Mensagem de erro')
+    console.tron.error(e);
+    yield put(
+      UltrassomActions.ultrassomCreateFailure('Mensagem de erro')
+    );
   }
 }
 
