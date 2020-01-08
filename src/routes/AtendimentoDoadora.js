@@ -13,6 +13,7 @@ import DashboardScreen from '~/screens/DashboardScreen';
 import PreCadastros from '~/screens/1 - AtendimentoDoadora/PreCadastros';
 import Doadoras from '~/screens/Doadoras';
 import Reclamacoes from '~/screens/Reclamacoes';
+import BancoOvulos from '~/screens/1 - AtendimentoDoadora/BancoOvulos';
 
 export default [
   {
@@ -33,7 +34,7 @@ export default [
   {
     label: 'Resumo do banco',
     path: '/doadora/resumo-do-banco',
-    component: Reclamacoes,
+    component: BancoOvulos,
   },
   {
     label: 'Indicadores',

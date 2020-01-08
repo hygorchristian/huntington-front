@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useParams } from 'react-router-dom';
 
 import { useFormik } from 'formik';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -20,19 +20,7 @@ import { NovaDoadoraActions } from '~/store/ducks/doadora/novaDoadora';
 
 function AdicionarDoadoraInicio({ onProximo }) {
   const [etnias, setEtnias] = useState([]);
-
-  useEffect(() => {
-    async function getEtnias() {
-      const { data } = await Api.getEtnias({});
-      if (data) {
-        setEtnias(data);
-      } else {
-        console.tron.error('Não há etnias');
-      }
-    }
-    getEtnias();
-  }, []);
-
+  const { id } = useParams();
   const dispatch = useDispatch();
   const data = useSelector((state) => state.doadora.novaDoadora.data);
 
@@ -52,9 +40,21 @@ function AdicionarDoadoraInicio({ onProximo }) {
     validationSchema
   });
 
+  useEffect(() => {
+    async function getEtnias() {
+      const { data: etniaData } = await Api.getEtnias({});
+      if (etniaData) {
+        setEtnias(etniaData);
+      } else {
+        console.tron.error('Não há etnias');
+      }
+    }
+    getEtnias();
+  }, []);
+
   return (
     <Container>
-      <Voltar label="Mutirão dia da saúde" route="/doadora/pre-cadastros/1" />
+      <Voltar label="Mutirão dia da saúde" route={`/doadora/pre-cadastros/${id}`} />
       <Header>
         <h1>Pré-cadastro</h1>
         <span>(Recepção)</span>

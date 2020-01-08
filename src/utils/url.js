@@ -52,3 +52,19 @@ export const strapiParams = (payload) => {
 
   return search;
 };
+
+function getUrlVars() {
+  const vars = {};
+  const parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m, key, value) => {
+    vars[key] = value;
+  });
+  return vars;
+}
+
+export const getUrlParam = (parameter, defaultvalue) => {
+  let urlparameter = defaultvalue;
+  if (window.location.href.indexOf(parameter) > -1) {
+    urlparameter = getUrlVars()[parameter];
+  }
+  return urlparameter;
+};

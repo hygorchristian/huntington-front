@@ -22,7 +22,7 @@ function PreCadastro() {
 
   return (
     <Container>
-      <Voltar label="Pré-Cadastros" />
+      <Voltar label="Pré-Cadastros" route="/doadora/pre-cadastros" />
       <Header>
         <h1>{data && data.name}</h1>
         <div className="quantidade">

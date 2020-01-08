@@ -7,18 +7,22 @@ import DoadoraUltrassons from './DoadoraUltrassons';
 export default [
   {
     label: 'Informações',
-    content: <DoadoraInformacoes />
+    content: <DoadoraInformacoes />,
+    url: 'info'
   },
   {
     label: 'Histórico',
-    content: <DoadoraHistorico />
+    content: <DoadoraHistorico />,
+    url: 'historico'
   },
   {
     label: 'Exames',
-    content: <DoadoraExames />
+    content: <DoadoraExames />,
+    url: 'exames'
   },
   {
     label: 'Ultrassons',
-    content: <DoadoraUltrassons />
+    content: <DoadoraUltrassons />,
+    url: 'ultrassons'
   },
 ];

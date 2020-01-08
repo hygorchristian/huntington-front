@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import {
  Container, Header, Tab, Content
@@ -13,13 +14,19 @@ function TabItem({ children, click, selected }) {
   );
 }
 
-function TabDashboard({ tabs }) {
-  const [content, setContent] = useState(tabs[0].content);
-  const [selected, setSelected] = useState(tabs[0]);
+function TabDashboard({ tabs, index = 0 }) {
+  const history = useHistory();
+  const content = tabs[index].content;
+  const selected = tabs[index];
+
+  const setTabUrl = (val) => {
+    console.tron.log({ local: window.location });
+    const url = `${window.location.pathname}?tab=${val}`;
+    history.push(url);
+  };
 
   const click = (tab) => {
-    setContent(tab.content);
-    setSelected(tab);
+    setTabUrl(tab.url);
   };
 
   return (
