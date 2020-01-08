@@ -6,6 +6,7 @@ import { EventoTypes } from '~/store/ducks/doadora/evento';
 import { NovaDoadoraTypes } from '~/store/ducks/doadora/novaDoadora';
 import { PreCadastroTypes } from '~/store/ducks/doadora/preCadastro';
 import { UltrassomTypes } from '~/store/ducks/doadora/ultrassom';
+import { ConsultaTypes } from '~/store/ducks/doadora/consulta';
 // import-types
 
 import { saveEvento } from './novoEvento';
@@ -14,6 +15,9 @@ import { loadEvento } from './evento';
 import { saveNovaDoadora } from './novaDoadora';
 import { itemPreCadastro, updatePreCadastro, } from './preCadastro';
 import { itemUltrassom, createUltrassom, updateUltrassom, } from './ultrassom';
+import {
+ itemConsulta, listConsulta, createConsulta,
+} from './consulta';
 // import-saga
 
 export default [
@@ -26,6 +30,10 @@ export default [
   takeLatest(UltrassomTypes.ULTRASSOM_ITEM_REQUEST, itemUltrassom),
   takeLatest(UltrassomTypes.ULTRASSOM_CREATE_REQUEST, createUltrassom),
   takeLatest(UltrassomTypes.ULTRASSOM_UPDATE_REQUEST, updateUltrassom),
+
+    takeLatest(ConsultaTypes.CONSULTA_ITEM_REQUEST, itemConsulta),
+    takeLatest(ConsultaTypes.CONSULTA_LIST_REQUEST, listConsulta),
+    takeLatest(ConsultaTypes.CONSULTA_CREATE_REQUEST, createConsulta),
 
 // saga
 ];

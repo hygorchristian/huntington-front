@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 
 import { Button } from './styles';
+import { getError, getValue } from '~/utils/formik';
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -21,13 +22,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function MuiBooleanValue({
- label, placeholder, name, formik, ...props
+  fieldLabel,
+  name,
+  formik,
+  ...props
 }) {
   const classes = useStyles();
-  const value = formik.values[name];
+
+  const boolOnChange = (val) => formik.setFieldValue(`${name}.value`, val);
+  const boolValue = getValue(formik, `${name}.value`);
+  const boolError = getError(formik, `${name}.value`);
 
   const getColor = (bool) => {
-    if (value === bool) {
+    if (boolValue === bool) {
       return 'primary';
     }
 
@@ -35,7 +42,7 @@ function MuiBooleanValue({
   };
 
   const getVariant = (bool) => {
-    if (value === bool) {
+    if (boolValue === bool) {
       return 'contained';
     }
 
@@ -46,7 +53,7 @@ function MuiBooleanValue({
     <Grid direction="column" container spacing={1} className={classes.margin}>
       <Grid container direction="row" alignItems="center">
         <Grid item>
-          <InputLabel>{label}</InputLabel>
+          <InputLabel>{fieldLabel}</InputLabel>
         </Grid>
       </Grid>
       <Grid container direction="row" className={classes.form} alignItems="center">
@@ -54,8 +61,8 @@ function MuiBooleanValue({
           <Button
             variant={getVariant(true)}
             color={getColor(true)}
-            error={formik.touched[name] && formik.errors[name]}
-            onClick={() => formik.setFieldValue(name, true)}
+            error={boolError}
+            onClick={() => boolOnChange(true)}
           >
             Sim
           </Button>
@@ -64,14 +71,21 @@ function MuiBooleanValue({
           <Button
             color={getColor(false)}
             variant={getVariant(false)}
-            error={formik.touched[name] && formik.errors[name]}
-            onClick={() => formik.setFieldValue(name, false)}
+            error={boolError}
+            onClick={() => boolOnChange(false)}
           >
             Não
           </Button>
         </Grid>
         <Grid item>
-          <TextField variant="outlined" label={placeholder} {...props} />
+          <TextField
+            variant="outlined"
+            value={getValue(formik, `${name}.obs`)}
+            error={getError(formik, `${name}.obs`)}
+            helperText={getError(formik, `${name}.obs`)}
+            onChange={(e) => formik.setFieldValue(`${name}.obs`, e.target.value)}
+            {...props}
+          />
         </Grid>
       </Grid>
     </Grid>

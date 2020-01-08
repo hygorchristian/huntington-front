@@ -1,161 +1,78 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useSnackbar } from 'notistack';
+import Api from '~/services/api';
 
-import MenuItem from '@material-ui/core/MenuItem';
-import {
- Container, Content, Header, ConsultaContainer, ObservacaoContainer
-} from './styles';
-import InputLabel from '../InputLabel';
-import OptionsLabel from '../OptionsLabel';
-import CheckLabel from '../CheckLabel';
+import { Container, Content, Header } from './styles';
 import Voltar from '../Voltar/Voltar';
-import MuiBooleanValue from '~/components/MuiBooleanValue';
-import MuiSelect from '~/components/MuiSelect';
-import MuiDatePicker from '~/components/MuiDatePicker';
-import MuiTextarea from '~/components/MuiTextarea';
-import MuiInput from '~/components/MuiInput';
 import Botao from '~/components/Botao';
 
-function PrimeiraConsulta() {
-  const [etnia, setEtnia] = useState(null);
-
-  return (
-    <ConsultaContainer>
-      <div className="row date">
-        <MuiDatePicker
-          name="nascimento"
-          label="Data da Última Menstruação"
-        />
-      </div>
-      <div className="row date">
-        <MuiDatePicker
-          name="nascimento"
-          label="Data da Última Menstruação"
-        />
-      </div>
-      <div className="row date">
-        <MuiSelect
-          name="etnia"
-          label="Confirmar etnia"
-        >
-          <MenuItem value="branca">Branca</MenuItem>
-          <MenuItem value="loira">Loira</MenuItem>
-          <MenuItem value="parda">Parda</MenuItem>
-          <MenuItem value="negra">Negra</MenuItem>
-          <MenuItem value="oriental">Oriental</MenuItem>
-          <MenuItem value="outra">Outra</MenuItem>
-        </MuiSelect>
-      </div>
-      <MuiBooleanValue
-        label="Alergia a alguma medicação?"
-        placeholder="Qual?"
-      />
-      <MuiBooleanValue
-        label="Comorbidades?"
-        placeholder="Quais?"
-      />
-
-      <div className="separator" style={{ marginTop: 40, marginBottom: 40 }} />
-
-      <MuiTextarea label="Anotação de Enfermagem" />
-
-      <div className="separator" style={{ marginBottom: 40, marginTop: 40 }} />
-
-      <MuiBooleanValue
-        label="Chegou até nós por indicação?"
-        placeholder="Como?"
-      />
-      <MuiBooleanValue
-        label="Entrou para o programa de doação?"
-        placeholder="Motivo"
-      />
-      <MuiBooleanValue
-        label="Tem perfil compatível?"
-        placeholder="Motivo"
-      />
-
-      <div className="separator" style={{ marginTop: 40 }} />
-
-      <div className="controllers">
-        <Botao endIcon="close" color="">Cancelar</Botao>
-        <Botao endIcon="check">Salvar</Botao>
-      </div>
-
-
-    </ConsultaContainer>
-  );
-}
-
-function Observacao() {
-  return (
-    <ObservacaoContainer>
-      <MuiTextarea label="Descrição" placeholder="Descreva aqui" />
-      <div className="separator" />
-      <div className="controllers">
-        <Botao endIcon="close" color="">Cancelar</Botao>
-        <Botao endIcon="check">Concluir</Botao>
-      </div>
-    </ObservacaoContainer>
-  );
-}
-
-function Desistencia() {
-  return (
-    <ObservacaoContainer>
-      <MuiTextarea label="Descrição" placeholder="Descreva o motivo da desistência" />
-      <div className="separator" />
-      <div className="controllers">
-        <Botao endIcon="close" color="">Cancelar</Botao>
-        <Botao endIcon="check">Concluir</Botao>
-      </div>
-    </ObservacaoContainer>
-  );
-}
+import tabsConsulta from './tabsConsulta';
+import tabsPrimeiraConsulta from './tabsPrimeiraConsulta';
 
 function NovoHistorico() {
-  const tabs = [
-    {
-      id: 1,
-      component: <PrimeiraConsulta />,
-      label: '1ª Consulta'
-    },
-    {
-      id: 2,
-      component: <Observacao />,
-      label: 'Observação'
-    },
-    {
-      id: 3,
-      component: <Desistencia />,
-      label: 'Desistência'
-    },
-  ];
+  const { id, doadora } = useParams();
+  const [tabs, setTabs] = useState(null);
+  const [selected, setSelected] = useState(null);
+  const [error, setError] = useState(null);
+  const { enqueueSnackbar } = useSnackbar();
 
-  const [selected, setSelected] = useState(tabs[0]);
+  useEffect(() => {
+    async function checkDoadoraHasConsultation() {
+      try {
+        const doadoraResponse = await Api.getDoadora(doadora);
+        const hasConsultation = doadoraResponse.data.consultations.length > 0;
+        if (!hasConsultation) {
+          setTabs(tabsConsulta);
+          setSelected(tabsConsulta[0]);
+        } else {
+          setTabs(tabsPrimeiraConsulta);
+          setSelected(tabsPrimeiraConsulta[0]);
+        }
+      } catch (e) {
+        setError('Houve um erro. Atualize a página');
+      }
+    }
+
+    checkDoadoraHasConsultation();
+  }, []);
+
+  useEffect(() => {
+    if (error) {
+      enqueueSnackbar(error, { variant: 'error' });
+    }
+  }, [error]);
 
   return (
     <Container>
-      <Voltar label="Histórico | Maria Carolina do Rosário" route="/doadora/detalhes/1" />
+      <Voltar label="Histórico | Maria Carolina do Rosário" route={`/doadora/pre-cadastros/${id}/${doadora}`} />
       <Header>
         <h1>Novo Histórico</h1>
       </Header>
-      <Content>
-        <div className="buttons-top">
-          {
-            tabs.map((tab) => (
-              <button
-                key={tab.id}
-                className={tab.label === selected.label ? 'active' : ''}
-                onClick={() => setSelected(tab)}
-              >
-                {tab.label}
-              </button>
-            ))
-          }
-        </div>
-        <div className="main">
-          {selected.component}
-        </div>
-      </Content>
+
+      {
+        tabs && (
+          <Content>
+            <div className="buttons-top">
+              {
+                tabs.map((tab) => (
+                  <Botao
+                    key={tab.id}
+                    style={{ marginRight: 10 }}
+                    color={(selected && tab.label === selected.label) ? 'primary' : ''}
+                    onClick={() => setSelected(tab)}
+                  >
+                    {tab.label}
+                  </Botao>
+                ))
+              }
+            </div>
+            <div className="main">
+              {selected && selected.component}
+            </div>
+          </Content>
+        )
+       }
     </Container>
   );
 }

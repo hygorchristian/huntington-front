@@ -1,13 +1,16 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { useParams, withRouter } from 'react-router-dom';
+
 import { FiCalendar, FiMapPin, FiUser } from 'react-icons/fi';
 
 import { Container } from './styles';
 import Botao from '~/components/Botao';
 
 function DoadoraHistorico({ history }) {
+  const { id, doadora } = useParams();
+
   const adicionarHistorico = () => {
-    history.push('/doadora/detalhes/1/novo-historico');
+    history.push(`/doadora/pre-cadastros/${id}/${doadora}/adicionar-historico`);
   };
 
   return (

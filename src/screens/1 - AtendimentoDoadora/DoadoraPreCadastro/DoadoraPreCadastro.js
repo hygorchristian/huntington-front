@@ -26,7 +26,7 @@ const getIndex = (name) => {
 
 function DoadoraPreCadastro() {
   const { id, doadora } = useParams();
-  const tab = getUrlParam('tab', 'historico');
+  const tab = getUrlParam('tab', 'info');
   const index = getIndex(tab);
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.doadora.preCadastro.item);
