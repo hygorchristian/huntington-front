@@ -16,6 +16,7 @@ export function* itemUltrassom() {
 export function* createUltrassom({ data }) {
   try {
     console.tron.log({ data });
+    // todo: caio
     // const response = yield call(Api.route, param );
     // yield put(UltrassomActions.ultrassomCreateSuccess(response.data, 'Ultrassom criado com sucesso!'));
   } catch (e) {

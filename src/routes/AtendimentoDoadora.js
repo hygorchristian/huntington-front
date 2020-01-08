@@ -1,16 +1,16 @@
-import PreCadastro from '~/screens/PreCadastro';
-import AdicionarEvento from '~/screens/AdicionarEvento';
-import AdicionarDoadora from '~/screens/AdicionarDoadora';
-import DoadoraPreCadastro from '~/screens/DoadoraPreCadastro';
-import DoadoraTriagem from '~/screens/DoadoraPreCadastro/DoadoraTriagem';
+import PreCadastro from '~/screens/1 - AtendimentoDoadora/PreCadastro';
+import AdicionarEvento from '~/screens/1 - AtendimentoDoadora/AdicionarEvento';
+import AdicionarDoadora from '~/screens/1 - AtendimentoDoadora/AdicionarDoadora';
+import DoadoraPreCadastro from '~/screens/1 - AtendimentoDoadora/DoadoraPreCadastro';
+import DoadoraTriagem from '~/screens/1 - AtendimentoDoadora/DoadoraPreCadastro/DoadoraTriagem';
 import NovoHistorico from '~/components/NovoHistorico';
-import PreencherUltrassom from '~/screens/PreencherUltrassom';
+import PreencherUltrassom from '~/screens/1 - AtendimentoDoadora/PreencherUltrassom';
 import NovaColeta from '~/screens/NovaColeta';
 import ResultadoExame from '~/screens/ResultadoExame';
 import Doadora from '~/screens/Doadora';
 import NovoHistoricoDoadora from '~/screens/Doadora/NovoHistoricoDoadora';
 import DashboardScreen from '~/screens/DashboardScreen';
-import PreCadastros from '~/screens/PreCadastros';
+import PreCadastros from '~/screens/1 - AtendimentoDoadora/PreCadastros';
 import Doadoras from '~/screens/Doadoras';
 import Reclamacoes from '~/screens/Reclamacoes';
 

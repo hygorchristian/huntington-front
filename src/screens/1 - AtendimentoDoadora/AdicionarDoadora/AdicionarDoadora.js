@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import AdicionarDoadoraInicio from '../AdicionarDoadoraInicio';
-import AdicionarDoadoraConcluir from '../AdicionarDoadoraConcluir';
+import AdicionarDoadoraInicio from './AdicionarDoadoraInicio';
+import AdicionarDoadoraConcluir from './AdicionarDoadoraConcluir';
 
 function AdicionarDoadora() {
   const [etapa, setEtapa] = useState(1);
