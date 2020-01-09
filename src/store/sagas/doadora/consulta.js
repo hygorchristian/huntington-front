@@ -3,57 +3,59 @@ import Api from '~/services/api';
 
 import { ConsultaActions } from '~/store/ducks/doadora/consulta';
 
+// TODO: Corrigir bugs de Listar Etnia por servidor
+
 /**
 * @param doadora_id ?
-* @todo colocar aqui os parametros que são necessários para fazer as chamadas à api.
+* @TODO colocar aqui os parametros que são necessários para fazer as chamadas à api.
 */
 
 export function* listConsulta({ doadora_id }) {
   try {
-    // todo: (caio) criar listagem de consultas dado um id de doadora ?
-    // const response = yield call(Api.route, param );
-    // yield put(ConsultaActions.consultaListSuccess(response.data));
+    const response = yield call(Api.getDoadora, doadora_id);
+    yield put(ConsultaActions.consultaListSuccess(response.data.consultations));
   } catch (e) {
-    yield put();
-    // ConsultaActions.consultaListFailure('Mensagem de erro')
+    yield put(ConsultaActions.consultaListFailure('Mensagem de erro'));
   }
 }
 
 /**
  * @param id ?
- * @todo colocar aqui os parametros que são necessários para fazer as chamadas à api.
+ * @TODO colocar aqui os parametros que são necessários para fazer as chamadas à api.
  */
 
 export function* itemConsulta({ id }) {
   try {
-    // todo: (caio) criar listagem de consultas dado um id
-    // const response = yield call(Api.route, param );
-    // yield put(ConsultaActions.consultaItemSuccess(response.data));
+    const response = yield call(Api.getConsultation, id);
+    yield put(ConsultaActions.consultaItemSuccess(response.data));
   } catch (e) {
-    yield put();
-    // ConsultaActions.consultaItemFailure('Mensagem de erro')
+    yield put(ConsultaActions.consultaItemFailure('Mensagem de erro'));
   }
 }
 
 /**
  * @param doadora_id ?
  * @param is_first: flag para saber se é a primeira consulta da doadora.
- * @todo colocar aqui os parametros que são necessários para fazer as chamadas à api.
+ * @TODO colocar aqui os parametros que são necessários para fazer as chamadas à api.
  */
 
 export function* createConsulta({ data, is_first }) {
   try {
-    console.tron.log({ data, is_first });
-    /**
-     *  todo: (caio) criar método para criação de consulta dado um id de doadora
-     *  todo: verificar se é a primeira consulta para dar o update nos dados da doadora
-     *  dentro do objeto data existe as informações referente à doadora. qualquer coisa é só dar um debug
-     */
+    const { consult_data, donor_data } = data;
+    // TODO: Corrigir bugs de emissão ao backend
+    if (is_first) {      
+      console.tron.log([consult_data.donor, donor_data]);
+      const consult_donor = yield call(Api.updateDoadora, consult_data.donor, donor_data);
+      console.tron.log(consult_donor);
+      const response = yield call(Api.createConsultation, consult_data);
+      console.tron.log(response);
 
-    // const response = yield call(Api.route, param );
-    // yield put(ConsultaActions.consultaCreateSuccess(response.data, 'Consulta criado com sucesso!'));
+      yield put(ConsultaActions.consultaCreateSuccess(response.data, 'Consulta criado com sucesso!'));
+    } else {
+      const response = yield call(Api.createConsultation, consult_data);
+      yield put(ConsultaActions.consultaCreateSuccess(response.data, 'Consulta criado com sucesso!'));
+    }
   } catch (e) {
-    yield put();
-    // ConsultaActions.consultaCreateFailure('Mensagem de erro')
+    yield put(ConsultaActions.consultaCreateFailure('Mensagem de erro'));
   }
 }

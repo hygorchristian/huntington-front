@@ -33,7 +33,7 @@ export const strapiParams = (payload) => {
   }
 
   if (payload.page && payload.perPage) {
-    // todo: verificar se essa conta da paginação está correta
+    // TODO: verificar se essa conta da paginação está correta
     search._start = payload.perPage * (payload.page - 1);
   }
 

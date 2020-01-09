@@ -22,7 +22,7 @@ function NovoHistorico() {
       try {
         const doadoraResponse = await Api.getDoadora(doadora);
         const hasConsultation = doadoraResponse.data.consultations.length > 0;
-        if (!hasConsultation) {
+        if (hasConsultation) {
           setTabs(tabsConsulta);
           setSelected(tabsConsulta[0]);
         } else {
