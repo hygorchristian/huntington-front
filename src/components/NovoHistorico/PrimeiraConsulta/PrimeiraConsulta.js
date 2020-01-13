@@ -20,8 +20,23 @@ function PrimeiraConsulta() {
   const { doadora } = useParams();
   const dispatch = useDispatch();
 
-  const onSubmit = (values) => {
-    const data = { ...values, donor: doadora };
+  const onSubmit = (values) => {    
+    const data = {
+      consult_data: { 
+        dum: values.dum,
+        dpm: values.dpm,
+        notes: values.notes,
+        medication_allergy: values.medication_allergy,
+        comorbidities: values.comorbidities,
+        donor: doadora,
+      },
+      donor_data: {
+        etnia: values.etnia,
+        indication: values.indication,
+        is_donor: values.is_donor,
+        compatible: values.compatible, 
+      }      
+    };
     dispatch(ConsultaActions.consultaCreateRequest(data, true));
   };
 

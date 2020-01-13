@@ -5,8 +5,8 @@ Nesse caso eu chamaria o método doadora.update(dadoQueVocePrecisa).
 Se não for assim me fala como vai funcionar que eu crio uma nova estrutura de
 redux.
 
-//todo: (caio) informar como deve ser feita uma nova coleta
-//todo: (caio) informar qual é a rota e método, pra saber se crio uma nova estrutura redux
+//TODO: (caio) informar como deve ser feita uma nova coleta
+//TODO: (caio) informar qual é a rota e método, pra saber se crio uma nova estrutura redux
 
 // campos:
 {
