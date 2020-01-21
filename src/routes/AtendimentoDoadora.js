@@ -70,7 +70,7 @@ export default [
     component: PreencherUltrassom
   },
   {
-    path: '/doadora/detalhes/:id/exames/nova-coleta',
+    path: '/doadora/pre-cadastros/:id/:doadora/exames/nova-coleta',
     component: NovaColeta
   },
   {

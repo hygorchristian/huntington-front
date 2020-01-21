@@ -45,7 +45,7 @@ function NovoHistorico() {
 
   return (
     <Container>
-      <Voltar label="Histórico | Maria Carolina do Rosário" route={`/doadora/pre-cadastros/${id}/${doadora}`} />
+      <Voltar label="Histórico | Maria Carolina do Rosário" route={`/doadora/pre-cadastros/${id}/${doadora}?tab=historico`} />
       <Header>
         <h1>Novo Histórico</h1>
       </Header>

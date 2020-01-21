@@ -2,14 +2,17 @@ import React from 'react';
 import {
  FiCalendar, FiCheckCircle, FiClock, FiAlertCircle, FiPlusCircle, FiXCircle
 } from 'react-icons/fi';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useParams } from 'react-router-dom';
 
 import { Container } from './styles';
 import AdicionarRow from '~/components/AdicionarRow';
 
 function DoadoraExames({ history }) {
+  const { id, doadora } = useParams();
+
   const adicionarColeta = () => {
     history.push('/doadora/detalhes/1/exames/nova-coleta');
+    history.push(`/doadora/pre-cadastros/${id}/${doadora}/exames/nova-coleta`);
   };
 
   const inserirResultado = () => {

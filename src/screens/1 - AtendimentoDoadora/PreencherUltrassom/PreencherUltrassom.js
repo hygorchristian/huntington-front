@@ -15,7 +15,7 @@ import { PreCadastroActions } from '~/store/ducks/doadora/preCadastro';
 import { UltrassomActions } from '~/store/ducks/doadora/ultrassom';
 
 function PreencherUltrassom() {
-  const { doadora } = useParams();
+  const { id, doadora } = useParams();
   const dispatch = useDispatch();
 
   const onSubmit = (values) => {
@@ -31,7 +31,7 @@ function PreencherUltrassom() {
   return (
     <Container>
       <Voltar
-        route="/doadora/detalhes/1"
+        route={`/doadora/pre-cadastros/${id}/${doadora}?tab=ultrassons`}
         label="Ultrassons | Maria Carolina do Rosário"
       />
       <Header>

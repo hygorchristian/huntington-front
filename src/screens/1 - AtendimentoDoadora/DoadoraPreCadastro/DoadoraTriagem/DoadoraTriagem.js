@@ -20,7 +20,7 @@ import initialValues from './initialValues';
 import validationSchema from './schema';
 
 function DoadoraTriagem() {
-  const { doadora } = useParams();
+  const { id, doadora } = useParams();
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.doadora.preCadastro.item);
 
@@ -44,7 +44,7 @@ function DoadoraTriagem() {
 
   return (
     <Container>
-      <Voltar label={data.name} route="/doadora/detalhes/1" />
+      <Voltar label={data.name} route={`/doadora/pre-cadastros/${id}/${doadora}?tab=info`} />
       <Header>
         <h1>Triagem</h1>
       </Header>
