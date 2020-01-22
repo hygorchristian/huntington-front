@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useFormik } from 'formik';
+import Api from '~/services/api';
 
 import { Container, Content, Header } from './styles';
 import Voltar from '~/components/Voltar';
@@ -11,25 +12,42 @@ import Botao from '~/components/Botao';
 import validationSchema from './validationSchema';
 import initialValues from './initialValues';
 import Loading from '~/components/Loading';
+import { showErrorMessage, showSuccessMessage } from '~/utils/notistack';
 
 function NovaColeta() {
   const [loading, setLoading] = useState(false);
+  const history = useHistory();
   const { id, doadora } = useParams();
 
-  const onSubmit = (val) => {
+  const onSubmit = async (val) => {
     setLoading(true);
 
     // pegando apenas as keys de cada exame
-    const vals = [];
-      Object.keys(val).forEach((key) => {
-      if (val[key]) {
-        vals.push(key);
+    const exams = [];
+    Object.keys(val.exams).forEach((key) => {
+      if (val.exams[key]) {
+        exams.push(key);
       }
     });
 
+    for (const exam of exams) {
+      const data = {
+        name: exam,
+        donor: doadora,
+        collect_date: val.coleta
+      };
 
-    console.tron.log({ vals, doadora });
+      const response = await Api.createExam(data);
+      if (response.status !== 200) {
+        showErrorMessage(`Não foi possível criar o exame ${exam}`);
+      }
+    }
+
+
+    showSuccessMessage('Exames criados com sucesso!');
+    history.push(`/doadora/pre-cadastros/${id}/${doadora}?tab=exames`);
   };
+
 
   const formik = useFormik({
     initialValues,
@@ -63,38 +81,38 @@ function NovaColeta() {
           <div className="checkcontrol">
             <MuiCheckbox
               label="ABO/RH"
-              checked={formik.values.aborh}
-              onChange={(val) => formik.setFieldValue('aborh', val)}
+              checked={formik.values.exams.aborh}
+              onChange={(val) => formik.setFieldValue('exams.aborh', val)}
             />
             <MuiCheckbox
               label="Sorologias"
-              value={formik.values.sorologias}
-              onChange={(val) => formik.setFieldValue('sorologias', val)}
+              value={formik.values.exams.sorologias}
+              onChange={(val) => formik.setFieldValue('exams.sorologias', val)}
             />
             <MuiCheckbox
               label="Cariótipo"
-              value={formik.values.cariotipo}
-              onChange={(val) => formik.setFieldValue('cariotipo', val)}
+              value={formik.values.exams.cariotipo}
+              onChange={(val) => formik.setFieldValue('exams.cariotipo', val)}
             />
             <MuiCheckbox
               label="Chlamidia/Neisseria"
-              value={formik.values.chlamidia}
-              onChange={(val) => formik.setFieldValue('chlamidia', val)}
+              value={formik.values.exams.chlamidia}
+              onChange={(val) => formik.setFieldValue('exams.chlamidia', val)}
             />
             <MuiCheckbox
               label="Citologia Oncótica"
-              value={formik.values.citologia}
-              onChange={(val) => formik.setFieldValue('citologia', val)}
+              value={formik.values.exams.citologia}
+              onChange={(val) => formik.setFieldValue('exams.citologia', val)}
             />
             <MuiCheckbox
               label="CGT"
-              value={formik.values.cgt}
-              onChange={(val) => formik.setFieldValue('cgt', val)}
+              value={formik.values.exams.cgt}
+              onChange={(val) => formik.setFieldValue('exams.cgt', val)}
             />
             <MuiCheckbox
               label="Cartão DNA"
-              value={formik.values.dna}
-              onChange={(val) => formik.setFieldValue('dna', val)}
+              value={formik.values.exams.dna}
+              onChange={(val) => formik.setFieldValue('exams.dna', val)}
             />
           </div>
           {loading && <Loading />}

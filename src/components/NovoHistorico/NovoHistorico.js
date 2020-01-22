@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSnackbar } from 'notistack';
 import Api from '~/services/api';
 
 import { Container, Content, Header } from './styles';
@@ -9,13 +8,13 @@ import Botao from '~/components/Botao';
 
 import tabsConsulta from './tabsConsulta';
 import tabsPrimeiraConsulta from './tabsPrimeiraConsulta';
+import { showErrorMessage } from '~/utils/notistack';
 
 function NovoHistorico() {
   const { id, doadora } = useParams();
   const [tabs, setTabs] = useState(null);
   const [selected, setSelected] = useState(null);
   const [error, setError] = useState(null);
-  const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     async function checkDoadoraHasConsultation() {
@@ -39,7 +38,7 @@ function NovoHistorico() {
 
   useEffect(() => {
     if (error) {
-      enqueueSnackbar(error, { variant: 'error' });
+      showErrorMessage(error);
     }
   }, [error]);
 

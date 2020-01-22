@@ -12,6 +12,7 @@ import { store, persistor } from './store';
 import Routes from './routes';
 import Global from './styles/global';
 import AuthProvider from '~/components/AuthProvider';
+import Notifier from '~/components/Notifier';
 
 const snackbarProviderOptions = {
   vertical: 'top',
@@ -35,6 +36,7 @@ function App() {
           <AuthProvider>
             <ThemeProvider theme={theme}>
               <BrowserRouter>
+                <Notifier />
                 <Routes />
               </BrowserRouter>
             </ThemeProvider>

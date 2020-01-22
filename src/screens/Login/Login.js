@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { withSnackbar } from 'notistack';
 import { LoginSchema } from './validators';
 import jwtService from '~/services/jwtService';
 
@@ -11,8 +10,9 @@ import {
 } from './styles';
 import MuiField from '~/components/MuiField';
 import { AuthActions } from '~/store/ducks/auth';
+import { showErrorMessage } from '~/utils/notistack';
 
-function Login(props) {
+function Login() {
   const dispatch = useDispatch();
   const isAuth = useSelector((state) => state.Auth.isAuth);
 
@@ -21,7 +21,7 @@ function Login(props) {
       const response = await jwtService.login(values.identifier, values.password);
       dispatch(AuthActions.authLoadSuccess(response));
     } catch (e) {
-      props.enqueueSnackbar('Email ou senha inválidos', { variant: 'error' });
+      showErrorMessage('Email ou senha inválidos');
     }
   };
 
@@ -65,4 +65,4 @@ function Login(props) {
 );
 }
 
-export default withSnackbar(Login);
+export default Login;

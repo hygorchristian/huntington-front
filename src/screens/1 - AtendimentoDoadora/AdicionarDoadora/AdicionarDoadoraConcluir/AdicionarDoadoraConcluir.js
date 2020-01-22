@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { withSnackbar } from 'notistack';
 import Voltar from '~/components/Voltar/Voltar';
 
 import {
@@ -14,8 +13,9 @@ import Botao from '~/components/Botao';
 import { formatIdade } from '~/utils/data';
 import { NovaDoadoraActions } from '~/store/ducks/doadora/novaDoadora';
 import Loading from '~/components/Loading';
+import { showErrorMessage, showSuccessMessage } from '~/utils/notistack';
 
-function AdicionarDoadoraConcluir({ onVoltar, enqueueSnackbar }) {
+function AdicionarDoadoraConcluir({ onVoltar }) {
   const {
  data, loading, message, error
 } = useSelector((state) => state.doadora.novaDoadora);
@@ -24,10 +24,10 @@ function AdicionarDoadoraConcluir({ onVoltar, enqueueSnackbar }) {
 
   useEffect(() => {
     if (message) {
-      enqueueSnackbar(message, { variant: 'success' });
+      showSuccessMessage(message);
     }
     if (error) {
-      enqueueSnackbar(message, { variant: 'error' });
+      showErrorMessage(message);
     }
   }, [message, error]);
 
@@ -182,4 +182,4 @@ function AdicionarDoadoraConcluir({ onVoltar, enqueueSnackbar }) {
   );
 }
 
-export default withSnackbar(AdicionarDoadoraConcluir);
+export default AdicionarDoadoraConcluir;

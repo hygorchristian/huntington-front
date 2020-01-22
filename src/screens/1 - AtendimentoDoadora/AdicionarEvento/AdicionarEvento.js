@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { withSnackbar } from 'notistack';
 import {
   Container, Header, Content
 } from './styles';
@@ -13,8 +12,9 @@ import MuiDatePicker from '~/components/MuiDatePicker';
 import Loading from '~/components/Loading';
 import Botao from '~/components/Botao';
 import { NovoEventoActions } from '~/store/ducks/doadora/novoEvento';
+import { showErrorMessage, showSuccessMessage } from '~/utils/notistack';
 
-function AdicionarEvento({ history, enqueueSnackbar }) {
+function AdicionarEvento({ history }) {
   const dispatch = useDispatch();
   const { loading, message, error } = useSelector((state) => state.doadora.novoEvento);
 
@@ -40,14 +40,14 @@ function AdicionarEvento({ history, enqueueSnackbar }) {
 
   useEffect(() => {
     if (message) {
-      enqueueSnackbar(message, { variant: 'success' });
+      showSuccessMessage(message);
       formik.resetForm(formik.initialValues);
     }
   }, [message]);
 
   useEffect(() => {
     if (error) {
-      enqueueSnackbar(error, { variant: 'error' });
+      showErrorMessage(error);
     }
   }, [error]);
 
@@ -96,4 +96,4 @@ function AdicionarEvento({ history, enqueueSnackbar }) {
   );
 }
 
-export default withSnackbar(AdicionarEvento);
+export default AdicionarEvento;

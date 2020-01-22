@@ -19,6 +19,8 @@ function DoadoraExames({ history }) {
     history.push('/doadora/detalhes/1/exames/resultado');
   };
 
+  // todo: (hygor) load all exams
+
   return (
     <Container>
       <div className="header">

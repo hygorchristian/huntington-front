@@ -29,6 +29,8 @@
     "new-cap": "off",
     "max-len": "off",
     "no-underscore-dangle": "off",
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "no-restricted-syntax": "off",
+    "no-await-in-loop": "off"
   }
 }

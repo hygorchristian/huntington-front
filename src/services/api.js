@@ -324,15 +324,15 @@ class ApiService {
 
   countExam = (params = {}) => this.api.get('expenses/count', { params });
 
-  getExams = (params = {}) => this.api.get('expenses', { params });
+  getExams = (params = {}) => this.api.get('exam', { params });
 
-  getExam = (id, params = {}) => this.api.get(`expenses/${id}`, { params });
+  getExam = (id, params = {}) => this.api.get(`exam/${id}`, { params });
 
-  createExam = (data) => this.api.post('expenses', data);
+  createExam = (data) => this.api.post('exam', data);
 
-  updateExam = (id, data) => this.api.put(`expenses/${id}`, data);
+  updateExam = (id, data) => this.api.put(`exam/${id}`, data);
 
-  deleteExam = (id) => this.api.delete(`expenses/${id}`);
+  deleteExam = (id) => this.api.delete(`exam/${id}`);
 }
 
 export default new ApiService();

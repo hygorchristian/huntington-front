@@ -1,10 +1,12 @@
 export default {
-  coleta: null,
-  abo: false,
-  sorologia: false,
-  cariotipo: false,
-  chlamidia: false,
-  citologia: false,
-  cgt: false,
-  'cartao-dna': false,
+  coleta: new Date(),
+  exams: {
+    abo: false,
+    sorologia: false,
+    cariotipo: false,
+    chlamidia: false,
+    citologia: false,
+    cgt: false,
+    'cartao-dna': false,
+  }
 };
