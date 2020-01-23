@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { withSnackbar } from 'notistack';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,17 +10,24 @@ function Notifier({ enqueueSnackbar }) {
   const dispatch = useDispatch();
   const notifications = useSelector((state) => state.notistack.notifications);
 
-  notifications.forEach((notification) => {
-    setTimeout(() => {
-      if (displayed.indexOf(notification.key) > -1) return;
+  const updateNotifications = () => {
+    notifications.forEach((notification) => {
+      setTimeout(() => {
+        if (displayed.indexOf(notification.key) > -1) return;
 
-      enqueueSnackbar(notification.message, notification.options);
+        enqueueSnackbar(notification.message, notification.options);
 
-      setDisplayed([...displayed, notification.key]);
+        setDisplayed([...displayed, notification.key]);
 
-      dispatch(NotistackActions.removeSnackbar(notification.key));
-    }, 1);
-  });
+        dispatch(NotistackActions.removeSnackbar(notification.key));
+      }, 1);
+    });
+  };
+
+  useEffect(() => {
+    updateNotifications();
+  }, [notifications]);
+
 
   return null;
 }

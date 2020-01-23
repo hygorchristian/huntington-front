@@ -23,7 +23,10 @@ const enqueueSnackbar = (state, { notification }) => ({
   ...state,
   notifications: [
     ...state.notifications,
-    notification
+    {
+      key: Date.now(),
+      ...notification
+    }
   ]
 });
 

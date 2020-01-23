@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 950px;
+  width: 1100px;
   padding-top: 35px;
   
   .header{
@@ -51,7 +51,7 @@ export const Container = styled.div`
         }
       }
       
-      span, a{
+      & > span, & > a{
         font-size: 13px;
         width: 100%;
         text-align: right;
