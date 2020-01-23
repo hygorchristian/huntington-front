@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { isAfter, formatDistance } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 
@@ -7,6 +7,7 @@ import {
 } from 'react-icons/fi';
 
 import { Container } from './styles';
+import DialogExamResult from '~/components/DialogExamResult';
 
 function ExamName({ id }) {
   switch (id) {
@@ -51,6 +52,8 @@ function ExamIcon({ exam }) {
 }
 
 function ExamStatusLabel({ exam }) {
+  const [dialogOpen, setDialogOpen] = useState(false);
+
   if (exam) {
     const is_after = isAfter(new Date(exam.expected_result_date), new Date());
     const has_result = !!exam.result;
@@ -71,7 +74,18 @@ function ExamStatusLabel({ exam }) {
     if (has_result) {
       return false;
     }
-      return <a>Resultado disponível</a>;
+
+    return (
+      <>
+        <a onClick={() => setDialogOpen(true)}>Resultado disponível</a>
+        <DialogExamResult
+          keepMounted
+          open={dialogOpen}
+          onClose={() => setDialogOpen(false)}
+          exam={exam}
+        />
+      </>
+    );
   }
 
   return <span>Colher</span>;
@@ -87,48 +101,6 @@ function ExameStatus({ id, exam }) {
         </div>
         <ExamStatusLabel exam={exam} />
       </div>
-
-      {/* <div className="col"> */}
-      {/*  <div className="title"> */}
-      {/*    <FiAlertCircle size={15} color="#FF0404" /> */}
-      {/*    <label>Sorologias</label> */}
-      {/*  </div> */}
-      {/* </div> */}
-      {/* <div className="col"> */}
-      {/*  <div className="title"> */}
-      {/*    <FiClock size={15} color="#FFD447" /> */}
-      {/*    <label>Cariótipo</label> */}
-      {/*  </div> */}
-      {/*  <span>Em 2 dias</span> */}
-      {/* </div> */}
-      {/* <div className="col"> */}
-      {/*  <div className="title"> */}
-      {/*    <FiPlusCircle size={15} color="#42D16D" /> */}
-      {/*    <label>Chlamidia/Neisseria</label> */}
-      {/*  </div> */}
-      {/*  <a>Resultado disponível</a> */}
-      {/* </div> */}
-      {/* <div className="col"> */}
-      {/*  <div className="title"> */}
-      {/*    <FiXCircle size={15} color="#8D8D8D" /> */}
-      {/*    <label>Citologia Oncótica</label> */}
-      {/*  </div> */}
-      {/*  <span>Colher</span> */}
-      {/* </div> */}
-      {/* <div className="col"> */}
-      {/*  <div className="title"> */}
-      {/*    <FiXCircle size={15} color="#8D8D8D" /> */}
-      {/*    <label>CGT</label> */}
-      {/*  </div> */}
-      {/*  <span>Colher</span> */}
-      {/* </div> */}
-      {/* <div className="col"> */}
-      {/*  <div className="title"> */}
-      {/*    <FiXCircle size={15} color="#8D8D8D" /> */}
-      {/*    <label>Cartão DNA</label> */}
-      {/*  </div> */}
-      {/*  <span>Colher</span> */}
-      {/* </div> */}
     </Container>
 );
 }

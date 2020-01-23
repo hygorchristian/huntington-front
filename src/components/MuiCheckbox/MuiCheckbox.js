@@ -9,7 +9,7 @@ function MuiCheckbox({
 }) {
   const handleChange = () => {
     const val = !!checked;
-    onChange(!val);
+    onChange(!val, label);
   };
 
   return (
