@@ -5,9 +5,6 @@ import items from './items';
 import { isEmpty } from '~/utils/string';
 
 function Triagem({ data }) {
-  console.tron.log({ data: data.sterile });
-  console.tron.log({ data });
-
   return (
     <Container>
       <legend>Triagem</legend>

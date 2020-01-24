@@ -20,7 +20,6 @@ function TabDashboard({ tabs, index = 0 }) {
   const selected = tabs[index];
 
   const setTabUrl = (val) => {
-    console.tron.log({ local: window.location });
     const url = `${window.location.pathname}?tab=${val}`;
     history.push(url);
   };

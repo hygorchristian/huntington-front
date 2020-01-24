@@ -1,6 +1,6 @@
 /* eslint-disable object-curly-newline */
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -14,14 +14,19 @@ import FormLabel from '@material-ui/core/FormLabel';
 import Divider from '@material-ui/core/Divider';
 
 import { useFormik } from 'formik';
+import Api from '~/services/api';
+
 import options from './options';
 import MuiInput from '~/components/MuiInput';
 import MuiTextarea from '~/components/MuiTextarea';
 import MuiDatePicker from '~/components/MuiDatePicker';
 import MuiCheckbox from '~/components/MuiCheckbox';
 import validationSchema from './validationSchema';
+import { showErrorMessage, showSuccessMessage } from '~/utils/notistack';
+import ExameContext from '~/contexts/ExameContext';
+import { formatarDiaMesAno } from '~/utils/data';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   paper: {
     width: '80%',
     maxHeight: 435,
@@ -33,13 +38,40 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function DialogExamResult({ onClose, open, exam, ...other }) {
+  const { getExames } = useContext(ExameContext);
   const radioGroupRef = useRef(null);
   const [disabled, setDisabled] = useState(false);
   const form = options[exam.name];
   const classes = useStyles();
 
-  const onSubmit = (values) => {
-    console.tron.log({ values });
+  const onSubmit = async (values) => {
+    let tempObs = null;
+    if (exam.name === 'sorologias' && values.result === 'Positivo') {
+      Object.keys(values.sorologias).forEach((key) => {
+        if (values.sorologias[key]) {
+          if (!tempObs) tempObs = '';
+          tempObs += `${key}, `;
+        }
+      });
+    }
+
+    let result = null;
+    if (form.result.type === 'date') result = formatarDiaMesAno(values.result);
+
+    const data = {
+      result: result || values.result,
+      obs: tempObs || values.obs
+    };
+
+    const response = await Api.updateExam(exam._id, data).catch((error) => {
+      showErrorMessage('Erro ao atualizar exame');
+    });
+
+    if (response.status === 200) {
+      showSuccessMessage('Exame atualizado com sucesso!');
+      getExames();
+      onClose();
+    }
   };
 
   const formik = useFormik({

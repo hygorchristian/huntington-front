@@ -26,5 +26,3 @@ export const formatAddress = (address) => {
 
   return res;
 };
-
-export const getExamName = 'name';

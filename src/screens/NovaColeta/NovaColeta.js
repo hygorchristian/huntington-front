@@ -12,7 +12,7 @@ import Botao from '~/components/Botao';
 import validationSchema from './validationSchema';
 import initialValues from './initialValues';
 import Loading from '~/components/Loading';
-import { showErrorMessage, showSuccessMessage } from '~/utils/notistack';
+import { showErrorMessage, showSuccessMessage, showWarningMessage } from '~/utils/notistack';
 
 function NovaColeta() {
   const [loading, setLoading] = useState(false);
@@ -21,6 +21,7 @@ function NovaColeta() {
 
   const onSubmit = async (val) => {
     setLoading(true);
+    let is_ok = false;
 
     // pegando apenas as keys de cada exame
     const exams = [];
@@ -37,15 +38,21 @@ function NovaColeta() {
         collect_date: val.coleta
       };
 
-      const response = await Api.createExam(data);
-      if (response.status !== 200) {
-        showErrorMessage(`Não foi possível criar o exame ${exam}`);
+      const response = await Api.createExam(data).catch((error) => {
+        // showErrorMessage(error.data.message);
+      });
+
+      if (response) {
+        is_ok = true;
+        showSuccessMessage(`Exame ${exam} criado com sucesso!`);
+      } else {
+        showWarningMessage(`O exame ${exam} já foi criado e está pendente`);
       }
     }
 
-
-    showSuccessMessage('Exames criados com sucesso!');
-    history.push(`/doadora/pre-cadastros/${id}/${doadora}?tab=exames`);
+    if (is_ok) {
+      history.push(`/doadora/pre-cadastros/${id}/${doadora}?tab=exames`);
+    }
   };
 
 

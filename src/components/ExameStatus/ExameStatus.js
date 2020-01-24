@@ -8,27 +8,7 @@ import {
 
 import { Container } from './styles';
 import DialogExamResult from '~/components/DialogExamResult';
-
-function ExamName({ id }) {
-  switch (id) {
-    case 'aborh':
-      return <label>ABO/RH</label>;
-    case 'sorologias':
-      return <label>Sorologias</label>;
-    case 'cariotipo':
-      return <label>Cariótipo</label>;
-    case 'chlamidia':
-      return <label>Chlamidia/Neisseria</label>;
-    case 'citologia':
-      return <label>Citologia Oncótica</label>;
-    case 'cgt':
-      return <label>CGT</label>;
-    case 'dna':
-      return <label>Cartão DNA</label>;
-    default:
-      return null;
-  }
-}
+import { getExamName } from '~/screens/1 - AtendimentoDoadora/DoadoraPreCadastro/DoadoraExames/utils';
 
 function ExamIcon({ exam }) {
   if (exam) {
@@ -97,7 +77,7 @@ function ExameStatus({ id, exam }) {
       <div className="col">
         <div className="title">
           <ExamIcon exam={exam} />
-          <ExamName id={id} />
+          <label>{getExamName(id)}</label>
         </div>
         <ExamStatusLabel exam={exam} />
       </div>

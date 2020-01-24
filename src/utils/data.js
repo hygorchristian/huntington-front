@@ -23,6 +23,11 @@ const getMes = (m) => {
 
 export const formatarMesAno = (m, y) => `${getMes(m)} / ${y}`;
 
+export const formatarDiaMesAno = (data) => {
+  const pattern = 'dd/MM/yyyy';
+  return format(new Date(data), pattern, { locale: ptBR });
+};
+
 export const formatIdade = (val) => {
   const date = new Date(val);
   const age = differenceInYears(new Date(), date);

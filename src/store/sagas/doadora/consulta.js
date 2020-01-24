@@ -43,12 +43,9 @@ export function* createConsulta({ data, is_first }) {
   try {
     const { consult_data, donor_data } = data;
     // TODO: Corrigir bugs de emissão ao backend
-    if (is_first) {      
-      console.tron.log([consult_data.donor, donor_data]);
+    if (is_first) {
       const consult_donor = yield call(Api.updateDoadora, consult_data.donor, donor_data);
-      console.tron.log(consult_donor);
       const response = yield call(Api.createConsultation, consult_data);
-      console.tron.log(response);
 
       yield put(ConsultaActions.consultaCreateSuccess(response.data, 'Consulta criado com sucesso!'));
     } else {
