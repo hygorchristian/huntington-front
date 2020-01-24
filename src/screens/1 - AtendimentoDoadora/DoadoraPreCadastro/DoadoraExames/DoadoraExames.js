@@ -22,10 +22,6 @@ function DoadoraExames({ history }) {
     history.push(`/doadora/pre-cadastros/${id}/${doadora}/exames/nova-coleta`);
   };
 
-  const inserirResultado = () => {
-    history.push('/doadora/detalhes/1/exames/resultado');
-  };
-
   const getExames = async () => {
     const response = await Api.getDoadora(doadora).catch((error) => {
       showErrorMessage('Erro ao buscar exames');
@@ -36,7 +32,6 @@ function DoadoraExames({ history }) {
     setInitialExams(populateInitialExams(exams));
     setGroups(groupExams(exams));
   };
-
 
   useEffect(() => {
     getExames();
@@ -58,7 +53,7 @@ function DoadoraExames({ history }) {
       <AdicionarRow onClick={adicionarColeta} label="Adicionar coleta" />
       {
         Object.keys(groups).map((key) => (
-          <fieldset key={key} onClick={inserirResultado}>
+          <fieldset key={key}>
             <legend>
               <FiCalendar />
               <span>{formatarDiaMesAno(key)}</span>
@@ -72,9 +67,9 @@ function DoadoraExames({ history }) {
                   </div>
                 ))
               }
-              <div className="inserir-resultados">
-                <span>Inserir resultados</span>
-              </div>
+              {/* <div className="inserir-resultados"> */}
+              {/*  <span>Inserir resultados</span> */}
+              {/* </div> */}
             </div>
           </fieldset>
         ))

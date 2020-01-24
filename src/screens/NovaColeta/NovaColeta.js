@@ -13,6 +13,7 @@ import validationSchema from './validationSchema';
 import initialValues from './initialValues';
 import Loading from '~/components/Loading';
 import { showErrorMessage, showSuccessMessage, showWarningMessage } from '~/utils/notistack';
+import { formatarDiaMesAno } from '~/utils/data';
 
 function NovaColeta() {
   const [loading, setLoading] = useState(false);
@@ -32,10 +33,15 @@ function NovaColeta() {
     });
 
     for (const exam of exams) {
+      const result = exam === 'cgt' || exam === 'dna'
+        ? formatarDiaMesAno(val.coleta)
+        : null;
+
       const data = {
         name: exam,
         donor: doadora,
-        collect_date: val.coleta
+        collect_date: val.coleta,
+        result
       };
 
       const response = await Api.createExam(data).catch((error) => {
