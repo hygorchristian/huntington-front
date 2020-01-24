@@ -1,7 +1,12 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  flex: 1;
+  display: flex;
+  flex-direction: row;
+`;
+
+export const Main = styled.div`
+  flex:1;
   margin-left: 45px;
 `;
 

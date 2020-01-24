@@ -3,6 +3,7 @@ import React from 'react';
 import { Container } from './styles';
 import items from './items';
 import { isEmpty } from '~/utils/string';
+import LabelValue from '~/components/LabelValue';
 
 function Triagem({ data }) {
   return (
@@ -24,6 +25,13 @@ function Triagem({ data }) {
           </div>
         </div>
       ))}
+      <div className="divider" />
+      <div className="triagem-data">
+        <LabelValue label="Peso" />
+        <LabelValue label="Altura" />
+        <LabelValue label="Pressão Arterial" />
+        <LabelValue label="IMC" />
+      </div>
     </Container>
   );
 }
