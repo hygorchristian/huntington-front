@@ -48,7 +48,7 @@ function PreencherUltrassom() {
       <Main>
         <Voltar
           route={`/doadora/pre-cadastros/${id}/${doadora}?tab=ultrassons`}
-          label="Ultrassons | Maria Carolina do Rosário"
+          label={donor && `Ultrassons | ${donor.name}`}
         />
         <Header>
           <h1>Ultrassom</h1>

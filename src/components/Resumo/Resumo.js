@@ -40,24 +40,26 @@ function Resumo({ doadora }) {
         </LabelValue>
 
       </fieldset>
-      <fieldset className="triagem">
-        <legend>Triagem</legend>
-        {triagem && items.map((item) => (
-          <div className="item" key={item.key}>
-            <span className="label">{item.label}</span>
-            <div className="resposta">
-              <span className="value">{triagem[item.key] ? 'Sim' : 'Não'}</span>
+      {triagem && (
+        <fieldset className="triagem">
+          <legend>Triagem</legend>
+          {items.map((item) => (
+            <div className="item" key={item.key}>
+              <span className="label">{item.label}</span>
+              <div className="resposta">
+                <span className="value">{triagem[item.key] ? 'Sim' : 'Não'}</span>
+              </div>
             </div>
+          ))}
+          <div className="separator" />
+          <div className="triagem-data">
+            <LabelValue label="Peso">{triagem.weight}</LabelValue>
+            <LabelValue label="Altura">{triagem.height}</LabelValue>
+            <LabelValue label="Pressão Arterial">{triagem.arterial_press}</LabelValue>
+            <LabelValue label="IMC">{triagem.imc}</LabelValue>
           </div>
-        ))}
-        <div className="separator" />
-        <div className="triagem-data">
-          <LabelValue label="Peso">{triagem.weight}</LabelValue>
-          <LabelValue label="Altura">{triagem.height}</LabelValue>
-          <LabelValue label="Pressão Arterial">{triagem.arterial_press}</LabelValue>
-          <LabelValue label="IMC">{triagem.imc}</LabelValue>
-        </div>
-      </fieldset>
+        </fieldset>
+      )}
     </Container>
   );
 }

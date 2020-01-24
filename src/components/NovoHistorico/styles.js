@@ -1,8 +1,16 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  flex: 1;
+  display: flex;
+  flex-direction: row;
+`;
+
+export const Main = styled.div`
+  flex:1;
   margin-left: 45px;
+  height: calc(100vh - 90px);
+  min-height: calc(100vh - 90px);
+  overflow-y: auto;
 `;
 
 export const Voltar = styled.div`

@@ -85,7 +85,7 @@ function NovaColeta() {
       <Main>
         <Voltar
           route={`/doadora/pre-cadastros/${id}/${doadora}?tab=exames`}
-          label="Exames | Maria Carolina do Rosário"
+          label={donor && `Exames | ${donor.name}`}
         />
         <Header>
           <h1>Nova Coleta</h1>

@@ -20,9 +20,9 @@ function PrimeiraConsulta() {
   const { doadora } = useParams();
   const dispatch = useDispatch();
 
-  const onSubmit = (values) => {    
+  const onSubmit = (values) => {
     const data = {
-      consult_data: { 
+      consult_data: {
         dum: values.dum,
         dpm: values.dpm,
         notes: values.notes,
@@ -34,8 +34,8 @@ function PrimeiraConsulta() {
         etnia: values.etnia,
         indication: values.indication,
         is_donor: values.is_donor,
-        compatible: values.compatible, 
-      }      
+        compatible: values.compatible,
+      }
     };
     dispatch(ConsultaActions.consultaCreateRequest(data, true));
   };
@@ -125,13 +125,13 @@ function PrimeiraConsulta() {
       />
       <MuiBooleanValue
         fieldLabel="Entrou para o programa de doação?"
-        label="Motivo?"
+        label="Motivo"
         name="is_donor"
         formik={formik}
       />
       <MuiBooleanValue
-        fieldLabel="Entrou para o programa de doação?"
-        label="Motivo?"
+        fieldLabel="Tem perfil compatível?"
+        label="Motivo"
         name="compatible"
         formik={formik}
       />

@@ -44,7 +44,10 @@ function DoadoraTriagem() {
 
   return (
     <Container>
-      <Voltar label={data.name} route={`/doadora/pre-cadastros/${id}/${doadora}?tab=info`} />
+      <Voltar
+        route={`/doadora/pre-cadastros/${id}/${doadora}?tab=info`}
+        label={data && `Informações | ${data.name}`}
+      />
       <Header>
         <h1>Triagem</h1>
       </Header>
