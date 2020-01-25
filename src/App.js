@@ -1,4 +1,5 @@
 import './config/ReactotronConfig';
+import './assets/css/tailwind.css';
 
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';

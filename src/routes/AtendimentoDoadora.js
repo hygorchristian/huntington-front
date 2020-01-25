@@ -74,10 +74,6 @@ export default [
     component: NovaColeta
   },
   {
-    path: '/doadora/detalhes/:id/exames/resultado',
-    component: ResultadoExame
-  },
-  {
     path: '/doadora/listagem/:id',
     component: Doadora
   },

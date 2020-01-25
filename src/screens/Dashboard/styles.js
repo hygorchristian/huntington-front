@@ -102,19 +102,6 @@ export const Header = styled.header`
   padding-right: 45px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, .1);
   z-index: 90;
- 
-  h3{
-    font-weight: 500;
-    font-size: 16px;
-  }
-  
-  img{
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-left: 28px;
-  }  
 `;
 
 export const Content = styled.main`
@@ -191,22 +178,8 @@ export const Right = styled.div`
   flex-direction: row;
   align-items: center;
   flex: 1;
-  justify-content: flex-end;  
+  justify-content: flex-end;   
   
-  & > span{
-    display: inline-flex;
-    margin-left: 20px;
-    width: 20px;
-    height: 20px;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    user-select: none;
-    
-    &:active{
-      opacity: .6;
-    }
-  }
 `;
 
 export const Left = styled.div`  

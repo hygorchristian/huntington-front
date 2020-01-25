@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+
+import { Notifications } from '@material-ui/icons';
+import { withStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import Badge from '@material-ui/core/Badge';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import 'animate.css/animate.css';
-import Animate from 'animate.css-react';
 import {
- FiChevronDown, FiChevronLeft, FiMenu, FiBell, FiSearch,
+ FiChevronLeft, FiMenu, FiBell
 } from 'react-icons/fi';
 import jwtService from '~/services/jwtService';
 
@@ -26,6 +30,16 @@ import {
 import { MenuActions } from '~/store/ducks/menu';
 import { AuthActions } from '~/store/ducks/auth';
 import { RolesRoutes } from '~/routes';
+import UserMenu from '~/components/UserMenu';
+
+const StyledBadge = withStyles((theme) => ({
+  badge: {
+    right: -2,
+    top: 5,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: '0 4px',
+  },
+}))(Badge);
 
 function Item({ route, aberto, selected }) {
   const selectedItem = useSelector((state) => state.Menu.item);
@@ -49,6 +63,7 @@ function Dashboard({ children, history, match: { path } }) {
   const [profileOpen, setProfileOpen] = useState(false);
   const { back, notifications } = useSelector((state) => state.Header);
   const aberto = useSelector((state) => state.Menu.opened);
+  const [anchor, setAnchor] = useState(null);
 
 
   const user = useSelector((state) => state.Auth.user);
@@ -102,36 +117,12 @@ function Dashboard({ children, history, match: { path } }) {
           {/*  <input placeholder="Pesquisar por doadora, PIN..." /> */}
           {/* </Left> */}
           <Right>
-            <Notification>
-              <FiBell size={20} />
-              {
-                notifications && (
-                  <div className="badge">
-                    <span>{notifications.count}</span>
-                  </div>
-                )
-              }
-            </Notification>
-            <h3>Olá, Talita</h3>
-            <img alt="Avatar" src="https://randomuser.me/api/portraits/women/26.jpg" />
-            <span onClick={() => setProfileOpen(!profileOpen)}>
-              <FiChevronDown />
-            </span>
-            {profileOpen && (
-            <Animate appear="flipInY" durationAppear={1000} leave="flipOutY" durationLeave={1000}>
-              <ProfileMenu>
-                <div className="item-menu">
-                  <span>Editar Perfil</span>
-                </div>
-                <div className="item-menu">
-                  <span>Minha Conta</span>
-                </div>
-                <div className="logout" onClick={logout}>
-                  <span>Logout</span>
-                </div>
-              </ProfileMenu>
-            </Animate>
-            )}
+            <IconButton aria-label="cart">
+              <StyledBadge badgeContent={4} color="secondary">
+                <Notifications />
+              </StyledBadge>
+            </IconButton>
+            <UserMenu />
           </Right>
         </Header>
         <Content>
