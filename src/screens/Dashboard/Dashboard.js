@@ -22,15 +22,13 @@ import {
   MenuController,
   Open,
   MenuItem,
-  Left,
   Right,
-  ProfileMenu,
-  Notification,
 } from './styles';
 import { MenuActions } from '~/store/ducks/menu';
 import { AuthActions } from '~/store/ducks/auth';
 import { RolesRoutes } from '~/routes';
 import UserMenu from '~/components/UserMenu';
+import Notificacoes from '~/components/Notificacoes';
 
 const StyledBadge = withStyles((theme) => ({
   badge: {
@@ -63,7 +61,7 @@ function Dashboard({ children, history, match: { path } }) {
   const [profileOpen, setProfileOpen] = useState(false);
   const { back, notifications } = useSelector((state) => state.Header);
   const aberto = useSelector((state) => state.Menu.opened);
-  const [anchor, setAnchor] = useState(null);
+  const [notiOpen, setNotiOpen] = useState(false);
 
 
   const user = useSelector((state) => state.Auth.user);
@@ -117,7 +115,7 @@ function Dashboard({ children, history, match: { path } }) {
           {/*  <input placeholder="Pesquisar por doadora, PIN..." /> */}
           {/* </Left> */}
           <Right>
-            <IconButton aria-label="cart">
+            <IconButton aria-label="cart" onClick={() => setNotiOpen(true)}>
               <StyledBadge badgeContent={4} color="secondary">
                 <Notifications />
               </StyledBadge>
@@ -129,6 +127,7 @@ function Dashboard({ children, history, match: { path } }) {
           {children}
         </Content>
       </Main>
+      <Notificacoes open={notiOpen} onClose={() => setNotiOpen(false)} />
     </Container>
 );
 }
