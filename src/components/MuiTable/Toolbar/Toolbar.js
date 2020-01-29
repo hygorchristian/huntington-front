@@ -24,7 +24,7 @@ const useToolbarStyles = makeStyles((theme) => ({
 }));
 
 const Toolbar = ({
- onSearch, onAdd, filters, onSelectFilter, loading
+ onSearch, onAdd, filters, deps, loading
 }) => {
   const classes = useToolbarStyles();
 
@@ -73,7 +73,13 @@ const Toolbar = ({
         >
           {
             filters && filters.map((filter) => (
-              <MenuItem onClick={() => onSelectFilter(filter.name)}>{filter.label}</MenuItem>
+              <MenuItem onClick={() => {
+                handleClose();
+                filter.action(deps);
+              }}
+              >
+                {filter.label}
+              </MenuItem>
             ))
           }
         </Menu>

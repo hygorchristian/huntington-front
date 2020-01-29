@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableContainer from '@material-ui/core/TableContainer';
@@ -10,74 +9,43 @@ import Paper from '@material-ui/core/Paper';
 import Toolbar from './Toolbar';
 import Head from './Head';
 import Cell from './Cell';
-import { strapiParams } from '~/utils/url';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-  },
-  paper: {
-    width: '100%',
-    marginBottom: theme.spacing(2),
-  },
-  table: {
-    minWidth: 750,
-  },
-  visuallyHidden: {
-    border: 0,
-    clip: 'rect(0 0 0 0)',
-    height: 1,
-    margin: -1,
-    overflow: 'hidden',
-    padding: 0,
-    position: 'absolute',
-    top: 20,
-    width: 1,
-  },
-}));
+import { useStyles } from './styles';
+import { getSorting, stableSort } from '~/components/MuiTable/utils';
 
 export default function MuiTable({
- loading, schema, data = [], onRequest
+ loading, schema, data = [], setData, setLoading
 }) {
   const classes = useStyles();
   const history = useHistory();
   const routeParams = useParams();
 
   const [q, setQ] = useState(null);
-  const [order, setOrder] = useState('ASC');
-  const [sort, setSort] = useState('id');
-  const [page, setPage] = useState(1);
-  const [perPage, setPerPage] = useState(10);
-  const [filter, setFilter] = useState(null);
+  const [order, setOrder] = useState('asc');
+  const [orderBy, setOrderBy] = useState('calories');
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  const deps = { history, params: routeParams, };
+  const deps = {
+   history, params: routeParams, setData, setLoading
+  };
 
   const handleOnSearch = (query) => {
     setQ(query);
   };
 
   const handleRequestSort = (event, property) => {
-    const isDesc = sort === property && order === 'DESC';
-    if (isDesc) {
-      setOrder('ASC');
-    } else {
-      setOrder('DESC');
-    }
-
-    setSort(property);
+    const isAsc = orderBy === property && order === 'asc';
+    setOrder(isAsc ? 'desc' : 'asc');
+    setOrderBy(property);
   };
 
   const handleChangePage = (event, newPage) => {
-    setPage(parseInt(newPage, 10) + 1);
+    setPage(newPage);
   };
 
   const handleChangeRowsPerPage = (event) => {
-    setPerPage(parseInt(event.target.value, 10));
-    setPage(1);
-  };
-
-  const handleSelectFilter = (val) => {
-    setFilter(val);
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
   };
 
   const handleOnAdd = () => schema.onAdd(deps);
@@ -88,13 +56,6 @@ export default function MuiTable({
     }
   };
 
-  useEffect(() => {
-    const search = strapiParams({
-      q, filter, sort, order, perPage, page
-    });
-    onRequest(search);
-  }, [q, filter, sort, order, perPage, page]);
-
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
@@ -102,7 +63,7 @@ export default function MuiTable({
           loading={loading}
           onSearch={handleOnSearch}
           onAdd={schema.onAdd && handleOnAdd}
-          onSelectFilter={handleSelectFilter}
+          deps={deps}
           filters={schema.filters}
         />
         <TableContainer>
@@ -117,29 +78,31 @@ export default function MuiTable({
               onRequestSort={handleRequestSort}
               headCells={schema.fields}
               order={order}
-              sort={sort}
+              orderBy={orderBy}
             />
             <TableBody>
-              {data && data.map((row) => (
-                <TableRow
-                  hover
-                  onClick={() => handleOnClick(row.id)}
-                  role="checkbox"
-                  tabIndex={-1}
-                  key={row.id}
-                >
-                  {schema.fields.map((field) => (<Cell field={field} row={row} />))}
-                </TableRow>
-              ))}
+              {data && data.length > 0 && stableSort(data, getSorting(order, orderBy))
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((row) => (
+                  <TableRow
+                    hover
+                    onClick={() => handleOnClick(row.id)}
+                    role="checkbox"
+                    tabIndex={-1}
+                    key={row.id}
+                  >
+                    {schema.fields.map((field) => (<Cell field={field} row={row} />))}
+                  </TableRow>
+                  ))}
             </TableBody>
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[10, 25, 50, 100]}
+          rowsPerPageOptions={[5, 10, 25, 50, 100]}
           component="div"
           count={(data && data.length) || 0}
-          rowsPerPage={perPage}
-          page={page - 1}
+          rowsPerPage={rowsPerPage}
+          page={page}
           onChangePage={handleChangePage}
           onChangeRowsPerPage={handleChangeRowsPerPage}
           labelRowsPerPage="Registros por página"

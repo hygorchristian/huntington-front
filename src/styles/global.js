@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { TEXT_SECONDARY } from '~/utils/colors';
 
 export default createGlobalStyle`
 
@@ -28,7 +29,7 @@ export default createGlobalStyle`
       th{
         font-size: 12px;
         font-weight: 600;
-        color: #ABABAB;
+        color: ${TEXT_SECONDARY};
         height: 30px;
       }
     }

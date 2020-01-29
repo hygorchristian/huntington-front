@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { TEXT_SECONDARY } from '~/utils/colors';
 
 export const Container = styled.div`
   flex: 1;
@@ -16,7 +17,7 @@ export const Header = styled.div`
     flex-direction: column;
     
     label{
-      color: #ABABAB;
+      color: ${TEXT_SECONDARY};
       font-size: 14px;
     }
     

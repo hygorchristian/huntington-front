@@ -1,24 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FiMapPin, FiUsers } from 'react-icons/fi';
 import { useParams } from 'react-router-dom';
 
-import { useDispatch, useSelector } from 'react-redux';
-import {
- Container, Header, Content
-} from './styles';
 import Voltar from '~/components/Voltar/Voltar';
 import MuiTable from '~/components/MuiTable';
 import schema from './schema';
-import { EventoActions } from '~/store/ducks/doadora/evento';
+import Api from '~/services/api';
+
+import {
+  Container, Header, Content
+} from './styles';
 
 function PreCadastro() {
-  const { loading, data, error } = useSelector((state) => state.doadora.evento);
   const { id } = useParams();
-  const dispatch = useDispatch();
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const handleRequest = (params) => {
-    dispatch(EventoActions.eventoLoadRequest(id, params));
+  const fetchDoadoras = async () => {
+    const response = await Api.getEventDonors(id);
+    setData(response || []);
+    setLoading(false);
   };
+
+  useEffect(() => {
+    fetchDoadoras();
+  }, []);
 
   return (
     <Container>
@@ -39,7 +45,6 @@ function PreCadastro() {
           schema={schema}
           data={data && data.doadoras}
           loading={loading}
-          onRequest={handleRequest}
         />
       </Content>
 

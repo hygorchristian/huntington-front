@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import Api from '~/services/api';
 import MuiTable from '~/components/MuiTable';
 import schema from './schema';
 
@@ -7,26 +7,24 @@ import {
  Container, Header, Content
 } from './styles';
 import { EventosActions } from '~/store/ducks/doadora/eventos';
+import { showErrorMessage } from '~/utils/notistack';
 
 function PreCadastros({ history }) {
-  const { list, error, loading } = useSelector((state) => state.doadora.eventos);
-  const dispatch = useDispatch();
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const handleRequest = (search) => {
-    dispatch(EventosActions.eventosLoadRequest(search));
+  const fetchData = async () => {
+    const response = await Api.getEvents().catch((err) => {
+      console.tron.log(err);
+      showErrorMessage(err);
+    });
+    setData(response || []);
+    setLoading(false);
   };
 
   useEffect(() => {
-    dispatch(EventosActions.eventosLoadRequest());
+    fetchData();
   }, []);
-
-  const navigate = (id) => {
-    history.push(`/doadora/pre-cadastros/${id}`);
-  };
-
-  const novoEvento = () => {
-    history.push('/doadora/novo-evento');
-  };
 
   return (
     <Container>
@@ -34,10 +32,14 @@ function PreCadastros({ history }) {
         <h1>Pré-Cadastros</h1>
       </Header>
       <Content>
-        <MuiTable schema={schema} data={list} loading={loading} onRequest={handleRequest} />
+        <MuiTable
+          schema={schema}
+          data={data}
+          loading={loading}
+        />
       </Content>
     </Container>
-);
+  );
 }
 
 export default PreCadastros;

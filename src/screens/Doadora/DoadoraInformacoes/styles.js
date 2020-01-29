@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { TEXT_SECONDARY } from '~/utils/colors';
 
 export const Container = styled.div`
   width: 100%;
@@ -52,7 +53,7 @@ export const Header = styled.div`
       
       label{
         font-size: 13px;
-        color: #ABABAB;
+        color: ${TEXT_SECONDARY};
       }
       
       span{
@@ -109,7 +110,7 @@ export const Recepcao = styled.div`
       
       label{
         font-size: 13px;
-        color: #ABABAB;
+        color: ${TEXT_SECONDARY};
       }
       
       span{

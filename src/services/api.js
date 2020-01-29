@@ -26,12 +26,18 @@
  */
 
 import axios from 'axios';
+import { call } from '@redux-saga/core/effects';
 
 class ApiService {
   constructor() {
     this.api = axios.create({
       baseURL: 'https://huntington-api.herokuapp.com',
     });
+  }
+
+  handleError = (err, reject) => {
+    console.tron.error(err);
+    reject('Erro ao buscar eventos');
   }
 
   setToken = (token) => {
@@ -58,9 +64,46 @@ class ApiService {
 
   eventAddDonor = (id, donor_id) => this.api.put(`events/add/${id}`, { id: donor_id });
 
-  getEvents = (params = {}) => this.api.get('events', { params });
+  getEvents = (params = {}) => new Promise((resolve, reject) => {
+    this.api.get('events', { params }).then((response) => {
+      const rawData = response.data;
+      const data = rawData.map((item) => ({
+        ...item,
+        participantes: item.donors.length.toString()
+      }));
+      resolve(data);
+    }).catch((err) => this.handleError(err, reject));
+  });
 
   getEvent = (id, params = {}) => this.api.get(`events/${id}`, { params });
+
+  getEventDonors = (id, params = {}) => new Promise((resolve, reject) => {
+    this.api.get(`events/${id}`, { params }).then(async (response) => {
+      const rawData = response.data;
+      const doadoras = rawData.donors;
+
+      for (let i = 0; i < doadoras.length; i++) {
+        const doadora = doadoras[i];
+        if (doadora.status) {
+          const status = await this.getState(doadora.status).catch((err) => {
+            console.tron.error(err);
+          });
+
+          doadora.statusName = status.data.name;
+          doadoras[i] = doadora;
+        } else {
+          console.tron.error('Não há status');
+        }
+      }
+
+      const _data = {
+        doadoras,
+        participantes: rawData.donors.length.toString()
+      };
+
+      resolve(_data);
+    }).catch((err) => this.handleError(err, reject));
+  });
 
   createEvent = (data) => this.api.post('events', data);
 
@@ -83,6 +126,10 @@ class ApiService {
   updateDoadora = (id, data) => this.api.put(`donor/${id}`, data);
 
   deleteDoadora = (id) => this.api.delete(`donor/${id}`);
+
+  getDoadoraUltrassound = (id) => this.api.get(`ultrasound/donor/${id}`)
+
+  getDoadorasPreRegistradas = () => this.api.get('statuses/name/preregistradas')
 
   // ===========================================================================
   // 03. Perfil (Estado) para Doadoras

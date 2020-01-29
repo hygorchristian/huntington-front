@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { TEXT_SECONDARY } from '~/utils/colors';
 
 export const Container = styled.div`
   display: flex;
@@ -61,7 +62,7 @@ export const Questionario = styled.fieldset`
     h2{
       font-size: 12px;
       font-weight: 400;
-      color: #ABABAB;
+      color: ${TEXT_SECONDARY};
     }
     
     p{

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useFormik } from 'formik';
-import { useDispatch } from 'react-redux';
 import Api from '~/services/api';
 
 import Voltar from '~/components/Voltar';
@@ -11,20 +10,28 @@ import Botao from '~/components/Botao';
 import validationSchema from './validationSchema';
 import initialValues from './initialValues';
 import MuiBoolean from '~/components/MuiBoolean';
-import { UltrassomActions } from '~/store/ducks/doadora/ultrassom';
 import Resumo from '~/components/Resumo';
 
 import {
   Container, Content, Header, Main
 } from './styles';
+import { showErrorMessage, showSuccessMessage } from '~/utils/notistack';
 
 function PreencherUltrassom() {
   const [donor, setDonor] = useState(null);
   const { id, doadora } = useParams();
-  const dispatch = useDispatch();
+  const history = useHistory();
 
-  const onSubmit = (values) => {
-    dispatch(UltrassomActions.ultrassomCreateRequest({ donor: doadora, ...values }));
+  const onSubmit = async (values) => {
+    const data = { ...values };
+    data.donor = doadora;
+
+    await Api.createUltrasound(data).catch((err) => {
+      showErrorMessage('Erro ao criar ultrasson');
+    });
+
+    showSuccessMessage('Ultrasson criado com sucesso!');
+    history.push(`/doadora/pre-cadastros/${id}/${doadora}?tab=ultrassons`);
   };
 
   const formik = useFormik({
@@ -69,13 +76,13 @@ function PreencherUltrassom() {
             formik={formik}
           />
           <MuiTextarea
-            label="Observação"
-            placeholder="Escreva a observação"
-            name="obs"
+            label="Conduta medica"
+            placeholder="Escreva aqui..."
+            name="conduta_medica"
             onChange={formik.handleChange}
-            value={formik.values.obs}
-            error={formik.errors.obs}
-            helperText={formik.errors.obs}
+            value={formik.values.conduta_medica}
+            error={formik.errors.conduta_medica}
+            helperText={formik.errors.conduta_medica}
           />
           <div className="separator" />
           <div className="controller">

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { TEXT_SECONDARY } from '~/utils/colors';
 
 export const Container = styled.fieldset`
   width: 750px;
@@ -14,7 +15,7 @@ export const Container = styled.fieldset`
     margin: 10px 0;
     
     .label{
-      color: #ABABAB;
+      color: ${TEXT_SECONDARY};
       font-size: 14px;
       width: 350px;
     }

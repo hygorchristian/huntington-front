@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { TEXT_SECONDARY } from '~/utils/colors';
 
 export const Container = styled.div`
   width: 950px;
@@ -61,7 +62,7 @@ export const Container = styled.div`
         span{
           font-size: 14px;
           line-height: 19px;
-          color: #ABABAB;
+          color: ${TEXT_SECONDARY};
           
           &.quantidade{
             font-weight: 800;

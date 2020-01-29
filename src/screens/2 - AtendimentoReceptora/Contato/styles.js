@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { TEXT_SECONDARY } from '~/utils/colors';
 
 export const Container = styled.div`
   flex: 1;
@@ -40,7 +41,7 @@ export const Header = styled.div`
   
   h3{
     font-size: 13px;
-    color: #ABABAB;
+    color: ${TEXT_SECONDARY};
     font-weight: 400;
     margin-top: 5px;
   }

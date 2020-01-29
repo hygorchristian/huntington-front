@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { TEXT_SECONDARY } from '~/utils/colors';
 
 export const Container = styled.div`
   width: 950px;
@@ -55,7 +56,7 @@ export const Header = styled.div`
       
       label{
         font-size: 13px;
-        color: #ABABAB;
+        color: ${TEXT_SECONDARY};
       }
       
       span{
@@ -111,7 +112,7 @@ export const Questionario = styled.div`
       h2{
         font-size: 12px;
         font-weight: 400;
-        color: #ABABAB;
+        color: ${TEXT_SECONDARY};
       }
       
       p{

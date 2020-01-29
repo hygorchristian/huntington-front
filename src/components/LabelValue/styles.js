@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { TEXT_SECONDARY } from '~/utils/colors';
 
 export const Container = styled.div`
   display: flex;
@@ -7,7 +8,7 @@ export const Container = styled.div`
   
   label{
     font-size: 12px;
-    color: #ABABAB;
+    color: ${TEXT_SECONDARY};
   }
   
   span{
