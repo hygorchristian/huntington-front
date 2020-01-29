@@ -47,7 +47,6 @@ function PreCadastro() {
           loading={loading}
         />
       </Content>
-
     </Container>
 );
 }
