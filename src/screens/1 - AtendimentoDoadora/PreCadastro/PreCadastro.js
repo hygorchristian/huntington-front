@@ -48,7 +48,7 @@ function PreCadastro() {
         />
       </Content>
     </Container>
-);
+  );
 }
 
 export default PreCadastro;

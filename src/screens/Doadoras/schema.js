@@ -12,7 +12,7 @@ export default {
   fields: [
     {
       label: 'PIN',
-      name: 'name',
+      name: 'pin',
       type: 'string',
     },
     {
@@ -22,23 +22,23 @@ export default {
     },
     {
       label: 'Origem',
-      name: '',
+      name: 'origin',
       type: 'string',
     },
     {
       label: 'Nome',
-      name: '',
+      name: 'name',
       type: 'string',
     },
     {
       label: 'Etnia',
-      name: '',
+      name: 'etnia.name',
       type: 'string',
     },
     {
       label: 'D.P.M',
-      name: '',
-      type: 'string',
+      name: 'dpm',
+      type: 'date',
     },
     {
       label: 'A.C.O',
@@ -52,12 +52,12 @@ export default {
     },
     {
       label: 'Status de Atendimento',
-      name: '',
+      name: 'status.name',
       type: 'string',
     },
     {
       label: 'Perfil',
-      name: '',
+      name: 'profile.name',
       type: 'string',
     },
   ],

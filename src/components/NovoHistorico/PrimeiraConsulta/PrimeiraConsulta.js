@@ -1,9 +1,9 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
 import { useFormik } from 'formik';
 import MenuItem from '@material-ui/core/MenuItem';
+import Api from '~/services/api';
 
-import { useDispatch } from 'react-redux';
 import MuiDatePicker from '~/components/MuiDatePicker';
 import MuiSelect from '~/components/MuiSelect';
 import MuiBooleanValue from '~/components/MuiBooleanValue';
@@ -12,32 +12,44 @@ import Botao from '~/components/Botao';
 
 import initialValues from './initialValues';
 import validationSchema from './validationSchema';
+import { showErrorMessage, showSuccessMessage } from '~/utils/notistack';
 
 import { Container } from './styles';
-import { ConsultaActions } from '~/store/ducks/doadora/consulta';
 
 function PrimeiraConsulta() {
-  const { doadora } = useParams();
-  const dispatch = useDispatch();
+  const [etnias, setEtnias] = useState([]);
+  const { id, doadora } = useParams();
+  const history = useHistory();
 
   const onSubmit = (values) => {
-    const data = {
-      consult_data: {
-        dum: values.dum,
-        dpm: values.dpm,
-        notes: values.notes,
-        medication_allergy: values.medication_allergy,
-        comorbidities: values.comorbidities,
-        donor: doadora,
-      },
-      donor_data: {
-        etnia: values.etnia,
-        indication: values.indication,
-        is_donor: values.is_donor,
-        compatible: values.compatible,
-      }
+    const consult_data = {
+      dum: values.dum,
+      dpm: values.dpm,
+      notes: values.notes,
+      medication_allergy: values.medication_allergy,
+      comorbidities: values.comorbidities,
+      donor: doadora,
     };
-    dispatch(ConsultaActions.consultaCreateRequest(data, true));
+
+    const donor_data = {
+      etnia: values.etnia,
+      indication: values.indication,
+      is_donor: values.is_donor,
+      compatible: values.compatible,
+    };
+
+    Api.createConsultation(consult_data).then(() => {
+      showSuccessMessage('Consulta criada com sucesso!');
+    }).catch(() => {
+      showErrorMessage('Erro ao salvar consulta');
+    });
+
+    Api.updateDoadora(doadora, donor_data).then(() => {
+      showSuccessMessage('Doadora atualizada com sucesso!');
+      history.push(`/doadora/pre-cadastros/${id}/${doadora}?tab=historico`);
+    }).catch(() => {
+      showErrorMessage('Erro ao atualizar dados da doadora');
+    });
   };
 
   const formik = useFormik({
@@ -46,6 +58,19 @@ function PrimeiraConsulta() {
     validationSchema
   });
 
+  const fetchEtnias = async () => {
+    const { data: etniaData } = await Api.getEtnias();
+    if (etniaData) {
+      setEtnias(etniaData);
+    } else {
+      showErrorMessage('Houve um erro. Tente novamente');
+      history.push(`/doadora/pre-cadastros/${id}/${doadora}?tab=historico`);
+    }
+  };
+
+  useEffect(() => {
+    fetchEtnias();
+  }, []);
 
   return (
     <Container>
@@ -76,19 +101,18 @@ function PrimeiraConsulta() {
       <div className="row date">
         <MuiSelect
           name="etnia"
-          label="Confirmar etnia"
+          label="Etnia"
           value={formik.values.etnia}
           handleChange={(e) => {
             formik.setFieldValue('etnia', e.target.value);
           }}
           error={formik.errors.etnia}
         >
-          <MenuItem value="branca">Branca</MenuItem>
-          <MenuItem value="loira">Loira</MenuItem>
-          <MenuItem value="parda">Parda</MenuItem>
-          <MenuItem value="negra">Negra</MenuItem>
-          <MenuItem value="oriental">Oriental</MenuItem>
-          <MenuItem value="outra">Outra</MenuItem>
+          {
+            etnias.map((etnia) => (
+              <MenuItem value={etnia._id}>{etnia.name}</MenuItem>
+            ))
+          }
         </MuiSelect>
       </div>
       <MuiBooleanValue
@@ -142,7 +166,6 @@ function PrimeiraConsulta() {
         <Botao endIcon="close" color="">Cancelar</Botao>
         <Botao endIcon="check" onClick={formik.submitForm}>Salvar</Botao>
       </div>
-
     </Container>
   );
 }

@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useFormik } from 'formik';
 import Voltar from '~/components/Voltar/Voltar';
 
@@ -18,14 +18,25 @@ import {
 
 import initialValues from './initialValues';
 import validationSchema from './schema';
+import Api from '~/services/api';
+import { showErrorMessage, showSuccessMessage } from '~/utils/notistack';
 
 function DoadoraTriagem() {
   const { id, doadora } = useParams();
   const dispatch = useDispatch();
+  const history = useHistory();
   const { data } = useSelector((state) => state.doadora.preCadastro.item);
 
   const onSubmit = (values) => {
-    dispatch(PreCadastroActions.preCadastroUpdateRequest(doadora, { triagem: values }));
+    Api.updateDoadora(doadora, { triagem: values })
+      .then(() => {
+        showSuccessMessage('Triagem criada com sucesso!');
+        history.push(`/doadora/pre-cadastros/${id}/${doadora}?tab=info`);
+      })
+      .catch((err) => {
+        console.tron.log(err);
+        showErrorMessage('Erro ao criar triagem');
+      });
   };
 
   useEffect(() => {

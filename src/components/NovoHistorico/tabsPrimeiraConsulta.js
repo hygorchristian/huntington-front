@@ -1,5 +1,4 @@
 import React from 'react';
-
 import PrimeiraConsulta from './PrimeiraConsulta';
 import Observacao from './Observacao';
 import Desistencia from './Desistencia';

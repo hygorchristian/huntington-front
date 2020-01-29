@@ -37,7 +37,7 @@ class ApiService {
 
   handleError = (err, reject) => {
     console.tron.error(err);
-    reject('Erro ao buscar eventos');
+    reject(err);
   }
 
   setToken = (token) => {
@@ -129,7 +129,17 @@ class ApiService {
 
   getDoadoraUltrassound = (id) => this.api.get(`ultrasound/donor/${id}`)
 
-  getDoadorasPreRegistradas = () => this.api.get('statuses/name/preregistradas')
+  getDoadorasPreRegistradas = () => new Promise((resolve, reject) => {
+    this.api.get('statuses/name/preregistradas')
+      .then((response) => {
+        const donors = response && response.data && response.data.donors;
+        console.tron.log({ donors });
+
+
+        resolve(donors);
+      })
+      .catch((err) => this.handleError(err, reject));
+  })
 
   // ===========================================================================
   // 03. Perfil (Estado) para Doadoras
@@ -285,7 +295,11 @@ class ApiService {
 
   getConsultation = (id, params = {}) => this.api.get(`consultation/${id}`, { params });
 
-  createConsultation = (data) => this.api.post('consultation', data);
+  createConsultation = (data) => new Promise((resolve, reject) => {
+    this.api.post('consultation', data).then((res_consultation) => {
+      resolve();
+    }).catch((err) => this.handleError(err, reject));
+  });
 
   updateConsultation = (id, data) => this.api.put(`consultation/${id}`, data);
 

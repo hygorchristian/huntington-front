@@ -4,20 +4,26 @@ import Api from '~/services/api';
 import { Container, Header, Content } from './styles';
 import MuiTable from '~/components/MuiTable';
 import schema from './schema';
+import { formatarDiaMesAno } from '~/utils/data';
 
 function Doadoras({ history }) {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
   const fetchDoadoras = async () => {
-    const response = await Api.getDoadorasPreRegistradas().catch((err) => {
-      console.tron.error(err);
+    const response = await Api.getDoadorasPreRegistradas();
+
+    const normalData = response.map((donor) => {
+      if (donor.consultations && donor.consultations.length > 0) {
+        donor.dpm = donor.consultations[0].dpm;
+      } else {
+        donor.dpm = null;
+      }
+
+      return donor;
     });
 
-    if (response.data && response.data.donors) {
-      setData(response.data.donors);
-    }
-
+    setData(normalData || []);
     setLoading(false);
   };
 
