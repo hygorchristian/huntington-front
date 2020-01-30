@@ -13,11 +13,15 @@ export const Container = styled.fieldset`
     flex-direction: row;
     align-items: center;
     margin: 10px 0;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ededed;
     
     .label{
       color: ${TEXT_SECONDARY};
       font-size: 14px;
       width: 350px;
+      margin-right: 20px;
     }
     
     .resposta{
@@ -26,8 +30,19 @@ export const Container = styled.fieldset`
       flex-direction: row;
       
       .value{
-        font-size: 13px;
+        font-size: 14px;
+      }
+      
+      .obs{
+        font-size: 14px;
       }
     }
+  }
+  
+  .triagem-data{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 40px;
   }
 `;

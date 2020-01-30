@@ -1,102 +1,105 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
+import MenuItem from '@material-ui/core/MenuItem';
+import Api from '~/services/api';
 
 import { Container, Header, Recepcao } from './styles';
 import AdicionarRow from '~/components/AdicionarRow';
+import RecepcaoDoadora from '~/components/RecepcaoDoadora';
+import { showErrorMessage } from '~/utils/notistack';
+import Triagem from '~/components/Triagem';
+import { formatarDiaMesAno } from '~/utils/data';
+import MuiSelect from '~/components/MuiSelect';
 
 function DoadoraInformacoes() {
+  const { doadora } = useParams();
+  const [data, setData] = useState(null);
   const history = useHistory();
 
   const adicionarTriagem = () => {
     history.push('/doadora/detalhes/1/triagem');
   };
 
+  useEffect(() => {
+    Api.getDoadora(doadora)
+      .then((response) => {
+        const donor = response.data;
+        if (donor.consultations && donor.consultations.length > 0) {
+          donor.dpm = formatarDiaMesAno(donor.consultations[0].dpm);
+        } else {
+          donor.dpm = null;
+        }
+
+        setData(donor);
+      })
+      .catch((err) => {
+        console.tron.error({ err });
+        showErrorMessage('Não foi possível recuperar os dados da doadora');
+      });
+  }, []);
+
+  if (!data) return false;
+
   return (
     <Container>
       <Header>
-        <div className="row">
+        <div className="rowinfo">
           <div className="info">
             <div className="col mr-40">
               <label>ID</label>
-              <span>12345678</span>
+              <span>{data.id}</span>
             </div>
             <div className="col mr-40">
               <label>PIN</label>
-              <span>123456</span>
+              <span>{data.pin || '-'}</span>
             </div>
             <div className="col mr-40">
               <label>Origem</label>
-              <span>Mutirão</span>
+              <span>{data.origin || '-'}</span>
             </div>
             <div className="col">
               <label>Indicação</label>
-              <span>Sim</span>
+              <span>{(data.indication && data.indication.value) ? 'Sim' : 'Não'}</span>
             </div>
           </div>
           <div className="status">
             <div className="col">
-              <label>D.P.M</label>
-              <span>26/06/2019</span>
+              <label>D.P.M.</label>
+              <span>{data.dpm || '-'}</span>
             </div>
           </div>
         </div>
-        <div className="row">
-          <div className="status" style={{ marginRight: 15, width: 170 }}>
-            <div className="col">
-              <label>Status de atendimento</label>
-              <span>Programada</span>
-            </div>
+        <div className="status">
+          <div className="select">
+            <MuiSelect
+              style={{ width: 200 }}
+              name="status"
+              label="Estatus de Atendimento"
+            >
+              <MenuItem value="casada">Programada</MenuItem>
+              <MenuItem value="solteira">Estimulação</MenuItem>
+            </MuiSelect>
           </div>
-          <div className="status" style={{ marginRight: 15, width: 170 }}>
-            <div className="col">
-              <label>Perfil</label>
-              <span>Ativa</span>
-            </div>
+          <div className="select">
+            <MuiSelect
+              style={{ width: 200 }}
+              name="status"
+              label="Perfil"
+            >
+              <MenuItem value="casada">Inativa</MenuItem>
+              <MenuItem value="solteira">Excluída</MenuItem>
+            </MuiSelect>
           </div>
         </div>
       </Header>
-      <Recepcao>
-        <fieldset>
-          <legend>RECEPÇÃO</legend>
-          <div className="content">
-            <div className="col">
-              <span className="label">Maria Carolina do Rosário</span>
-              <span className="label">28 anos, 05 de maio de 1991</span>
-              <div className="infos">
-                <span>Solteira</span>
-                <span>Parda</span>
-              </div>
-            </div>
-            <div className="col">
-              <div className="info">
-                <label>RG nº</label>
-                <span>332548 SPTC/SP</span>
-              </div>
-              <div className="info">
-                <label>Endereço</label>
-                <span>Rua Itaboraí, 456, Bela Vista, São Paulo/SP, Apto 506, 25.654-98</span>
-              </div>
-            </div>
-          </div>
-          <div className="contatos">
-            <div className="info">
-              <label>Celular</label>
-              <span>(11) 99966-9898</span>
-            </div>
-            <div className="info">
-              <label>Telefone</label>
-              <span>(11) 3333-9898 </span>
-            </div>
-            <div className="info">
-              <label>E-mail</label>
-              <span>emaildoadora@email.com.br </span>
-            </div>
-          </div>
-        </fieldset>
-      </Recepcao>
-      <div className="row">
-        <AdicionarRow label="Adicionar" context="Triagem" onClick={adicionarTriagem} />
-      </div>
+      <RecepcaoDoadora data={data} />
+      {data.triagem ? (
+        <Triagem data={data.triagem} />
+      ) : (
+        <div className="row">
+          <AdicionarRow label="Adicionar" context="Triagem" onClick={adicionarTriagem} />
+        </div>
+      )}
     </Container>
 );
 }

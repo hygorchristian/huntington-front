@@ -27,10 +27,11 @@ function Triagem({ data }) {
       ))}
       <div className="divider" />
       <div className="triagem-data">
-        <LabelValue label="Peso" />
-        <LabelValue label="Altura" />
-        <LabelValue label="Pressão Arterial" />
-        <LabelValue label="IMC" />
+        <LabelValue label="Peso">{data.weight}</LabelValue>
+        <LabelValue label="Altura">{data.height}</LabelValue>
+        <LabelValue label="Pressão Arterial">{data.arterial_press}</LabelValue>
+        <LabelValue label="IMC">{data.imc}</LabelValue>
+
       </div>
     </Container>
   );

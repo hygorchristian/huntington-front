@@ -74,7 +74,7 @@ export default [
     component: NovaColeta
   },
   {
-    path: '/doadora/listagem/:id',
+    path: '/doadora/listagem/:doadora',
     component: Doadora
   },
   {

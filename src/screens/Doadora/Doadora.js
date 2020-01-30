@@ -1,39 +1,17 @@
 import React from 'react';
+import TabDashboard from '~/components/TabDashboard';
+import Voltar from '~/components/Voltar/Voltar';
+import tabs, { getIndex } from './tabs';
 
 import {
- Container, Header, Content
+  Container, Header, Content
 } from './styles';
-import TabDashboard from '~/components/TabDashboard';
-import DoadoraInformacoes from './DoadoraInformacoes';
-import DoadoraHistorico from './DoadoraHistorico';
-import DoadoraExames from './DoadoraExames';
-import DoadoraUltrassons from './DoadoraUltrassons';
-import Voltar from '~/components/Voltar/Voltar';
-
-const tabs = [
-  {
-    label: 'Informações',
-    content: <DoadoraInformacoes />
-  },
-  {
-    label: 'Histórico',
-    content: <DoadoraHistorico />
-  },
-  {
-    label: 'Exames',
-    content: <DoadoraExames />
-  },
-  {
-    label: 'Ultrassons',
-    content: <DoadoraUltrassons />
-  },
-  {
-    label: 'Coleta',
-    content: <DoadoraUltrassons />
-  },
-];
+import { getUrlParam } from '~/utils/url';
 
 function Doadora() {
+  const tab = getUrlParam('tab', 'info');
+  const index = getIndex(tab);
+
   return (
     <Container>
       <Voltar label="Doadoras" route="/doadora/listagem" />
@@ -41,7 +19,7 @@ function Doadora() {
         <h1>Maria Carolina do Rosário</h1>
       </Header>
       <Content>
-        <TabDashboard tabs={tabs} />
+        <TabDashboard tabs={tabs} index={index} />
       </Content>
     </Container>
 );

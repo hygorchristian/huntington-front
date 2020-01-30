@@ -3,11 +3,10 @@ function onAdd({ history }) {
 }
 
 function onClick({ history }, id) {
-  history.push(`/doadora/detalhes/${id}`);
+  history.push(`/doadora/listagem/${id}`);
 }
 
 export default {
-  onAdd,
   onClick,
   fields: [
     {

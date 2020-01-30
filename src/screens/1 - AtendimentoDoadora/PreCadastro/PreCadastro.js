@@ -44,7 +44,7 @@ function PreCadastro() {
         <MuiTable
           schema={schema}
           data={data && data.doadoras}
-          loading={loading}
+          loading
         />
       </Content>
     </Container>

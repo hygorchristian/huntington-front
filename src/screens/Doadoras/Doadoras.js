@@ -4,9 +4,8 @@ import Api from '~/services/api';
 import { Container, Header, Content } from './styles';
 import MuiTable from '~/components/MuiTable';
 import schema from './schema';
-import { formatarDiaMesAno } from '~/utils/data';
 
-function Doadoras({ history }) {
+function Doadoras() {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
