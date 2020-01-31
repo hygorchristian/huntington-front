@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { TEXT_SECONDARY } from '~/utils/colors';
+import { TEXT_PRIMARY, TEXT_SECONDARY } from '~/utils/colors';
 
 export default createGlobalStyle`
 
@@ -85,7 +85,7 @@ export default createGlobalStyle`
     padding-left: 20px;
     padding-right: 20px;
     font-size: 13px;   
-    color: #707070;
+    color: ${TEXT_PRIMARY};
     resize: none;
     
     &::placeholder{

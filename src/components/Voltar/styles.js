@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { TEXT_PRIMARY } from '~/utils/colors';
 
 export const Container = styled.div`
   height: 36px;
@@ -12,6 +13,6 @@ export const Container = styled.div`
     font-weight: 400;
     font-size: 13px;
     margin-left: 15px;
-    color: #707070;
+    color: ${TEXT_PRIMARY};
   }
 `;

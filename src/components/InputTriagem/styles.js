@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { TEXT_PRIMARY } from '~/utils/colors';
 
 export const Container = styled.div`
   display: flex;
@@ -11,7 +12,7 @@ export const Container = styled.div`
     flex: 1;
     text-align: right;
     font-size: 13px;
-    color: #707070;
+    color: ${TEXT_PRIMARY};
     margin-right: 25px;
   }
   

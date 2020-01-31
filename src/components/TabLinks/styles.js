@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { TEXT_PRIMARY } from '~/utils/colors';
 
 export const Container = styled.div`
   display: flex;
@@ -31,7 +32,7 @@ export const Tab = styled.div`
   span{
     font-size: 16px;
     font-weight: 500;
-    color: #707070;
+    color: ${TEXT_PRIMARY};
     margin-bottom: 10px;
   }
 

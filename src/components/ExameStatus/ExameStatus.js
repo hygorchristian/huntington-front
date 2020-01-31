@@ -9,6 +9,7 @@ import {
 import { Container } from './styles';
 import DialogExamResult from '~/components/DialogExamResult';
 import { getExamName } from '~/utils/exames';
+import { ERROR, SUCCESS } from '~/utils/colors';
 
 function ExamIcon({ exam }) {
   if (exam) {
@@ -21,11 +22,11 @@ function ExamIcon({ exam }) {
 
     if (has_result) {
       if (exam.is_result_ok) {
-        return <FiCheckCircle size={20} color="#42D16D" />;
+        return <FiCheckCircle size={20} color={SUCCESS} />;
       }
-      return <FiAlertCircle size={20} color="#FF0101" />;
+      return <FiAlertCircle size={20} color={ERROR} />;
     }
-    return <FiPlusCircle size={20} color="#42D16D" />;
+    return <FiPlusCircle size={20} color={SUCCESS} />;
   }
 
   return <FiXCircle size={20} color="#8D8D8D" />;

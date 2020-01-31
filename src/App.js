@@ -14,6 +14,7 @@ import Routes from './routes';
 import Global from './styles/global';
 import AuthProvider from '~/components/AuthProvider';
 import Notifier from '~/components/Notifier';
+import { primary } from '~/styles/colors';
 
 const snackbarProviderOptions = {
   vertical: 'top',
@@ -22,7 +23,7 @@ const snackbarProviderOptions = {
 
 const theme = createMuiTheme({
   palette: {
-    primary: green,
+    primary,
     secondary: red,
     error: red,
   },

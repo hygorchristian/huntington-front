@@ -10,7 +10,8 @@ import Voltar from '~/components/Voltar/Voltar';
 const tabs = [
   {
     label: 'Informações',
-    content: <ContatoInformacoes />
+    content: <ContatoInformacoes />,
+    url: 'info'
   },
 ];
 

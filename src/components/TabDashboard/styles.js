@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { TEXT_PRIMARY } from '~/utils/colors';
 
 export const Container = styled.div`
   display: flex;
@@ -31,7 +32,7 @@ export const Tab = styled.div`
   span{
     font-size: 16px;
     font-weight: 500;
-    color: ${({ selected }) => (selected ? '#707070' : 'rgba(112,112,112,0.5)')};
+    color: ${({ selected }) => (selected ? TEXT_PRIMARY : 'rgba(112,112,112,0.5)')};
     margin-bottom: 10px;
   }
 

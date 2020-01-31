@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import BuscaBase from '~/components/Busca';
+import { TEXT_PRIMARY } from '~/utils/colors';
 
 export const Container = styled.div`
   flex: 1;
@@ -17,7 +18,7 @@ export const Voltar = styled.div`
     font-weight: 400;
     font-size: 13px;
     margin-left: 15px;
-    color: #707070;
+    color: ${TEXT_PRIMARY};
   }
 `;
 
@@ -30,13 +31,13 @@ export const Header = styled.div`
   padding-right: 45px;
   font-size: 14px;
   font-weight: 500;
-  color: #707070;
+  color: ${TEXT_PRIMARY};
   border-bottom: 1px solid rgba(165,165,165,0.3);
   
   h1{
     font-size: 18px;
     font-weight: 500;
-    color: #707070;
+    color: ${TEXT_PRIMARY};
     width: 130px;
   } 
   
@@ -100,7 +101,7 @@ export const Content = styled.div`
       border-bottom: 1px solid rgba(165,165,165,0.2);
       font-size: 14px;
       font-weight: 400;
-      color: #707070;
+      color: ${TEXT_PRIMARY};
       text-align: center;
     }
   }

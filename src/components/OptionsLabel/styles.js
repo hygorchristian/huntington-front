@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import { TEXT_PRIMARY } from '~/utils/colors';
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  color: #707070;  
+  color: ${TEXT_PRIMARY};  
   margin-bottom: 36px;
   width: 100%;
   

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { TEXT_PRIMARY } from '~/utils/colors';
 
 export const Container = styled.div`
   .label{
@@ -7,7 +8,7 @@ export const Container = styled.div`
     
     label{
       font-size: 13px;
-      color: #707070;
+      color: ${TEXT_PRIMARY};
     }
   }
   

@@ -1,9 +1,10 @@
 import React from 'react';
 import {
- FiCalendar, FiMapPin, FiCheckCircle, FiUser 
+ FiCalendar, FiMapPin, FiCheckCircle, FiUser
 } from 'react-icons/fi';
 
 import { Container } from './styles';
+import { SUCCESS } from '~/utils/colors';
 
 function ResultadoPrimeiraConsulta({ data }) {
   if (!data) {
@@ -24,7 +25,7 @@ function ResultadoPrimeiraConsulta({ data }) {
         </div>
         <div className="row" style={{ marginTop: 10 }}>
           <div className="check-label">
-            <FiCheckCircle size={14} color="#42D16D" />
+            <FiCheckCircle size={14} color={SUCCESS} />
             <span style={{ marginLeft: 10 }}>Questionário</span>
           </div>
           <div className="col">

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { TEXT_PRIMARY } from '~/utils/colors';
 
 export const Container = styled.div`
   display: flex;
@@ -32,7 +33,7 @@ export const Side = styled.div`
     width: 250px;
     font-size: 28px;
     font-weight: 200;
-    color: #707070;
+    color: ${TEXT_PRIMARY};
     margin-bottom: 30px;
     line-height: 38px;
   }

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { TEXT_PRIMARY } from '~/utils/colors';
 
 export const Container = styled.div`
   display: flex;
@@ -64,7 +65,7 @@ export const Item = styled.div`
     display: flex;
     font-size: 18px;
     font-weight: 200;
-    color: #707070;
+    color: ${TEXT_PRIMARY};
     margin-right: 22px;
   }  
   
@@ -88,7 +89,7 @@ export const Item = styled.div`
     h2.nome{
       font-size: 16px;
       font-weight: 500;
-      color: #707070;
+      color: ${TEXT_PRIMARY};
     }
     
     .pin{
@@ -101,7 +102,7 @@ export const Item = styled.div`
     .consulta{
       font-size: 13px;
       font-weight: 200;
-      color: #707070;
+      color: ${TEXT_PRIMARY};
     }
     
     label.origem{
@@ -112,7 +113,7 @@ export const Item = styled.div`
     
     span.origem{
       font-size: 13px;
-      color: #707070;
+      color: ${TEXT_PRIMARY};
       margin-left: 5px;
     }
     
@@ -131,7 +132,7 @@ export const Item = styled.div`
     
     span{
       font-size: 13px;
-      color: #707070;
+      color: ${TEXT_PRIMARY};
     }
   }
   

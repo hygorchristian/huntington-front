@@ -24,6 +24,7 @@ function MuiSelect({
       fullWidth
       margin="normal"
       error={error}
+      {...props}
     >
       <InputLabel ref={inputLabel}>
         {label}

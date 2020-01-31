@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { TEXT_PRIMARY } from '~/utils/colors';
 
 export const Container = styled.div`
   flex:1 ;
@@ -16,7 +17,7 @@ export const Header = styled.div`
   padding-bottom: 6px;
   
   h1{
-    color: #707070;
+    color: ${TEXT_PRIMARY};
     font-size: 18px;
     font-weight: 500;
     margin-right: 90px;

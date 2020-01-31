@@ -5,6 +5,7 @@ import Voltar from '~/components/Voltar';
 import { Container, Content, Header } from './styles';
 import ItemResultado from '~/components/ItemResultado';
 import Botao from '~/components/Botao';
+import { SUCCESS } from '~/utils/colors';
 
 function ResultadoExame() {
   return (
@@ -25,7 +26,7 @@ function ResultadoExame() {
           <ItemResultado
             label="ABO/RH"
             value="O+"
-            icon={() => <FiCheckCircle color="#42D16D" />}
+            icon={() => <FiCheckCircle color={SUCCESS} />}
           />
           <ItemResultado
             label="Sorologia"
@@ -36,7 +37,7 @@ function ResultadoExame() {
           <ItemResultado
             label="Cariótipo"
             value="Normal"
-            icon={() => <FiCheckCircle color="#42D16D" />}
+            icon={() => <FiCheckCircle color={SUCCESS} />}
           />
           <ItemResultado
             label="Chlamidia/Neisseria"

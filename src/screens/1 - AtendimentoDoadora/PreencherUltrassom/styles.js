@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { TEXT_PRIMARY } from '~/utils/colors';
 
 export const Container = styled.div`
   display: flex;
@@ -21,7 +22,7 @@ export const Voltar = styled.div`
     font-weight: 400;
     font-size: 13px;
     margin-left: 15px;
-    color: #707070;
+    color: ${TEXT_PRIMARY};
   }
 `;
 
@@ -33,13 +34,13 @@ export const Header = styled.div`
   padding-right: 45px;
   font-size: 14px;
   font-weight: 500;
-  color: #707070;
+  color: ${TEXT_PRIMARY};
   border-bottom: 1px solid rgba(165,165,165,0.3);
   
   h1{
     font-size: 22px;
     font-weight: 500;
-    color: #707070;
+    color: ${TEXT_PRIMARY};
     flex: 1;
   }  
 `;

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { TEXT_PRIMARY } from '~/utils/colors';
 
 
 export const Container = styled.div`
@@ -196,7 +197,7 @@ export const Left = styled.div`
     border: none;
     margin-left: 16px;
     font-size: 15px;
-    color: #707070;
+    color: ${TEXT_PRIMARY};
     
     &::placeholder{
       color: #A5A5A5;

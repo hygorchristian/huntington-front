@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { TEXT_SECONDARY } from '~/utils/colors';
+import { TEXT_PRIMARY, TEXT_SECONDARY } from '~/utils/colors';
 
 export const Container = styled.div`
   height: 100%;
@@ -98,7 +98,7 @@ export const Nome = styled.div`
   h3{
     font-size: 16px;
     font-weight: 500;
-    color: #707070;
+    color: ${TEXT_PRIMARY};
   }
   
   span{

@@ -1,12 +1,11 @@
 import React from 'react';
 
-import TabLinks from '~/components/TabLinks/TabLinks';
 import Busca from '~/components/Busca';
-import { tabs } from './tabs';
 
 import { Container, Header, Content } from './styles';
-
-const items = [1, 2, 3, 4, 5];
+import MuiTable from '~/components/MuiTable';
+import schema from './schema';
+import data from './data';
 
 function Doadoras({ history }) {
   const novaDoadora = () => {
@@ -21,35 +20,9 @@ function Doadoras({ history }) {
     <Container>
       <Header>
         <h1>Contatos</h1>
-        <Busca />
-        <button onClick={novaDoadora}>Adicionar</button>
       </Header>
       <Content>
-        <TabLinks tabs={tabs} />
-        <table cellSpacing={0}>
-          <thead>
-            <th>PIN</th>
-            <th />
-            <th>Contato</th>
-            <th>Cadastro</th>
-            <th>Questionário</th>
-            <th />
-          </thead>
-          <tbody>
-            {
-            items.map((item) => (
-              <tr className="linha" onClick={() => detalhesDoadora(item)}>
-                <td style={{ width: 70 }}>123456</td>
-                <td style={{ width: 300 }}>Carolina Marrocos</td>
-                <td style={{ width: 100 }}>emaildoadora@email.com.br</td>
-                <td style={{ width: 100 }}>21/06/19</td>
-                <td style={{ width: 70 }}>A enviar</td>
-                <td style={{ width: 200 }} />
-              </tr>
-            ))
-          }
-          </tbody>
-        </table>
+        <MuiTable schema={schema} data={data} />
       </Content>
     </Container>
   );

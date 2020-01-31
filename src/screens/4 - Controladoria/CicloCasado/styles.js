@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { TEXT_SECONDARY } from '~/utils/colors';
+import { TEXT_PRIMARY, TEXT_SECONDARY } from '~/utils/colors';
 
 export const Container = styled.div`
   flex: 1;
@@ -23,7 +23,7 @@ export const Header = styled.div`
     
     span{
       font-size: 21px;
-      color: #707070;
+      color: ${TEXT_PRIMARY};
     }
   }
   
