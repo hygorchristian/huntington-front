@@ -16,6 +16,10 @@ export default [
     component: ARDashboard,
   },
   {
+    path: '/',
+    component: ARDashboard,
+  },
+  {
     label: 'Contatos',
     path: '/receptora/contatos',
     component: Contatos,

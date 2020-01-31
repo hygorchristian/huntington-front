@@ -12,6 +12,10 @@ export default [
     component: DashboardEmbriologia,
   },
   {
+    path: '/',
+    component: DashboardEmbriologia,
+  },
+  {
     label: 'Banco de Óvulos',
     path: '/embriologia/banco-ovulos',
     component: BancoOvulos2,

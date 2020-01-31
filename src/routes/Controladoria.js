@@ -16,6 +16,10 @@ export default [
     component: ControladoriaDashboard,
   },
   {
+    path: '/',
+    component: ControladoriaDashboard,
+  },
+  {
     label: 'Estoque',
     path: '/controladoria/estoque',
     component: Estoques,

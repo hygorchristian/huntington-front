@@ -22,6 +22,10 @@ export default [
     component: DashboardScreen,
   },
   {
+    path: '/',
+    component: DashboardScreen,
+  },
+  {
     label: 'Pré-Cadastros',
     path: '/doadora/pre-cadastros',
     component: PreCadastros,

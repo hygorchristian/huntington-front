@@ -14,6 +14,7 @@ import DashboardRoute from '~/components/DashboardRoute';
 import Dashboard from '~/screens/Dashboard/Dashboard';
 import Login from '~/screens/Login';
 import Erro404 from '~/screens/Erro404';
+import FormularioReceptora from '~/screens/FormularioReceptora';
 
 export const RolesRoutes = {
   atendimento_doadora: AtendimentoDoadora,
@@ -31,8 +32,8 @@ function Routes() {
 
   return (
     <Switch>
-      <PrivateRoute path="/" exact component={Dashboard} />
       <Route path="/login" exact component={Login} />
+      <Route path="/receptora/form/:id" exact component={FormularioReceptora} />
       {routes.map((route) => (
         <DashboardRoute exact path={route.path} component={route.component} label={route.label} />
       ))}
