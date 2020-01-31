@@ -5,13 +5,12 @@ import { FiCalendar } from 'react-icons/fi';
 import Api from '~/services/api';
 import { Container } from './styles';
 import AdicionarRow from '~/components/AdicionarRow';
-import { populateInitialExams, getExamName } from './utils';
 import ExameStatus from '~/components/ExameStatus';
 import ExameContext from '~/contexts/ExameContext';
-import { showErrorMessage } from '~/utils/notistack';
-import { groupExams } from '~/screens/1 - AtendimentoDoadora/DoadoraPreCadastro/DoadoraExames/utils';
-import { formatarDiaMesAno } from '~/utils/data';
 
+import { formatarDiaMesAno } from '~/utils/data';
+import { showErrorMessage } from '~/utils/notistack';
+import { groupExams, populateInitialExams, getExamName } from '~/utils/exames';
 
 function DoadoraExames({ history }) {
   const { id, doadora } = useParams();

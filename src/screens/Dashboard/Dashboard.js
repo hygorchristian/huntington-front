@@ -120,7 +120,7 @@ function Dashboard({ children, history, match: { path } }) {
                 <Notifications />
               </StyledBadge>
             </IconButton>
-            <UserMenu />
+            <UserMenu logout={logout} />
           </Right>
         </Header>
         <Content>

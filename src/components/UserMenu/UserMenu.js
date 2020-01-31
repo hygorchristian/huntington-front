@@ -10,7 +10,7 @@ import {
 
 import { Container, Menu } from './styles';
 
-function UserMenu({ onClose, ...props }) {
+function UserMenu({ onClose, logout, ...props }) {
   const [anchor, setAnchor] = useState(null);
 
   const handleClick = (event) => {
@@ -48,7 +48,7 @@ function UserMenu({ onClose, ...props }) {
           </ListItemIcon>
           <ListItemText className="pl-0" primary="Notificações" />
         </MenuItem>
-        <MenuItem onClick={onClose}>
+        <MenuItem onClick={logout}>
           <ListItemIcon>
             <ExitToApp />
           </ListItemIcon>

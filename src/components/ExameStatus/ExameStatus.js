@@ -8,7 +8,7 @@ import {
 
 import { Container } from './styles';
 import DialogExamResult from '~/components/DialogExamResult';
-import { getExamName } from '~/screens/1 - AtendimentoDoadora/DoadoraPreCadastro/DoadoraExames/utils';
+import { getExamName } from '~/utils/exames';
 
 function ExamIcon({ exam }) {
   if (exam) {
