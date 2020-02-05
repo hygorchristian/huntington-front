@@ -38,7 +38,7 @@ export const Content = styled.div`
     color: #3A6E4F;
   }
   
-  span{
+  & > span{
     font-size: 14px;
     margin-top: 20px;
   } 
@@ -59,10 +59,6 @@ export const Form = styled(FormFormik).attrs({
   width: 350px;
   margin-top: 30px;
   align-items: center;
-  
-  span{
-    color:#f44336;
-  }
 `;
 
 export const Loading = styled(CircularProgress).attrs({

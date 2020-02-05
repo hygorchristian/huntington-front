@@ -24,7 +24,7 @@ const useToolbarStyles = makeStyles((theme) => ({
 }));
 
 const Toolbar = ({
- onSearch, onAdd, filters, deps, loading
+ onSearch, onAdd, onSync, filters, deps, loading
 }) => {
   const classes = useToolbarStyles();
 
@@ -44,16 +44,25 @@ const Toolbar = ({
       <MuiToolbar className={classes.root}>
         <Busca placeholder="Pesquisar..." onSearch={onSearch} />
         <div style={{ flex: 1 }} />
-        {
-          onAdd && (
-            <Botao
-              startIcon="add"
-              onClick={onAdd}
-            >
-              Adicionar
-            </Botao>
-          )
-        }
+        { onAdd && (
+          <Botao
+            startIcon="add"
+            onClick={onAdd}
+          >
+            Adicionar
+          </Botao>
+        )}
+
+        { onSync && (
+          <Botao
+            startIcon="sync"
+            onClick={onSync}
+          >
+            Sincronizar
+          </Botao>
+        )}
+
+        {/* <div style={{ flex: 1 }} /> */}
 
         {
           filters && (

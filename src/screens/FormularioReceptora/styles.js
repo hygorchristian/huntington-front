@@ -1,8 +1,6 @@
 import styled from 'styled-components';
-import { Form as FormFormik } from 'formik';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import MDCard from '@material-ui/core/Card';
-import MDFormLabel from '@material-ui/core/FormLabel';
+import { Scrollbars } from 'react-custom-scrollbars';
 
 export const Container = styled.div`
   width: 100%;
@@ -12,7 +10,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;  
-  overflow-y: auto;
+  align-items: center;
   
   background: url("/img/login-bg.svg");
   background-repeat: no-repeat;
@@ -22,16 +20,16 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   width: 900px;
-  margin-top: 20px;
+  height: 90vh;
+  max-height: 90vh;
   background-color: #fdfdfd;
-  box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, .15);
   display: flex;
   flex-direction: column;
   align-items: center;
-  
-  @media (max-width: 1200px) {
-    width: 800px;
-  }
+  overflow-y: auto;
+  border-radius: 5px;
+  border: 1px solid #A9D4B2;
   
   @media (max-width: 900px) {
     width: 768px;
@@ -46,25 +44,57 @@ export const Content = styled.div`
   }
   
   & > img{
-    margin-bottom: 60px;
+    margin-bottom: 50px;
     margin-top: 60px;
   }
   
   h2{
-    font-size: 24px;
-    font-weight: 200;
+    font-size: 28px;
+    font-weight: 400;
     color: #3A6E4F;
   }
   
-  span{
-    font-size: 14px;
-    margin-top: 20px;
-  } 
+  h4{
+    font-size: 18px;
+    font-weight: 600;
+    color: #A5A5A5;
+  }
   
-  a{
-    font-size: 14px;
-    margin-top: 30px;
-    text-decoration: none;
+  .scroll{
+    flex: 1;
+    width: 700px;  
+    position: relative;
+    margin-top: 40px;  
+    margin-bottom: 40px;
+  
+    .overlay{
+      height: 100px;
+      width: 100%;
+      background-image: linear-gradient(transparent, #fff);
+      position: absolute;
+      bottom: -20px;
+    }
+    
+    p{
+      margin-bottom: 24px;
+    }
+  }
+  
+  .separator{
+    height: 1px;
+    width: 90%;
+    background-color: rgba(112,112,112,0.2);
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+  
+  .disclaimer{
+    width: 550px;
+    text-align: center;
+    color: #a5a5a5;
+    margin-bottom: 50px;
+    font-size: 13px;
+    font-weight: 600;
   }
 `;
 
@@ -74,16 +104,9 @@ export const Loading = styled(CircularProgress).attrs({
   margin-top: 10px;
 `;
 
-export const Card = styled(MDCard)`
-  width: 95%;
-  padding: 20px;
-  margin: 20px 20px 0 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 20px;
-`;
-
-export const FormLabel = styled(MDFormLabel)`
-  width: 100%;
-  grid-area: 1 / 1 / 2 / 3;
+export const Scroll = styled(Scrollbars).attrs({
+  autoHide: true,
+})`
+  width: 500px;
+  height: 200px;
 `;

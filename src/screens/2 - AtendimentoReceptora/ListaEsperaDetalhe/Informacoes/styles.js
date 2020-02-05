@@ -66,7 +66,8 @@ export const Questionario = styled.fieldset`
     }
     
     p{
-      font-size: 14px;      
+      font-size: 14px;    
+      padding: 0;
     }
   }
 `;

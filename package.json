@@ -24,6 +24,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
     "react-calendar-material": "^0.1.8",
+    "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.11.0",
     "react-icons": "^3.8.0",
     "react-input-mask": "^2.0.4",

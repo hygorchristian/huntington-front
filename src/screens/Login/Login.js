@@ -2,6 +2,7 @@ import React from 'react';
 import { Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 import { LoginSchema } from './validators';
 import jwtService from '~/services/jwtService';
 
@@ -55,7 +56,15 @@ function Login() {
                 type="password"
               />
               {isSubmitting && <Loading size={20} />}
-              <button type="submit">Entrar</button>
+              <Button
+                style={{ marginTop: 20 }}
+                variant="contained"
+                color="primary"
+                type="submit"
+                fullWidth
+              >
+                Entrar
+              </Button>
             </Form>
           )}
         </Formik>

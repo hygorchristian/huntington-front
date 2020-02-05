@@ -36,7 +36,7 @@ function ListaItem({ item }) {
         </div>
       </div>
       <div className="acao">
-        Validar questionário >
+        Validar questionário
       </div>
     </Item>
   );

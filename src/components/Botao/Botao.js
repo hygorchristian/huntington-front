@@ -4,6 +4,7 @@ import Add from '@material-ui/icons/Add';
 import ArrowBack from '@material-ui/icons/ArrowBack';
 import ArrowForward from '@material-ui/icons/ArrowForward';
 import Close from '@material-ui/icons/Close';
+import Cached from '@material-ui/icons/Cached';
 
 import { makeStyles } from '@material-ui/core';
 import { Container } from './styles';
@@ -30,6 +31,8 @@ function Botao({
         return <ArrowForward />;
       case 'close':
         return <Close />;
+      case 'sync':
+        return <Cached />;
       default:
         return null;
     }

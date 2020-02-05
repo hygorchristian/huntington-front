@@ -1,134 +1,48 @@
 import React, { useState, useEffect } from 'react';
+import { Scrollbars } from 'react-custom-scrollbars';
 
-import { useFormik } from 'formik';
-import MenuItem from '@material-ui/core/MenuItem';
+import Button from '@material-ui/core/Button';
 import {
- Container, Content, Card, FormLabel
+ Container, Content, Scroll
 } from './styles';
-
-import validationSchema from './validationSchema';
-import initialValues from './initialValues';
-import MuiInput from '~/components/MuiInput';
-import MuiSelect from '~/components/MuiSelect';
-import ImagePicker from '~/components/ImagePicker';
+import Botao from '~/components/Botao';
 
 
 function FormularioReceptora() {
-  const [etnias, setEtnias] = useState([]);
-  const [receptoraImage, setReceptoraImage] = useState(null);
-  const [parceiroImage, setParceiroImage] = useState(null);
-
-  const onSubmit = () => {};
-
-  const formik = useFormik({
-    initialValues,
-    onSubmit,
-    validationSchema
-  });
-
-
   return (
     <Container>
       <Content>
         <img src="/img/logo-dark.svg" />
-        <h2>Bem-vindo (a)</h2>
-        <span>Preencha o formulário</span>
+        <h2>Questionário</h2>
+        <h4>Ovodoação/Embriodoação</h4>
+        <div className="scroll">
+          <Scroll>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec imperdiet augue ex, a sodales diam aliquam a. Mauris a mi vitae orci consectetur blandit et at mauris. Vestibulum a felis eget lectus scelerisque congue eget eget nulla. Pellentesque accumsan aliquet metus et venenatis. Nulla consectetur et ex nec mattis. Etiam quis finibus tellus. Sed eget tortor ut nunc tempor laoreet vitae vel ex. Ut sodales metus dolor, vitae consectetur tellus porta nec. Donec sit amet justo euismod, accumsan massa nec, interdum purus.
 
-        <Card elevation="4">
-          <FormLabel>Receptora</FormLabel>
-          <MuiInput label="Nome" />
-          <MuiSelect
-            name="etnia"
-            label="Etnia"
-            value={formik.values.etnia}
-            handleChange={(e) => {
-              formik.setFieldValue('etnia', e.target.value);
-            }}
-            error={formik.errors.etnia}
-          >
-            {
-              etnias.map((etnia) => (
-                <MenuItem value={etnia._id}>{etnia.name}</MenuItem>
-              ))
-            }
-          </MuiSelect>
-          <MuiInput label="Ascendência" />
-          <MuiInput label="Tipo sanguíneo" />
-          <MuiInput label="Altura" />
-          <MuiInput label="Peso" />
-          <MuiInput label="Cor do Cabelo" />
-          <MuiInput label="Cor da pele" />
-          <ImagePicker
-            value={receptoraImage}
-            onSelect={(file) => {
-              setReceptoraImage(URL.createObjectURL(file));
-            }}
-            onDelete={() => {
-              setReceptoraImage(null);
-            }}
-          />
-        </Card>
+            </p>
+            <p>
+              Nulla ipsum ipsum, porta eu justo euismod, volutpat feugiat ante. Curabitur congue mi non sapien tristique malesuada. Sed eget enim suscipit, porttitor dui a, blandit ex. Suspendisse aliquet, sem eu venenatis faucibus, felis nisi maximus sem, a finibus libero enim non enim. Integer mollis, orci sed eleifend tempor, nisl justo pharetra sem, eu pulvinar nulla ex et metus. Sed odio purus, viverra ac eleifend ac, egestas vitae libero. Nam at sem nec metus dapibus interdum sit amet a ante. Quisque eget ante ante. Praesent porttitor laoreet odio, sed placerat metus ultrices in.
 
-        <Card elevation="4">
-          <FormLabel>Receptora</FormLabel>
-          <MuiInput label="Nome" />
-          <MuiSelect
-            name="etnia"
-            label="Etnia"
-            value={formik.values.etnia}
-            handleChange={(e) => {
-              formik.setFieldValue('etnia', e.target.value);
-            }}
-            error={formik.errors.etnia}
-          >
-            {
-              etnias.map((etnia) => (
-                <MenuItem value={etnia._id}>{etnia.name}</MenuItem>
-              ))
-            }
-          </MuiSelect>
-          <MuiInput label="Ascendência" />
-          <MuiInput label="Tipo sanguíneo" />
-          <MuiInput label="Altura" />
-          <MuiInput label="Peso" />
-          <MuiInput label="Cor do Cabelo" />
-          <MuiInput label="Cor da pele" />
-          <ImagePicker
-            value={receptoraImage}
-            onSelect={(file) => {
-              setReceptoraImage(URL.createObjectURL(file));
-            }}
-            onDelete={() => {
-              setReceptoraImage(null);
-            }}
-          />
-        </Card>
+            </p>
+            <p>
+              Vivamus at massa augue. Vivamus ipsum magna, mattis vitae ipsum in, dignissim semper ipsum. Proin non volutpat ipsum. Suspendisse hendrerit, lectus ac facilisis imperdiet, arcu dolor condimentum erat, in volutpat lectus ligula non turpis. Aliquam suscipit sem consectetur commodo venenatis. Sed feugiat, lacus sit amet fermentum elementum, dolor odio pulvinar risus, eu elementum magna nulla vitae nulla. Ut pretium elit urna, eget aliquet felis cursus quis. Nullam et metus ut lectus consequat consequat non ac risus. Suspendisse in justo eget ligula dictum convallis non nec turpis. Nunc feugiat efficitur blandit. Pellentesque dictum justo sed nisi mattis egestas. Vestibulum sodales velit ac dui venenatis ullamcorper. Cras feugiat maximus pulvinar.
 
-        {/* <Formik */}
-        {/*  initialValues={{ identifier: '', password: '' }} */}
-        {/*  validationSchema={LoginSchema} */}
-        {/*  onSubmit={onSubmit} */}
-        {/* > */}
-        {/*  {({ handleSubmit, isSubmitting }) => ( */}
-        {/*    <Form */}
-        {/*      onSubmit={handleSubmit} */}
-        {/*    > */}
-        {/*      <MuiField */}
-        {/*        name="identifier" */}
-        {/*        label="Email ou Identificador" */}
-        {/*        type="text" */}
-        {/*      /> */}
-        {/*      <MuiField */}
-        {/*        name="password" */}
-        {/*        label="Senha" */}
-        {/*        type="password" */}
-        {/*      /> */}
-        {/*      {isSubmitting && <Loading size={20} />} */}
-        {/*      <button type="submit">Entrar</button> */}
-        {/*    </Form> */}
-        {/*  )} */}
-        {/* </Formik> */}
-        {/* <a>Não possuo cadastro</a> */}
+            </p>
+            <p>
+              Vestibulum consectetur consequat quam non rhoncus. Etiam venenatis, ligula nec vehicula varius, elit purus tempor ligula, non imperdiet urna eros id nulla. Sed nulla tellus, suscipit eu pretium ut, bibendum laoreet nunc. Sed tempus facilisis auctor. Cras sodales velit faucibus elementum efficitur. Mauris porta ultrices augue id ullamcorper. Mauris placerat felis a bibendum dictum. Sed placerat magna ac neque dapibus, id ornare dui gravida.
+
+            </p>
+            <p>
+              Sed bibendum venenatis enim non volutpat. Nunc tincidunt, risus in fermentum luctus, ante velit facilisis dolor, eu posuere neque leo eget nunc. Cras non mi augue. Donec tempor vehicula purus, eget ullamcorper tortor. Ut sit amet arcu eu sapien sodales condimentum. Cras ac lobortis velit. Aliquam erat volutpat. Nullam eget orci dui. Nullam auctor turpis est, non dictum augue sodales sit amet. Suspendisse sit amet augue nec neque eleifend blandit.
+
+            </p>
+          </Scroll>
+          <div className="overlay" />
+        </div>
+        <Botao endIcon="arrow-right">Próximo</Botao>
+        <div className="separator" />
+        <p className="disclaimer">Este questionário é uma exigência do Ministério da Saúde através da regulamentação federal RDC nº33, art.20 da ANVISA, de maio de 2011</p>
       </Content>
     </Container>
   );

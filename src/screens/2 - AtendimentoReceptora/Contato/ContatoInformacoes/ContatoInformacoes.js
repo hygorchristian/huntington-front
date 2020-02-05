@@ -108,7 +108,7 @@ function ContatoInformacoes() {
             <LabelValue label="Médico">Eduardo Botelho</LabelValue>
           </div>
           <div className="fichas">
-            <FichaInformacoes titulo="Receptora" data={data.form} />
+            <FichaInformacoes data={data.form} />
           </div>
           <div className="consideracoes">
             <h2>Considerações</h2>

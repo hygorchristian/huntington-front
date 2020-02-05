@@ -50,6 +50,8 @@ export default function MuiTable({
 
   const handleOnAdd = () => schema.onAdd(deps);
 
+  const handleOnSync = () => schema.onSync(deps);
+
   const handleOnClick = (id) => {
     if (schema.onClick) {
       schema.onClick(deps, id);
@@ -63,6 +65,7 @@ export default function MuiTable({
           loading={loading}
           onSearch={handleOnSearch}
           onAdd={schema.onAdd && handleOnAdd}
+          onSync={schema.onSync && handleOnSync}
           deps={deps}
           filters={schema.filters}
         />

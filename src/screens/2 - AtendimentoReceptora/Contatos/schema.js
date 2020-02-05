@@ -2,13 +2,17 @@ function onClick({ history }, id) {
   history.push(`/receptora/contatos/${id}`);
 }
 
-function onAdd({ history, params }) {
-  history.push(`/doadora/pre-cadastros/${params.id}/nova-doadora`);
+// function onAdd({ history, params }) {
+//   history.push(`/doadora/pre-cadastros/${params.id}/nova-doadora`);
+// }
+
+function onSync({ history, params }) {
+  const pin = prompt('Informe o numero do pin');
 }
 
 export default {
   onClick,
-  onAdd,
+  onSync,
   fields: [
     {
       label: 'PIN',
