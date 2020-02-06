@@ -68,4 +68,7 @@ export const Busca = styled(BuscaBase)`
 
 export const Content = styled.div`
   width: 100%;
+  padding-top: 20px;
+  padding-right: 40px;
+  padding-bottom: 40px;
 `;

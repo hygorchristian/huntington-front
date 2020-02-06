@@ -74,7 +74,7 @@ function DoadoraInformacoes() {
             <MuiSelect
               style={{ width: 200 }}
               name="status"
-              label="Estatus de Atendimento"
+              label="Status de Atendimento"
             >
               <MenuItem value="casada">Programada</MenuItem>
               <MenuItem value="solteira">Estimulação</MenuItem>

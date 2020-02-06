@@ -21,9 +21,6 @@ function PreCadastro({ history }) {
       <Header>
         <h1>Banco de Óvulos</h1>
       </Header>
-      <Subheader>
-        <Busca />
-      </Subheader>
       <Content>
         <MuiTable schema={schema} data={data} />
       </Content>
