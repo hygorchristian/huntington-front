@@ -6,12 +6,14 @@ import RadioImage from '~/components/RadioImage';
 import MuiInput from '~/components/MuiInput';
 import MuiSelect from '~/components/MuiSelect';
 import SkinSelector from '~/components/SkinSelector';
+import ImagePicker from '~/components/ImagePicker';
 
 function DadosFenotipicos() {
   const [eyeColor, setEyeColor] = useState(null);
   const [hairColor, setHairColor] = useState(null);
   const [hairType, setHairType] = useState(null);
   const [skinTone, setSkinTone] = useState(null);
+  const [image, setImage] = useState(null);
 
   return (
     <Container>
@@ -131,6 +133,16 @@ function DadosFenotipicos() {
       <SkinSelector
         value={skinTone}
         onChange={(val) => setSkinTone(val)}
+      />
+      <span className="label">Foto Paciente Receptora</span>
+      <ImagePicker
+        value={image}
+        onSelect={(file) => {
+          setImage(URL.createObjectURL(file));
+        }}
+        onDelete={() => {
+          setImage(null);
+        }}
       />
     </Container>
 );
