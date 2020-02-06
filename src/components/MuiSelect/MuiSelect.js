@@ -39,7 +39,8 @@ function MuiSelect({
         </MenuItem>
         { children }
       </Select>
-      <FormHelperText>{error}</FormHelperText>
+      {error && <FormHelperText>{error}</FormHelperText>}
+
     </FormControl>
 );
 }

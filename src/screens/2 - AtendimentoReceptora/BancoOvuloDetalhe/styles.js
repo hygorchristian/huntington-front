@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import MDCard from '@material-ui/core/Card';
 import BuscaBase from '~/components/Busca';
 import { TEXT_PRIMARY } from '~/utils/colors';
 
@@ -52,43 +53,40 @@ export const Header = styled.div`
   }
 `;
 
-export const Subheader = styled.div`
-  padding: 20px 45px 20px 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
-
-export const Busca = styled(BuscaBase)`
-  width: 450px;
-`;
-
-
 export const Content = styled.div`
   width: 100%;
+  padding-right: 40px;
+  padding-top: 20px;
+  padding-bottom: 100px;
+`;
+
+
+export const Card = styled(MDCard).attrs({
+  elevation: 4
+})`
+  padding: 20px;
   
-  table{
+  .label-value{
+    margin-right: 50px;
+  }
+  
+  .row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .separator-h{
     width: 100%;
-    padding-right: 45px;
-    
-    th{
-      font-size: 13px;
-      color: #A5A5A5;
-      font-weight: 400;
-    }
-    
-    tr{
-      height: 60px;
-      cursor: pointer;
-    }
-    
-    td{
-      border-bottom: 1px solid rgba(165,165,165,0.2);
-      font-size: 14px;
-      font-weight: 400;
-      color: ${TEXT_PRIMARY};
-      text-align: center;
-    }
+    height: 1px;
+    background-color: #e2e2e2;
+    margin: 20px 0;
+  }
+  
+  .separator-v{
+    height: 80px;
+    width: 1px;
+    background-color: #e2e2e2;
+    margin: 0 20px;
   }
 `;

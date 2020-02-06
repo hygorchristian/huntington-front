@@ -4,7 +4,7 @@ import { Container } from './styles';
 
 function LabelValue({ label, children, ...props }) {
   return (
-    <Container {...props}>
+    <Container className="label-value" {...props}>
       <label>{label}</label>
       {children}
     </Container>
