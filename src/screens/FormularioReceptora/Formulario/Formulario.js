@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Formulario() {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = useState(3);
+  const [activeStep, setActiveStep] = useState(0);
 
   const onSubmit = () => {};
 
