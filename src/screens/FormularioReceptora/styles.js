@@ -7,7 +7,6 @@ export const Container = styled.div`
   width: 100%;
   max-width: 100vw;
   height: 100%;
-  max-height: 100vh;
   display: flex;
   flex-direction: row;
   justify-content: center;  
@@ -19,9 +18,22 @@ export const Container = styled.div`
   background-size: cover;
 `;
 
+export const Card = styled.div`
+  width: 900px;
+  height: 95vh;
+  max-height: 95vh;
+  background-color: #fdfdfd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .15);  
+  overflow-y: auto;
+  border-radius: 5px;
+  border: 1px solid #A9D4B2;
+`;
+
+
 export const Content = styled(SwipeableViews)`
   width: 900px;
-  max-height: 90vh;
+  height: 95vh;
+  max-height: 95vh;
   background-color: #fdfdfd;
   box-shadow: 0 0 10px rgba(0, 0, 0, .15);  
   overflow-y: auto;

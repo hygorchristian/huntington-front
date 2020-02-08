@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Formulario() {
+function Formulario({ onNext }) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
 
@@ -41,13 +41,23 @@ function Formulario() {
     validationSchema
   });
 
+  const scrollTop = () => {
+    const el = document.getElementById('form-content');
+    el.scrollTop = 0;
+  };
 
   const handleNext = () => {
+    if (activeStep === 5) {
+      onNext();
+      return;
+    }
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    scrollTop();
   };
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    scrollTop();
   };
 
   const handleReset = () => {
@@ -59,7 +69,6 @@ function Formulario() {
       <Stepper activeStep={activeStep} orientation="vertical">
         { steps.map((step) => {
           const Component = step.component;
-
           return (
             <Step key={step.label}>
               <StepLabel>{step.label}</StepLabel>
