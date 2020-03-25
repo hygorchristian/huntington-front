@@ -2,8 +2,9 @@ import styled from 'styled-components';
 import { TEXT_SECONDARY } from '~/utils/colors';
 
 export const Container = styled.div`
-  width: 950px;
+  width: 1080px;
   padding-top: 35px;
+  padding-bottom: 100px;
   
   .header{
     display: flex;

@@ -8,10 +8,8 @@ import AtendimentoFinanceiro from './AtendimentoFinanceiro';
 import Controladoria from './Controladoria';
 import Embriologia from './Embriologia';
 
-import PrivateRoute from '~/components/PrivateRoute';
 import DashboardRoute from '~/components/DashboardRoute';
 
-import Dashboard from '~/screens/Dashboard/Dashboard';
 import Login from '~/screens/Login';
 import Erro404 from '~/screens/Erro404';
 import FormularioReceptora from '~/screens/FormularioReceptora';

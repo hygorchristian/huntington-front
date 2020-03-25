@@ -10,16 +10,23 @@ import ExameContext from '~/contexts/ExameContext';
 
 import { formatarDiaMesAno } from '~/utils/data';
 import { showErrorMessage } from '~/utils/notistack';
-import { groupExams, populateInitialExams, getExamName } from '~/utils/exames';
+import {
+ groupExams, populateInitialExams, getExamName, populateProgrammedExams
+} from '~/utils/exames';
 
 
 function DoadoraExames({ history }) {
   const { id, doadora } = useParams();
   const [initialExams, setInitialExams] = useState([]);
+  const [programmedExams, setProgrammedExams] = useState([]);
   const [groups, setGroups] = useState([]);
 
   const adicionarColeta = () => {
-    history.push(`/doadora/pre-cadastros/${id}/${doadora}/exames/nova-coleta`);
+    history.push(`/doadora/listagem/${doadora}/exames/nova-coleta`);
+  };
+
+  const adicionarColetaProgramada = () => {
+    history.push(`/doadora/listagem/${doadora}/exames/nova-coleta-programada`);
   };
 
   const getExames = async () => {
@@ -30,6 +37,7 @@ function DoadoraExames({ history }) {
     const { exams } = response.data;
 
     setInitialExams(populateInitialExams(exams));
+    setProgrammedExams(populateProgrammedExams(exams));
     setGroups(groupExams(exams));
   };
 
@@ -51,30 +59,39 @@ function DoadoraExames({ history }) {
         </ExameContext.Provider>
       </div>
       <AdicionarRow onClick={adicionarColeta} label="Adicionar coleta" />
-      {
-        Object.keys(groups).map((key) => (
-          <fieldset key={key}>
-            <legend>
-              <FiCalendar />
-              <span>{formatarDiaMesAno(key)}</span>
-            </legend>
-            <div className="data">
-              {
-                groups[key].map((exame) => (
-                  <div className="col">
-                    <label>{getExamName(exame.name)}</label>
-                    <span>{exame.result || '-'}</span>
-                  </div>
-                ))
-              }
-              {/* <div className="inserir-resultados"> */}
-              {/*  <span>Inserir resultados</span> */}
-              {/* </div> */}
-            </div>
-          </fieldset>
-        ))
-
-      }
+      <div className="header">
+        <h2>EXAMES PROGRAMADA</h2>
+        <div className="line" />
+      </div>
+      <div className="exames-iniciais">
+        <ExameContext.Provider value={{ getExames }}>
+          {Object.keys(programmedExams).map((key) => (
+            <ExameStatus key={key} id={key} exam={programmedExams[key]} />
+          ))}
+        </ExameContext.Provider>
+      </div>
+      <AdicionarRow onClick={adicionarColetaProgramada} label="Adicionar coleta" />
+      { Object.keys(groups).map((key) => (
+        <fieldset key={key}>
+          <legend>
+            <FiCalendar />
+            <span>{formatarDiaMesAno(key)}</span>
+          </legend>
+          <div className="data">
+            {
+              groups[key].map((exame) => (
+                <div className="col">
+                  <label>{getExamName(exame.name)}</label>
+                  <span>{exame.result || '-'}</span>
+                </div>
+              ))
+            }
+            {/* <div className="inserir-resultados"> */}
+            {/*  <span>Inserir resultados</span> */}
+            {/* </div> */}
+          </div>
+        </fieldset>
+      ))}
 
     </Container>
   );

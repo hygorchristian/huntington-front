@@ -1,7 +1,6 @@
 import lodash from 'lodash';
 import React from 'react';
 
-
 /*
 * function: populateInitialExams
 *
@@ -21,6 +20,33 @@ export const populateInitialExams = (arrExams) => {
     citologia: null,
     cgt: null,
     dna: null,
+  };
+
+
+  for (const exam of orderedArr) {
+    if (!exams[exam.name]) {
+      exams[exam.name] = exam;
+    }
+  }
+
+  return exams;
+};
+
+/*
+* function: populateProgrammedExams
+*
+* Esta função irá receber um array de exames para doadora programada, ordernar
+* por data e popular em um objeto com os tipos de exames possível, com o
+* objetivo de saber quais exames possuem uma data para adicionar um resultado
+* e quais ainda não o possuem
+*/
+
+export const populateProgrammedExams = (arrExams) => {
+  const orderedArr = lodash.orderBy(arrExams, ['collect_date'], ['desc']);
+
+  const exams = {
+    zika: null,
+    fsh: null
   };
 
 
@@ -68,6 +94,10 @@ export const getExamName = (slug) => {
       return 'CGT';
     case 'dna':
       return 'Cartão DNA';
+    case 'zika':
+      return 'Zika Vírus';
+    case 'fsh':
+      return 'E2, P4, FSH';
     default:
       return '';
   }

@@ -5,9 +5,13 @@ import {
 } from './styles';
 import TabDashboard from '~/components/TabDashboard';
 import Voltar from '~/components/Voltar/Voltar';
-import tabs from './tabs';
+import tabs, { getIndex } from './tabs';
+import { getUrlParam } from '~/utils/url';
 
 function Coleta() {
+  const tab = getUrlParam('tab', 'info');
+  const index = getIndex(tab);
+
   return (
     <Container>
       <Voltar label="Dashboard" route="/embriologia/dashboard" />
@@ -15,7 +19,7 @@ function Coleta() {
         <h1>Manoela Soares</h1>
       </Header>
       <Content>
-        <TabDashboard tabs={tabs} />
+        <TabDashboard tabs={tabs} index={index} />
       </Content>
     </Container>
   );

@@ -2,14 +2,18 @@ import React from 'react';
 import Calendar from '~/components/MaterialCalendar';
 
 import TabDashboard from '~/components/TabDashboard';
-import tabs from './tabs';
+import tabs, { getIndex } from './tabs';
 
 import {
-  Container, Main, Side, Grid
+  Container, Main, Side
 } from './styles';
+import { getUrlParam } from '~/utils/url';
 
 
 function DashboardEmbriologia() {
+  const tab = getUrlParam('tab', 'coletas');
+  const index = getIndex(tab);
+
   return (
     <Container>
       <Side>
@@ -39,7 +43,7 @@ function DashboardEmbriologia() {
         </div>
       </Side>
       <Main>
-        <TabDashboard tabs={tabs} />
+        <TabDashboard tabs={tabs} index={index} />
       </Main>
     </Container>
   );

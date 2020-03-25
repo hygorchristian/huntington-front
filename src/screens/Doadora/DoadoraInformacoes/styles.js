@@ -67,12 +67,12 @@ export const Header = styled.div`
       display: flex;
       flex-direction: column;
       
-      label{
+      & > label{
         font-size: 13px;
         color: ${TEXT_SECONDARY};
       }
       
-      span{
+      & > span{
         display: block;
         color: #646464;
         font-size: 14px;

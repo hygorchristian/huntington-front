@@ -26,12 +26,12 @@
  */
 
 import axios from 'axios';
-import { call } from '@redux-saga/core/effects';
 
 class ApiService {
   constructor() {
     this.api = axios.create({
-      baseURL: 'https://huntington-api.herokuapp.com',
+      baseURL: 'https://huntington-api.herokuapp.com', // -- Heroku
+      // baseURL: 'http://10.250.110.150:1337/', // -- VPN
     });
   }
 

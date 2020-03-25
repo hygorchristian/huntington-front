@@ -10,10 +10,14 @@ import { showErrorMessage } from '~/utils/notistack';
 import Triagem from '~/components/Triagem';
 import { formatarDiaMesAno } from '~/utils/data';
 import MuiSelect from '~/components/MuiSelect';
+import Botao from '~/components/Botao';
+import DialogExamResult from '~/components/DialogExamResult';
+import DialogConfirmarDpm from '~/components/DialogConfirmarDpm';
 
 function DoadoraInformacoes() {
-  const { doadora } = useParams();
   const [data, setData] = useState(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const { doadora } = useParams();
   const history = useHistory();
 
   const adicionarTriagem = () => {
@@ -65,7 +69,20 @@ function DoadoraInformacoes() {
           <div className="status">
             <div className="col">
               <label>D.P.M.</label>
-              <span>{data.dpm || '-'}</span>
+
+              {data.dpm ? (
+                <span>{data.dpm}</span>
+              ) : (
+                <>
+                  <Botao onClick={() => setDialogOpen(true)}>Confirmar DPM</Botao>
+                  <DialogConfirmarDpm
+                    keepMounted
+                    open={dialogOpen}
+                    onClose={() => setDialogOpen(false)}
+                    doadora={data}
+                  />
+                </>
+              )}
             </div>
           </div>
         </div>

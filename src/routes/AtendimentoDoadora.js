@@ -5,7 +5,9 @@ import DoadoraPreCadastro from '~/screens/1 - AtendimentoDoadora/DoadoraPreCadas
 import DoadoraTriagem from '~/screens/1 - AtendimentoDoadora/DoadoraPreCadastro/DoadoraTriagem';
 import NovoHistorico from '~/components/NovoHistorico';
 import PreencherUltrassom from '~/screens/1 - AtendimentoDoadora/PreencherUltrassom';
-import NovaColeta from '~/screens/NovaColeta';
+import PreCadastroNovaColeta from '~/screens/1 - AtendimentoDoadora/PreCadastro/NovaColeta';
+import NovaColeta from '~/screens/1 - AtendimentoDoadora/Programada/NovaColeta';
+import NovaColetaProgramada from '~/screens/1 - AtendimentoDoadora/Programada/NovaColetaProgramada';
 import ResultadoExame from '~/screens/ResultadoExame';
 import Doadora from '~/screens/Doadora';
 import NovoHistoricoDoadora from '~/screens/Doadora/NovoHistoricoDoadora';
@@ -75,7 +77,7 @@ export default [
   },
   {
     path: '/doadora/pre-cadastros/:id/:doadora/exames/nova-coleta',
-    component: NovaColeta
+    component: PreCadastroNovaColeta
   },
   {
     path: '/doadora/listagem/:doadora',
@@ -96,6 +98,10 @@ export default [
   {
     path: '/doadora/listagem/:id/exames/nova-coleta',
     component: NovaColeta
+  },
+  {
+    path: '/doadora/listagem/:id/exames/nova-coleta-programada',
+    component: NovaColetaProgramada
   },
   {
     path: '/doadora/listagem/:id/exames/resultado',

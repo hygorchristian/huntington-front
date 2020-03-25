@@ -1,13 +1,16 @@
 import React from 'react';
 import {
-  FiCalendar, FiCheckCircle, FiClock, FiAlertCircle, FiPlusCircle, FiXCircle
+  FiCalendar
 } from 'react-icons/fi';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { Container } from './styles';
 import IconLabel from '~/components/IconLabel';
+import Botao from '~/components/Botao';
 
-function TabColeta({ history }) {
+function TabColeta() {
+  const history = useHistory();
+
   const adicionarColeta = () => {
     history.push('/embriologia/dashboard/coletas/1/nova-coleta');
   };
@@ -29,7 +32,7 @@ function TabColeta({ history }) {
         <div className="data">
           <IconLabel name="map-pin">Vila Mariana</IconLabel>
           <div className="adicionar-coleta">
-            <button className="btn" onClick={adicionarColeta}>Coleta +</button>
+            <Botao color="primary" endIcon="add" onClick={adicionarColeta}>Coleta</Botao>
           </div>
         </div>
       </fieldset>
@@ -57,4 +60,4 @@ function TabColeta({ history }) {
   );
 }
 
-export default withRouter(TabColeta);
+export default TabColeta;

@@ -1,15 +1,28 @@
 import React, { useState } from 'react';
-import InputLabel from '~/components/InputLabel';
+import { useFormik } from 'formik';
 import Voltar from '~/components/Voltar';
 
+import Form1 from '~/screens/5 - Embriologia/NovaColeta/Form1';
+import Form2 from '~/screens/5 - Embriologia/NovaColeta/Form2';
+
+import validationSchema from './validationSchema';
+import initialValues from './initialValues';
+
 import {
- Container, Content, Header, Status, Dados
+  Container, Content, Header
 } from './styles';
-import StatusInput from '~/components/StatusInput';
-import Botao from '~/components/Botao';
+
 
 function NovaColeta() {
   const [tela, setTela] = useState(1);
+
+  const onSubmit = () => {};
+
+  const formik = useFormik({
+    initialValues,
+    onSubmit,
+    validationSchema
+  });
 
   return (
     <Container>
@@ -22,80 +35,10 @@ function NovaColeta() {
       </Header>
       <Content>
         {tela === 1 ? (
-          <Dados>
-            <form>
-              <InputLabel
-                width="100%"
-                label="PIN Doadora"
-              />
-              <InputLabel
-                label="Nome"
-              />
-              <InputLabel
-                label="Data da Coleta"
-                type="date"
-              />
-              <div />
-              <InputLabel
-                label="Quantidade total de óvulos"
-                type="number"
-              />
-              <div className="row">
-                sdsd
-              </div>
-              <InputLabel
-                label="Método"
-                type="number"
-              />
-              <InputLabel
-                label="Tanque"
-                type="number"
-              />
-            </form>
-            <div className="separator" />
-            <div className="controller">
-              <button className="btn light" onClick={() => setTela(2)}>Próximo</button>
-            </div>
-          </Dados>
+          <Form1 formik={formik} onNext={() => setTela(2)} />
         ) : (
-          <Status>
-            <StatusInput
-              l="L1"
-              ovulos={7}
-              palhetas={2}
-              onOvulosChange={() => {}}
-              onPalhetasChange={() => {}}
-            />
-            <StatusInput
-              l="L2"
-              ovulos={7}
-              palhetas={2}
-              onOvulosChange={() => {}}
-              onPalhetasChange={() => {}}
-            />
-            <StatusInput
-              l="L3"
-              ovulos={7}
-              palhetas={2}
-              onOvulosChange={() => {}}
-              onPalhetasChange={() => {}}
-            />
-            <StatusInput
-              l="L4"
-              ovulos={7}
-              palhetas={2}
-              onOvulosChange={() => {}}
-              onPalhetasChange={() => {}}
-            />
-            <div className="separator" />
-            <div className="controller">
-              <button className="btn light" onClick={() => setTela(1)}>Anterior</button>
-              <Botao endIcon="check">Concluir</Botao>
-            </div>
-          </Status>
+          <Form2 formik={formik} onPrev={() => setTela(1)} />
         )}
-
-
       </Content>
     </Container>
   );

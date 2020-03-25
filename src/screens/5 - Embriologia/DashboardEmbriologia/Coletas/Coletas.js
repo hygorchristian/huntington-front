@@ -78,9 +78,8 @@ function ListaItem({ onClick }) {
 function Coletas() {
   const history = useHistory();
   const navigate = () => {
-    history.push('/embriologia/dashboard/coletas/1'); 
-};
-
+    history.push('/embriologia/dashboard/coletas/1');
+  };
 
   return (
     <Container>

@@ -90,5 +90,29 @@ export default {
     obs: {
       type: 'textarea',
     }
-  }
+  },
+  zika: {
+    result: {
+      type: 'radio',
+      values: [
+        'Positivo',
+        'Negativo'
+      ]
+    },
+    obs: {
+      type: 'textarea',
+    }
+  },
+  fsh: {
+    result: {
+      type: 'radio',
+      values: [
+        'Ok',
+        'Não ok'
+      ]
+    },
+    obs: {
+      type: 'textarea',
+    }
+  },
 };

@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 
-import MenuItem from '@material-ui/core/MenuItem';
-import { History, Create } from '@material-ui/icons';
 import Voltar from '~/components/Voltar/Voltar';
 import LabelValue from '~/components/LabelValue';
 import { formatarDiaMesAno } from '~/utils/data';
-import MuiSelect from '~/components/MuiSelect';
 
 import {
-  Container, Header, Content, Card, CardStatus
+  Container, Header, Content, Card
 } from './styles';
 import OptionsButton from '~/components/OptionsButton';
 import LItem from '~/components/LItem';
