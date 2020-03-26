@@ -3,6 +3,7 @@ import DoadoraInformacoes from './DoadoraInformacoes';
 import DoadoraHistorico from './DoadoraHistorico';
 import DoadoraExames from './DoadoraExames';
 import DoadoraUltrassons from './DoadoraUltrassons';
+import DoadoraColeta from './DoadoraColeta';
 
 export const getIndex = (name) => {
   switch (name) {
@@ -38,7 +39,7 @@ export default [
   },
   {
     label: 'Coleta',
-    content: <DoadoraUltrassons />,
+    content: <DoadoraColeta />,
     url: 'coleta'
   },
 ];

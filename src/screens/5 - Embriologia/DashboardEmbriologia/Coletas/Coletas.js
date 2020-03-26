@@ -1,71 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import Api from '~/services/api';
 
 import {
   Container, Item, Data, Lista, DataContainer, Ano
 } from './styles';
 
-const items = [
-  {
-    id: 1,
-  },
-  {
-    id: 2,
-  },
-  {
-    id: 3,
-  },
-  {
-    id: 4,
-  },
-  {
-    id: 5,
-  },
-  {
-    id: 5,
-  },
-  {
-    id: 5,
-  },
-  {
-    id: 5,
-  },
-  {
-    id: 5,
-  },
-  {
-    id: 5,
-  },
-  {
-    id: 5,
-  },
-  {
-    id: 5,
-  },
-  {
-    id: 5,
-  },
-  {
-    id: 5,
-  },
-  {
-    id: 5,
-  },
-];
 
-function ListaItem({ onClick }) {
+function ListaItem({ item }) {
+  const history = useHistory();
+  const navigate = () => {
+    history.push(`/embriologia/dashboard/coletar/${item.id}`);
+  };
+
+  console.tron.log(item);
+
   return (
-    <Item onClick={onClick}>
+    <Item onClick={navigate}>
       <span className="horario">08:15</span>
       <div className="separator" />
       <div className="dados-usuario">
         <div className="linha">
-          <h2 className="nome">Manoela Soares</h2>
+          <h2 className="nome">{item.donor.name}</h2>
           <span className="pin">PIN 123456</span>
         </div>
         <div className="linha">
-          <span className="consulta">Congelamento</span>
+          <span className="consulta">Aguardando coleta</span>
         </div>
       </div>
       <div className="acao">
@@ -76,19 +36,20 @@ function ListaItem({ onClick }) {
 }
 
 function Coletas() {
-  const history = useHistory();
-  const navigate = () => {
-    history.push('/embriologia/dashboard/coletas/1');
-  };
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    Api.getCollectings({ done_ne: true }).then((response) => {
+      setData(response.data);
+    });
+  }, []);
 
   return (
     <Container>
       <Lista>
-        {
-          items.map((item) => (
-            <ListaItem key={item.id} item={item} onClick={navigate} />
-          ))
-        }
+        {data.map((item) => (
+          <ListaItem key={item.id} item={item} />
+        ))}
       </Lista>
     </Container>
   );

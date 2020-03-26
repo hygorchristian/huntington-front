@@ -30,8 +30,8 @@ import axios from 'axios';
 class ApiService {
   constructor() {
     this.api = axios.create({
-      baseURL: 'https://huntington-api.herokuapp.com', // -- Heroku
-      // baseURL: 'http://10.250.110.150:1337/', // -- VPN
+      // baseURL: 'https://huntington-api.herokuapp.com', // -- Heroku
+      baseURL: 'http://10.250.110.150:1337/', // -- VPN
     });
   }
 
@@ -125,6 +125,8 @@ class ApiService {
 
   updateDoadora = (id, data) => this.api.put(`donor/${id}`, data);
 
+  agendarColeta = (data) => this.api.post('collecting', data);
+
   deleteDoadora = (id) => this.api.delete(`donor/${id}`);
 
   getDoadoraUltrassound = (id) => this.api.get(`ultrasound/donor/${id}`)
@@ -133,7 +135,6 @@ class ApiService {
     this.api.get('statuses/name/preregistradas')
       .then((response) => {
         const donors = response && response.data && response.data.donors;
-        console.tron.log({ donors });
 
 
         resolve(donors);

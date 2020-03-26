@@ -2,17 +2,18 @@ import React from 'react';
 import { FiCalendar } from 'react-icons/fi';
 
 import { Container } from './styles';
+import MuiInput from '~/components/MuiInput';
 
 function InputLabel({
- label, type, width = 200, ...props
+ label, style, width = 200, ...props
 }) {
   return (
-    <Container width={width} {...props}>
-      <span>{label}</span>
-      <div className="input-container">
-        <input type={type} />
-        {type === 'date' && <FiCalendar style={{ marginRight: 12 }} />}
-      </div>
+    <Container width={width} style={{ style }}>
+      <MuiInput
+        name="weight"
+        label={label}
+        {...props}
+      />
     </Container>
 );
 }

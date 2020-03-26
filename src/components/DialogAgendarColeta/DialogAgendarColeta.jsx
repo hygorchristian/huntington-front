@@ -12,6 +12,7 @@ import * as Yup from 'yup';
 import Api from '~/services/api';
 
 import MuiDatePicker from '~/components/MuiDatePicker';
+import { showErrorMessage } from '~/utils/notistack';
 
 const useStyles = makeStyles(() => ({
   paper: {
@@ -24,21 +25,26 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-function DialogConfirmarDpm({ onClose, open, doadora, ...other }) {
+function DialogAgendarColeta({ onClose, open, doadora, ...other }) {
   const classes = useStyles();
 
   const onSubmit = async (values) => {
-    const response = await Api.updateDoadora(doadora.id, { dpm: values.dpm });
-    window.location.reload();
+    await Api.agendarColeta(values).then((response) => {
+      window.location.reload();
+    }).catch((err) => {
+      onClose();
+      showErrorMessage('Não foi possível fazer o agendamento, tente novamente.');
+    });
   };
 
   const formik = useFormik({
     onSubmit,
     initialValues: {
-      dpm: null,
+      donor: doadora,
+      date: new Date(),
     },
     validationSchema: Yup.object().shape({
-      dpm: Yup.string()
+      date: Yup.string()
         .typeError('Data inválida')
         .required('Campo obrigatório'),
     })
@@ -61,18 +67,18 @@ function DialogConfirmarDpm({ onClose, open, doadora, ...other }) {
       {...other}
     >
       <DialogTitle id="confirmation-dialog-title">
-Inserir data da próxima menstruação
+        Agendamento de coleta
       </DialogTitle>
       <DialogContent dividers>
         <MuiDatePicker
-          name="dpm"
-          label="Data da Próxima Menstruação"
-          value={formik.values.dpm}
+          name="date"
+          label="Data da coleta"
+          value={formik.values.date}
           onChange={(e) => {
-            formik.setFieldValue('dpm', e);
+            formik.setFieldValue('date', e);
           }}
-          error={formik.errors.dpm}
-          helperText={formik.errors.dpm}
+          error={formik.errors.date}
+          helperText={formik.errors.date}
         />
 
       </DialogContent>
@@ -88,4 +94,4 @@ Inserir data da próxima menstruação
   );
 }
 
-export default DialogConfirmarDpm;
+export default DialogAgendarColeta;

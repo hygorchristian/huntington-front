@@ -5,8 +5,6 @@ import { Container } from './styles';
 import { formatarDiaMesAno } from '~/utils/data';
 
 function Warning({ data }) {
-  console.tron.log({ data });
-
   return (
     <Container>
       <img src="/img/logo-dark.svg" />

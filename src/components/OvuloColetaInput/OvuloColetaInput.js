@@ -26,15 +26,15 @@ function OvuloColetaInput({ formik, ...props }) {
         />
       </div>
       <div className="extra-info highlight">
-        <MuiInput
-          label="Maduros"
-          type="number"
-          name="ovule_mature"
-          value={formik.values.ovule_mature}
-          onChange={formik.handleChange}
-          error={formik.errors.ovule_mature}
-          helperText={formik.errors.ovule_mature}
-        />
+        {/* <MuiInput */}
+        {/*  label="Maduros" */}
+        {/*  type="number" */}
+        {/*  name="ovule_mature" */}
+        {/*  value={formik.values.ovule_mature} */}
+        {/*  onChange={formik.handleChange} */}
+        {/*  error={formik.errors.ovule_mature} */}
+        {/*  helperText={formik.errors.ovule_mature} */}
+        {/* /> */}
         <MuiInput
           label="Lotes"
           type="number"
@@ -52,10 +52,10 @@ function OvuloColetaInput({ formik, ...props }) {
           helperText={formik.errors.palhetas}
         />
       </div>
-      <div className="extra-info">
-        <MuiInput label="Imaturos" />
-        <MuiInput label="Alterados" />
-      </div>
+      {/* <div className="extra-info"> */}
+      {/*  <MuiInput label="Imaturos" /> */}
+      {/*  <MuiInput label="Alterados" /> */}
+      {/* </div> */}
     </Container>
   );
 }

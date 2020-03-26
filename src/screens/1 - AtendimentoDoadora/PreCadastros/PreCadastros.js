@@ -15,7 +15,6 @@ function PreCadastros({ history }) {
 
   const fetchData = async () => {
     const response = await Api.getEvents().catch((err) => {
-      console.tron.log(err);
       showErrorMessage(err);
     });
     setData(response || []);

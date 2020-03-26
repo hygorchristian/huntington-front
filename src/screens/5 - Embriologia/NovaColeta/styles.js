@@ -43,7 +43,7 @@ export const Header = styled.div`
 export const Content = styled.div`
   flex: 1;
   padding-top: 30px; 
-  width: 600px;
+  width: 900px;
 `;
 
 export const Dados = styled.div`

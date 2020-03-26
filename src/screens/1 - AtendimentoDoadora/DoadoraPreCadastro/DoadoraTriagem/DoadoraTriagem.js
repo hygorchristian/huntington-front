@@ -34,7 +34,6 @@ function DoadoraTriagem() {
         history.push(`/doadora/pre-cadastros/${id}/${doadora}?tab=info`);
       })
       .catch((err) => {
-        console.tron.log(err);
         showErrorMessage('Erro ao criar triagem');
       });
   };

@@ -1,14 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  
-  textarea{
-    width: 100%;
-    height: 120px;
-    margin-top: 32px;
-    margin-bottom: 40px;
-  } 
-  
+export const Container = styled.div`  
   .separator{
     height: 1px;
     width: 100%;

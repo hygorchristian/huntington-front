@@ -4,8 +4,6 @@ import { Container } from './styles';
 import LabelValue from '~/components/LabelValue';
 
 function FichaInformacoes({ titulo, data }) {
-  console.tron.log({ data });
-
   return (
     <>
       <Container>

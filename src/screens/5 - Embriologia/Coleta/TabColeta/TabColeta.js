@@ -2,7 +2,7 @@ import React from 'react';
 import {
   FiCalendar
 } from 'react-icons/fi';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 import { Container } from './styles';
 import IconLabel from '~/components/IconLabel';
@@ -10,9 +10,10 @@ import Botao from '~/components/Botao';
 
 function TabColeta() {
   const history = useHistory();
+  const { doadora } = useParams();
 
   const adicionarColeta = () => {
-    history.push('/embriologia/dashboard/coletas/1/nova-coleta');
+    history.push(`/embriologia/dashboard/coletas/${doadora}/nova-coleta`);
   };
 
   return (

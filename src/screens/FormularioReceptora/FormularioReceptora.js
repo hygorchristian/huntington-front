@@ -54,9 +54,7 @@ function FormularioReceptora() {
     };
 
     encode(val).then((encoded) => {
-      console.tron.log({ encoded });
     }).catch((err) => {
-      console.tron.error(err);
     });
   };
 

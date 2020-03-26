@@ -11,7 +11,7 @@ export const Container = styled.div`
     align-items: center;
     width: 100%;
     grid-template-areas: 
-      'pin nome'
+      'nome nome'
       'data .'
       'input input'
       'metodo tanque'

@@ -16,13 +16,17 @@ export default [
     component: DashboardEmbriologia,
   },
   {
-    path: '/embriologia/dashboard/coletas/:id',
-    component: Coleta
-  },
-  {
-    path: '/embriologia/dashboard/coletas/:id/nova-coleta',
+    path: '/embriologia/dashboard/coletar/:collecting',
     component: NovaColeta
   },
+  // {
+  //   path: '/embriologia/dashboard/coletas/:doadora',
+  //   component: Coleta
+  // },
+  // {
+  //   path: '/embriologia/dashboard/coletas/:doadora/nova-coleta',
+  //   component: NovaColeta
+  // },
   {
     label: 'Banco de Óvulos',
     path: '/embriologia/banco-ovulos',
