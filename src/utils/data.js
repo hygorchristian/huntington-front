@@ -4,7 +4,7 @@ import {
 import { ptBR } from 'date-fns/locale';
 
 
-const getMes = (m) => {
+export const getMes = (m) => {
   switch (m) {
     case 0: return 'Janeiro';
     case 1: return 'Fevereiro';

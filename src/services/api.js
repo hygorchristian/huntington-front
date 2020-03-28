@@ -26,6 +26,7 @@
  */
 
 import axios from 'axios';
+import { getMes } from '~/utils/data';
 
 class ApiService {
   constructor() {
@@ -395,6 +396,33 @@ class ApiService {
   updateExam = (id, data) => this.api.put(`exam/${id}`, data);
 
   deleteExam = (id) => this.api.delete(`exam/${id}`);
+
+  getBancoOvulos = () => new Promise((resolve, reject) => {
+    this.getCollectings().then((response) => {
+      const dados = response.data;
+      const arr = [];
+
+      for (const bank of dados) {
+        if (bank.donor) {
+          bank.lotes_iniciais = bank.ovulebanks.length;
+          bank.lotes_disponiveis = bank.ovulebanks.filter((obank) => obank.status === 'Disponível').length;
+
+          const date = new Date(bank.date);
+
+          bank.mes = getMes(date.getMonth());
+          bank.ano = date.getFullYear();
+          bank.nome = bank.donor.name;
+
+          arr.push(bank);
+
+          resolve(arr);
+        }
+      }
+    }).catch((err) => {
+      console.tron.error({ err });
+      reject(err);
+    });
+  })
 }
 
 export default new ApiService();

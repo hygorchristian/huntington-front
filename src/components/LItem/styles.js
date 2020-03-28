@@ -15,7 +15,7 @@ export const Container = styled(MDCard).attrs({
     flex: 1;
     display: grid;
     padding: 20px;
-    grid-row-gap: 20px;
+    grid-gap: 20px;
     
     grid-template-columns: 1fr 1fr;
   }

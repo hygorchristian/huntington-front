@@ -8,6 +8,7 @@ import OptionsButton from '~/components/OptionsButton';
 import { Container } from './styles';
 import LabelValue from '~/components/LabelValue';
 import DialogLItem from '~/components/DialogLItem';
+import MuiInput from '~/components/MuiInput';
 
 function LItem({ ...props }) {
   const [editOpen, setEditOpen] = useState(false);
@@ -30,10 +31,10 @@ function LItem({ ...props }) {
           <LabelValue label="Saída">20/03/2019</LabelValue>
         </div>
         <div className="grid">
-          <LabelValue label="PIN Receptora">1234567</LabelValue>
-          <LabelValue label="Nome Receptora">1234567</LabelValue>
-          <LabelValue label="Médico Responsável">1234567</LabelValue>
-          <LabelValue label="Unidade">1234567</LabelValue>
+          {/* <LabelValue label="PIN Receptora">1234567</LabelValue> */}
+          {/* <LabelValue label="Nome Receptora">Mariana Silva</LabelValue> */}
+          {/* <LabelValue label="Médico Responsável">1234567</LabelValue> */}
+          {/* <LabelValue label="Unidade">1234567</LabelValue> */}
         </div>
         <div className="grid">
           <LabelValue label="#Óvulos">7</LabelValue>

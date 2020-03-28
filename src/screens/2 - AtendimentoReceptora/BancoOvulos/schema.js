@@ -17,27 +17,27 @@ export default {
     },
     {
       label: 'Nome',
-      name: 'name',
+      name: 'nome',
       type: 'string',
     },
     {
       label: 'Mês',
-      name: 'month',
+      name: 'mes',
       type: 'string',
     },
     {
       label: 'Ano',
-      name: 'year',
+      name: 'ano',
       type: 'string',
     },
     {
       label: 'Lotes Iniciais',
-      name: 'initial',
+      name: 'lotes_iniciais',
       type: 'string',
     },
     {
       label: 'Lotes Disponíveis',
-      name: 'avaiable',
+      name: 'lotes_disponiveis',
       type: 'string',
     },
   ]
