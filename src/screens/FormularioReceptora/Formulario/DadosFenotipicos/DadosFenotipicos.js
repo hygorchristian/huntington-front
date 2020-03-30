@@ -17,10 +17,6 @@ function DadosFenotipicos({ formik }) {
   const [skinTone, setSkinTone] = useState(null);
   const [image, setImage] = useState(null);
 
-  console.tron.log({
-   eyeColor, hairColor, hairType, skinTone
-  });
-
   return (
     <Container>
       <div className="grid">

@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
+import Api from '~/services/api';
 
 import { Container } from './styles';
 import Botao from '~/components/Botao';
-import { showSuccessMessage } from '~/utils/notistack';
+import { showErrorMessage, showSuccessMessage } from '~/utils/notistack';
 
-function Confirmacao({ onNext }) {
+function Confirmacao({ data, onNext }) {
   const validateForm = () => {
-    showSuccessMessage('O formulário foi enviado!');
+    console.tron.log({ data });
+
+    setTimeout(() => {
+      Api.validateForm(data.data.receiver_id).then((response) => {
+        showSuccessMessage(response);
+      }).catch((err) => {
+        showErrorMessage(err);
+      });
+    }, 2000);
   };
 
   return (

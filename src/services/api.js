@@ -457,6 +457,13 @@ class ApiService {
       reject(err);
     });
   })
+
+  validateForm = (id) => new Promise((resolve, reject) => {
+    console.tron.log({ id });
+    setTimeout(() => {
+      resolve('Formulário salvo com sucesso!');
+    }, 2000);
+  })
 }
 
 export default new ApiService();
