@@ -28,11 +28,13 @@
 import axios from 'axios';
 import { getMes } from '~/utils/data';
 
+// export const BASE_URL = 'https://huntington-api.herokuapp.com'; // -- Heroku
+export const BASE_URL = 'http://10.250.110.150:1337'; // -- VPN
+
 class ApiService {
   constructor() {
     this.api = axios.create({
-      // baseURL: 'https://huntington-api.herokuapp.com', // -- Heroku
-      baseURL: 'http://10.250.110.150:1337/', // -- VPN
+      baseURL: BASE_URL
     });
   }
 
@@ -458,11 +460,26 @@ class ApiService {
     });
   })
 
-  validateForm = (id) => new Promise((resolve, reject) => {
-    console.tron.log({ id });
+  confirmForm = (id) => new Promise((resolve, reject) => {
+    // todo: chamar a api de criar um form pro usuário pelo id
     setTimeout(() => {
       resolve('Formulário salvo com sucesso!');
     }, 2000);
+  })
+
+  validateForm = (id) => new Promise((resolve, reject) => {
+    // todo: chamar a api de criar um form pro usuário pelo id
+    setTimeout(() => {
+      resolve('Formulário salvo com sucesso!');
+    }, 2000);
+  })
+
+  getHoldList = () => new Promise((resolve, reject) => {
+    this.getReceivers().then((response) => {
+      const { data } = response;
+      const arr = data.filter((receiver) => receiver.form && receiver.form.is_valid);
+      resolve(arr);
+    }).catch((err) => reject(err));
   })
 }
 

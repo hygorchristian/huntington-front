@@ -10,7 +10,7 @@ function Confirmacao({ data, onNext }) {
     console.tron.log({ data });
 
     setTimeout(() => {
-      Api.validateForm(data.data.receiver_id).then((response) => {
+      Api.confirmForm(data.data.receiver_id).then((response) => {
         showSuccessMessage(response);
       }).catch((err) => {
         showErrorMessage(err);

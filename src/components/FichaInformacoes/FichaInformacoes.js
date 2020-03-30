@@ -2,8 +2,13 @@ import React from 'react';
 
 import { Container } from './styles';
 import LabelValue from '~/components/LabelValue';
+import { BASE_URL } from '~/services/api';
 
 function FichaInformacoes({ titulo, data }) {
+  console.tron.log({ data });
+
+  const getPhoto = (photo) => `${BASE_URL}${photo.url}`;
+
   return (
     <>
       <Container>
@@ -58,7 +63,7 @@ function FichaInformacoes({ titulo, data }) {
           </div>
           <div className="foto">
             <label>Foto</label>
-            <img src={data.partner_picture.url} />
+            <img src={getPhoto(data.partner_picture)} />
           </div>
         </div>
       </Container>

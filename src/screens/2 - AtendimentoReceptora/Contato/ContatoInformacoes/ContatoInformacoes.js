@@ -156,12 +156,13 @@ function ContatoInformacoes() {
               <h2>Considerações</h2>
               <p>{data.form.obs}</p>
             </div>
-
-            <div className="controller">
-              <Botao endIcon="check" onClick={() => setDialogOpen(true)}>
-                Validar Formulário
-              </Botao>
-            </div>
+            {!data.form.is_valid && (
+              <div className="controller">
+                <Botao endIcon="check" onClick={() => setDialogOpen(true)}>
+                  Validar Formulário
+                </Botao>
+              </div>
+            )}
           </fieldset>
           <DialogValidarFormulario
             data={data.form}

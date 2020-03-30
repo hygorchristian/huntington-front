@@ -1,6 +1,6 @@
 /* eslint-disable object-curly-newline */
 
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -9,15 +9,31 @@ import Dialog from '@material-ui/core/Dialog';
 
 import { useFormik } from 'formik';
 import MenuItem from '@material-ui/core/MenuItem';
+import Api from '~/services/api';
 import { Content } from './styles';
 
 import MuiTextarea from '~/components/MuiTextarea';
 import validationSchema from './validationSchema';
 import MuiSelect from '~/components/MuiSelect';
+import { showErrorMessage, showSuccessMessage } from '~/utils/notistack';
+import Loading from '~/components/Loading';
 
 function DialogValidarFormulario({ onClose, open, data, ...other }) {
-  const onSubmit = async (values) => {
+  const [loading, setLoading] = useState(false);
 
+  const onSubmit = async (values) => {
+    setLoading(true);
+    Api.validateForm().then((response) => {
+      showSuccessMessage(response);
+      onClose();
+      setTimeout(() => {
+        window.location.reload();
+      }, 1500);
+    }).catch((err) => {
+      showErrorMessage(err);
+    }).finally(() => {
+      setLoading(false);
+    });
   };
 
   const formik = useFormik({
@@ -77,9 +93,10 @@ function DialogValidarFormulario({ onClose, open, data, ...other }) {
         <Button autoFocus onClick={handleCancel} color="error">
           Cancelar
         </Button>
-        <Button onClick={formik.submitForm} color="primary">
+        <Button onClick={formik.submitForm} color="primary" disabled={loading}>
           Enviar para Lista de Espera
         </Button>
+        {loading && <Loading />}
       </DialogActions>
     </Dialog>
   );
