@@ -9,32 +9,67 @@ import { Container } from './styles';
 import LabelValue from '~/components/LabelValue';
 import DialogLItem from '~/components/DialogLItem';
 import MuiInput from '~/components/MuiInput';
+import { showErrorMessage } from '~/utils/notistack';
+import Api from '~/services/api';
 
-function LItem({ ...props }) {
+function LItem({ bank, donor, ...props }) {
   const [editOpen, setEditOpen] = useState(false);
+  const [receptora, setReceptora] = useState(null);
+  const [status, setStatus] = useState(null);
+
+  console.tron.log({ bank });
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    if (receptora) {
+      setStatus(e.target.value);
+
+      Api.createBondCicle({
+        medic: 'string',
+        donor_pin: donor.id,
+        receiver_pin: receptora.id,
+        reservation_type: e.target.value,
+        reservation_date: new Date(),
+        ovulebanks: [bank.id],
+      }).then((response) => {
+        console.tron.log({ response });
+      }).catch((err) => {
+        console.tron.error(err);
+      });
+    } else {
+      showErrorMessage('Você deve selecionar uma receptora.');
+    }
+  };
 
   return (
     <>
       <Container>
-        <span className="label">L1</span>
+        <span className="label">{bank.reference}</span>
         <div className="separator-v" />
         <div className="status">
           <MuiSelect
             name="status"
             label="Status"
             style={{ width: 200 }}
+            handleChange={handleChange}
+            value={status}
+            disabled={!receptora}
           >
             <MenuItem value="avaliacao">Em avaliação</MenuItem>
             <MenuItem value="reservado">Reservado</MenuItem>
             <MenuItem value="substituicao">Substituição</MenuItem>
           </MuiSelect>
-          <LabelValue label="Saída">20/03/2019</LabelValue>
+          {/* <LabelValue label="Saída">20/03/2019</LabelValue> */}
         </div>
         <div className="grid">
-          {/* <LabelValue label="PIN Receptora">1234567</LabelValue> */}
-          {/* <LabelValue label="Nome Receptora">Mariana Silva</LabelValue> */}
-          {/* <LabelValue label="Médico Responsável">1234567</LabelValue> */}
-          {/* <LabelValue label="Unidade">1234567</LabelValue> */}
+          {receptora && (
+            <>
+              <LabelValue label="PIN Receptora">{receptora.pin}</LabelValue>
+              <LabelValue label="Nome Receptora">{receptora.name}</LabelValue>
+              {/* <LabelValue label="Médico Responsável">1234567</LabelValue> */}
+              {/* <LabelValue label="Unidade">1234567</LabelValue> */}
+            </>
+          )}
         </div>
         <div className="grid">
           <LabelValue label="#Óvulos">7</LabelValue>
@@ -54,7 +89,11 @@ function LItem({ ...props }) {
         ]}
         />
       </Container>
-      <DialogLItem open={editOpen} onClose={() => { setEditOpen(false); }} />
+      <DialogLItem
+        onReceptora={(val) => setReceptora(val)}
+        open={editOpen}
+        onClose={() => setEditOpen(false)}
+      />
     </>
   );
 }

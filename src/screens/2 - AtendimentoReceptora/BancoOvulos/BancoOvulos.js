@@ -15,7 +15,6 @@ function PreCadastro({ history }) {
 
   useEffect(() => {
     Api.getBancoOvulos().then((response) => {
-      console.tron.log(response);
       setData(response);
     }).finally(() => {
       setLoading(false);

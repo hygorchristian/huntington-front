@@ -13,8 +13,6 @@ function ListaItem({ item }) {
     history.push(`/embriologia/dashboard/coletar/${item.id}`);
   };
 
-  console.tron.log(item);
-
   return (
     <Item onClick={navigate}>
       <span className="horario">08:15</span>

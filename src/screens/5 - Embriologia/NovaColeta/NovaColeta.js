@@ -48,7 +48,6 @@ function NovaColeta() {
 
   useEffect(() => {
     Api.getCollecting(collecting).then((response) => {
-      console.tron.log(response);
       setColeta(response.data);
     });
   }, []);

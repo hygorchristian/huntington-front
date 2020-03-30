@@ -24,7 +24,6 @@ function MuiSelect({
       fullWidth
       margin="normal"
       error={error}
-      {...props}
     >
       <InputLabel ref={inputLabel}>
         {label}
@@ -33,6 +32,7 @@ function MuiSelect({
         value={value}
         onChange={handleChange}
         labelWidth={labelWidth}
+        {...props}
       >
         <MenuItem value="">
           <em>Nenhum</em>

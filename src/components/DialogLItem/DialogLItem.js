@@ -4,12 +4,38 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
 import Dialog from '@material-ui/core/Dialog';
 import Button from '@material-ui/core/Button';
+import Api from '~/services/api';
 
 import { Content } from './styles';
 import MuiInput from '~/components/MuiInput';
+import Botao from '~/components/Botao';
+import Loading from '~/components/Loading';
 
-function DialogLItem({ open, onClose, ...other }) {
+function DialogLItem({
+ open, onClose, onReceptora, ...other
+}) {
   const [value, setValue] = useState(null);
+  const [error, setError] = useState(null);
+  const [receptora, setReceptora] = useState(null);
+  const [loading, setLoading] = useState(null);
+
+  const onBusca = () => {
+    setError(null);
+    setLoading(true);
+
+    Api.getReceiver(value).then((response) => {
+      setReceptora(response.data);
+    }).catch((err) => {
+      setError('Receptora não existe');
+    }).finally(() => {
+      setLoading(false);
+    });
+  };
+
+  const onConfirm = () => {
+    onReceptora(receptora);
+    onClose();
+  };
 
   return (
     <Dialog
@@ -21,14 +47,20 @@ function DialogLItem({ open, onClose, ...other }) {
       <DialogTitle>Editar</DialogTitle>
       <DialogContent dividers>
         <Content>
-          <MuiInput
-            label="PIN Receptora"
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-          />
+          <div className="col">
+            <MuiInput
+              label="ID Receptora"
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              error={error}
+              helperText={error}
+            />
+            <Botao onClick={onBusca}>Buscar</Botao>
+            { loading && <Loading /> }
+          </div>
           <div className="separator" />
           <div className="info">
-            {`Doadora: ${value}`}
+            {`Receptora: ${receptora && receptora.name}`}
           </div>
         </Content>
       </DialogContent>
@@ -36,7 +68,7 @@ function DialogLItem({ open, onClose, ...other }) {
         <Button autoFocus color="error" onClick={onClose}>
           Cancelar
         </Button>
-        <Button color="primary">
+        <Button color="primary" onClick={onConfirm}>
           Confirmar
         </Button>
       </DialogActions>

@@ -423,6 +423,27 @@ class ApiService {
       reject(err);
     });
   })
+
+  getBancoOvulo = (id) => new Promise((resolve, reject) => {
+    this.getCollecting(id).then((response) => {
+      const bank = response.data;
+      if (bank.donor) {
+        bank.lotes_iniciais = bank.ovulebanks.length;
+        bank.lotes_disponiveis = bank.ovulebanks.filter((obank) => obank.status === 'Disponível').length;
+
+        const date = new Date(bank.date);
+
+        bank.mes = getMes(date.getMonth());
+        bank.ano = date.getFullYear();
+        bank.nome = bank.donor.name;
+
+        resolve(bank);
+      }
+    }).catch((err) => {
+      console.tron.error({ err });
+      reject(err);
+    });
+  })
 }
 
 export default new ApiService();
