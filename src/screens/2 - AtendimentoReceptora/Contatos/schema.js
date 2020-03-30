@@ -32,7 +32,7 @@ export default {
     },
     {
       label: 'Cadastro',
-      name: 'created_at',
+      name: 'cadastro',
       type: 'date',
     },
     {

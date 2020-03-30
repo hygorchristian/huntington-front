@@ -2,15 +2,20 @@ import React, { useState } from 'react';
 
 import { Container } from './styles';
 import Botao from '~/components/Botao';
+import { showSuccessMessage } from '~/utils/notistack';
 
 function Confirmacao({ onNext }) {
+  const validateForm = () => {
+    showSuccessMessage('O formulário foi enviado!');
+  };
+
   return (
     <Container>
       <img src="/img/logo-dark.svg" alt="logo" />
       <div className="scroll">
         <p> Atesto a veracidade das informações preenchidas (confirmar texto) </p>
         <div className="controls">
-          <Botao>Sim, atesto a veracidade dos dados</Botao>
+          <Botao onClick={validateForm}>Sim, atesto a veracidade dos dados</Botao>
         </div>
       </div>
       <div className="separator" />

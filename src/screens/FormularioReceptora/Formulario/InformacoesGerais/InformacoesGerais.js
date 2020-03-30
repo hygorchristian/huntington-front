@@ -5,6 +5,8 @@ import LabelValue from '~/components/LabelValue';
 import MuiInput from '~/components/MuiInput';
 
 function InformacoesGerais({ formik }) {
+  console.tron.log(formik);
+
   return (
     <Container>
       <LabelValue label="Nome da Paciente">Carolina Marrocos</LabelValue>

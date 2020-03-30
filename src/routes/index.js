@@ -31,7 +31,7 @@ function Routes() {
   return (
     <Switch>
       <Route path="/login" exact component={Login} />
-      <Route path="/receptora/form/:id" exact component={FormularioReceptora} />
+      <Route path="/receptora/form" exact component={FormularioReceptora} />
       {routes.map((route) => (
         <DashboardRoute exact path={route.path} component={route.component} label={route.label} />
       ))}

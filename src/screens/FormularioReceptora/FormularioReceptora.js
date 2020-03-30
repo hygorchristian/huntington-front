@@ -43,24 +43,8 @@ function FormularioReceptora() {
     });
   };
 
-  const checkEncode = async () => {
-    const date = new Date();
-    date.setDate(date.getDate() + 10);
-
-    const val = {
-      receiver_id: 123,
-      form_variant: 'homoafetivo_masculino',
-      expire_date: date
-    };
-
-    encode(val).then((encoded) => {
-    }).catch((err) => {
-    });
-  };
-
   useEffect(() => {
     checkToken();
-    checkEncode();
   }, []);
 
 

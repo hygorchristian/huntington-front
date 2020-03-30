@@ -1,20 +1,23 @@
-import React from 'react';
-
-import Busca from '~/components/Busca';
+import React, { useEffect, useState } from 'react';
+import Api from '~/services/api';
 
 import { Container, Header, Content } from './styles';
 import MuiTable from '~/components/MuiTable';
 import schema from './schema';
-import data from './data';
 
-function Doadoras({ history }) {
-  const novaDoadora = () => {
+function Doadoras() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  };
-
-  const detalhesDoadora = () => {
-    history.push('/receptora/contatos/1');
-  };
+  useEffect(() => {
+    Api.getReceiversContatcs().then((response) => {
+      setData(response);
+    }).catch((err) => {
+      console.tron.error(err);
+    }).finally(() => {
+      setLoading(false);
+    });
+  }, []);
 
   return (
     <Container>
@@ -22,7 +25,7 @@ function Doadoras({ history }) {
         <h1>Contatos</h1>
       </Header>
       <Content>
-        <MuiTable schema={schema} data={data} />
+        <MuiTable schema={schema} data={data} loading={loading} />
       </Content>
     </Container>
   );

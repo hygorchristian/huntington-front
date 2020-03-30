@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { FiCalendar, FiMapPin } from 'react-icons/fi';
 
 import { Container, Header, Questionario } from './styles';
@@ -7,6 +8,11 @@ import FichaInformacoes from '~/components/FichaInformacoes';
 import { formatarDiaMesAno } from '~/utils/data';
 import Botao from '~/components/Botao';
 import DialogValidarFormulario from '~/components/DialogValidarFomulario';
+import Api from '~/services/api';
+import Voltar from '~/components/Voltar/Voltar';
+import { Content } from '~/screens/2 - AtendimentoReceptora/Contato/styles';
+import AdicionarRow from '~/components/AdicionarRow';
+import { encode } from '~/utils/jwt';
 
 const INITIAL = {
   name: 'Carolina Marrocos',
@@ -53,14 +59,52 @@ const INITIAL = {
 };
 
 function ContatoInformacoes() {
-  const [data, setData] = useState(INITIAL);
+  const { id } = useParams();
+
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
 
+  const handleEnviarFormulario = () => {
+    const date = new Date();
+    date.setDate(date.getDate() + 10);
+
+    const val = {
+      receiver_id: id,
+      form_variant: 'receptores_heteros',
+      expire_date: date
+    };
+
+    encode(val).then((encoded) => {
+      const url = `http://localhost:3030/receptora/form?token=${encoded}`;
+      console.tron.log(url);
+      console.log(url);
+    }).catch((err) => {
+    });
+  };
+
   useEffect(() => {
-    //
+    Api.getReceiver(id).then((response) => {
+      setData(response.data);
+    }).catch((err) => {
+      console.tron.error(err);
+    }).finally(() => {
+      setLoading(false);
+    });
   }, []);
 
-  return (
+  if (loading) {
+    return (
+      <Container>
+        <Voltar label="Contatos" route="/receptora/contatos" />
+        <Content>
+          Carregando...
+        </Content>
+      </Container>
+    );
+  }
+
+  return data && (
     <Container>
       <Header>
         <div className="row">
@@ -79,11 +123,7 @@ function ContatoInformacoes() {
             </div>
             <div className="col mr-40">
               <label>RG</label>
-              <span>
-                {data.rg}
-                {' '}
-                {data.rg_expeditor}
-              </span>
+              {data.rg && <span>{`${data.rg} ${data.rg_expeditor}`}</span>}
             </div>
             <div className="col mr-40">
               <label>Nascimento</label>
@@ -92,41 +132,45 @@ function ContatoInformacoes() {
           </div>
         </div>
       </Header>
-      <Questionario>
-        <fieldset>
-          <legend>QUESTIONÁRIO</legend>
-          <div className="info">
-            <div className="icon-value">
-              <FiCalendar size={15} color="#BCBCBC" />
-              <span>19/04/2019</span>
+      {data.form ? (
+        <Questionario>
+          <fieldset>
+            <legend>QUESTIONÁRIO</legend>
+            <div className="info">
+              <div className="icon-value">
+                <FiCalendar size={15} color="#BCBCBC" />
+                <span>19/04/2019</span>
+              </div>
+              <div className="icon-value">
+                <FiMapPin size={15} color="#BCBCBC" />
+                <span>Vila Mariana</span>
+              </div>
+              <LabelValue label="Tipo de Tratamento">Ovodação</LabelValue>
+              <LabelValue label="Médico">Eduardo Botelho</LabelValue>
             </div>
-            <div className="icon-value">
-              <FiMapPin size={15} color="#BCBCBC" />
-              <span>Vila Mariana</span>
+            <div className="fichas">
+              <FichaInformacoes data={data.form} />
             </div>
-            <LabelValue label="Tipo de Tratamento">Ovodação</LabelValue>
-            <LabelValue label="Médico">Eduardo Botelho</LabelValue>
-          </div>
-          <div className="fichas">
-            <FichaInformacoes data={data.form} />
-          </div>
-          <div className="consideracoes">
-            <h2>Considerações</h2>
-            <p>{data.form.obs}</p>
-          </div>
+            <div className="consideracoes">
+              <h2>Considerações</h2>
+              <p>{data.form.obs}</p>
+            </div>
 
-          <div className="controller">
-            <Botao endIcon="check" onClick={() => setDialogOpen(true)}>
-              Validar Formulário
-            </Botao>
-          </div>
-        </fieldset>
-        <DialogValidarFormulario
-          data={data.form}
-          open={dialogOpen}
-          onClose={() => setDialogOpen(false)}
-        />
-      </Questionario>
+            <div className="controller">
+              <Botao endIcon="check" onClick={() => setDialogOpen(true)}>
+                Validar Formulário
+              </Botao>
+            </div>
+          </fieldset>
+          <DialogValidarFormulario
+            data={data.form}
+            open={dialogOpen}
+            onClose={() => setDialogOpen(false)}
+          />
+        </Questionario>
+      ) : (
+        <AdicionarRow label="Enviar formulário" context="Formulário" onClick={handleEnviarFormulario} />
+      )}
     </Container>
   );
 }
