@@ -252,7 +252,6 @@ class ApiService {
       const arr = response.data;
 
       for (const receiver of arr) {
-        console.tron.log(receiver);
         receiver.questionario = receiver.form ? 'Respondido' : 'A enviar';
         receiver.cadastro = receiver.createdAt;
       }

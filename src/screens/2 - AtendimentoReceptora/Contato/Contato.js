@@ -45,8 +45,6 @@ function Contato() {
     );
   }
 
-  console.tron.log(data);
-
   return data && (
     <Container>
       <Voltar label="Contatos" route="/receptora/contatos" />

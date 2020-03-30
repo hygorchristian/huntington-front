@@ -53,7 +53,7 @@ function FormularioReceptora() {
       { valid === 'valid' && (
         <Content id="form-content" index={index} onChangeIndex={handleChangeIndex}>
           <Termos index={0} onNext={() => setIndex(1)} />
-          <Formulario index={1} onNext={() => setIndex(2)} />
+          <Formulario index={1} onNext={() => setIndex(2)} data={data} />
           <Confirmacao index={2} />
         </Content>
       )}

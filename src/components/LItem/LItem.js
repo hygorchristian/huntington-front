@@ -17,8 +17,6 @@ function LItem({ bank, donor, ...props }) {
   const [receptora, setReceptora] = useState(null);
   const [status, setStatus] = useState(null);
 
-  console.tron.log({ bank });
-
   const handleChange = (e) => {
     e.preventDefault();
     if (receptora) {

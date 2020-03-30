@@ -7,9 +7,8 @@ import set from '@babel/runtime/helpers/esm/set';
 import { Container } from './styles';
 import RadioImage from '~/components/RadioImage';
 
-function SkinSelector() {
-  const [tone, setTone] = useState(null);
-  const [toneValue, setToneValue] = useState(null);
+function SkinSelector({ value, onChange, skinTone }) {
+  const [tone, setTone] = useState(skinTone);
 
   const handleChange = (e) => {
     setTone(e.target.value);
@@ -31,20 +30,20 @@ function SkinSelector() {
           <RadioImage
             image="/img/form/pele-branca-a-h.png"
             label="Branca A"
-            checked={toneValue === 'branca-a'}
-            onCheck={() => setToneValue('branca-a')}
+            checked={value === 'branca-a'}
+            onCheck={() => onChange('branca-a')}
           />
           <RadioImage
             image="/img/form/pele-branca-b-h.png"
             label="Branca B"
-            checked={toneValue === 'branca-b'}
-            onCheck={() => setToneValue('branca-b')}
+            checked={value === 'branca-b'}
+            onCheck={() => onChange('branca-b')}
           />
           <RadioImage
             image="/img/form/pele-branca-c-h.png"
             label="Branca C"
-            checked={toneValue === 'branca-c'}
-            onCheck={() => setToneValue('branca-c')}
+            checked={value === 'branca-c'}
+            onCheck={() => onChange('branca-c')}
           />
         </>
         )}
@@ -53,14 +52,14 @@ function SkinSelector() {
           <RadioImage
             image="/img/form/pele-amarela-a-h.png"
             label="Amarela A"
-            checked={toneValue === 'amarela-a'}
-            onCheck={() => setToneValue('amarela-a')}
+            checked={value === 'amarela-a'}
+            onCheck={() => onChange('amarela-a')}
           />
           <RadioImage
             image="/img/form/pele-amarela-b-h.png"
             label="Amarela B"
-            checked={toneValue === 'amarela-b'}
-            onCheck={() => setToneValue('amarela-b')}
+            checked={value === 'amarela-b'}
+            onCheck={() => onChange('amarela-b')}
           />
         </>
         )}
@@ -69,20 +68,20 @@ function SkinSelector() {
           <RadioImage
             image="/img/form/pele-parda-a-h.png"
             label="Parda A"
-            checked={toneValue === 'parda-a'}
-            onCheck={() => setToneValue('parda-a')}
+            checked={value === 'parda-a'}
+            onCheck={() => onChange('parda-a')}
           />
           <RadioImage
             image="/img/form/pele-parda-b-h.png"
             label="Parda B"
-            checked={toneValue === 'parda-b'}
-            onCheck={() => setToneValue('parda-b')}
+            checked={value === 'parda-b'}
+            onCheck={() => onChange('parda-b')}
           />
           <RadioImage
             image="/img/form/pele-parda-c-h.png"
             label="Parda C"
-            checked={toneValue === 'parda-c'}
-            onCheck={() => setToneValue('parda-c')}
+            checked={value === 'parda-c'}
+            onCheck={() => onChange('parda-c')}
           />
         </>
         )}
@@ -91,14 +90,14 @@ function SkinSelector() {
             <RadioImage
               image="/img/form/pele-negra-a-h.png"
               label="Negro A"
-              checked={toneValue === 'negra-a'}
-              onCheck={() => setToneValue('negra-a')}
+              checked={value === 'negra-a'}
+              onCheck={() => onChange('negra-a')}
             />
             <RadioImage
               image="/img/form/pele-negra-b-h.png"
               label="Negro B"
-              checked={toneValue === 'negra-b'}
-              onCheck={() => setToneValue('negra-b')}
+              checked={value === 'negra-b'}
+              onCheck={() => onChange('negra-b')}
             />
           </>
         )}

@@ -71,6 +71,7 @@ function ContatoInformacoes() {
 
     const val = {
       receiver_id: id,
+      receiver_name: data.name,
       form_variant: 'receptores_heteros',
       expire_date: date
     };

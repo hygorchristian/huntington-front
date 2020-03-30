@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -29,14 +29,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Formulario({ onNext }) {
+function Formulario({ data, onNext }) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
 
   const onSubmit = () => {};
 
   const formik = useFormik({
-    initialValues,
+    initialValues: {
+      ...initialValues,
+      receiver_name: data.data.receiver_name
+    },
     onSubmit,
     validationSchema
   });
@@ -101,4 +104,4 @@ function Formulario({ onNext }) {
 );
 }
 
-export default Formulario;
+export default memo(Formulario);
