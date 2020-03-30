@@ -21,7 +21,7 @@ export default {
     },
     {
       label: 'Receptora',
-      name: 'receptora',
+      name: 'name',
       type: 'string',
     },
     {
@@ -46,7 +46,7 @@ export default {
     },
     {
       label: 'Status',
-      name: 'status.name',
+      name: 'status',
       type: 'string',
     },
   ],

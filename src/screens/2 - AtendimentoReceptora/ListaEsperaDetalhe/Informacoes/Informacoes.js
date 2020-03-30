@@ -6,61 +6,60 @@ import {
 import LabelValue from '~/components/LabelValue';
 import FichaInformacoes from '~/components/FichaInformacoes';
 
+  const INITIAL = {
+    name: 'Carolina Marrocos',
+    pin: '12345678',
+    email: 'emailreceptora@email.com.br',
+    rg: '3.153.025',
+    rg_expeditor: 'SSP-DF',
+    birth: '1995-09-06T12:00:00Z',
+    abo1: 'A+',
+    abo2: 'O-',
+    etnia: {
+      name: 'Branca',
+    },
+    status: {
+      name: 'Em espera'
+    },
+    form: {
+      receiver_name: 'Andressa Guimarães',
+      receiver_etnia: {
+        name: 'branca'
+      },
+      receiver_ascendance: 'italiana',
+      receiver_blood_type: 'A+',
+      receiver_height: '160',
+      receiver_weight: '63',
+      receiver_hair_color: 'Castanho Claro',
+      receiver_eye_color: 'Castanho Escuro',
+      receiver_hair_properties: 'Cacheado',
+      receiver_skin_tone: 'Branca C',
+      receiver_picture: {
+        url: 'https://randomuser.me/api/portraits/women/79.jpg'
+      },
+      partner_name: 'Rodrigo Thomas',
+      partner_etnia: { name: 'branca' },
+      partner_ascendance: 'italiana',
+      partner_blood_type: 'A+',
+      partner_height: '160',
+      partner_weight: '63',
+      partner_hair_color: 'Castanho Claro',
+      partner_eye_color: 'Castanho Escuro',
+      partner_hair_properties: 'Cacheado',
+      partner_skin_tone: 'Branca C',
+      partner_picture: {
+        url: 'https://tinyfac.es/data/avatars/475605E3-69C5-4D2B-8727-61B7BB8C4699-500w.jpeg'
+      },
+      notes: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
+      validation_cicle_type: '',
+      validation_addition: '',
+      validation_obs: '',
+      is_valid: false,
+    }
+  };
 
-const INITIAL = {
-  name: 'Carolina Marrocos',
-  pin: '12345678',
-  email: 'emailreceptora@email.com.br',
-  rg: '3.153.025',
-  rg_expeditor: 'SSP-DF',
-  birth: '1995-09-06T12:00:00Z',
-  abo1: 'A+',
-  abo2: 'O-',
-  etnia: {
-    name: 'Branca',
-  },
-  status: {
-    name: 'Em espera'
-  },
-  form: {
-    receiver_name: 'Andressa Guimarães',
-    receiver_etnia: {
-      name: 'branca'
-    },
-    receiver_ascendance: 'italiana',
-    receiver_blood_type: 'A+',
-    receiver_height: '160',
-    receiver_weight: '63',
-    receiver_hair_color: 'Castanho Claro',
-    receiver_eye_color: 'Castanho Escuro',
-    receiver_hair_properties: 'Cacheado',
-    receiver_skin_tone: 'Branca C',
-    receiver_picture: {
-      url: 'https://randomuser.me/api/portraits/women/79.jpg'
-    },
-    partner_name: 'Rodrigo Thomas',
-    partner_etnia: { name: 'branca' },
-    partner_ascendance: 'italiana',
-    partner_blood_type: 'A+',
-    partner_height: '160',
-    partner_weight: '63',
-    partner_hair_color: 'Castanho Claro',
-    partner_eye_color: 'Castanho Escuro',
-    partner_hair_properties: 'Cacheado',
-    partner_skin_tone: 'Branca C',
-    partner_picture: {
-      url: 'https://tinyfac.es/data/avatars/475605E3-69C5-4D2B-8727-61B7BB8C4699-500w.jpeg'
-    },
-    notes: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
-    validation_cicle_type: '',
-    validation_addition: '',
-    validation_obs: '',
-    is_valid: false,
-  }
-};
-
-function Informacoes() {
-  const [data, setData] = useState(INITIAL);
+  function Informacoes() {
+    const [data, setData] = useState(INITIAL);
 
   return (
     <Container>

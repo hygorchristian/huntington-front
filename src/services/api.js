@@ -478,6 +478,17 @@ class ApiService {
     this.getReceivers().then((response) => {
       const { data } = response;
       const arr = data.filter((receiver) => receiver.form && receiver.form.is_valid);
+
+      for (const receiver of arr) {
+        const date = new Date(receiver.createdAt);
+
+        receiver.mes = getMes(date.getMonth());
+        receiver.ano = date.getFullYear();
+        receiver.abo = receiver.form.receiver_blood_type;
+        receiver.abo2 = receiver.form.partner_blood_type;
+      }
+
+      console.tron.log(arr);
       resolve(arr);
     }).catch((err) => reject(err));
   })
