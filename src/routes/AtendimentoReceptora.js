@@ -8,6 +8,7 @@ import BancoOvulos from '~/screens/2 - AtendimentoReceptora/BancoOvulos';
 import ListaEspera from '~/screens/2 - AtendimentoReceptora/ListaEspera';
 import CiclosCasados from '~/screens/2 - AtendimentoReceptora/CiclosCasados';
 import EmDesenvolvimento from '~/screens/EmDesenvolvimento';
+import CicloCasado from '~/screens/2 - AtendimentoReceptora/CicloCasado/CicloCasado';
 
 export default [
   {
@@ -39,6 +40,10 @@ export default [
     label: 'Ciclos Casados',
     path: '/receptora/ciclos-casados',
     component: CiclosCasados,
+  },
+  {
+    path: '/receptora/ciclos-casados/:id',
+    component: CicloCasado,
   },
   {
     label: 'Indicadores',

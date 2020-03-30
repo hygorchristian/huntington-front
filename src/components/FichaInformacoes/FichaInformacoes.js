@@ -7,7 +7,7 @@ import { BASE_URL } from '~/services/api';
 function FichaInformacoes({ titulo, data }) {
   console.tron.log({ data });
 
-  const getPhoto = (photo) => `${BASE_URL}${photo.url}`;
+  const getPhoto = (photo) => photo && `${BASE_URL}${photo.url}`;
 
   return (
     <>
@@ -16,7 +16,7 @@ function FichaInformacoes({ titulo, data }) {
         <div className="dados">
           <div className="infos">
             <LabelValue label="Nome">{data.receiver_name}</LabelValue>
-            <LabelValue label="Etnia">{data.receiver_etnia.name}</LabelValue>
+            <LabelValue label="Etnia">{data.receiver_etnia}</LabelValue>
             <LabelValue label="Ascendência">{data.receiver_ascendance}</LabelValue>
             <LabelValue label="Tipo sanguíneo">{data.receiver_blood_type}</LabelValue>
             <LabelValue label="Peso">
@@ -35,7 +35,7 @@ function FichaInformacoes({ titulo, data }) {
           </div>
           <div className="foto">
             <label>Foto</label>
-            <img src={data.receiver_picture.url} alt="Receptora" />
+            <img src={getPhoto(data.receiver_picture)} />
           </div>
         </div>
       </Container>
@@ -44,7 +44,7 @@ function FichaInformacoes({ titulo, data }) {
         <div className="dados">
           <div className="infos">
             <LabelValue label="Nome">{data.partner_name}</LabelValue>
-            <LabelValue label="Etnia">{data.partner_etnia.name}</LabelValue>
+            <LabelValue label="Etnia">{data.partner_etnia}</LabelValue>
             <LabelValue label="Ascendência">{data.partner_ascendance}</LabelValue>
             <LabelValue label="Tipo sanguíneo">{data.partner_blood_type}</LabelValue>
             <LabelValue label="Peso">

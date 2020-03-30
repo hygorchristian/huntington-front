@@ -12,6 +12,8 @@ import steps from './steps';
 
 import Botao from '~/components/Botao';
 import { Container } from './styles';
+import Api from '~/services/api';
+import { showErrorMessage, showSuccessMessage } from '~/utils/notistack';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,20 +31,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Formulario({ data, onNext }) {
+function Formulario({ formik, onNext }) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
-
-  const onSubmit = () => {};
-
-  const formik = useFormik({
-    initialValues: {
-      ...initialValues,
-      receiver_name: data.data.receiver_name
-    },
-    onSubmit,
-    validationSchema
-  });
+  const data = formik.values.data;
 
   const scrollTop = () => {
     const el = document.getElementById('form-content');

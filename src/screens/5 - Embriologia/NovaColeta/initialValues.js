@@ -1,5 +1,4 @@
 export default {
-  donor: null,
   ovule_total: null,
   // ovule_immature: 1,
   // ovule_alter: 0,

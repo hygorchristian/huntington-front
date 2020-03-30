@@ -28,7 +28,7 @@
 import axios from 'axios';
 import { getMes } from '~/utils/data';
 
-// export const BASE_URL = 'https://huntington-api.herokuapp.com'; // -- Heroku
+// export const BASE _URL = 'https://huntington-api.herokuapp.com'; // -- Heroku
 export const BASE_URL = 'http://10.250.110.150:1337'; // -- VPN
 
 class ApiService {
@@ -418,7 +418,9 @@ class ApiService {
       const arr = [];
 
       for (const bank of dados) {
-        if (bank.donor) {
+        console.tron.log(bank);
+
+        if (bank.ovulebanks.length > 0) {
           bank.lotes_iniciais = bank.ovulebanks.length;
           bank.lotes_disponiveis = bank.ovulebanks.filter((obank) => obank.status === 'Disponível').length;
 
@@ -460,11 +462,14 @@ class ApiService {
     });
   })
 
-  confirmForm = (id) => new Promise((resolve, reject) => {
-    // todo: chamar a api de criar um form pro usuário pelo id
-    setTimeout(() => {
+  confirmForm = (data) => new Promise((resolve, reject) => {
+    this.api.post('/receiver/form', data).then((response) => {
+      console.tron.log({ response });
       resolve('Formulário salvo com sucesso!');
-    }, 2000);
+    }).catch((err) => {
+      console.tron.error(err);
+      reject('Não foi possível validar seu formulário');
+    });
   })
 
   validateForm = (id) => new Promise((resolve, reject) => {
@@ -475,7 +480,7 @@ class ApiService {
   })
 
   getHoldList = () => new Promise((resolve, reject) => {
-    this.getReceivers().then((response) => {
+    this.getReceivers({ pin: '3' }).then((response) => {
       const { data } = response;
       const arr = data.filter((receiver) => receiver.form && receiver.form.is_valid);
 

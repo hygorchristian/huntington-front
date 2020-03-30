@@ -1,4 +1,5 @@
 export default {
+  data: null,
   receiver_name: null,
   receiver_etnia: 'Parda',
   receiver_ascendance: 'Italiana',

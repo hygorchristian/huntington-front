@@ -13,8 +13,8 @@ function CiclosCasados({ history }) {
 
   };
 
-  const detalhesDoadora = () => {
-    history.push('/receptora/lista-espera/1');
+  const detalhes = (id) => {
+    history.push(`/receptora/ciclos-casados/${id}`);
   };
 
   return (
@@ -44,7 +44,7 @@ function CiclosCasados({ history }) {
           <tbody>
             {
             items.map((item) => (
-              <tr className="linha" onClick={() => detalhesDoadora(item)}>
+              <tr className="linha" onClick={() => detalhes(item)}>
                 <td style={{ width: 70 }}>
                   <a
                     onClick={(e) => { e.stopPropagation(); }}

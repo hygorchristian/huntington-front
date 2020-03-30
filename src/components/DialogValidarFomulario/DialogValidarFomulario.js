@@ -1,6 +1,7 @@
 /* eslint-disable object-curly-newline */
 
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -20,6 +21,7 @@ import Loading from '~/components/Loading';
 
 function DialogValidarFormulario({ onClose, open, data, ...other }) {
   const [loading, setLoading] = useState(false);
+  const history = useHistory();
 
   const onSubmit = async (values) => {
     setLoading(true);
@@ -27,8 +29,8 @@ function DialogValidarFormulario({ onClose, open, data, ...other }) {
       showSuccessMessage(response);
       onClose();
       setTimeout(() => {
-        window.location.reload();
-      }, 1500);
+        history.push('/receptora/contatos/5e82491385f0f4004e7ce574');
+      }, 1000);
     }).catch((err) => {
       showErrorMessage(err);
     }).finally(() => {
@@ -67,25 +69,27 @@ function DialogValidarFormulario({ onClose, open, data, ...other }) {
           </div>
           <div className="separator" />
           <div className="form">
-            <div className="row">
-              <MuiSelect
-                style={{ width: 240 }}
-                name="status"
-                label="Tipo de Ciclo"
-              >
-                <MenuItem value="casada">Programada</MenuItem>
-                <MenuItem value="solteira">Estimulação</MenuItem>
-              </MuiSelect>
-              <MuiSelect
-                style={{ width: 240 }}
-                name="status"
-                label="Adicionais"
-              >
-                <MenuItem value="casada">Programada</MenuItem>
-                <MenuItem value="solteira">Estimulação</MenuItem>
-              </MuiSelect>
-            </div>
-            <MuiTextarea label="Observações" />
+            {/* <div className="row"> */}
+            {/*  <MuiSelect */}
+            {/*    style={{ width: 240 }} */}
+            {/*    name="status" */}
+            {/*    label="Tipo de Ciclo" */}
+            {/*  > */}
+            {/*    <MenuItem value="casada">Programada</MenuItem> */}
+            {/*    <MenuItem value="solteira">Estimulação</MenuItem> */}
+            {/*  </MuiSelect> */}
+            {/*  <MuiSelect */}
+            {/*    style={{ width: 240 }} */}
+            {/*    name="status" */}
+            {/*    label="Adicionais" */}
+            {/*  > */}
+            {/*    <MenuItem value="casada">Programada</MenuItem> */}
+            {/*    <MenuItem value="solteira">Estimulação</MenuItem> */}
+            {/*  </MuiSelect> */}
+            {/* </div> */}
+            <MuiTextarea
+              label="Observações"
+            />
           </div>
         </Content>
       </DialogContent>

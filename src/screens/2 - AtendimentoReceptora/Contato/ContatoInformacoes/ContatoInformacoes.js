@@ -124,7 +124,7 @@ function ContatoInformacoes() {
             </div>
             <div className="col mr-40">
               <label>RG</label>
-              {data.rg && <span>{`${data.rg} ${data.rg_expeditor}`}</span>}
+              <span>{data.rg}</span>
             </div>
             <div className="col mr-40">
               <label>Nascimento</label>

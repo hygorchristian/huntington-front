@@ -13,6 +13,7 @@ import Api from '~/services/api';
 
 import MuiDatePicker from '~/components/MuiDatePicker';
 import { showErrorMessage } from '~/utils/notistack';
+import Loading from '~/components/Loading';
 
 const useStyles = makeStyles(() => ({
   paper: {
@@ -27,13 +28,17 @@ const useStyles = makeStyles(() => ({
 
 function DialogAgendarColeta({ onClose, open, doadora, ...other }) {
   const classes = useStyles();
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = async (values) => {
+    setLoading(true);
     await Api.agendarColeta(values).then((response) => {
       window.location.reload();
     }).catch((err) => {
       onClose();
       showErrorMessage('Não foi possível fazer o agendamento, tente novamente.');
+    }).finally(() => {
+      setLoading(false);
     });
   };
 
@@ -89,6 +94,7 @@ function DialogAgendarColeta({ onClose, open, doadora, ...other }) {
         <Button onClick={formik.submitForm} color="primary">
           Salvar
         </Button>
+        {loading && <Loading />}
       </DialogActions>
     </Dialog>
   );
