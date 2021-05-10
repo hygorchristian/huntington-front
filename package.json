@@ -19,7 +19,7 @@
     "intl-locales-supported": "^1.8.4",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "moment": "^2.24.0",
     "notistack": "^0.9.5",
     "prop-types": "^15.7.2",
